@@ -97,84 +97,84 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ComprobanteElectrnicoDePagoCEPApi* | [**ObtainTransactionCepUsingPOST**](docs/ComprobanteElectrnicoDePagoCEPApi.md#obtaintransactioncepusingpost) | **POST** /ceps | Consulta de CEP
-*ContactoApi* | [**SendContactUsingPOST**](docs/ContactoApi.md#sendcontactusingpost) | **POST** /contact | Solicitud de contacto
-*CuentasDeBeneficiariosSPEIApi* | [**DeleteAccountUsingDELETE**](docs/CuentasDeBeneficiariosSPEIApi.md#deleteaccountusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/{account} | Elimina la cuenta del beneficiario
-*CuentasDeBeneficiariosSPEIApi* | [**GetAvailableRelationshipsMonexUsingGET**](docs/CuentasDeBeneficiariosSPEIApi.md#getavailablerelationshipsmonexusingget) | **GET** /subscriptions/{subscription}/beneficiaries/relationships | Consulta de relaciones
-*CuentasDeBeneficiariosSPEIApi* | [**GetBeneficiariesForAccountUsingGET**](docs/CuentasDeBeneficiariosSPEIApi.md#getbeneficiariesforaccountusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spei | Consulta los beneficiarios registrados
-*CuentasDeBeneficiariosSPEIApi* | [**PreRegisterAccountsUsingPOST**](docs/CuentasDeBeneficiariosSPEIApi.md#preregisteraccountsusingpost) | **POST** /subscriptions/{subscription}/beneficiaries/spei | Pre-registro de cuentas de beneficiarios.
-*CuentasDeBeneficiariosSPEIApi* | [**RemoveBeneficiariesPendingUsingDELETE**](docs/CuentasDeBeneficiariosSPEIApi.md#removebeneficiariespendingusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/request/{requestId} | Eliminación de beneficiarios SPEI® sin confirmar
-*CuentasDeBeneficiariosSPEIApi* | [**UpdateAmountLimitAccountUsingPUT**](docs/CuentasDeBeneficiariosSPEIApi.md#updateamountlimitaccountusingput) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Actualiza el monto límite
-*CuentasDeBeneficiariosSPIDApi* | [**PreRegisterAccountsUsingPOST1**](docs/CuentasDeBeneficiariosSPIDApi.md#preregisteraccountsusingpost1) | **POST** /subscriptions/{subscription}/beneficiaries/spid | Pre-registro de cuentas de beneficiarios SPID
-*DepositantesApi* | [**GetDepositantsUsingGET**](docs/DepositantesApi.md#getdepositantsusingget) | **GET** /subscriptions/{subscription}/depositants | Consulta de cuentas de depositantes
-*DepositantesApi* | [**RegisterDepositantsUsingPOST**](docs/DepositantesApi.md#registerdepositantsusingpost) | **POST** /subscriptions/{subscription}/depositants | Registra un nuevo depositante
-*FacturasApi* | [**BillingsReportByIdUsingGET**](docs/FacturasApi.md#billingsreportbyidusingget) | **GET** /billings/{id} | Consulta de facturas por identificador
-*FacturasApi* | [**BillingsReportUsingGET**](docs/FacturasApi.md#billingsreportusingget) | **GET** /billings | Consulta de facturas
-*InstitucionesApi* | [**GetAllInstitutionsUsingGET**](docs/InstitucionesApi.md#getallinstitutionsusingget) | **GET** /institutions | Información de instituciones bancarias.
-*SaldoApi* | [**GetBalanceUsingGET**](docs/SaldoApi.md#getbalanceusingget) | **GET** /subscriptions/{subscription}/balance | Consulta los saldo de una cuenta
-*SuscripcionesApi* | [**PreEnrollmentMonexUserUsingPOST**](docs/SuscripcionesApi.md#preenrollmentmonexuserusingpost) | **POST** /subscriptions/pre-subscription | registra una pre-suscripción
-*SuscripcionesApi* | [**RemoveEnrollmentUserUsingDELETE**](docs/SuscripcionesApi.md#removeenrollmentuserusingdelete) | **DELETE** /subscriptions/{subscription} | Elimna una suscripción por id
-*SuscripcionesApi* | [**RemoveSubscriptionPendingStatusUsingDELETE**](docs/SuscripcionesApi.md#removesubscriptionpendingstatususingdelete) | **DELETE** /subscriptions/pre-subscription/{subscription} | Elimna una pre-suscripción
-*TransferenciasSPEIApi* | [**DropTransactionsPendingUsingDELETE**](docs/TransferenciasSPEIApi.md#droptransactionspendingusingdelete) | **DELETE** /subscriptions/{subscription}/transactions/outcoming/spei/request/{requestId} | Eliminación de transferencias SPEI® pendientes
-*TransferenciasSPEIApi* | [**IncomingSpeiTransactionsReportUsingGET**](docs/TransferenciasSPEIApi.md#incomingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/incoming/spei | Consulta de transferencias recibidas
-*TransferenciasSPEIApi* | [**OutCommingSpeiRequestIdTransactionsReportUsingGET**](docs/TransferenciasSPEIApi.md#outcommingspeirequestidtransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei/{requestId} | Consulta de transferencias de salida por identificador de petición
-*TransferenciasSPEIApi* | [**OutgoingSpeiTransactionsReportUsingGET**](docs/TransferenciasSPEIApi.md#outgoingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei | Consulta de transferencias realizadas
-*TransferenciasSPEIApi* | [**RegisterOutgoingSpeiTransactionUsingPOST**](docs/TransferenciasSPEIApi.md#registeroutgoingspeitransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spei | Registro de transferencias
-*TransferenciasSPIDApi* | [**GetSpidClassificationsUsingGET**](docs/TransferenciasSPIDApi.md#getspidclassificationsusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spid/classifications | Consulta las clasificaciones para operaciones con SPID
-*TransferenciasSPIDApi* | [**RegisterOutgoingSpidTransactionUsingPOST**](docs/TransferenciasSPIDApi.md#registeroutgoingspidtransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spid | Registro de transferencias SPID
-*WebhooksApi* | [**GetWebhook**](docs/WebhooksApi.md#getwebhook) | **GET** /webhooks/{id} | Consulta de Webhook
-*WebhooksApi* | [**GetWebhooks**](docs/WebhooksApi.md#getwebhooks) | **GET** /webhooks | Consulta de Webhooks
-*WebhooksApi* | [**RegisterWebhook**](docs/WebhooksApi.md#registerwebhook) | **POST** /webhooks | Alta de Webhook
+*ComprobanteElectrnicoDePagoCEPApi* | [**ObtainTransactionCepUsingPOST**](sdk-client/docs/ComprobanteElectrnicoDePagoCEPApi.md#obtaintransactioncepusingpost) | **POST** /ceps | Consulta de CEP
+*ContactoApi* | [**SendContactUsingPOST**](sdk-client/docs/ContactoApi.md#sendcontactusingpost) | **POST** /contact | Solicitud de contacto
+*CuentasDeBeneficiariosSPEIApi* | [**DeleteAccountUsingDELETE**](sdk-client/docs/CuentasDeBeneficiariosSPEIApi.md#deleteaccountusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/{account} | Elimina la cuenta del beneficiario
+*CuentasDeBeneficiariosSPEIApi* | [**GetAvailableRelationshipsMonexUsingGET**](sdk-client/docs/CuentasDeBeneficiariosSPEIApi.md#getavailablerelationshipsmonexusingget) | **GET** /subscriptions/{subscription}/beneficiaries/relationships | Consulta de relaciones
+*CuentasDeBeneficiariosSPEIApi* | [**GetBeneficiariesForAccountUsingGET**](sdk-client/docs/CuentasDeBeneficiariosSPEIApi.md#getbeneficiariesforaccountusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spei | Consulta los beneficiarios registrados
+*CuentasDeBeneficiariosSPEIApi* | [**PreRegisterAccountsUsingPOST**](sdk-client/docs/CuentasDeBeneficiariosSPEIApi.md#preregisteraccountsusingpost) | **POST** /subscriptions/{subscription}/beneficiaries/spei | Pre-registro de cuentas de beneficiarios.
+*CuentasDeBeneficiariosSPEIApi* | [**RemoveBeneficiariesPendingUsingDELETE**](sdk-client/docs/CuentasDeBeneficiariosSPEIApi.md#removebeneficiariespendingusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/request/{requestId} | Eliminación de beneficiarios SPEI® sin confirmar
+*CuentasDeBeneficiariosSPEIApi* | [**UpdateAmountLimitAccountUsingPUT**](sdk-client/docs/CuentasDeBeneficiariosSPEIApi.md#updateamountlimitaccountusingput) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Actualiza el monto límite
+*CuentasDeBeneficiariosSPIDApi* | [**PreRegisterAccountsUsingPOST1**](sdk-client/docs/CuentasDeBeneficiariosSPIDApi.md#preregisteraccountsusingpost1) | **POST** /subscriptions/{subscription}/beneficiaries/spid | Pre-registro de cuentas de beneficiarios SPID
+*DepositantesApi* | [**GetDepositantsUsingGET**](sdk-client/docs/DepositantesApi.md#getdepositantsusingget) | **GET** /subscriptions/{subscription}/depositants | Consulta de cuentas de depositantes
+*DepositantesApi* | [**RegisterDepositantsUsingPOST**](sdk-client/docs/DepositantesApi.md#registerdepositantsusingpost) | **POST** /subscriptions/{subscription}/depositants | Registra un nuevo depositante
+*FacturasApi* | [**BillingsReportByIdUsingGET**](sdk-client/docs/FacturasApi.md#billingsreportbyidusingget) | **GET** /billings/{id} | Consulta de facturas por identificador
+*FacturasApi* | [**BillingsReportUsingGET**](sdk-client/docs/FacturasApi.md#billingsreportusingget) | **GET** /billings | Consulta de facturas
+*InstitucionesApi* | [**GetAllInstitutionsUsingGET**](sdk-client/docs/InstitucionesApi.md#getallinstitutionsusingget) | **GET** /institutions | Información de instituciones bancarias.
+*SaldoApi* | [**GetBalanceUsingGET**](sdk-client/docs/SaldoApi.md#getbalanceusingget) | **GET** /subscriptions/{subscription}/balance | Consulta los saldo de una cuenta
+*SuscripcionesApi* | [**PreEnrollmentMonexUserUsingPOST**](sdk-client/docs/SuscripcionesApi.md#preenrollmentmonexuserusingpost) | **POST** /subscriptions/pre-subscription | registra una pre-suscripción
+*SuscripcionesApi* | [**RemoveEnrollmentUserUsingDELETE**](sdk-client/docs/SuscripcionesApi.md#removeenrollmentuserusingdelete) | **DELETE** /subscriptions/{subscription} | Elimna una suscripción por id
+*SuscripcionesApi* | [**RemoveSubscriptionPendingStatusUsingDELETE**](sdk-client/docs/SuscripcionesApi.md#removesubscriptionpendingstatususingdelete) | **DELETE** /subscriptions/pre-subscription/{subscription} | Elimna una pre-suscripción
+*TransferenciasSPEIApi* | [**DropTransactionsPendingUsingDELETE**](sdk-client/docs/TransferenciasSPEIApi.md#droptransactionspendingusingdelete) | **DELETE** /subscriptions/{subscription}/transactions/outcoming/spei/request/{requestId} | Eliminación de transferencias SPEI® pendientes
+*TransferenciasSPEIApi* | [**IncomingSpeiTransactionsReportUsingGET**](sdk-client/docs/TransferenciasSPEIApi.md#incomingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/incoming/spei | Consulta de transferencias recibidas
+*TransferenciasSPEIApi* | [**OutCommingSpeiRequestIdTransactionsReportUsingGET**](sdk-client/docs/TransferenciasSPEIApi.md#outcommingspeirequestidtransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei/{requestId} | Consulta de transferencias de salida por identificador de petición
+*TransferenciasSPEIApi* | [**OutgoingSpeiTransactionsReportUsingGET**](sdk-client/docs/TransferenciasSPEIApi.md#outgoingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei | Consulta de transferencias realizadas
+*TransferenciasSPEIApi* | [**RegisterOutgoingSpeiTransactionUsingPOST**](sdk-client/docs/TransferenciasSPEIApi.md#registeroutgoingspeitransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spei | Registro de transferencias
+*TransferenciasSPIDApi* | [**GetSpidClassificationsUsingGET**](sdk-client/docs/TransferenciasSPIDApi.md#getspidclassificationsusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spid/classifications | Consulta las clasificaciones para operaciones con SPID
+*TransferenciasSPIDApi* | [**RegisterOutgoingSpidTransactionUsingPOST**](sdk-client/docs/TransferenciasSPIDApi.md#registeroutgoingspidtransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spid | Registro de transferencias SPID
+*WebhooksApi* | [**GetWebhook**](sdk-client/docs/WebhooksApi.md#getwebhook) | **GET** /webhooks/{id} | Consulta de Webhook
+*WebhooksApi* | [**GetWebhooks**](sdk-client/docs/WebhooksApi.md#getwebhooks) | **GET** /webhooks | Consulta de Webhooks
+*WebhooksApi* | [**RegisterWebhook**](sdk-client/docs/WebhooksApi.md#registerwebhook) | **POST** /webhooks | Alta de Webhook
 
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
- - [Model.Account](docs/Account.md)
- - [Model.AccountRequest](docs/AccountRequest.md)
- - [Model.AccountResponse](docs/AccountResponse.md)
- - [Model.AccountSpid](docs/AccountSpid.md)
- - [Model.AmountRequest](docs/AmountRequest.md)
- - [Model.Balance](docs/Balance.md)
- - [Model.BalanceListResponse](docs/BalanceListResponse.md)
- - [Model.BeneficiariesResponse](docs/BeneficiariesResponse.md)
- - [Model.BeneficiaryInstitution](docs/BeneficiaryInstitution.md)
- - [Model.Billing](docs/Billing.md)
- - [Model.BillingTransaction](docs/BillingTransaction.md)
- - [Model.CepResponse](docs/CepResponse.md)
- - [Model.CepSearchBanxico](docs/CepSearchBanxico.md)
- - [Model.ContactRequest](docs/ContactRequest.md)
- - [Model.Deposit](docs/Deposit.md)
- - [Model.Depositant](docs/Depositant.md)
- - [Model.DepositantsRegister](docs/DepositantsRegister.md)
- - [Model.DepositantsResponse](docs/DepositantsResponse.md)
- - [Model.ErrorResponse](docs/ErrorResponse.md)
- - [Model.GetDepositants](docs/GetDepositants.md)
- - [Model.Institution](docs/Institution.md)
- - [Model.InstitutionsList](docs/InstitutionsList.md)
- - [Model.MessageAccountBeneficiary](docs/MessageAccountBeneficiary.md)
- - [Model.MessageCEP](docs/MessageCEP.md)
- - [Model.MessageDepositReceived](docs/MessageDepositReceived.md)
- - [Model.MessageInstitution](docs/MessageInstitution.md)
- - [Model.MessagePayment](docs/MessagePayment.md)
- - [Model.MessageSubscription](docs/MessageSubscription.md)
- - [Model.MessageWebHook](docs/MessageWebHook.md)
- - [Model.Payment](docs/Payment.md)
- - [Model.PaymentsRequestId](docs/PaymentsRequestId.md)
- - [Model.Person](docs/Person.md)
- - [Model.PreEnrollmentData](docs/PreEnrollmentData.md)
- - [Model.PreEnrollmentResponse](docs/PreEnrollmentResponse.md)
- - [Model.Relationship](docs/Relationship.md)
- - [Model.RelationshipsResponse](docs/RelationshipsResponse.md)
- - [Model.SpidClassificationDTO](docs/SpidClassificationDTO.md)
- - [Model.SpidClassificationsResponseDTO](docs/SpidClassificationsResponseDTO.md)
- - [Model.Timestamp](docs/Timestamp.md)
- - [Model.TokenRequiredResponse](docs/TokenRequiredResponse.md)
- - [Model.TransactionOutgoing](docs/TransactionOutgoing.md)
- - [Model.TransactionOutgoingSpid](docs/TransactionOutgoingSpid.md)
- - [Model.TransactionsOutgoingRegister](docs/TransactionsOutgoingRegister.md)
- - [Model.WebhookRequest](docs/WebhookRequest.md)
- - [Model.WebhookResponse](docs/WebhookResponse.md)
- - [Model.WebhooksList](docs/WebhooksList.md)
+ - [Model.Account](sdk-client/docs/Account.md)
+ - [Model.AccountRequest](sdk-client/docs/AccountRequest.md)
+ - [Model.AccountResponse](sdk-client/docs/AccountResponse.md)
+ - [Model.AccountSpid](sdk-client/docs/AccountSpid.md)
+ - [Model.AmountRequest](sdk-client/docs/AmountRequest.md)
+ - [Model.Balance](sdk-client/docs/Balance.md)
+ - [Model.BalanceListResponse](sdk-client/docs/BalanceListResponse.md)
+ - [Model.BeneficiariesResponse](sdk-client/docs/BeneficiariesResponse.md)
+ - [Model.BeneficiaryInstitution](sdk-client/docs/BeneficiaryInstitution.md)
+ - [Model.Billing](sdk-client/docs/Billing.md)
+ - [Model.BillingTransaction](sdk-client/docs/BillingTransaction.md)
+ - [Model.CepResponse](sdk-client/docs/CepResponse.md)
+ - [Model.CepSearchBanxico](sdk-client/docs/CepSearchBanxico.md)
+ - [Model.ContactRequest](sdk-client/docs/ContactRequest.md)
+ - [Model.Deposit](sdk-client/docs/Deposit.md)
+ - [Model.Depositant](sdk-client/docs/Depositant.md)
+ - [Model.DepositantsRegister](sdk-client/docs/DepositantsRegister.md)
+ - [Model.DepositantsResponse](sdk-client/docs/DepositantsResponse.md)
+ - [Model.ErrorResponse](sdk-client/docs/ErrorResponse.md)
+ - [Model.GetDepositants](sdk-client/docs/GetDepositants.md)
+ - [Model.Institution](sdk-client/docs/Institution.md)
+ - [Model.InstitutionsList](sdk-client/docs/InstitutionsList.md)
+ - [Model.MessageAccountBeneficiary](sdk-client/docs/MessageAccountBeneficiary.md)
+ - [Model.MessageCEP](sdk-client/docs/MessageCEP.md)
+ - [Model.MessageDepositReceived](sdk-client/docs/MessageDepositReceived.md)
+ - [Model.MessageInstitution](sdk-client/docs/MessageInstitution.md)
+ - [Model.MessagePayment](sdk-client/docs/MessagePayment.md)
+ - [Model.MessageSubscription](sdk-client/docs/MessageSubscription.md)
+ - [Model.MessageWebHook](sdk-client/docs/MessageWebHook.md)
+ - [Model.Payment](sdk-client/docs/Payment.md)
+ - [Model.PaymentsRequestId](sdk-client/docs/PaymentsRequestId.md)
+ - [Model.Person](sdk-client/docs/Person.md)
+ - [Model.PreEnrollmentData](sdk-client/docs/PreEnrollmentData.md)
+ - [Model.PreEnrollmentResponse](sdk-client/docs/PreEnrollmentResponse.md)
+ - [Model.Relationship](sdk-client/docs/Relationship.md)
+ - [Model.RelationshipsResponse](sdk-client/docs/RelationshipsResponse.md)
+ - [Model.SpidClassificationDTO](sdk-client/docs/SpidClassificationDTO.md)
+ - [Model.SpidClassificationsResponseDTO](sdk-client/docs/SpidClassificationsResponseDTO.md)
+ - [Model.Timestamp](sdk-client/docs/Timestamp.md)
+ - [Model.TokenRequiredResponse](sdk-client/docs/TokenRequiredResponse.md)
+ - [Model.TransactionOutgoing](sdk-client/docs/TransactionOutgoing.md)
+ - [Model.TransactionOutgoingSpid](sdk-client/docs/TransactionOutgoingSpid.md)
+ - [Model.TransactionsOutgoingRegister](sdk-client/docs/TransactionsOutgoingRegister.md)
+ - [Model.WebhookRequest](sdk-client/docs/WebhookRequest.md)
+ - [Model.WebhookResponse](sdk-client/docs/WebhookResponse.md)
+ - [Model.WebhooksList](sdk-client/docs/WebhooksList.md)
 
 <a name="documentation-for-authorization"></a>
 ## Documentation for Authorization
