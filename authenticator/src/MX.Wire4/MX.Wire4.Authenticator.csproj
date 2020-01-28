@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{99CD5DD6-B141-4301-865A-B87618A9B7C2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MX.Wire4</RootNamespace>
+    <AssemblyName>MX.Wire4.Authenticator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Reference Include="RestSharp">
+      <HintPath>..\..\bin\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="JsonSubTypes">
+      <HintPath>..\..\packages\JsonSubTypes.1.2.0\lib\net45\JsonSubTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="MX.Wire4">
+      <HintPath>..\..\..\sdk-client\bin\MX.Wire4.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authenticator\Client\ApiException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Authenticator\Model\AuthenticationType.cs" />
+    <Compile Include="Authenticator\Model\ScopeType.cs" />
+    <Compile Include="Authenticator\Model\EnvironmentType.cs" />
+    <Compile Include="Authenticator\Model\TokenRequest.cs" />
+    <Compile Include="Authenticator\Model\GrantType.cs" />
+    <Compile Include="Authenticator\Model\TokenResponse.cs" />
+    <Compile Include="Authenticator\Client\IAuthenticator.cs" />
+    <Compile Include="Authenticator\Client\TokenAuthenticator.cs" />
+  </ItemGroup>
+  <!-- <ItemGroup>
+    <ProjectReference Include="..\src\MX.Wire4\MX.Wire4.csproj">
+      <Project>{93993140-3089-465D-B0A4-96FC66739D43}</Project>
+      <Name>MX.Wire4</Name>
+    </ProjectReference>
+  </ItemGroup> -->
+  <!-- <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Client\" />
+  </ItemGroup> -->
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
