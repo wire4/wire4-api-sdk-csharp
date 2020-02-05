@@ -30,9 +30,10 @@ namespace MX.Wire4.Api
         /// Obtiene una lista de depositantes asociados al contrato relacionado a la subscripción.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>GetDepositants</returns>
-        GetDepositants GetDepositantsUsingGET (string subscription);
+        GetDepositants GetDepositantsUsingGET (string authorization, string subscription);
 
         /// <summary>
         /// Consulta de cuentas de depositantes
@@ -41,9 +42,10 @@ namespace MX.Wire4.Api
         /// Obtiene una lista de depositantes asociados al contrato relacionado a la subscripción.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of GetDepositants</returns>
-        ApiResponse<GetDepositants> GetDepositantsUsingGETWithHttpInfo (string subscription);
+        ApiResponse<GetDepositants> GetDepositantsUsingGETWithHttpInfo (string authorization, string subscription);
         /// <summary>
         /// Registra un nuevo depositante
         /// </summary>
@@ -52,9 +54,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>DepositantsResponse</returns>
-        DepositantsResponse RegisterDepositantsUsingPOST (DepositantsRegister body, string subscription);
+        DepositantsResponse RegisterDepositantsUsingPOST (DepositantsRegister body, string authorization, string subscription);
 
         /// <summary>
         /// Registra un nuevo depositante
@@ -64,9 +67,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of DepositantsResponse</returns>
-        ApiResponse<DepositantsResponse> RegisterDepositantsUsingPOSTWithHttpInfo (DepositantsRegister body, string subscription);
+        ApiResponse<DepositantsResponse> RegisterDepositantsUsingPOSTWithHttpInfo (DepositantsRegister body, string authorization, string subscription);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -76,9 +80,10 @@ namespace MX.Wire4.Api
         /// Obtiene una lista de depositantes asociados al contrato relacionado a la subscripción.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of GetDepositants</returns>
-        System.Threading.Tasks.Task<GetDepositants> GetDepositantsUsingGETAsync (string subscription);
+        System.Threading.Tasks.Task<GetDepositants> GetDepositantsUsingGETAsync (string authorization, string subscription);
 
         /// <summary>
         /// Consulta de cuentas de depositantes
@@ -87,9 +92,10 @@ namespace MX.Wire4.Api
         /// Obtiene una lista de depositantes asociados al contrato relacionado a la subscripción.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (GetDepositants)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetDepositants>> GetDepositantsUsingGETAsyncWithHttpInfo (string subscription);
+        System.Threading.Tasks.Task<ApiResponse<GetDepositants>> GetDepositantsUsingGETAsyncWithHttpInfo (string authorization, string subscription);
         /// <summary>
         /// Registra un nuevo depositante
         /// </summary>
@@ -98,9 +104,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of DepositantsResponse</returns>
-        System.Threading.Tasks.Task<DepositantsResponse> RegisterDepositantsUsingPOSTAsync (DepositantsRegister body, string subscription);
+        System.Threading.Tasks.Task<DepositantsResponse> RegisterDepositantsUsingPOSTAsync (DepositantsRegister body, string authorization, string subscription);
 
         /// <summary>
         /// Registra un nuevo depositante
@@ -110,9 +117,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (DepositantsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DepositantsResponse>> RegisterDepositantsUsingPOSTAsyncWithHttpInfo (DepositantsRegister body, string subscription);
+        System.Threading.Tasks.Task<ApiResponse<DepositantsResponse>> RegisterDepositantsUsingPOSTAsyncWithHttpInfo (DepositantsRegister body, string authorization, string subscription);
         #endregion Asynchronous Operations
     }
 
@@ -228,11 +236,12 @@ namespace MX.Wire4.Api
         /// Consulta de cuentas de depositantes Obtiene una lista de depositantes asociados al contrato relacionado a la subscripción.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>GetDepositants</returns>
-        public GetDepositants GetDepositantsUsingGET (string subscription)
+        public GetDepositants GetDepositantsUsingGET (string authorization, string subscription)
         {
-             ApiResponse<GetDepositants> localVarResponse = GetDepositantsUsingGETWithHttpInfo(subscription);
+             ApiResponse<GetDepositants> localVarResponse = GetDepositantsUsingGETWithHttpInfo(authorization, subscription);
              return localVarResponse.Data;
         }
 
@@ -240,10 +249,14 @@ namespace MX.Wire4.Api
         /// Consulta de cuentas de depositantes Obtiene una lista de depositantes asociados al contrato relacionado a la subscripción.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of GetDepositants</returns>
-        public ApiResponse< GetDepositants > GetDepositantsUsingGETWithHttpInfo (string subscription)
+        public ApiResponse< GetDepositants > GetDepositantsUsingGETWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling DepositantesApi->GetDepositantsUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling DepositantesApi->GetDepositantsUsingGET");
@@ -270,12 +283,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -299,11 +307,12 @@ namespace MX.Wire4.Api
         /// Consulta de cuentas de depositantes Obtiene una lista de depositantes asociados al contrato relacionado a la subscripción.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of GetDepositants</returns>
-        public async System.Threading.Tasks.Task<GetDepositants> GetDepositantsUsingGETAsync (string subscription)
+        public async System.Threading.Tasks.Task<GetDepositants> GetDepositantsUsingGETAsync (string authorization, string subscription)
         {
-             ApiResponse<GetDepositants> localVarResponse = await GetDepositantsUsingGETAsyncWithHttpInfo(subscription);
+             ApiResponse<GetDepositants> localVarResponse = await GetDepositantsUsingGETAsyncWithHttpInfo(authorization, subscription);
              return localVarResponse.Data;
 
         }
@@ -312,10 +321,14 @@ namespace MX.Wire4.Api
         /// Consulta de cuentas de depositantes Obtiene una lista de depositantes asociados al contrato relacionado a la subscripción.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (GetDepositants)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetDepositants>> GetDepositantsUsingGETAsyncWithHttpInfo (string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<GetDepositants>> GetDepositantsUsingGETAsyncWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling DepositantesApi->GetDepositantsUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling DepositantesApi->GetDepositantsUsingGET");
@@ -342,12 +355,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -372,11 +380,12 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>DepositantsResponse</returns>
-        public DepositantsResponse RegisterDepositantsUsingPOST (DepositantsRegister body, string subscription)
+        public DepositantsResponse RegisterDepositantsUsingPOST (DepositantsRegister body, string authorization, string subscription)
         {
-             ApiResponse<DepositantsResponse> localVarResponse = RegisterDepositantsUsingPOSTWithHttpInfo(body, subscription);
+             ApiResponse<DepositantsResponse> localVarResponse = RegisterDepositantsUsingPOSTWithHttpInfo(body, authorization, subscription);
              return localVarResponse.Data;
         }
 
@@ -385,13 +394,17 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of DepositantsResponse</returns>
-        public ApiResponse< DepositantsResponse > RegisterDepositantsUsingPOSTWithHttpInfo (DepositantsRegister body, string subscription)
+        public ApiResponse< DepositantsResponse > RegisterDepositantsUsingPOSTWithHttpInfo (DepositantsRegister body, string authorization, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DepositantesApi->RegisterDepositantsUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling DepositantesApi->RegisterDepositantsUsingPOST");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling DepositantesApi->RegisterDepositantsUsingPOST");
@@ -419,6 +432,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -426,12 +440,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -457,11 +465,12 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of DepositantsResponse</returns>
-        public async System.Threading.Tasks.Task<DepositantsResponse> RegisterDepositantsUsingPOSTAsync (DepositantsRegister body, string subscription)
+        public async System.Threading.Tasks.Task<DepositantsResponse> RegisterDepositantsUsingPOSTAsync (DepositantsRegister body, string authorization, string subscription)
         {
-             ApiResponse<DepositantsResponse> localVarResponse = await RegisterDepositantsUsingPOSTAsyncWithHttpInfo(body, subscription);
+             ApiResponse<DepositantsResponse> localVarResponse = await RegisterDepositantsUsingPOSTAsyncWithHttpInfo(body, authorization, subscription);
              return localVarResponse.Data;
 
         }
@@ -471,13 +480,17 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (DepositantsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<DepositantsResponse>> RegisterDepositantsUsingPOSTAsyncWithHttpInfo (DepositantsRegister body, string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<DepositantsResponse>> RegisterDepositantsUsingPOSTAsyncWithHttpInfo (DepositantsRegister body, string authorization, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DepositantesApi->RegisterDepositantsUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling DepositantesApi->RegisterDepositantsUsingPOST");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling DepositantesApi->RegisterDepositantsUsingPOST");
@@ -505,6 +518,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -512,12 +526,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request

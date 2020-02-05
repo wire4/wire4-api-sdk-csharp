@@ -31,8 +31,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>PreEnrollmentResponse</returns>
-        PreEnrollmentResponse PreEnrollmentMonexUserUsingPOST (PreEnrollmentData body);
+        PreEnrollmentResponse PreEnrollmentMonexUserUsingPOST (PreEnrollmentData body, string authorization);
 
         /// <summary>
         /// registra una pre-suscripción
@@ -42,8 +43,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of PreEnrollmentResponse</returns>
-        ApiResponse<PreEnrollmentResponse> PreEnrollmentMonexUserUsingPOSTWithHttpInfo (PreEnrollmentData body);
+        ApiResponse<PreEnrollmentResponse> PreEnrollmentMonexUserUsingPOSTWithHttpInfo (PreEnrollmentData body, string authorization);
         /// <summary>
         /// Elimna una suscripción por id
         /// </summary>
@@ -51,9 +53,10 @@ namespace MX.Wire4.Api
         /// Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns></returns>
-        void RemoveEnrollmentUserUsingDELETE (string subscription);
+        void RemoveEnrollmentUserUsingDELETE (string authorization, string subscription);
 
         /// <summary>
         /// Elimna una suscripción por id
@@ -62,9 +65,10 @@ namespace MX.Wire4.Api
         /// Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> RemoveEnrollmentUserUsingDELETEWithHttpInfo (string subscription);
+        ApiResponse<Object> RemoveEnrollmentUserUsingDELETEWithHttpInfo (string authorization, string subscription);
         /// <summary>
         /// Elimna una pre-suscripción
         /// </summary>
@@ -72,9 +76,10 @@ namespace MX.Wire4.Api
         /// Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns></returns>
-        void RemoveSubscriptionPendingStatusUsingDELETE (string subscription);
+        void RemoveSubscriptionPendingStatusUsingDELETE (string authorization, string subscription);
 
         /// <summary>
         /// Elimna una pre-suscripción
@@ -83,9 +88,10 @@ namespace MX.Wire4.Api
         /// Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> RemoveSubscriptionPendingStatusUsingDELETEWithHttpInfo (string subscription);
+        ApiResponse<Object> RemoveSubscriptionPendingStatusUsingDELETEWithHttpInfo (string authorization, string subscription);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -96,8 +102,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of PreEnrollmentResponse</returns>
-        System.Threading.Tasks.Task<PreEnrollmentResponse> PreEnrollmentMonexUserUsingPOSTAsync (PreEnrollmentData body);
+        System.Threading.Tasks.Task<PreEnrollmentResponse> PreEnrollmentMonexUserUsingPOSTAsync (PreEnrollmentData body, string authorization);
 
         /// <summary>
         /// registra una pre-suscripción
@@ -107,8 +114,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse (PreEnrollmentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PreEnrollmentResponse>> PreEnrollmentMonexUserUsingPOSTAsyncWithHttpInfo (PreEnrollmentData body);
+        System.Threading.Tasks.Task<ApiResponse<PreEnrollmentResponse>> PreEnrollmentMonexUserUsingPOSTAsyncWithHttpInfo (PreEnrollmentData body, string authorization);
         /// <summary>
         /// Elimna una suscripción por id
         /// </summary>
@@ -116,9 +124,10 @@ namespace MX.Wire4.Api
         /// Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task RemoveEnrollmentUserUsingDELETEAsync (string subscription);
+        System.Threading.Tasks.Task RemoveEnrollmentUserUsingDELETEAsync (string authorization, string subscription);
 
         /// <summary>
         /// Elimna una suscripción por id
@@ -127,9 +136,10 @@ namespace MX.Wire4.Api
         /// Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveEnrollmentUserUsingDELETEAsyncWithHttpInfo (string subscription);
+        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveEnrollmentUserUsingDELETEAsyncWithHttpInfo (string authorization, string subscription);
         /// <summary>
         /// Elimna una pre-suscripción
         /// </summary>
@@ -137,9 +147,10 @@ namespace MX.Wire4.Api
         /// Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task RemoveSubscriptionPendingStatusUsingDELETEAsync (string subscription);
+        System.Threading.Tasks.Task RemoveSubscriptionPendingStatusUsingDELETEAsync (string authorization, string subscription);
 
         /// <summary>
         /// Elimna una pre-suscripción
@@ -148,9 +159,10 @@ namespace MX.Wire4.Api
         /// Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveSubscriptionPendingStatusUsingDELETEAsyncWithHttpInfo (string subscription);
+        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveSubscriptionPendingStatusUsingDELETEAsyncWithHttpInfo (string authorization, string subscription);
         #endregion Asynchronous Operations
     }
 
@@ -267,10 +279,11 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>PreEnrollmentResponse</returns>
-        public PreEnrollmentResponse PreEnrollmentMonexUserUsingPOST (PreEnrollmentData body)
+        public PreEnrollmentResponse PreEnrollmentMonexUserUsingPOST (PreEnrollmentData body, string authorization)
         {
-             ApiResponse<PreEnrollmentResponse> localVarResponse = PreEnrollmentMonexUserUsingPOSTWithHttpInfo(body);
+             ApiResponse<PreEnrollmentResponse> localVarResponse = PreEnrollmentMonexUserUsingPOSTWithHttpInfo(body, authorization);
              return localVarResponse.Data;
         }
 
@@ -279,12 +292,16 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of PreEnrollmentResponse</returns>
-        public ApiResponse< PreEnrollmentResponse > PreEnrollmentMonexUserUsingPOSTWithHttpInfo (PreEnrollmentData body)
+        public ApiResponse< PreEnrollmentResponse > PreEnrollmentMonexUserUsingPOSTWithHttpInfo (PreEnrollmentData body, string authorization)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling SuscripcionesApi->PreEnrollmentMonexUserUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling SuscripcionesApi->PreEnrollmentMonexUserUsingPOST");
 
             var localVarPath = "/subscriptions/pre-subscription";
             var localVarPathParams = new Dictionary<String, String>();
@@ -308,6 +325,7 @@ namespace MX.Wire4.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -315,12 +333,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -346,10 +358,11 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of PreEnrollmentResponse</returns>
-        public async System.Threading.Tasks.Task<PreEnrollmentResponse> PreEnrollmentMonexUserUsingPOSTAsync (PreEnrollmentData body)
+        public async System.Threading.Tasks.Task<PreEnrollmentResponse> PreEnrollmentMonexUserUsingPOSTAsync (PreEnrollmentData body, string authorization)
         {
-             ApiResponse<PreEnrollmentResponse> localVarResponse = await PreEnrollmentMonexUserUsingPOSTAsyncWithHttpInfo(body);
+             ApiResponse<PreEnrollmentResponse> localVarResponse = await PreEnrollmentMonexUserUsingPOSTAsyncWithHttpInfo(body, authorization);
              return localVarResponse.Data;
 
         }
@@ -359,12 +372,16 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse (PreEnrollmentResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PreEnrollmentResponse>> PreEnrollmentMonexUserUsingPOSTAsyncWithHttpInfo (PreEnrollmentData body)
+        public async System.Threading.Tasks.Task<ApiResponse<PreEnrollmentResponse>> PreEnrollmentMonexUserUsingPOSTAsyncWithHttpInfo (PreEnrollmentData body, string authorization)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling SuscripcionesApi->PreEnrollmentMonexUserUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling SuscripcionesApi->PreEnrollmentMonexUserUsingPOST");
 
             var localVarPath = "/subscriptions/pre-subscription";
             var localVarPathParams = new Dictionary<String, String>();
@@ -388,6 +405,7 @@ namespace MX.Wire4.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -395,12 +413,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -425,21 +437,26 @@ namespace MX.Wire4.Api
         /// Elimna una suscripción por id Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns></returns>
-        public void RemoveEnrollmentUserUsingDELETE (string subscription)
+        public void RemoveEnrollmentUserUsingDELETE (string authorization, string subscription)
         {
-             RemoveEnrollmentUserUsingDELETEWithHttpInfo(subscription);
+             RemoveEnrollmentUserUsingDELETEWithHttpInfo(authorization, subscription);
         }
 
         /// <summary>
         /// Elimna una suscripción por id Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> RemoveEnrollmentUserUsingDELETEWithHttpInfo (string subscription)
+        public ApiResponse<Object> RemoveEnrollmentUserUsingDELETEWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling SuscripcionesApi->RemoveEnrollmentUserUsingDELETE");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling SuscripcionesApi->RemoveEnrollmentUserUsingDELETE");
@@ -465,12 +482,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -494,11 +506,12 @@ namespace MX.Wire4.Api
         /// Elimna una suscripción por id Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task RemoveEnrollmentUserUsingDELETEAsync (string subscription)
+        public async System.Threading.Tasks.Task RemoveEnrollmentUserUsingDELETEAsync (string authorization, string subscription)
         {
-             await RemoveEnrollmentUserUsingDELETEAsyncWithHttpInfo(subscription);
+             await RemoveEnrollmentUserUsingDELETEAsyncWithHttpInfo(authorization, subscription);
 
         }
 
@@ -506,10 +519,14 @@ namespace MX.Wire4.Api
         /// Elimna una suscripción por id Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveEnrollmentUserUsingDELETEAsyncWithHttpInfo (string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveEnrollmentUserUsingDELETEAsyncWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling SuscripcionesApi->RemoveEnrollmentUserUsingDELETE");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling SuscripcionesApi->RemoveEnrollmentUserUsingDELETE");
@@ -535,12 +552,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -564,21 +576,26 @@ namespace MX.Wire4.Api
         /// Elimna una pre-suscripción Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns></returns>
-        public void RemoveSubscriptionPendingStatusUsingDELETE (string subscription)
+        public void RemoveSubscriptionPendingStatusUsingDELETE (string authorization, string subscription)
         {
-             RemoveSubscriptionPendingStatusUsingDELETEWithHttpInfo(subscription);
+             RemoveSubscriptionPendingStatusUsingDELETEWithHttpInfo(authorization, subscription);
         }
 
         /// <summary>
         /// Elimna una pre-suscripción Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> RemoveSubscriptionPendingStatusUsingDELETEWithHttpInfo (string subscription)
+        public ApiResponse<Object> RemoveSubscriptionPendingStatusUsingDELETEWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling SuscripcionesApi->RemoveSubscriptionPendingStatusUsingDELETE");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling SuscripcionesApi->RemoveSubscriptionPendingStatusUsingDELETE");
@@ -604,12 +621,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -633,11 +645,12 @@ namespace MX.Wire4.Api
         /// Elimna una pre-suscripción Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task RemoveSubscriptionPendingStatusUsingDELETEAsync (string subscription)
+        public async System.Threading.Tasks.Task RemoveSubscriptionPendingStatusUsingDELETEAsync (string authorization, string subscription)
         {
-             await RemoveSubscriptionPendingStatusUsingDELETEAsyncWithHttpInfo(subscription);
+             await RemoveSubscriptionPendingStatusUsingDELETEAsyncWithHttpInfo(authorization, subscription);
 
         }
 
@@ -645,10 +658,14 @@ namespace MX.Wire4.Api
         /// Elimna una pre-suscripción Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveSubscriptionPendingStatusUsingDELETEAsyncWithHttpInfo (string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveSubscriptionPendingStatusUsingDELETEAsyncWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling SuscripcionesApi->RemoveSubscriptionPendingStatusUsingDELETE");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling SuscripcionesApi->RemoveSubscriptionPendingStatusUsingDELETE");
@@ -674,12 +691,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,

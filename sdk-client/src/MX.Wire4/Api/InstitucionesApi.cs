@@ -30,8 +30,9 @@ namespace MX.Wire4.Api
         /// 
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>InstitutionsList</returns>
-        InstitutionsList GetAllInstitutionsUsingGET ();
+        InstitutionsList GetAllInstitutionsUsingGET (string authorization);
 
         /// <summary>
         /// Información de instituciones bancarias.
@@ -40,8 +41,9 @@ namespace MX.Wire4.Api
         /// 
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of InstitutionsList</returns>
-        ApiResponse<InstitutionsList> GetAllInstitutionsUsingGETWithHttpInfo ();
+        ApiResponse<InstitutionsList> GetAllInstitutionsUsingGETWithHttpInfo (string authorization);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -51,8 +53,9 @@ namespace MX.Wire4.Api
         /// 
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of InstitutionsList</returns>
-        System.Threading.Tasks.Task<InstitutionsList> GetAllInstitutionsUsingGETAsync ();
+        System.Threading.Tasks.Task<InstitutionsList> GetAllInstitutionsUsingGETAsync (string authorization);
 
         /// <summary>
         /// Información de instituciones bancarias.
@@ -61,8 +64,9 @@ namespace MX.Wire4.Api
         /// 
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse (InstitutionsList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InstitutionsList>> GetAllInstitutionsUsingGETAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<InstitutionsList>> GetAllInstitutionsUsingGETAsyncWithHttpInfo (string authorization);
         #endregion Asynchronous Operations
     }
 
@@ -178,10 +182,11 @@ namespace MX.Wire4.Api
         /// Información de instituciones bancarias. 
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>InstitutionsList</returns>
-        public InstitutionsList GetAllInstitutionsUsingGET ()
+        public InstitutionsList GetAllInstitutionsUsingGET (string authorization)
         {
-             ApiResponse<InstitutionsList> localVarResponse = GetAllInstitutionsUsingGETWithHttpInfo();
+             ApiResponse<InstitutionsList> localVarResponse = GetAllInstitutionsUsingGETWithHttpInfo(authorization);
              return localVarResponse.Data;
         }
 
@@ -189,9 +194,13 @@ namespace MX.Wire4.Api
         /// Información de instituciones bancarias. 
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of InstitutionsList</returns>
-        public ApiResponse< InstitutionsList > GetAllInstitutionsUsingGETWithHttpInfo ()
+        public ApiResponse< InstitutionsList > GetAllInstitutionsUsingGETWithHttpInfo (string authorization)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling InstitucionesApi->GetAllInstitutionsUsingGET");
 
             var localVarPath = "/institutions";
             var localVarPathParams = new Dictionary<String, String>();
@@ -214,12 +223,7 @@ namespace MX.Wire4.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -243,10 +247,11 @@ namespace MX.Wire4.Api
         /// Información de instituciones bancarias. 
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of InstitutionsList</returns>
-        public async System.Threading.Tasks.Task<InstitutionsList> GetAllInstitutionsUsingGETAsync ()
+        public async System.Threading.Tasks.Task<InstitutionsList> GetAllInstitutionsUsingGETAsync (string authorization)
         {
-             ApiResponse<InstitutionsList> localVarResponse = await GetAllInstitutionsUsingGETAsyncWithHttpInfo();
+             ApiResponse<InstitutionsList> localVarResponse = await GetAllInstitutionsUsingGETAsyncWithHttpInfo(authorization);
              return localVarResponse.Data;
 
         }
@@ -255,9 +260,13 @@ namespace MX.Wire4.Api
         /// Información de instituciones bancarias. 
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse (InstitutionsList)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InstitutionsList>> GetAllInstitutionsUsingGETAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<InstitutionsList>> GetAllInstitutionsUsingGETAsyncWithHttpInfo (string authorization)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling InstitucionesApi->GetAllInstitutionsUsingGET");
 
             var localVarPath = "/institutions";
             var localVarPathParams = new Dictionary<String, String>();
@@ -280,12 +289,7 @@ namespace MX.Wire4.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,

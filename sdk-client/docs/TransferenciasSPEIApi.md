@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="droptransactionspendingusingdelete"></a>
 # **DropTransactionsPendingUsingDELETE**
-> void DropTransactionsPendingUsingDELETE (string requestId, string subscription)
+> void DropTransactionsPendingUsingDELETE (string authorization, string requestId, string subscription)
 
 Eliminación de transferencias SPEI® pendientes
 
@@ -32,17 +32,15 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new TransferenciasSPEIApi();
+            var authorization = authorization_example;  // string | Header para token
             var requestId = requestId_example;  // string | Identificador de las transferencias a eliminar
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Eliminación de transferencias SPEI® pendientes
-                apiInstance.DropTransactionsPendingUsingDELETE(requestId, subscription);
+                apiInstance.DropTransactionsPendingUsingDELETE(authorization, requestId, subscription);
             }
             catch (Exception e)
             {
@@ -57,6 +55,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **requestId** | **string**| Identificador de las transferencias a eliminar | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
@@ -66,7 +65,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -76,7 +75,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="incomingspeitransactionsreportusingget"></a>
 # **IncomingSpeiTransactionsReportUsingGET**
-> List<Deposit> IncomingSpeiTransactionsReportUsingGET (string subscription)
+> List<Deposit> IncomingSpeiTransactionsReportUsingGET (string authorization, string subscription)
 
 Consulta de transferencias recibidas
 
@@ -96,16 +95,14 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new TransferenciasSPEIApi();
+            var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Consulta de transferencias recibidas
-                List&lt;Deposit&gt; result = apiInstance.IncomingSpeiTransactionsReportUsingGET(subscription);
+                List&lt;Deposit&gt; result = apiInstance.IncomingSpeiTransactionsReportUsingGET(authorization, subscription);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -121,6 +118,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -129,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -139,7 +137,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="outcommingspeirequestidtransactionsreportusingget"></a>
 # **OutCommingSpeiRequestIdTransactionsReportUsingGET**
-> PaymentsRequestId OutCommingSpeiRequestIdTransactionsReportUsingGET (string requestId, string subscription)
+> PaymentsRequestId OutCommingSpeiRequestIdTransactionsReportUsingGET (string authorization, string requestId, string subscription)
 
 Consulta de transferencias de salida por identificador de petición
 
@@ -159,17 +157,15 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new TransferenciasSPEIApi();
+            var authorization = authorization_example;  // string | Header para token
             var requestId = requestId_example;  // string | Identificador de la petición a buscar
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Consulta de transferencias de salida por identificador de petición
-                PaymentsRequestId result = apiInstance.OutCommingSpeiRequestIdTransactionsReportUsingGET(requestId, subscription);
+                PaymentsRequestId result = apiInstance.OutCommingSpeiRequestIdTransactionsReportUsingGET(authorization, requestId, subscription);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -185,6 +181,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **requestId** | **string**| Identificador de la petición a buscar | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
@@ -194,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -204,7 +201,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="outgoingspeitransactionsreportusingget"></a>
 # **OutgoingSpeiTransactionsReportUsingGET**
-> List<Payment> OutgoingSpeiTransactionsReportUsingGET (string subscription, string orderId = null)
+> List<Payment> OutgoingSpeiTransactionsReportUsingGET (string authorization, string subscription, string orderId = null)
 
 Consulta de transferencias realizadas
 
@@ -224,17 +221,15 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new TransferenciasSPEIApi();
+            var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
             var orderId = orderId_example;  // string | Identificador de la orden a buscar (optional) 
 
             try
             {
                 // Consulta de transferencias realizadas
-                List&lt;Payment&gt; result = apiInstance.OutgoingSpeiTransactionsReportUsingGET(subscription, orderId);
+                List&lt;Payment&gt; result = apiInstance.OutgoingSpeiTransactionsReportUsingGET(authorization, subscription, orderId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -250,6 +245,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
  **orderId** | **string**| Identificador de la orden a buscar | [optional] 
 
@@ -259,7 +255,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -269,7 +265,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="registeroutgoingspeitransactionusingpost"></a>
 # **RegisterOutgoingSpeiTransactionUsingPOST**
-> TokenRequiredResponse RegisterOutgoingSpeiTransactionUsingPOST (TransactionsOutgoingRegister body, string subscription)
+> TokenRequiredResponse RegisterOutgoingSpeiTransactionUsingPOST (TransactionsOutgoingRegister body, string authorization, string subscription)
 
 Registro de transferencias
 
@@ -289,17 +285,15 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new TransferenciasSPEIApi();
             var body = new TransactionsOutgoingRegister(); // TransactionsOutgoingRegister | Información de las transferencias SPEI de salida
+            var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Registro de transferencias
-                TokenRequiredResponse result = apiInstance.RegisterOutgoingSpeiTransactionUsingPOST(body, subscription);
+                TokenRequiredResponse result = apiInstance.RegisterOutgoingSpeiTransactionUsingPOST(body, authorization, subscription);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -316,6 +310,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TransactionsOutgoingRegister**](TransactionsOutgoingRegister.md)| Información de las transferencias SPEI de salida | 
+ **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -324,7 +319,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 

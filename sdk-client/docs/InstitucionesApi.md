@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 <a name="getallinstitutionsusingget"></a>
 # **GetAllInstitutionsUsingGET**
-> InstitutionsList GetAllInstitutionsUsingGET ()
+> InstitutionsList GetAllInstitutionsUsingGET (string authorization)
 
 Información de instituciones bancarias.
 
@@ -26,15 +26,13 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new InstitucionesApi();
+            var authorization = authorization_example;  // string | Header para token
 
             try
             {
                 // Información de instituciones bancarias.
-                InstitutionsList result = apiInstance.GetAllInstitutionsUsingGET();
+                InstitutionsList result = apiInstance.GetAllInstitutionsUsingGET(authorization);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -47,7 +45,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
 
 ### Return type
 
@@ -55,7 +56,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 

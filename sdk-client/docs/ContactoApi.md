@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 <a name="sendcontactusingpost"></a>
 # **SendContactUsingPOST**
-> void SendContactUsingPOST (ContactRequest body)
+> void SendContactUsingPOST (ContactRequest body, string authorization)
 
 Solicitud de contacto
 
@@ -28,16 +28,14 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new ContactoApi();
             var body = new ContactRequest(); // ContactRequest | Información del contacto
+            var authorization = authorization_example;  // string | Header para token
 
             try
             {
                 // Solicitud de contacto
-                apiInstance.SendContactUsingPOST(body);
+                apiInstance.SendContactUsingPOST(body, authorization);
             }
             catch (Exception e)
             {
@@ -53,6 +51,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**ContactRequest**](ContactRequest.md)| Información del contacto | 
+ **authorization** | **string**| Header para token | 
 
 ### Return type
 
@@ -60,7 +59,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 

@@ -24,32 +24,30 @@ using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
 namespace MX.Wire4.Model
 {
     /// <summary>
-    /// Objeto que contiene información de la cuenta
+    /// Objeto que contiene información de la cuenta de beneficiario SPID
     /// </summary>
     [DataContract]
-        public partial class AccountSpid :  IEquatable<AccountSpid>, IValidatableObject
+        public partial class SpidBeneficiaryResponse :  IEquatable<SpidBeneficiaryResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccountSpid" /> class.
+        /// Initializes a new instance of the <see cref="SpidBeneficiaryResponse" /> class.
         /// </summary>
         /// <param name="amountLimit">Monto límite permitido para la cuenta (required).</param>
-        /// <param name="bankCodeBanxico">Código banxico con una longitud de 5 dígitos, es requerido en caso de que la cuenta del beneficiario sea un número de celular.</param>
+        /// <param name="bank">bank.</param>
         /// <param name="beneficiaryAccount">Cuenta del beneficiario debe ser una cuenta CLABE (required).</param>
-        /// <param name="cancelReturnUrl">Url a la que se redirigira en caso no exitoso.</param>
         /// <param name="email">Lista de email&#x27;s, este dato es opcional.</param>
         /// <param name="institution">institution (required).</param>
         /// <param name="kindOfRelationship">Tipo de relación de la cuenta, este valor debe ser igual a uno de los obtenidos del recurso de consulta de relationships (required).</param>
-        /// <param name="numericReference">Referencia numérica.</param>
-        /// <param name="paymentConcept">Concepto de pago.</param>
+        /// <param name="numericReferenceSpid">Referencia numérica.</param>
+        /// <param name="paymentConceptSpid">Concepto de pago.</param>
         /// <param name="relationship">Código de relación de la cuenta, este valor debe ser igual a uno de los obtenidos del recurso de consulta de  relationship (required).</param>
-        /// <param name="returnUrl">Url a la que se redireccionara en caso exitoso.</param>
         /// <param name="rfc">Registro federal de contribuyentes.</param>
-        public AccountSpid(decimal? amountLimit = default(decimal?), string bankCodeBanxico = default(string), string beneficiaryAccount = default(string), string cancelReturnUrl = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReference = default(string), string paymentConcept = default(string), string relationship = default(string), string returnUrl = default(string), string rfc = default(string))
+        public SpidBeneficiaryResponse(decimal? amountLimit = default(decimal?), Institution bank = default(Institution), string beneficiaryAccount = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpid = default(string), string paymentConceptSpid = default(string), string relationship = default(string), string rfc = default(string))
         {
             // to ensure "amountLimit" is required (not null)
             if (amountLimit == null)
             {
-                throw new InvalidDataException("amountLimit is a required property for AccountSpid and cannot be null");
+                throw new InvalidDataException("amountLimit is a required property for SpidBeneficiaryResponse and cannot be null");
             }
             else
             {
@@ -58,7 +56,7 @@ namespace MX.Wire4.Model
             // to ensure "beneficiaryAccount" is required (not null)
             if (beneficiaryAccount == null)
             {
-                throw new InvalidDataException("beneficiaryAccount is a required property for AccountSpid and cannot be null");
+                throw new InvalidDataException("beneficiaryAccount is a required property for SpidBeneficiaryResponse and cannot be null");
             }
             else
             {
@@ -67,7 +65,7 @@ namespace MX.Wire4.Model
             // to ensure "institution" is required (not null)
             if (institution == null)
             {
-                throw new InvalidDataException("institution is a required property for AccountSpid and cannot be null");
+                throw new InvalidDataException("institution is a required property for SpidBeneficiaryResponse and cannot be null");
             }
             else
             {
@@ -76,7 +74,7 @@ namespace MX.Wire4.Model
             // to ensure "kindOfRelationship" is required (not null)
             if (kindOfRelationship == null)
             {
-                throw new InvalidDataException("kindOfRelationship is a required property for AccountSpid and cannot be null");
+                throw new InvalidDataException("kindOfRelationship is a required property for SpidBeneficiaryResponse and cannot be null");
             }
             else
             {
@@ -85,18 +83,16 @@ namespace MX.Wire4.Model
             // to ensure "relationship" is required (not null)
             if (relationship == null)
             {
-                throw new InvalidDataException("relationship is a required property for AccountSpid and cannot be null");
+                throw new InvalidDataException("relationship is a required property for SpidBeneficiaryResponse and cannot be null");
             }
             else
             {
                 this.Relationship = relationship;
             }
-            this.BankCodeBanxico = bankCodeBanxico;
-            this.CancelReturnUrl = cancelReturnUrl;
+            this.Bank = bank;
             this.Email = email;
-            this.NumericReference = numericReference;
-            this.PaymentConcept = paymentConcept;
-            this.ReturnUrl = returnUrl;
+            this.NumericReferenceSpid = numericReferenceSpid;
+            this.PaymentConceptSpid = paymentConceptSpid;
             this.Rfc = rfc;
         }
         
@@ -108,11 +104,10 @@ namespace MX.Wire4.Model
         public decimal? AmountLimit { get; set; }
 
         /// <summary>
-        /// Código banxico con una longitud de 5 dígitos, es requerido en caso de que la cuenta del beneficiario sea un número de celular
+        /// Gets or Sets Bank
         /// </summary>
-        /// <value>Código banxico con una longitud de 5 dígitos, es requerido en caso de que la cuenta del beneficiario sea un número de celular</value>
-        [DataMember(Name="bank_code_banxico", EmitDefaultValue=false)]
-        public string BankCodeBanxico { get; set; }
+        [DataMember(Name="bank", EmitDefaultValue=false)]
+        public Institution Bank { get; set; }
 
         /// <summary>
         /// Cuenta del beneficiario debe ser una cuenta CLABE
@@ -120,13 +115,6 @@ namespace MX.Wire4.Model
         /// <value>Cuenta del beneficiario debe ser una cuenta CLABE</value>
         [DataMember(Name="beneficiary_account", EmitDefaultValue=false)]
         public string BeneficiaryAccount { get; set; }
-
-        /// <summary>
-        /// Url a la que se redirigira en caso no exitoso
-        /// </summary>
-        /// <value>Url a la que se redirigira en caso no exitoso</value>
-        [DataMember(Name="cancel_return_url", EmitDefaultValue=false)]
-        public string CancelReturnUrl { get; set; }
 
         /// <summary>
         /// Lista de email&#x27;s, este dato es opcional
@@ -152,15 +140,15 @@ namespace MX.Wire4.Model
         /// Referencia numérica
         /// </summary>
         /// <value>Referencia numérica</value>
-        [DataMember(Name="numeric_reference", EmitDefaultValue=false)]
-        public string NumericReference { get; set; }
+        [DataMember(Name="numeric_reference_spid", EmitDefaultValue=false)]
+        public string NumericReferenceSpid { get; set; }
 
         /// <summary>
         /// Concepto de pago
         /// </summary>
         /// <value>Concepto de pago</value>
-        [DataMember(Name="payment_concept", EmitDefaultValue=false)]
-        public string PaymentConcept { get; set; }
+        [DataMember(Name="payment_concept_spid", EmitDefaultValue=false)]
+        public string PaymentConceptSpid { get; set; }
 
         /// <summary>
         /// Código de relación de la cuenta, este valor debe ser igual a uno de los obtenidos del recurso de consulta de  relationship
@@ -168,13 +156,6 @@ namespace MX.Wire4.Model
         /// <value>Código de relación de la cuenta, este valor debe ser igual a uno de los obtenidos del recurso de consulta de  relationship</value>
         [DataMember(Name="relationship", EmitDefaultValue=false)]
         public string Relationship { get; set; }
-
-        /// <summary>
-        /// Url a la que se redireccionara en caso exitoso
-        /// </summary>
-        /// <value>Url a la que se redireccionara en caso exitoso</value>
-        [DataMember(Name="return_url", EmitDefaultValue=false)]
-        public string ReturnUrl { get; set; }
 
         /// <summary>
         /// Registro federal de contribuyentes
@@ -190,18 +171,16 @@ namespace MX.Wire4.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AccountSpid {\n");
+            sb.Append("class SpidBeneficiaryResponse {\n");
             sb.Append("  AmountLimit: ").Append(AmountLimit).Append("\n");
-            sb.Append("  BankCodeBanxico: ").Append(BankCodeBanxico).Append("\n");
+            sb.Append("  Bank: ").Append(Bank).Append("\n");
             sb.Append("  BeneficiaryAccount: ").Append(BeneficiaryAccount).Append("\n");
-            sb.Append("  CancelReturnUrl: ").Append(CancelReturnUrl).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Institution: ").Append(Institution).Append("\n");
             sb.Append("  KindOfRelationship: ").Append(KindOfRelationship).Append("\n");
-            sb.Append("  NumericReference: ").Append(NumericReference).Append("\n");
-            sb.Append("  PaymentConcept: ").Append(PaymentConcept).Append("\n");
+            sb.Append("  NumericReferenceSpid: ").Append(NumericReferenceSpid).Append("\n");
+            sb.Append("  PaymentConceptSpid: ").Append(PaymentConceptSpid).Append("\n");
             sb.Append("  Relationship: ").Append(Relationship).Append("\n");
-            sb.Append("  ReturnUrl: ").Append(ReturnUrl).Append("\n");
             sb.Append("  Rfc: ").Append(Rfc).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -223,15 +202,15 @@ namespace MX.Wire4.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AccountSpid);
+            return this.Equals(input as SpidBeneficiaryResponse);
         }
 
         /// <summary>
-        /// Returns true if AccountSpid instances are equal
+        /// Returns true if SpidBeneficiaryResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of AccountSpid to be compared</param>
+        /// <param name="input">Instance of SpidBeneficiaryResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AccountSpid input)
+        public bool Equals(SpidBeneficiaryResponse input)
         {
             if (input == null)
                 return false;
@@ -243,19 +222,14 @@ namespace MX.Wire4.Model
                     this.AmountLimit.Equals(input.AmountLimit))
                 ) && 
                 (
-                    this.BankCodeBanxico == input.BankCodeBanxico ||
-                    (this.BankCodeBanxico != null &&
-                    this.BankCodeBanxico.Equals(input.BankCodeBanxico))
+                    this.Bank == input.Bank ||
+                    (this.Bank != null &&
+                    this.Bank.Equals(input.Bank))
                 ) && 
                 (
                     this.BeneficiaryAccount == input.BeneficiaryAccount ||
                     (this.BeneficiaryAccount != null &&
                     this.BeneficiaryAccount.Equals(input.BeneficiaryAccount))
-                ) && 
-                (
-                    this.CancelReturnUrl == input.CancelReturnUrl ||
-                    (this.CancelReturnUrl != null &&
-                    this.CancelReturnUrl.Equals(input.CancelReturnUrl))
                 ) && 
                 (
                     this.Email == input.Email ||
@@ -274,24 +248,19 @@ namespace MX.Wire4.Model
                     this.KindOfRelationship.Equals(input.KindOfRelationship))
                 ) && 
                 (
-                    this.NumericReference == input.NumericReference ||
-                    (this.NumericReference != null &&
-                    this.NumericReference.Equals(input.NumericReference))
+                    this.NumericReferenceSpid == input.NumericReferenceSpid ||
+                    (this.NumericReferenceSpid != null &&
+                    this.NumericReferenceSpid.Equals(input.NumericReferenceSpid))
                 ) && 
                 (
-                    this.PaymentConcept == input.PaymentConcept ||
-                    (this.PaymentConcept != null &&
-                    this.PaymentConcept.Equals(input.PaymentConcept))
+                    this.PaymentConceptSpid == input.PaymentConceptSpid ||
+                    (this.PaymentConceptSpid != null &&
+                    this.PaymentConceptSpid.Equals(input.PaymentConceptSpid))
                 ) && 
                 (
                     this.Relationship == input.Relationship ||
                     (this.Relationship != null &&
                     this.Relationship.Equals(input.Relationship))
-                ) && 
-                (
-                    this.ReturnUrl == input.ReturnUrl ||
-                    (this.ReturnUrl != null &&
-                    this.ReturnUrl.Equals(input.ReturnUrl))
                 ) && 
                 (
                     this.Rfc == input.Rfc ||
@@ -311,26 +280,22 @@ namespace MX.Wire4.Model
                 int hashCode = 41;
                 if (this.AmountLimit != null)
                     hashCode = hashCode * 59 + this.AmountLimit.GetHashCode();
-                if (this.BankCodeBanxico != null)
-                    hashCode = hashCode * 59 + this.BankCodeBanxico.GetHashCode();
+                if (this.Bank != null)
+                    hashCode = hashCode * 59 + this.Bank.GetHashCode();
                 if (this.BeneficiaryAccount != null)
                     hashCode = hashCode * 59 + this.BeneficiaryAccount.GetHashCode();
-                if (this.CancelReturnUrl != null)
-                    hashCode = hashCode * 59 + this.CancelReturnUrl.GetHashCode();
                 if (this.Email != null)
                     hashCode = hashCode * 59 + this.Email.GetHashCode();
                 if (this.Institution != null)
                     hashCode = hashCode * 59 + this.Institution.GetHashCode();
                 if (this.KindOfRelationship != null)
                     hashCode = hashCode * 59 + this.KindOfRelationship.GetHashCode();
-                if (this.NumericReference != null)
-                    hashCode = hashCode * 59 + this.NumericReference.GetHashCode();
-                if (this.PaymentConcept != null)
-                    hashCode = hashCode * 59 + this.PaymentConcept.GetHashCode();
+                if (this.NumericReferenceSpid != null)
+                    hashCode = hashCode * 59 + this.NumericReferenceSpid.GetHashCode();
+                if (this.PaymentConceptSpid != null)
+                    hashCode = hashCode * 59 + this.PaymentConceptSpid.GetHashCode();
                 if (this.Relationship != null)
                     hashCode = hashCode * 59 + this.Relationship.GetHashCode();
-                if (this.ReturnUrl != null)
-                    hashCode = hashCode * 59 + this.ReturnUrl.GetHashCode();
                 if (this.Rfc != null)
                     hashCode = hashCode * 59 + this.Rfc.GetHashCode();
                 return hashCode;

@@ -49,7 +49,7 @@ namespace MX.Wire4.Model
         /// <param name="reference">Referencia numérica.</param>
         /// <param name="statusCode">Estado de la transferencia de la transferencia, los posibles valores son: PENDING, COMPLETED, FAILED, CANCELLED.</param>
         /// <param name="transactionId">Identificador de la transferencia asignado por Monex.</param>
-        public Payment(string account = default(string), decimal? amount = default(decimal?), string beneficiaryAccount = default(string), MessageInstitution beneficiaryBank = default(MessageInstitution), string beneficiaryName = default(string), MessageCEP cep = default(MessageCEP), string claveRastreo = default(string), string concept = default(string), DateTime? confirmDate = default(DateTime?), string currencyCode = default(string), string detentionMessage = default(string), string monexDescription = default(string), string orderId = default(string), int? paymentOrderId = default(int?), int? reference = default(int?), string statusCode = default(string), int? transactionId = default(int?))
+        public Payment(string account = default(string), decimal? amount = default(decimal?), string beneficiaryAccount = default(string), Institution beneficiaryBank = default(Institution), string beneficiaryName = default(string), MessageCEP cep = default(MessageCEP), string claveRastreo = default(string), string concept = default(string), DateTime? confirmDate = default(DateTime?), string currencyCode = default(string), string detentionMessage = default(string), string monexDescription = default(string), string orderId = default(string), int? paymentOrderId = default(int?), int? reference = default(int?), string statusCode = default(string), int? transactionId = default(int?))
         {
             this.Account = account;
             this.Amount = amount;
@@ -95,7 +95,7 @@ namespace MX.Wire4.Model
         /// Gets or Sets BeneficiaryBank
         /// </summary>
         [DataMember(Name="beneficiary_bank", EmitDefaultValue=false)]
-        public MessageInstitution BeneficiaryBank { get; set; }
+        public Institution BeneficiaryBank { get; set; }
 
         /// <summary>
         /// Nombre del Beneficiario

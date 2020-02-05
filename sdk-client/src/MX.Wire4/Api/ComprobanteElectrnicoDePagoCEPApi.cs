@@ -31,8 +31,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para buscar un CEP</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>CepResponse</returns>
-        CepResponse ObtainTransactionCepUsingPOST (CepSearchBanxico body);
+        CepResponse ObtainTransactionCepUsingPOST (CepSearchBanxico body, string authorization);
 
         /// <summary>
         /// Consulta de CEP
@@ -42,8 +43,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para buscar un CEP</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of CepResponse</returns>
-        ApiResponse<CepResponse> ObtainTransactionCepUsingPOSTWithHttpInfo (CepSearchBanxico body);
+        ApiResponse<CepResponse> ObtainTransactionCepUsingPOSTWithHttpInfo (CepSearchBanxico body, string authorization);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -54,8 +56,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para buscar un CEP</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of CepResponse</returns>
-        System.Threading.Tasks.Task<CepResponse> ObtainTransactionCepUsingPOSTAsync (CepSearchBanxico body);
+        System.Threading.Tasks.Task<CepResponse> ObtainTransactionCepUsingPOSTAsync (CepSearchBanxico body, string authorization);
 
         /// <summary>
         /// Consulta de CEP
@@ -65,8 +68,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para buscar un CEP</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse (CepResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CepResponse>> ObtainTransactionCepUsingPOSTAsyncWithHttpInfo (CepSearchBanxico body);
+        System.Threading.Tasks.Task<ApiResponse<CepResponse>> ObtainTransactionCepUsingPOSTAsyncWithHttpInfo (CepSearchBanxico body, string authorization);
         #endregion Asynchronous Operations
     }
 
@@ -183,10 +187,11 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para buscar un CEP</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>CepResponse</returns>
-        public CepResponse ObtainTransactionCepUsingPOST (CepSearchBanxico body)
+        public CepResponse ObtainTransactionCepUsingPOST (CepSearchBanxico body, string authorization)
         {
-             ApiResponse<CepResponse> localVarResponse = ObtainTransactionCepUsingPOSTWithHttpInfo(body);
+             ApiResponse<CepResponse> localVarResponse = ObtainTransactionCepUsingPOSTWithHttpInfo(body, authorization);
              return localVarResponse.Data;
         }
 
@@ -195,12 +200,16 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para buscar un CEP</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of CepResponse</returns>
-        public ApiResponse< CepResponse > ObtainTransactionCepUsingPOSTWithHttpInfo (CepSearchBanxico body)
+        public ApiResponse< CepResponse > ObtainTransactionCepUsingPOSTWithHttpInfo (CepSearchBanxico body, string authorization)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling ComprobanteElectrnicoDePagoCEPApi->ObtainTransactionCepUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling ComprobanteElectrnicoDePagoCEPApi->ObtainTransactionCepUsingPOST");
 
             var localVarPath = "/ceps";
             var localVarPathParams = new Dictionary<String, String>();
@@ -224,6 +233,7 @@ namespace MX.Wire4.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -231,12 +241,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -262,10 +266,11 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para buscar un CEP</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of CepResponse</returns>
-        public async System.Threading.Tasks.Task<CepResponse> ObtainTransactionCepUsingPOSTAsync (CepSearchBanxico body)
+        public async System.Threading.Tasks.Task<CepResponse> ObtainTransactionCepUsingPOSTAsync (CepSearchBanxico body, string authorization)
         {
-             ApiResponse<CepResponse> localVarResponse = await ObtainTransactionCepUsingPOSTAsyncWithHttpInfo(body);
+             ApiResponse<CepResponse> localVarResponse = await ObtainTransactionCepUsingPOSTAsyncWithHttpInfo(body, authorization);
              return localVarResponse.Data;
 
         }
@@ -275,12 +280,16 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para buscar un CEP</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse (CepResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<CepResponse>> ObtainTransactionCepUsingPOSTAsyncWithHttpInfo (CepSearchBanxico body)
+        public async System.Threading.Tasks.Task<ApiResponse<CepResponse>> ObtainTransactionCepUsingPOSTAsyncWithHttpInfo (CepSearchBanxico body, string authorization)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling ComprobanteElectrnicoDePagoCEPApi->ObtainTransactionCepUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling ComprobanteElectrnicoDePagoCEPApi->ObtainTransactionCepUsingPOST");
 
             var localVarPath = "/ceps";
             var localVarPathParams = new Dictionary<String, String>();
@@ -304,6 +313,7 @@ namespace MX.Wire4.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -311,12 +321,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request

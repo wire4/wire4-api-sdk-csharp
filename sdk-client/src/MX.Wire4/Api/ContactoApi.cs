@@ -31,8 +31,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información del contacto</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns></returns>
-        void SendContactUsingPOST (ContactRequest body);
+        void SendContactUsingPOST (ContactRequest body, string authorization);
 
         /// <summary>
         /// Solicitud de contacto
@@ -42,8 +43,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información del contacto</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> SendContactUsingPOSTWithHttpInfo (ContactRequest body);
+        ApiResponse<Object> SendContactUsingPOSTWithHttpInfo (ContactRequest body, string authorization);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -54,8 +56,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información del contacto</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SendContactUsingPOSTAsync (ContactRequest body);
+        System.Threading.Tasks.Task SendContactUsingPOSTAsync (ContactRequest body, string authorization);
 
         /// <summary>
         /// Solicitud de contacto
@@ -65,8 +68,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información del contacto</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SendContactUsingPOSTAsyncWithHttpInfo (ContactRequest body);
+        System.Threading.Tasks.Task<ApiResponse<Object>> SendContactUsingPOSTAsyncWithHttpInfo (ContactRequest body, string authorization);
         #endregion Asynchronous Operations
     }
 
@@ -183,10 +187,11 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información del contacto</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns></returns>
-        public void SendContactUsingPOST (ContactRequest body)
+        public void SendContactUsingPOST (ContactRequest body, string authorization)
         {
-             SendContactUsingPOSTWithHttpInfo(body);
+             SendContactUsingPOSTWithHttpInfo(body, authorization);
         }
 
         /// <summary>
@@ -194,12 +199,16 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información del contacto</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> SendContactUsingPOSTWithHttpInfo (ContactRequest body)
+        public ApiResponse<Object> SendContactUsingPOSTWithHttpInfo (ContactRequest body, string authorization)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling ContactoApi->SendContactUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling ContactoApi->SendContactUsingPOST");
 
             var localVarPath = "/contact";
             var localVarPathParams = new Dictionary<String, String>();
@@ -223,6 +232,7 @@ namespace MX.Wire4.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -230,12 +240,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -261,10 +265,11 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información del contacto</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SendContactUsingPOSTAsync (ContactRequest body)
+        public async System.Threading.Tasks.Task SendContactUsingPOSTAsync (ContactRequest body, string authorization)
         {
-             await SendContactUsingPOSTAsyncWithHttpInfo(body);
+             await SendContactUsingPOSTAsyncWithHttpInfo(body, authorization);
 
         }
 
@@ -273,12 +278,16 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información del contacto</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> SendContactUsingPOSTAsyncWithHttpInfo (ContactRequest body)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> SendContactUsingPOSTAsyncWithHttpInfo (ContactRequest body, string authorization)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling ContactoApi->SendContactUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling ContactoApi->SendContactUsingPOST");
 
             var localVarPath = "/contact";
             var localVarPathParams = new Dictionary<String, String>();
@@ -302,6 +311,7 @@ namespace MX.Wire4.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -309,12 +319,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request

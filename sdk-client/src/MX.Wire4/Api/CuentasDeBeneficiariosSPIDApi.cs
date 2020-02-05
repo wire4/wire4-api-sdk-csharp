@@ -24,6 +24,33 @@ namespace MX.Wire4.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Consulta los beneficiarios SPID registrados
+        /// </summary>
+        /// <remarks>
+        /// Obtiene los beneficiarios SPID registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <returns>SpidBeneficiariesResponse</returns>
+        SpidBeneficiariesResponse GetSpidBeneficiariesForAccount (string authorization, string subscription, string account = null, string rfc = null);
+
+        /// <summary>
+        /// Consulta los beneficiarios SPID registrados
+        /// </summary>
+        /// <remarks>
+        /// Obtiene los beneficiarios SPID registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <returns>ApiResponse of SpidBeneficiariesResponse</returns>
+        ApiResponse<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null);
+        /// <summary>
         /// Pre-registro de cuentas de beneficiarios SPID
         /// </summary>
         /// <remarks>
@@ -31,9 +58,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>TokenRequiredResponse</returns>
-        TokenRequiredResponse PreRegisterAccountsUsingPOST1 (AccountSpid body, string subscription);
+        TokenRequiredResponse PreRegisterAccountsUsingPOST1 (AccountSpid body, string authorization, string subscription);
 
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios SPID
@@ -43,12 +71,40 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of TokenRequiredResponse</returns>
-        ApiResponse<TokenRequiredResponse> PreRegisterAccountsUsingPOST1WithHttpInfo (AccountSpid body, string subscription);
+        ApiResponse<TokenRequiredResponse> PreRegisterAccountsUsingPOST1WithHttpInfo (AccountSpid body, string authorization, string subscription);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
+        /// Consulta los beneficiarios SPID registrados
+        /// </summary>
+        /// <remarks>
+        /// Obtiene los beneficiarios SPID registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <returns>Task of SpidBeneficiariesResponse</returns>
+        System.Threading.Tasks.Task<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountAsync (string authorization, string subscription, string account = null, string rfc = null);
+
+        /// <summary>
+        /// Consulta los beneficiarios SPID registrados
+        /// </summary>
+        /// <remarks>
+        /// Obtiene los beneficiarios SPID registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <returns>Task of ApiResponse (SpidBeneficiariesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SpidBeneficiariesResponse>> GetSpidBeneficiariesForAccountAsyncWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null);
+        /// <summary>
         /// Pre-registro de cuentas de beneficiarios SPID
         /// </summary>
         /// <remarks>
@@ -56,9 +112,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of TokenRequiredResponse</returns>
-        System.Threading.Tasks.Task<TokenRequiredResponse> PreRegisterAccountsUsingPOST1Async (AccountSpid body, string subscription);
+        System.Threading.Tasks.Task<TokenRequiredResponse> PreRegisterAccountsUsingPOST1Async (AccountSpid body, string authorization, string subscription);
 
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios SPID
@@ -68,9 +125,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> PreRegisterAccountsUsingPOST1AsyncWithHttpInfo (AccountSpid body, string subscription);
+        System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> PreRegisterAccountsUsingPOST1AsyncWithHttpInfo (AccountSpid body, string authorization, string subscription);
         #endregion Asynchronous Operations
     }
 
@@ -183,15 +241,171 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
+        /// Consulta los beneficiarios SPID registrados Obtiene los beneficiarios SPID registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <returns>SpidBeneficiariesResponse</returns>
+        public SpidBeneficiariesResponse GetSpidBeneficiariesForAccount (string authorization, string subscription, string account = null, string rfc = null)
+        {
+             ApiResponse<SpidBeneficiariesResponse> localVarResponse = GetSpidBeneficiariesForAccountWithHttpInfo(authorization, subscription, account, rfc);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Consulta los beneficiarios SPID registrados Obtiene los beneficiarios SPID registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <returns>ApiResponse of SpidBeneficiariesResponse</returns>
+        public ApiResponse< SpidBeneficiariesResponse > GetSpidBeneficiariesForAccountWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPIDApi->GetSpidBeneficiariesForAccount");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPIDApi->GetSpidBeneficiariesForAccount");
+
+            var localVarPath = "/subscriptions/{subscription}/beneficiaries/spid";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (account != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "account", account)); // query parameter
+            if (rfc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "rfc", rfc)); // query parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetSpidBeneficiariesForAccount", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<SpidBeneficiariesResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (SpidBeneficiariesResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SpidBeneficiariesResponse)));
+        }
+
+        /// <summary>
+        /// Consulta los beneficiarios SPID registrados Obtiene los beneficiarios SPID registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <returns>Task of SpidBeneficiariesResponse</returns>
+        public async System.Threading.Tasks.Task<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountAsync (string authorization, string subscription, string account = null, string rfc = null)
+        {
+             ApiResponse<SpidBeneficiariesResponse> localVarResponse = await GetSpidBeneficiariesForAccountAsyncWithHttpInfo(authorization, subscription, account, rfc);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Consulta los beneficiarios SPID registrados Obtiene los beneficiarios SPID registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <returns>Task of ApiResponse (SpidBeneficiariesResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SpidBeneficiariesResponse>> GetSpidBeneficiariesForAccountAsyncWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPIDApi->GetSpidBeneficiariesForAccount");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPIDApi->GetSpidBeneficiariesForAccount");
+
+            var localVarPath = "/subscriptions/{subscription}/beneficiaries/spid";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (account != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "account", account)); // query parameter
+            if (rfc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "rfc", rfc)); // query parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetSpidBeneficiariesForAccount", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<SpidBeneficiariesResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (SpidBeneficiariesResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SpidBeneficiariesResponse)));
+        }
+
+        /// <summary>
         /// Pre-registro de cuentas de beneficiarios SPID 
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>TokenRequiredResponse</returns>
-        public TokenRequiredResponse PreRegisterAccountsUsingPOST1 (AccountSpid body, string subscription)
+        public TokenRequiredResponse PreRegisterAccountsUsingPOST1 (AccountSpid body, string authorization, string subscription)
         {
-             ApiResponse<TokenRequiredResponse> localVarResponse = PreRegisterAccountsUsingPOST1WithHttpInfo(body, subscription);
+             ApiResponse<TokenRequiredResponse> localVarResponse = PreRegisterAccountsUsingPOST1WithHttpInfo(body, authorization, subscription);
              return localVarResponse.Data;
         }
 
@@ -200,13 +414,17 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of TokenRequiredResponse</returns>
-        public ApiResponse< TokenRequiredResponse > PreRegisterAccountsUsingPOST1WithHttpInfo (AccountSpid body, string subscription)
+        public ApiResponse< TokenRequiredResponse > PreRegisterAccountsUsingPOST1WithHttpInfo (AccountSpid body, string authorization, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling CuentasDeBeneficiariosSPIDApi->PreRegisterAccountsUsingPOST1");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPIDApi->PreRegisterAccountsUsingPOST1");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPIDApi->PreRegisterAccountsUsingPOST1");
@@ -234,6 +452,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -241,12 +460,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app_user_spid) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -272,11 +485,12 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of TokenRequiredResponse</returns>
-        public async System.Threading.Tasks.Task<TokenRequiredResponse> PreRegisterAccountsUsingPOST1Async (AccountSpid body, string subscription)
+        public async System.Threading.Tasks.Task<TokenRequiredResponse> PreRegisterAccountsUsingPOST1Async (AccountSpid body, string authorization, string subscription)
         {
-             ApiResponse<TokenRequiredResponse> localVarResponse = await PreRegisterAccountsUsingPOST1AsyncWithHttpInfo(body, subscription);
+             ApiResponse<TokenRequiredResponse> localVarResponse = await PreRegisterAccountsUsingPOST1AsyncWithHttpInfo(body, authorization, subscription);
              return localVarResponse.Data;
 
         }
@@ -286,13 +500,17 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> PreRegisterAccountsUsingPOST1AsyncWithHttpInfo (AccountSpid body, string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> PreRegisterAccountsUsingPOST1AsyncWithHttpInfo (AccountSpid body, string authorization, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling CuentasDeBeneficiariosSPIDApi->PreRegisterAccountsUsingPOST1");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPIDApi->PreRegisterAccountsUsingPOST1");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPIDApi->PreRegisterAccountsUsingPOST1");
@@ -320,6 +538,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -327,12 +546,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app_user_spid) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request

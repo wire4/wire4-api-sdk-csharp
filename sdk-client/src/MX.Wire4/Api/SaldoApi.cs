@@ -30,9 +30,10 @@ namespace MX.Wire4.Api
         /// Obtiene el de las divisas que se manejen en el contrato.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>BalanceListResponse</returns>
-        BalanceListResponse GetBalanceUsingGET (string subscription);
+        BalanceListResponse GetBalanceUsingGET (string authorization, string subscription);
 
         /// <summary>
         /// Consulta los saldo de una cuenta
@@ -41,9 +42,10 @@ namespace MX.Wire4.Api
         /// Obtiene el de las divisas que se manejen en el contrato.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of BalanceListResponse</returns>
-        ApiResponse<BalanceListResponse> GetBalanceUsingGETWithHttpInfo (string subscription);
+        ApiResponse<BalanceListResponse> GetBalanceUsingGETWithHttpInfo (string authorization, string subscription);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -53,9 +55,10 @@ namespace MX.Wire4.Api
         /// Obtiene el de las divisas que se manejen en el contrato.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of BalanceListResponse</returns>
-        System.Threading.Tasks.Task<BalanceListResponse> GetBalanceUsingGETAsync (string subscription);
+        System.Threading.Tasks.Task<BalanceListResponse> GetBalanceUsingGETAsync (string authorization, string subscription);
 
         /// <summary>
         /// Consulta los saldo de una cuenta
@@ -64,9 +67,10 @@ namespace MX.Wire4.Api
         /// Obtiene el de las divisas que se manejen en el contrato.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (BalanceListResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BalanceListResponse>> GetBalanceUsingGETAsyncWithHttpInfo (string subscription);
+        System.Threading.Tasks.Task<ApiResponse<BalanceListResponse>> GetBalanceUsingGETAsyncWithHttpInfo (string authorization, string subscription);
         #endregion Asynchronous Operations
     }
 
@@ -182,11 +186,12 @@ namespace MX.Wire4.Api
         /// Consulta los saldo de una cuenta Obtiene el de las divisas que se manejen en el contrato.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>BalanceListResponse</returns>
-        public BalanceListResponse GetBalanceUsingGET (string subscription)
+        public BalanceListResponse GetBalanceUsingGET (string authorization, string subscription)
         {
-             ApiResponse<BalanceListResponse> localVarResponse = GetBalanceUsingGETWithHttpInfo(subscription);
+             ApiResponse<BalanceListResponse> localVarResponse = GetBalanceUsingGETWithHttpInfo(authorization, subscription);
              return localVarResponse.Data;
         }
 
@@ -194,10 +199,14 @@ namespace MX.Wire4.Api
         /// Consulta los saldo de una cuenta Obtiene el de las divisas que se manejen en el contrato.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of BalanceListResponse</returns>
-        public ApiResponse< BalanceListResponse > GetBalanceUsingGETWithHttpInfo (string subscription)
+        public ApiResponse< BalanceListResponse > GetBalanceUsingGETWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling SaldoApi->GetBalanceUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling SaldoApi->GetBalanceUsingGET");
@@ -224,12 +233,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -253,11 +257,12 @@ namespace MX.Wire4.Api
         /// Consulta los saldo de una cuenta Obtiene el de las divisas que se manejen en el contrato.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of BalanceListResponse</returns>
-        public async System.Threading.Tasks.Task<BalanceListResponse> GetBalanceUsingGETAsync (string subscription)
+        public async System.Threading.Tasks.Task<BalanceListResponse> GetBalanceUsingGETAsync (string authorization, string subscription)
         {
-             ApiResponse<BalanceListResponse> localVarResponse = await GetBalanceUsingGETAsyncWithHttpInfo(subscription);
+             ApiResponse<BalanceListResponse> localVarResponse = await GetBalanceUsingGETAsyncWithHttpInfo(authorization, subscription);
              return localVarResponse.Data;
 
         }
@@ -266,10 +271,14 @@ namespace MX.Wire4.Api
         /// Consulta los saldo de una cuenta Obtiene el de las divisas que se manejen en el contrato.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (BalanceListResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<BalanceListResponse>> GetBalanceUsingGETAsyncWithHttpInfo (string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<BalanceListResponse>> GetBalanceUsingGETAsyncWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling SaldoApi->GetBalanceUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling SaldoApi->GetBalanceUsingGET");
@@ -296,12 +305,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,

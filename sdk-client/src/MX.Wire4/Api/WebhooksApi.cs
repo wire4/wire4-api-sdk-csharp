@@ -30,9 +30,10 @@ namespace MX.Wire4.Api
         /// Obtiene un webhook registrado en la plataforma mediante su identificador.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador del webhook</param>
         /// <returns>WebhookResponse</returns>
-        WebhookResponse GetWebhook (string id);
+        WebhookResponse GetWebhook (string authorization, string id);
 
         /// <summary>
         /// Consulta de Webhook
@@ -41,9 +42,10 @@ namespace MX.Wire4.Api
         /// Obtiene un webhook registrado en la plataforma mediante su identificador.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador del webhook</param>
         /// <returns>ApiResponse of WebhookResponse</returns>
-        ApiResponse<WebhookResponse> GetWebhookWithHttpInfo (string id);
+        ApiResponse<WebhookResponse> GetWebhookWithHttpInfo (string authorization, string id);
         /// <summary>
         /// Consulta de Webhooks
         /// </summary>
@@ -51,8 +53,9 @@ namespace MX.Wire4.Api
         /// Obtiene los webhooks registrados en la plataforma que tengan estatus &#x27;ACTIVE&#x27; e &#x27;INACTIVE&#x27;.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>WebhooksList</returns>
-        WebhooksList GetWebhooks ();
+        WebhooksList GetWebhooks (string authorization);
 
         /// <summary>
         /// Consulta de Webhooks
@@ -61,8 +64,9 @@ namespace MX.Wire4.Api
         /// Obtiene los webhooks registrados en la plataforma que tengan estatus &#x27;ACTIVE&#x27; e &#x27;INACTIVE&#x27;.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of WebhooksList</returns>
-        ApiResponse<WebhooksList> GetWebhooksWithHttpInfo ();
+        ApiResponse<WebhooksList> GetWebhooksWithHttpInfo (string authorization);
         /// <summary>
         /// Alta de Webhook
         /// </summary>
@@ -71,8 +75,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para registrar un Webhook</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>WebhookResponse</returns>
-        WebhookResponse RegisterWebhook (WebhookRequest body);
+        WebhookResponse RegisterWebhook (WebhookRequest body, string authorization);
 
         /// <summary>
         /// Alta de Webhook
@@ -82,8 +87,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para registrar un Webhook</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of WebhookResponse</returns>
-        ApiResponse<WebhookResponse> RegisterWebhookWithHttpInfo (WebhookRequest body);
+        ApiResponse<WebhookResponse> RegisterWebhookWithHttpInfo (WebhookRequest body, string authorization);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -93,9 +99,10 @@ namespace MX.Wire4.Api
         /// Obtiene un webhook registrado en la plataforma mediante su identificador.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador del webhook</param>
         /// <returns>Task of WebhookResponse</returns>
-        System.Threading.Tasks.Task<WebhookResponse> GetWebhookAsync (string id);
+        System.Threading.Tasks.Task<WebhookResponse> GetWebhookAsync (string authorization, string id);
 
         /// <summary>
         /// Consulta de Webhook
@@ -104,9 +111,10 @@ namespace MX.Wire4.Api
         /// Obtiene un webhook registrado en la plataforma mediante su identificador.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador del webhook</param>
         /// <returns>Task of ApiResponse (WebhookResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WebhookResponse>> GetWebhookAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<WebhookResponse>> GetWebhookAsyncWithHttpInfo (string authorization, string id);
         /// <summary>
         /// Consulta de Webhooks
         /// </summary>
@@ -114,8 +122,9 @@ namespace MX.Wire4.Api
         /// Obtiene los webhooks registrados en la plataforma que tengan estatus &#x27;ACTIVE&#x27; e &#x27;INACTIVE&#x27;.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of WebhooksList</returns>
-        System.Threading.Tasks.Task<WebhooksList> GetWebhooksAsync ();
+        System.Threading.Tasks.Task<WebhooksList> GetWebhooksAsync (string authorization);
 
         /// <summary>
         /// Consulta de Webhooks
@@ -124,8 +133,9 @@ namespace MX.Wire4.Api
         /// Obtiene los webhooks registrados en la plataforma que tengan estatus &#x27;ACTIVE&#x27; e &#x27;INACTIVE&#x27;.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse (WebhooksList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WebhooksList>> GetWebhooksAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<WebhooksList>> GetWebhooksAsyncWithHttpInfo (string authorization);
         /// <summary>
         /// Alta de Webhook
         /// </summary>
@@ -134,8 +144,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para registrar un Webhook</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of WebhookResponse</returns>
-        System.Threading.Tasks.Task<WebhookResponse> RegisterWebhookAsync (WebhookRequest body);
+        System.Threading.Tasks.Task<WebhookResponse> RegisterWebhookAsync (WebhookRequest body, string authorization);
 
         /// <summary>
         /// Alta de Webhook
@@ -145,8 +156,9 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para registrar un Webhook</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse (WebhookResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WebhookResponse>> RegisterWebhookAsyncWithHttpInfo (WebhookRequest body);
+        System.Threading.Tasks.Task<ApiResponse<WebhookResponse>> RegisterWebhookAsyncWithHttpInfo (WebhookRequest body, string authorization);
         #endregion Asynchronous Operations
     }
 
@@ -262,11 +274,12 @@ namespace MX.Wire4.Api
         /// Consulta de Webhook Obtiene un webhook registrado en la plataforma mediante su identificador.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador del webhook</param>
         /// <returns>WebhookResponse</returns>
-        public WebhookResponse GetWebhook (string id)
+        public WebhookResponse GetWebhook (string authorization, string id)
         {
-             ApiResponse<WebhookResponse> localVarResponse = GetWebhookWithHttpInfo(id);
+             ApiResponse<WebhookResponse> localVarResponse = GetWebhookWithHttpInfo(authorization, id);
              return localVarResponse.Data;
         }
 
@@ -274,10 +287,14 @@ namespace MX.Wire4.Api
         /// Consulta de Webhook Obtiene un webhook registrado en la plataforma mediante su identificador.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador del webhook</param>
         /// <returns>ApiResponse of WebhookResponse</returns>
-        public ApiResponse< WebhookResponse > GetWebhookWithHttpInfo (string id)
+        public ApiResponse< WebhookResponse > GetWebhookWithHttpInfo (string authorization, string id)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling WebhooksApi->GetWebhook");
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling WebhooksApi->GetWebhook");
@@ -304,12 +321,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -333,11 +345,12 @@ namespace MX.Wire4.Api
         /// Consulta de Webhook Obtiene un webhook registrado en la plataforma mediante su identificador.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador del webhook</param>
         /// <returns>Task of WebhookResponse</returns>
-        public async System.Threading.Tasks.Task<WebhookResponse> GetWebhookAsync (string id)
+        public async System.Threading.Tasks.Task<WebhookResponse> GetWebhookAsync (string authorization, string id)
         {
-             ApiResponse<WebhookResponse> localVarResponse = await GetWebhookAsyncWithHttpInfo(id);
+             ApiResponse<WebhookResponse> localVarResponse = await GetWebhookAsyncWithHttpInfo(authorization, id);
              return localVarResponse.Data;
 
         }
@@ -346,10 +359,14 @@ namespace MX.Wire4.Api
         /// Consulta de Webhook Obtiene un webhook registrado en la plataforma mediante su identificador.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador del webhook</param>
         /// <returns>Task of ApiResponse (WebhookResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WebhookResponse>> GetWebhookAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<WebhookResponse>> GetWebhookAsyncWithHttpInfo (string authorization, string id)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling WebhooksApi->GetWebhook");
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling WebhooksApi->GetWebhook");
@@ -376,12 +393,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -405,10 +417,11 @@ namespace MX.Wire4.Api
         /// Consulta de Webhooks Obtiene los webhooks registrados en la plataforma que tengan estatus &#x27;ACTIVE&#x27; e &#x27;INACTIVE&#x27;.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>WebhooksList</returns>
-        public WebhooksList GetWebhooks ()
+        public WebhooksList GetWebhooks (string authorization)
         {
-             ApiResponse<WebhooksList> localVarResponse = GetWebhooksWithHttpInfo();
+             ApiResponse<WebhooksList> localVarResponse = GetWebhooksWithHttpInfo(authorization);
              return localVarResponse.Data;
         }
 
@@ -416,9 +429,13 @@ namespace MX.Wire4.Api
         /// Consulta de Webhooks Obtiene los webhooks registrados en la plataforma que tengan estatus &#x27;ACTIVE&#x27; e &#x27;INACTIVE&#x27;.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of WebhooksList</returns>
-        public ApiResponse< WebhooksList > GetWebhooksWithHttpInfo ()
+        public ApiResponse< WebhooksList > GetWebhooksWithHttpInfo (string authorization)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling WebhooksApi->GetWebhooks");
 
             var localVarPath = "/webhooks";
             var localVarPathParams = new Dictionary<String, String>();
@@ -441,12 +458,7 @@ namespace MX.Wire4.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -470,10 +482,11 @@ namespace MX.Wire4.Api
         /// Consulta de Webhooks Obtiene los webhooks registrados en la plataforma que tengan estatus &#x27;ACTIVE&#x27; e &#x27;INACTIVE&#x27;.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of WebhooksList</returns>
-        public async System.Threading.Tasks.Task<WebhooksList> GetWebhooksAsync ()
+        public async System.Threading.Tasks.Task<WebhooksList> GetWebhooksAsync (string authorization)
         {
-             ApiResponse<WebhooksList> localVarResponse = await GetWebhooksAsyncWithHttpInfo();
+             ApiResponse<WebhooksList> localVarResponse = await GetWebhooksAsyncWithHttpInfo(authorization);
              return localVarResponse.Data;
 
         }
@@ -482,9 +495,13 @@ namespace MX.Wire4.Api
         /// Consulta de Webhooks Obtiene los webhooks registrados en la plataforma que tengan estatus &#x27;ACTIVE&#x27; e &#x27;INACTIVE&#x27;.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse (WebhooksList)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WebhooksList>> GetWebhooksAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<WebhooksList>> GetWebhooksAsyncWithHttpInfo (string authorization)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling WebhooksApi->GetWebhooks");
 
             var localVarPath = "/webhooks";
             var localVarPathParams = new Dictionary<String, String>();
@@ -507,12 +524,7 @@ namespace MX.Wire4.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -537,10 +549,11 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para registrar un Webhook</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>WebhookResponse</returns>
-        public WebhookResponse RegisterWebhook (WebhookRequest body)
+        public WebhookResponse RegisterWebhook (WebhookRequest body, string authorization)
         {
-             ApiResponse<WebhookResponse> localVarResponse = RegisterWebhookWithHttpInfo(body);
+             ApiResponse<WebhookResponse> localVarResponse = RegisterWebhookWithHttpInfo(body, authorization);
              return localVarResponse.Data;
         }
 
@@ -549,12 +562,16 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para registrar un Webhook</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of WebhookResponse</returns>
-        public ApiResponse< WebhookResponse > RegisterWebhookWithHttpInfo (WebhookRequest body)
+        public ApiResponse< WebhookResponse > RegisterWebhookWithHttpInfo (WebhookRequest body, string authorization)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WebhooksApi->RegisterWebhook");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling WebhooksApi->RegisterWebhook");
 
             var localVarPath = "/webhooks";
             var localVarPathParams = new Dictionary<String, String>();
@@ -578,6 +595,7 @@ namespace MX.Wire4.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -585,12 +603,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -616,10 +628,11 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para registrar un Webhook</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of WebhookResponse</returns>
-        public async System.Threading.Tasks.Task<WebhookResponse> RegisterWebhookAsync (WebhookRequest body)
+        public async System.Threading.Tasks.Task<WebhookResponse> RegisterWebhookAsync (WebhookRequest body, string authorization)
         {
-             ApiResponse<WebhookResponse> localVarResponse = await RegisterWebhookAsyncWithHttpInfo(body);
+             ApiResponse<WebhookResponse> localVarResponse = await RegisterWebhookAsyncWithHttpInfo(body, authorization);
              return localVarResponse.Data;
 
         }
@@ -629,12 +642,16 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información para registrar un Webhook</param>
+        /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse (WebhookResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WebhookResponse>> RegisterWebhookAsyncWithHttpInfo (WebhookRequest body)
+        public async System.Threading.Tasks.Task<ApiResponse<WebhookResponse>> RegisterWebhookAsyncWithHttpInfo (WebhookRequest body, string authorization)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling WebhooksApi->RegisterWebhook");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling WebhooksApi->RegisterWebhook");
 
             var localVarPath = "/webhooks";
             var localVarPathParams = new Dictionary<String, String>();
@@ -658,6 +675,7 @@ namespace MX.Wire4.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -665,12 +683,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request

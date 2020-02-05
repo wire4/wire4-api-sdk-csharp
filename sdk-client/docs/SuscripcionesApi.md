@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="preenrollmentmonexuserusingpost"></a>
 # **PreEnrollmentMonexUserUsingPOST**
-> PreEnrollmentResponse PreEnrollmentMonexUserUsingPOST (PreEnrollmentData body)
+> PreEnrollmentResponse PreEnrollmentMonexUserUsingPOST (PreEnrollmentData body, string authorization)
 
 registra una pre-suscripción
 
@@ -30,16 +30,14 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new SuscripcionesApi();
             var body = new PreEnrollmentData(); // PreEnrollmentData | Información para el enrolamiento
+            var authorization = authorization_example;  // string | Header para token
 
             try
             {
                 // registra una pre-suscripción
-                PreEnrollmentResponse result = apiInstance.PreEnrollmentMonexUserUsingPOST(body);
+                PreEnrollmentResponse result = apiInstance.PreEnrollmentMonexUserUsingPOST(body, authorization);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -56,6 +54,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**PreEnrollmentData**](PreEnrollmentData.md)| Información para el enrolamiento | 
+ **authorization** | **string**| Header para token | 
 
 ### Return type
 
@@ -63,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 
@@ -73,7 +72,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="removeenrollmentuserusingdelete"></a>
 # **RemoveEnrollmentUserUsingDELETE**
-> void RemoveEnrollmentUserUsingDELETE (string subscription)
+> void RemoveEnrollmentUserUsingDELETE (string authorization, string subscription)
 
 Elimna una suscripción por id
 
@@ -93,16 +92,14 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new SuscripcionesApi();
+            var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Elimna una suscripción por id
-                apiInstance.RemoveEnrollmentUserUsingDELETE(subscription);
+                apiInstance.RemoveEnrollmentUserUsingDELETE(authorization, subscription);
             }
             catch (Exception e)
             {
@@ -117,6 +114,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -125,7 +123,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -135,7 +133,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="removesubscriptionpendingstatususingdelete"></a>
 # **RemoveSubscriptionPendingStatusUsingDELETE**
-> void RemoveSubscriptionPendingStatusUsingDELETE (string subscription)
+> void RemoveSubscriptionPendingStatusUsingDELETE (string authorization, string subscription)
 
 Elimna una pre-suscripción
 
@@ -155,16 +153,14 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new SuscripcionesApi();
+            var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Elimna una pre-suscripción
-                apiInstance.RemoveSubscriptionPendingStatusUsingDELETE(subscription);
+                apiInstance.RemoveSubscriptionPendingStatusUsingDELETE(authorization, subscription);
             }
             catch (Exception e)
             {
@@ -179,6 +175,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -187,7 +184,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 

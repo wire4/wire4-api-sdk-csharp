@@ -30,10 +30,11 @@ namespace MX.Wire4.Api
         /// Borra la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción. La cuenta a borrar debe ser una cuenta que opere con SPEI.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">La cuenta del beneciario que será eliminada</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns></returns>
-        void DeleteAccountUsingDELETE (string account, string subscription);
+        void DeleteAccountUsingDELETE (string authorization, string account, string subscription);
 
         /// <summary>
         /// Elimina la cuenta del beneficiario
@@ -42,10 +43,11 @@ namespace MX.Wire4.Api
         /// Borra la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción. La cuenta a borrar debe ser una cuenta que opere con SPEI.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">La cuenta del beneciario que será eliminada</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteAccountUsingDELETEWithHttpInfo (string account, string subscription);
+        ApiResponse<Object> DeleteAccountUsingDELETEWithHttpInfo (string authorization, string account, string subscription);
         /// <summary>
         /// Consulta de relaciones
         /// </summary>
@@ -53,9 +55,10 @@ namespace MX.Wire4.Api
         /// Obtiene las posibles relaciones existentes para registrar beneficiarios en Monex. Se debe invocar este recurso antes de pre-registrar una cuenta de beneficiario.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Identificador de la suscripción a esta API</param>
         /// <returns>RelationshipsResponse</returns>
-        RelationshipsResponse GetAvailableRelationshipsMonexUsingGET (string subscription);
+        RelationshipsResponse GetAvailableRelationshipsMonexUsingGET (string authorization, string subscription);
 
         /// <summary>
         /// Consulta de relaciones
@@ -64,9 +67,10 @@ namespace MX.Wire4.Api
         /// Obtiene las posibles relaciones existentes para registrar beneficiarios en Monex. Se debe invocar este recurso antes de pre-registrar una cuenta de beneficiario.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of RelationshipsResponse</returns>
-        ApiResponse<RelationshipsResponse> GetAvailableRelationshipsMonexUsingGETWithHttpInfo (string subscription);
+        ApiResponse<RelationshipsResponse> GetAvailableRelationshipsMonexUsingGETWithHttpInfo (string authorization, string subscription);
         /// <summary>
         /// Consulta los beneficiarios registrados
         /// </summary>
@@ -74,10 +78,12 @@ namespace MX.Wire4.Api
         /// Obtiene los beneficiarios registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
         /// <returns>BeneficiariesResponse</returns>
-        BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string subscription, string rfc = null);
+        BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string rfc = null);
 
         /// <summary>
         /// Consulta los beneficiarios registrados
@@ -86,10 +92,12 @@ namespace MX.Wire4.Api
         /// Obtiene los beneficiarios registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
         /// <returns>ApiResponse of BeneficiariesResponse</returns>
-        ApiResponse<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETWithHttpInfo (string subscription, string rfc = null);
+        ApiResponse<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null);
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios.
         /// </summary>
@@ -98,9 +106,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>TokenRequiredResponse</returns>
-        TokenRequiredResponse PreRegisterAccountsUsingPOST (AccountRequest body, string subscription);
+        TokenRequiredResponse PreRegisterAccountsUsingPOST (AccountRequest body, string authorization, string subscription);
 
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios.
@@ -110,9 +119,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of TokenRequiredResponse</returns>
-        ApiResponse<TokenRequiredResponse> PreRegisterAccountsUsingPOSTWithHttpInfo (AccountRequest body, string subscription);
+        ApiResponse<TokenRequiredResponse> PreRegisterAccountsUsingPOSTWithHttpInfo (AccountRequest body, string authorization, string subscription);
         /// <summary>
         /// Eliminación de beneficiarios SPEI® sin confirmar
         /// </summary>
@@ -120,10 +130,11 @@ namespace MX.Wire4.Api
         /// Elimina un conjunto de beneficiarios a registrar en la cuenta del cliente Monex relacionada a la suscripción, los beneficiarios no deben haber sido confirmados por el cliente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de los beneficiarios a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns></returns>
-        void RemoveBeneficiariesPendingUsingDELETE (string requestId, string subscription);
+        void RemoveBeneficiariesPendingUsingDELETE (string authorization, string requestId, string subscription);
 
         /// <summary>
         /// Eliminación de beneficiarios SPEI® sin confirmar
@@ -132,10 +143,11 @@ namespace MX.Wire4.Api
         /// Elimina un conjunto de beneficiarios a registrar en la cuenta del cliente Monex relacionada a la suscripción, los beneficiarios no deben haber sido confirmados por el cliente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de los beneficiarios a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> RemoveBeneficiariesPendingUsingDELETEWithHttpInfo (string requestId, string subscription);
+        ApiResponse<Object> RemoveBeneficiariesPendingUsingDELETEWithHttpInfo (string authorization, string requestId, string subscription);
         /// <summary>
         /// Actualiza el monto límite
         /// </summary>
@@ -144,10 +156,11 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns></returns>
-        void UpdateAmountLimitAccountUsingPUT (AmountRequest body, string account, string subscription);
+        void UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription);
 
         /// <summary>
         /// Actualiza el monto límite
@@ -157,10 +170,11 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateAmountLimitAccountUsingPUTWithHttpInfo (AmountRequest body, string account, string subscription);
+        ApiResponse<Object> UpdateAmountLimitAccountUsingPUTWithHttpInfo (AmountRequest body, string authorization, string account, string subscription);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -170,10 +184,11 @@ namespace MX.Wire4.Api
         /// Borra la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción. La cuenta a borrar debe ser una cuenta que opere con SPEI.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">La cuenta del beneciario que será eliminada</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteAccountUsingDELETEAsync (string account, string subscription);
+        System.Threading.Tasks.Task DeleteAccountUsingDELETEAsync (string authorization, string account, string subscription);
 
         /// <summary>
         /// Elimina la cuenta del beneficiario
@@ -182,10 +197,11 @@ namespace MX.Wire4.Api
         /// Borra la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción. La cuenta a borrar debe ser una cuenta que opere con SPEI.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">La cuenta del beneciario que será eliminada</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAccountUsingDELETEAsyncWithHttpInfo (string account, string subscription);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAccountUsingDELETEAsyncWithHttpInfo (string authorization, string account, string subscription);
         /// <summary>
         /// Consulta de relaciones
         /// </summary>
@@ -193,9 +209,10 @@ namespace MX.Wire4.Api
         /// Obtiene las posibles relaciones existentes para registrar beneficiarios en Monex. Se debe invocar este recurso antes de pre-registrar una cuenta de beneficiario.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Identificador de la suscripción a esta API</param>
         /// <returns>Task of RelationshipsResponse</returns>
-        System.Threading.Tasks.Task<RelationshipsResponse> GetAvailableRelationshipsMonexUsingGETAsync (string subscription);
+        System.Threading.Tasks.Task<RelationshipsResponse> GetAvailableRelationshipsMonexUsingGETAsync (string authorization, string subscription);
 
         /// <summary>
         /// Consulta de relaciones
@@ -204,9 +221,10 @@ namespace MX.Wire4.Api
         /// Obtiene las posibles relaciones existentes para registrar beneficiarios en Monex. Se debe invocar este recurso antes de pre-registrar una cuenta de beneficiario.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (RelationshipsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RelationshipsResponse>> GetAvailableRelationshipsMonexUsingGETAsyncWithHttpInfo (string subscription);
+        System.Threading.Tasks.Task<ApiResponse<RelationshipsResponse>> GetAvailableRelationshipsMonexUsingGETAsyncWithHttpInfo (string authorization, string subscription);
         /// <summary>
         /// Consulta los beneficiarios registrados
         /// </summary>
@@ -214,10 +232,12 @@ namespace MX.Wire4.Api
         /// Obtiene los beneficiarios registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
         /// <returns>Task of BeneficiariesResponse</returns>
-        System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETAsync (string subscription, string rfc = null);
+        System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETAsync (string authorization, string subscription, string account = null, string rfc = null);
 
         /// <summary>
         /// Consulta los beneficiarios registrados
@@ -226,10 +246,12 @@ namespace MX.Wire4.Api
         /// Obtiene los beneficiarios registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
         /// <returns>Task of ApiResponse (BeneficiariesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo (string subscription, string rfc = null);
+        System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null);
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios.
         /// </summary>
@@ -238,9 +260,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of TokenRequiredResponse</returns>
-        System.Threading.Tasks.Task<TokenRequiredResponse> PreRegisterAccountsUsingPOSTAsync (AccountRequest body, string subscription);
+        System.Threading.Tasks.Task<TokenRequiredResponse> PreRegisterAccountsUsingPOSTAsync (AccountRequest body, string authorization, string subscription);
 
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios.
@@ -250,9 +273,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> PreRegisterAccountsUsingPOSTAsyncWithHttpInfo (AccountRequest body, string subscription);
+        System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> PreRegisterAccountsUsingPOSTAsyncWithHttpInfo (AccountRequest body, string authorization, string subscription);
         /// <summary>
         /// Eliminación de beneficiarios SPEI® sin confirmar
         /// </summary>
@@ -260,10 +284,11 @@ namespace MX.Wire4.Api
         /// Elimina un conjunto de beneficiarios a registrar en la cuenta del cliente Monex relacionada a la suscripción, los beneficiarios no deben haber sido confirmados por el cliente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de los beneficiarios a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task RemoveBeneficiariesPendingUsingDELETEAsync (string requestId, string subscription);
+        System.Threading.Tasks.Task RemoveBeneficiariesPendingUsingDELETEAsync (string authorization, string requestId, string subscription);
 
         /// <summary>
         /// Eliminación de beneficiarios SPEI® sin confirmar
@@ -272,10 +297,11 @@ namespace MX.Wire4.Api
         /// Elimina un conjunto de beneficiarios a registrar en la cuenta del cliente Monex relacionada a la suscripción, los beneficiarios no deben haber sido confirmados por el cliente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de los beneficiarios a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveBeneficiariesPendingUsingDELETEAsyncWithHttpInfo (string requestId, string subscription);
+        System.Threading.Tasks.Task<ApiResponse<Object>> RemoveBeneficiariesPendingUsingDELETEAsyncWithHttpInfo (string authorization, string requestId, string subscription);
         /// <summary>
         /// Actualiza el monto límite
         /// </summary>
@@ -284,10 +310,11 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateAmountLimitAccountUsingPUTAsync (AmountRequest body, string account, string subscription);
+        System.Threading.Tasks.Task UpdateAmountLimitAccountUsingPUTAsync (AmountRequest body, string authorization, string account, string subscription);
 
         /// <summary>
         /// Actualiza el monto límite
@@ -297,10 +324,11 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo (AmountRequest body, string account, string subscription);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo (AmountRequest body, string authorization, string account, string subscription);
         #endregion Asynchronous Operations
     }
 
@@ -416,23 +444,28 @@ namespace MX.Wire4.Api
         /// Elimina la cuenta del beneficiario Borra la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción. La cuenta a borrar debe ser una cuenta que opere con SPEI.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">La cuenta del beneciario que será eliminada</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns></returns>
-        public void DeleteAccountUsingDELETE (string account, string subscription)
+        public void DeleteAccountUsingDELETE (string authorization, string account, string subscription)
         {
-             DeleteAccountUsingDELETEWithHttpInfo(account, subscription);
+             DeleteAccountUsingDELETEWithHttpInfo(authorization, account, subscription);
         }
 
         /// <summary>
         /// Elimina la cuenta del beneficiario Borra la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción. La cuenta a borrar debe ser una cuenta que opere con SPEI.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">La cuenta del beneciario que será eliminada</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteAccountUsingDELETEWithHttpInfo (string account, string subscription)
+        public ApiResponse<Object> DeleteAccountUsingDELETEWithHttpInfo (string authorization, string account, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->DeleteAccountUsingDELETE");
             // verify the required parameter 'account' is set
             if (account == null)
                 throw new ApiException(400, "Missing required parameter 'account' when calling CuentasDeBeneficiariosSPEIApi->DeleteAccountUsingDELETE");
@@ -462,12 +495,7 @@ namespace MX.Wire4.Api
 
             if (account != null) localVarPathParams.Add("account", this.Configuration.ApiClient.ParameterToString(account)); // path parameter
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -491,12 +519,13 @@ namespace MX.Wire4.Api
         /// Elimina la cuenta del beneficiario Borra la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción. La cuenta a borrar debe ser una cuenta que opere con SPEI.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">La cuenta del beneciario que será eliminada</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteAccountUsingDELETEAsync (string account, string subscription)
+        public async System.Threading.Tasks.Task DeleteAccountUsingDELETEAsync (string authorization, string account, string subscription)
         {
-             await DeleteAccountUsingDELETEAsyncWithHttpInfo(account, subscription);
+             await DeleteAccountUsingDELETEAsyncWithHttpInfo(authorization, account, subscription);
 
         }
 
@@ -504,11 +533,15 @@ namespace MX.Wire4.Api
         /// Elimina la cuenta del beneficiario Borra la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción. La cuenta a borrar debe ser una cuenta que opere con SPEI.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">La cuenta del beneciario que será eliminada</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAccountUsingDELETEAsyncWithHttpInfo (string account, string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAccountUsingDELETEAsyncWithHttpInfo (string authorization, string account, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->DeleteAccountUsingDELETE");
             // verify the required parameter 'account' is set
             if (account == null)
                 throw new ApiException(400, "Missing required parameter 'account' when calling CuentasDeBeneficiariosSPEIApi->DeleteAccountUsingDELETE");
@@ -538,12 +571,7 @@ namespace MX.Wire4.Api
 
             if (account != null) localVarPathParams.Add("account", this.Configuration.ApiClient.ParameterToString(account)); // path parameter
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -567,11 +595,12 @@ namespace MX.Wire4.Api
         /// Consulta de relaciones Obtiene las posibles relaciones existentes para registrar beneficiarios en Monex. Se debe invocar este recurso antes de pre-registrar una cuenta de beneficiario.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Identificador de la suscripción a esta API</param>
         /// <returns>RelationshipsResponse</returns>
-        public RelationshipsResponse GetAvailableRelationshipsMonexUsingGET (string subscription)
+        public RelationshipsResponse GetAvailableRelationshipsMonexUsingGET (string authorization, string subscription)
         {
-             ApiResponse<RelationshipsResponse> localVarResponse = GetAvailableRelationshipsMonexUsingGETWithHttpInfo(subscription);
+             ApiResponse<RelationshipsResponse> localVarResponse = GetAvailableRelationshipsMonexUsingGETWithHttpInfo(authorization, subscription);
              return localVarResponse.Data;
         }
 
@@ -579,10 +608,14 @@ namespace MX.Wire4.Api
         /// Consulta de relaciones Obtiene las posibles relaciones existentes para registrar beneficiarios en Monex. Se debe invocar este recurso antes de pre-registrar una cuenta de beneficiario.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of RelationshipsResponse</returns>
-        public ApiResponse< RelationshipsResponse > GetAvailableRelationshipsMonexUsingGETWithHttpInfo (string subscription)
+        public ApiResponse< RelationshipsResponse > GetAvailableRelationshipsMonexUsingGETWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->GetAvailableRelationshipsMonexUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPEIApi->GetAvailableRelationshipsMonexUsingGET");
@@ -609,12 +642,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -638,11 +666,12 @@ namespace MX.Wire4.Api
         /// Consulta de relaciones Obtiene las posibles relaciones existentes para registrar beneficiarios en Monex. Se debe invocar este recurso antes de pre-registrar una cuenta de beneficiario.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Identificador de la suscripción a esta API</param>
         /// <returns>Task of RelationshipsResponse</returns>
-        public async System.Threading.Tasks.Task<RelationshipsResponse> GetAvailableRelationshipsMonexUsingGETAsync (string subscription)
+        public async System.Threading.Tasks.Task<RelationshipsResponse> GetAvailableRelationshipsMonexUsingGETAsync (string authorization, string subscription)
         {
-             ApiResponse<RelationshipsResponse> localVarResponse = await GetAvailableRelationshipsMonexUsingGETAsyncWithHttpInfo(subscription);
+             ApiResponse<RelationshipsResponse> localVarResponse = await GetAvailableRelationshipsMonexUsingGETAsyncWithHttpInfo(authorization, subscription);
              return localVarResponse.Data;
 
         }
@@ -651,10 +680,14 @@ namespace MX.Wire4.Api
         /// Consulta de relaciones Obtiene las posibles relaciones existentes para registrar beneficiarios en Monex. Se debe invocar este recurso antes de pre-registrar una cuenta de beneficiario.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (RelationshipsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<RelationshipsResponse>> GetAvailableRelationshipsMonexUsingGETAsyncWithHttpInfo (string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<RelationshipsResponse>> GetAvailableRelationshipsMonexUsingGETAsyncWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->GetAvailableRelationshipsMonexUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPEIApi->GetAvailableRelationshipsMonexUsingGET");
@@ -681,12 +714,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -710,12 +738,14 @@ namespace MX.Wire4.Api
         /// Consulta los beneficiarios registrados Obtiene los beneficiarios registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
         /// <returns>BeneficiariesResponse</returns>
-        public BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string subscription, string rfc = null)
+        public BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string rfc = null)
         {
-             ApiResponse<BeneficiariesResponse> localVarResponse = GetBeneficiariesForAccountUsingGETWithHttpInfo(subscription, rfc);
+             ApiResponse<BeneficiariesResponse> localVarResponse = GetBeneficiariesForAccountUsingGETWithHttpInfo(authorization, subscription, account, rfc);
              return localVarResponse.Data;
         }
 
@@ -723,11 +753,16 @@ namespace MX.Wire4.Api
         /// Consulta los beneficiarios registrados Obtiene los beneficiarios registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
         /// <returns>ApiResponse of BeneficiariesResponse</returns>
-        public ApiResponse< BeneficiariesResponse > GetBeneficiariesForAccountUsingGETWithHttpInfo (string subscription, string rfc = null)
+        public ApiResponse< BeneficiariesResponse > GetBeneficiariesForAccountUsingGETWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->GetBeneficiariesForAccountUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPEIApi->GetBeneficiariesForAccountUsingGET");
@@ -754,13 +789,9 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (account != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "account", account)); // query parameter
             if (rfc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "rfc", rfc)); // query parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -784,12 +815,14 @@ namespace MX.Wire4.Api
         /// Consulta los beneficiarios registrados Obtiene los beneficiarios registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
         /// <returns>Task of BeneficiariesResponse</returns>
-        public async System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETAsync (string subscription, string rfc = null)
+        public async System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETAsync (string authorization, string subscription, string account = null, string rfc = null)
         {
-             ApiResponse<BeneficiariesResponse> localVarResponse = await GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo(subscription, rfc);
+             ApiResponse<BeneficiariesResponse> localVarResponse = await GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo(authorization, subscription, account, rfc);
              return localVarResponse.Data;
 
         }
@@ -798,11 +831,16 @@ namespace MX.Wire4.Api
         /// Consulta los beneficiarios registrados Obtiene los beneficiarios registrados al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
         /// <returns>Task of ApiResponse (BeneficiariesResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo (string subscription, string rfc = null)
+        public async System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->GetBeneficiariesForAccountUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPEIApi->GetBeneficiariesForAccountUsingGET");
@@ -829,13 +867,9 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (account != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "account", account)); // query parameter
             if (rfc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "rfc", rfc)); // query parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -860,11 +894,12 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>TokenRequiredResponse</returns>
-        public TokenRequiredResponse PreRegisterAccountsUsingPOST (AccountRequest body, string subscription)
+        public TokenRequiredResponse PreRegisterAccountsUsingPOST (AccountRequest body, string authorization, string subscription)
         {
-             ApiResponse<TokenRequiredResponse> localVarResponse = PreRegisterAccountsUsingPOSTWithHttpInfo(body, subscription);
+             ApiResponse<TokenRequiredResponse> localVarResponse = PreRegisterAccountsUsingPOSTWithHttpInfo(body, authorization, subscription);
              return localVarResponse.Data;
         }
 
@@ -873,13 +908,17 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of TokenRequiredResponse</returns>
-        public ApiResponse< TokenRequiredResponse > PreRegisterAccountsUsingPOSTWithHttpInfo (AccountRequest body, string subscription)
+        public ApiResponse< TokenRequiredResponse > PreRegisterAccountsUsingPOSTWithHttpInfo (AccountRequest body, string authorization, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling CuentasDeBeneficiariosSPEIApi->PreRegisterAccountsUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->PreRegisterAccountsUsingPOST");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPEIApi->PreRegisterAccountsUsingPOST");
@@ -907,6 +946,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -914,12 +954,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -945,11 +979,12 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of TokenRequiredResponse</returns>
-        public async System.Threading.Tasks.Task<TokenRequiredResponse> PreRegisterAccountsUsingPOSTAsync (AccountRequest body, string subscription)
+        public async System.Threading.Tasks.Task<TokenRequiredResponse> PreRegisterAccountsUsingPOSTAsync (AccountRequest body, string authorization, string subscription)
         {
-             ApiResponse<TokenRequiredResponse> localVarResponse = await PreRegisterAccountsUsingPOSTAsyncWithHttpInfo(body, subscription);
+             ApiResponse<TokenRequiredResponse> localVarResponse = await PreRegisterAccountsUsingPOSTAsyncWithHttpInfo(body, authorization, subscription);
              return localVarResponse.Data;
 
         }
@@ -959,13 +994,17 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> PreRegisterAccountsUsingPOSTAsyncWithHttpInfo (AccountRequest body, string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> PreRegisterAccountsUsingPOSTAsyncWithHttpInfo (AccountRequest body, string authorization, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling CuentasDeBeneficiariosSPEIApi->PreRegisterAccountsUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->PreRegisterAccountsUsingPOST");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPEIApi->PreRegisterAccountsUsingPOST");
@@ -993,6 +1032,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1000,12 +1040,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1030,23 +1064,28 @@ namespace MX.Wire4.Api
         /// Eliminación de beneficiarios SPEI® sin confirmar Elimina un conjunto de beneficiarios a registrar en la cuenta del cliente Monex relacionada a la suscripción, los beneficiarios no deben haber sido confirmados por el cliente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de los beneficiarios a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns></returns>
-        public void RemoveBeneficiariesPendingUsingDELETE (string requestId, string subscription)
+        public void RemoveBeneficiariesPendingUsingDELETE (string authorization, string requestId, string subscription)
         {
-             RemoveBeneficiariesPendingUsingDELETEWithHttpInfo(requestId, subscription);
+             RemoveBeneficiariesPendingUsingDELETEWithHttpInfo(authorization, requestId, subscription);
         }
 
         /// <summary>
         /// Eliminación de beneficiarios SPEI® sin confirmar Elimina un conjunto de beneficiarios a registrar en la cuenta del cliente Monex relacionada a la suscripción, los beneficiarios no deben haber sido confirmados por el cliente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de los beneficiarios a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> RemoveBeneficiariesPendingUsingDELETEWithHttpInfo (string requestId, string subscription)
+        public ApiResponse<Object> RemoveBeneficiariesPendingUsingDELETEWithHttpInfo (string authorization, string requestId, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->RemoveBeneficiariesPendingUsingDELETE");
             // verify the required parameter 'requestId' is set
             if (requestId == null)
                 throw new ApiException(400, "Missing required parameter 'requestId' when calling CuentasDeBeneficiariosSPEIApi->RemoveBeneficiariesPendingUsingDELETE");
@@ -1076,12 +1115,7 @@ namespace MX.Wire4.Api
 
             if (requestId != null) localVarPathParams.Add("requestId", this.Configuration.ApiClient.ParameterToString(requestId)); // path parameter
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -1105,12 +1139,13 @@ namespace MX.Wire4.Api
         /// Eliminación de beneficiarios SPEI® sin confirmar Elimina un conjunto de beneficiarios a registrar en la cuenta del cliente Monex relacionada a la suscripción, los beneficiarios no deben haber sido confirmados por el cliente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de los beneficiarios a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task RemoveBeneficiariesPendingUsingDELETEAsync (string requestId, string subscription)
+        public async System.Threading.Tasks.Task RemoveBeneficiariesPendingUsingDELETEAsync (string authorization, string requestId, string subscription)
         {
-             await RemoveBeneficiariesPendingUsingDELETEAsyncWithHttpInfo(requestId, subscription);
+             await RemoveBeneficiariesPendingUsingDELETEAsyncWithHttpInfo(authorization, requestId, subscription);
 
         }
 
@@ -1118,11 +1153,15 @@ namespace MX.Wire4.Api
         /// Eliminación de beneficiarios SPEI® sin confirmar Elimina un conjunto de beneficiarios a registrar en la cuenta del cliente Monex relacionada a la suscripción, los beneficiarios no deben haber sido confirmados por el cliente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de los beneficiarios a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveBeneficiariesPendingUsingDELETEAsyncWithHttpInfo (string requestId, string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RemoveBeneficiariesPendingUsingDELETEAsyncWithHttpInfo (string authorization, string requestId, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->RemoveBeneficiariesPendingUsingDELETE");
             // verify the required parameter 'requestId' is set
             if (requestId == null)
                 throw new ApiException(400, "Missing required parameter 'requestId' when calling CuentasDeBeneficiariosSPEIApi->RemoveBeneficiariesPendingUsingDELETE");
@@ -1152,12 +1191,7 @@ namespace MX.Wire4.Api
 
             if (requestId != null) localVarPathParams.Add("requestId", this.Configuration.ApiClient.ParameterToString(requestId)); // path parameter
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -1182,12 +1216,13 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns></returns>
-        public void UpdateAmountLimitAccountUsingPUT (AmountRequest body, string account, string subscription)
+        public void UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription)
         {
-             UpdateAmountLimitAccountUsingPUTWithHttpInfo(body, account, subscription);
+             UpdateAmountLimitAccountUsingPUTWithHttpInfo(body, authorization, account, subscription);
         }
 
         /// <summary>
@@ -1195,14 +1230,18 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateAmountLimitAccountUsingPUTWithHttpInfo (AmountRequest body, string account, string subscription)
+        public ApiResponse<Object> UpdateAmountLimitAccountUsingPUTWithHttpInfo (AmountRequest body, string authorization, string account, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling CuentasDeBeneficiariosSPEIApi->UpdateAmountLimitAccountUsingPUT");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->UpdateAmountLimitAccountUsingPUT");
             // verify the required parameter 'account' is set
             if (account == null)
                 throw new ApiException(400, "Missing required parameter 'account' when calling CuentasDeBeneficiariosSPEIApi->UpdateAmountLimitAccountUsingPUT");
@@ -1233,6 +1272,7 @@ namespace MX.Wire4.Api
 
             if (account != null) localVarPathParams.Add("account", this.Configuration.ApiClient.ParameterToString(account)); // path parameter
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1240,12 +1280,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1271,12 +1305,13 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateAmountLimitAccountUsingPUTAsync (AmountRequest body, string account, string subscription)
+        public async System.Threading.Tasks.Task UpdateAmountLimitAccountUsingPUTAsync (AmountRequest body, string authorization, string account, string subscription)
         {
-             await UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo(body, account, subscription);
+             await UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo(body, authorization, account, subscription);
 
         }
 
@@ -1285,14 +1320,18 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo (AmountRequest body, string account, string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo (AmountRequest body, string authorization, string account, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling CuentasDeBeneficiariosSPEIApi->UpdateAmountLimitAccountUsingPUT");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->UpdateAmountLimitAccountUsingPUT");
             // verify the required parameter 'account' is set
             if (account == null)
                 throw new ApiException(400, "Missing required parameter 'account' when calling CuentasDeBeneficiariosSPEIApi->UpdateAmountLimitAccountUsingPUT");
@@ -1323,6 +1362,7 @@ namespace MX.Wire4.Api
 
             if (account != null) localVarPathParams.Add("account", this.Configuration.ApiClient.ParameterToString(account)); // path parameter
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1330,12 +1370,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request

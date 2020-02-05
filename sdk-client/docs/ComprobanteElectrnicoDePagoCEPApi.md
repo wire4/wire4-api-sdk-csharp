@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 <a name="obtaintransactioncepusingpost"></a>
 # **ObtainTransactionCepUsingPOST**
-> CepResponse ObtainTransactionCepUsingPOST (CepSearchBanxico body)
+> CepResponse ObtainTransactionCepUsingPOST (CepSearchBanxico body, string authorization)
 
 Consulta de CEP
 
@@ -28,16 +28,14 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new ComprobanteElectrnicoDePagoCEPApi();
             var body = new CepSearchBanxico(); // CepSearchBanxico | Información para buscar un CEP
+            var authorization = authorization_example;  // string | Header para token
 
             try
             {
                 // Consulta de CEP
-                CepResponse result = apiInstance.ObtainTransactionCepUsingPOST(body);
+                CepResponse result = apiInstance.ObtainTransactionCepUsingPOST(body, authorization);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -54,6 +52,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**CepSearchBanxico**](CepSearchBanxico.md)| Información para buscar un CEP | 
+ **authorization** | **string**| Header para token | 
 
 ### Return type
 
@@ -61,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 

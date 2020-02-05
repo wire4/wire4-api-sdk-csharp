@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getdepositantsusingget"></a>
 # **GetDepositantsUsingGET**
-> GetDepositants GetDepositantsUsingGET (string subscription)
+> GetDepositants GetDepositantsUsingGET (string authorization, string subscription)
 
 Consulta de cuentas de depositantes
 
@@ -29,16 +29,14 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new DepositantesApi();
+            var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Consulta de cuentas de depositantes
-                GetDepositants result = apiInstance.GetDepositantsUsingGET(subscription);
+                GetDepositants result = apiInstance.GetDepositantsUsingGET(authorization, subscription);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -54,6 +52,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -62,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -72,7 +71,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="registerdepositantsusingpost"></a>
 # **RegisterDepositantsUsingPOST**
-> DepositantsResponse RegisterDepositantsUsingPOST (DepositantsRegister body, string subscription)
+> DepositantsResponse RegisterDepositantsUsingPOST (DepositantsRegister body, string authorization, string subscription)
 
 Registra un nuevo depositante
 
@@ -92,17 +91,15 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new DepositantesApi();
             var body = new DepositantsRegister(); // DepositantsRegister | Depositant info
+            var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Registra un nuevo depositante
-                DepositantsResponse result = apiInstance.RegisterDepositantsUsingPOST(body, subscription);
+                DepositantsResponse result = apiInstance.RegisterDepositantsUsingPOST(body, authorization, subscription);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -119,6 +116,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**DepositantsRegister**](DepositantsRegister.md)| Depositant info | 
+ **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -127,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getspidclassificationsusingget"></a>
 # **GetSpidClassificationsUsingGET**
-> SpidClassificationsResponseDTO GetSpidClassificationsUsingGET (string subscription)
+> SpidClassificationsResponseDTO GetSpidClassificationsUsingGET (string authorization, string subscription)
 
 Consulta las clasificaciones para operaciones con SPID
 
@@ -29,16 +29,14 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spid
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new TransferenciasSPIDApi();
+            var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Consulta las clasificaciones para operaciones con SPID
-                SpidClassificationsResponseDTO result = apiInstance.GetSpidClassificationsUsingGET(subscription);
+                SpidClassificationsResponseDTO result = apiInstance.GetSpidClassificationsUsingGET(authorization, subscription);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -54,6 +52,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -62,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spid](../README.md#wire4_aut_app_user_spid)
+No authorization required
 
 ### HTTP request headers
 
@@ -72,7 +71,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="registeroutgoingspidtransactionusingpost"></a>
 # **RegisterOutgoingSpidTransactionUsingPOST**
-> TokenRequiredResponse RegisterOutgoingSpidTransactionUsingPOST (TransactionOutgoingSpid body, string subscription)
+> TokenRequiredResponse RegisterOutgoingSpidTransactionUsingPOST (TransactionOutgoingSpid body, string authorization, string subscription)
 
 Registro de transferencias SPID
 
@@ -92,17 +91,15 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spid
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new TransferenciasSPIDApi();
             var body = new TransactionOutgoingSpid(); // TransactionOutgoingSpid | Información de las transferencias SPID de salida
+            var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Registro de transferencias SPID
-                TokenRequiredResponse result = apiInstance.RegisterOutgoingSpidTransactionUsingPOST(body, subscription);
+                TokenRequiredResponse result = apiInstance.RegisterOutgoingSpidTransactionUsingPOST(body, authorization, subscription);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -119,6 +116,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TransactionOutgoingSpid**](TransactionOutgoingSpid.md)| Información de las transferencias SPID de salida | 
+ **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -127,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spid](../README.md#wire4_aut_app_user_spid)
+No authorization required
 
 ### HTTP request headers
 

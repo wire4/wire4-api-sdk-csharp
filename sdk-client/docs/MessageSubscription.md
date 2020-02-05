@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Contract** | **string** | Contrato Monex, con el cual se suscribió el cliente Monex en Wire4 | [optional] 
+**MaskedContract** | **string** | Contrato enmascarado de Monex, con el cual se suscribió el cliente Monex en Wire4 | [optional] 
 **Subscription** | **string** | Identificador de la suscripción, el cual se utiliza en las operaciones que solicitan una suscripción | [optional] 
 **User** | **string** | Usuario enmascardo, con el cual se suscribió el cliente Monex en Wire4 | [optional] 
 **UserKey** | **string** | Usuario proporcionado por Wire4, el cual se debe utilizar para autenticar a esta suscripción | [optional] 

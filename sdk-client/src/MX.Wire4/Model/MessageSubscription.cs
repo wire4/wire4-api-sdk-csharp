@@ -33,13 +33,15 @@ namespace MX.Wire4.Model
         /// Initializes a new instance of the <see cref="MessageSubscription" /> class.
         /// </summary>
         /// <param name="contract">Contrato Monex, con el cual se suscribió el cliente Monex en Wire4.</param>
+        /// <param name="maskedContract">Contrato enmascarado de Monex, con el cual se suscribió el cliente Monex en Wire4.</param>
         /// <param name="subscription">Identificador de la suscripción, el cual se utiliza en las operaciones que solicitan una suscripción.</param>
         /// <param name="user">Usuario enmascardo, con el cual se suscribió el cliente Monex en Wire4.</param>
         /// <param name="userKey">Usuario proporcionado por Wire4, el cual se debe utilizar para autenticar a esta suscripción.</param>
         /// <param name="userSecret">Contraseña proporcionada por Wire4, la cual se debe utilizar para autenticar a esta suscripción.</param>
-        public MessageSubscription(string contract = default(string), string subscription = default(string), string user = default(string), string userKey = default(string), string userSecret = default(string))
+        public MessageSubscription(string contract = default(string), string maskedContract = default(string), string subscription = default(string), string user = default(string), string userKey = default(string), string userSecret = default(string))
         {
             this.Contract = contract;
+            this.MaskedContract = maskedContract;
             this.Subscription = subscription;
             this.User = user;
             this.UserKey = userKey;
@@ -52,6 +54,13 @@ namespace MX.Wire4.Model
         /// <value>Contrato Monex, con el cual se suscribió el cliente Monex en Wire4</value>
         [DataMember(Name="contract", EmitDefaultValue=false)]
         public string Contract { get; set; }
+
+        /// <summary>
+        /// Contrato enmascarado de Monex, con el cual se suscribió el cliente Monex en Wire4
+        /// </summary>
+        /// <value>Contrato enmascarado de Monex, con el cual se suscribió el cliente Monex en Wire4</value>
+        [DataMember(Name="masked_contract", EmitDefaultValue=false)]
+        public string MaskedContract { get; set; }
 
         /// <summary>
         /// Identificador de la suscripción, el cual se utiliza en las operaciones que solicitan una suscripción
@@ -90,6 +99,7 @@ namespace MX.Wire4.Model
             var sb = new StringBuilder();
             sb.Append("class MessageSubscription {\n");
             sb.Append("  Contract: ").Append(Contract).Append("\n");
+            sb.Append("  MaskedContract: ").Append(MaskedContract).Append("\n");
             sb.Append("  Subscription: ").Append(Subscription).Append("\n");
             sb.Append("  User: ").Append(User).Append("\n");
             sb.Append("  UserKey: ").Append(UserKey).Append("\n");
@@ -134,6 +144,11 @@ namespace MX.Wire4.Model
                     this.Contract.Equals(input.Contract))
                 ) && 
                 (
+                    this.MaskedContract == input.MaskedContract ||
+                    (this.MaskedContract != null &&
+                    this.MaskedContract.Equals(input.MaskedContract))
+                ) && 
+                (
                     this.Subscription == input.Subscription ||
                     (this.Subscription != null &&
                     this.Subscription.Equals(input.Subscription))
@@ -166,6 +181,8 @@ namespace MX.Wire4.Model
                 int hashCode = 41;
                 if (this.Contract != null)
                     hashCode = hashCode * 59 + this.Contract.GetHashCode();
+                if (this.MaskedContract != null)
+                    hashCode = hashCode * 59 + this.MaskedContract.GetHashCode();
                 if (this.Subscription != null)
                     hashCode = hashCode * 59 + this.Subscription.GetHashCode();
                 if (this.User != null)

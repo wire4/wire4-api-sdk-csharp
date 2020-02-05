@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="deleteaccountusingdelete"></a>
 # **DeleteAccountUsingDELETE**
-> void DeleteAccountUsingDELETE (string account, string subscription)
+> void DeleteAccountUsingDELETE (string authorization, string account, string subscription)
 
 Elimina la cuenta del beneficiario
 
@@ -33,17 +33,15 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new CuentasDeBeneficiariosSPEIApi();
+            var authorization = authorization_example;  // string | Header para token
             var account = account_example;  // string | La cuenta del beneciario que será eliminada
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Elimina la cuenta del beneficiario
-                apiInstance.DeleteAccountUsingDELETE(account, subscription);
+                apiInstance.DeleteAccountUsingDELETE(authorization, account, subscription);
             }
             catch (Exception e)
             {
@@ -58,6 +56,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **account** | **string**| La cuenta del beneciario que será eliminada | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
@@ -67,7 +66,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -77,7 +76,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getavailablerelationshipsmonexusingget"></a>
 # **GetAvailableRelationshipsMonexUsingGET**
-> RelationshipsResponse GetAvailableRelationshipsMonexUsingGET (string subscription)
+> RelationshipsResponse GetAvailableRelationshipsMonexUsingGET (string authorization, string subscription)
 
 Consulta de relaciones
 
@@ -97,16 +96,14 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new CuentasDeBeneficiariosSPEIApi();
+            var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | Identificador de la suscripción a esta API
 
             try
             {
                 // Consulta de relaciones
-                RelationshipsResponse result = apiInstance.GetAvailableRelationshipsMonexUsingGET(subscription);
+                RelationshipsResponse result = apiInstance.GetAvailableRelationshipsMonexUsingGET(authorization, subscription);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -122,6 +119,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **subscription** | **string**| Identificador de la suscripción a esta API | 
 
 ### Return type
@@ -130,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -140,7 +138,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getbeneficiariesforaccountusingget"></a>
 # **GetBeneficiariesForAccountUsingGET**
-> BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string subscription, string rfc = null)
+> BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string rfc = null)
 
 Consulta los beneficiarios registrados
 
@@ -160,17 +158,16 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new CuentasDeBeneficiariosSPEIApi();
+            var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
+            var account = account_example;  // string | Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional) 
             var rfc = rfc_example;  // string | RFC del beneficiario (optional) 
 
             try
             {
                 // Consulta los beneficiarios registrados
-                BeneficiariesResponse result = apiInstance.GetBeneficiariesForAccountUsingGET(subscription, rfc);
+                BeneficiariesResponse result = apiInstance.GetBeneficiariesForAccountUsingGET(authorization, subscription, account, rfc);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -186,7 +183,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
+ **account** | **string**| Cuenta del beneficiario, puede ser Clabe, TDD o Celular | [optional] 
  **rfc** | **string**| RFC del beneficiario | [optional] 
 
 ### Return type
@@ -195,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -205,7 +204,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="preregisteraccountsusingpost"></a>
 # **PreRegisterAccountsUsingPOST**
-> TokenRequiredResponse PreRegisterAccountsUsingPOST (AccountRequest body, string subscription)
+> TokenRequiredResponse PreRegisterAccountsUsingPOST (AccountRequest body, string authorization, string subscription)
 
 Pre-registro de cuentas de beneficiarios.
 
@@ -225,17 +224,15 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new CuentasDeBeneficiariosSPEIApi();
             var body = new AccountRequest(); // AccountRequest | Información de la cuenta del beneficiario
+            var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Pre-registro de cuentas de beneficiarios.
-                TokenRequiredResponse result = apiInstance.PreRegisterAccountsUsingPOST(body, subscription);
+                TokenRequiredResponse result = apiInstance.PreRegisterAccountsUsingPOST(body, authorization, subscription);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -252,6 +249,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**AccountRequest**](AccountRequest.md)| Información de la cuenta del beneficiario | 
+ **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -260,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -270,7 +268,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="removebeneficiariespendingusingdelete"></a>
 # **RemoveBeneficiariesPendingUsingDELETE**
-> void RemoveBeneficiariesPendingUsingDELETE (string requestId, string subscription)
+> void RemoveBeneficiariesPendingUsingDELETE (string authorization, string requestId, string subscription)
 
 Eliminación de beneficiarios SPEI® sin confirmar
 
@@ -290,17 +288,15 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new CuentasDeBeneficiariosSPEIApi();
+            var authorization = authorization_example;  // string | Header para token
             var requestId = requestId_example;  // string | Identificador de los beneficiarios a eliminar
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Eliminación de beneficiarios SPEI® sin confirmar
-                apiInstance.RemoveBeneficiariesPendingUsingDELETE(requestId, subscription);
+                apiInstance.RemoveBeneficiariesPendingUsingDELETE(authorization, requestId, subscription);
             }
             catch (Exception e)
             {
@@ -315,6 +311,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **requestId** | **string**| Identificador de los beneficiarios a eliminar | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
@@ -324,7 +321,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -334,7 +331,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="updateamountlimitaccountusingput"></a>
 # **UpdateAmountLimitAccountUsingPUT**
-> void UpdateAmountLimitAccountUsingPUT (AmountRequest body, string account, string subscription)
+> void UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription)
 
 Actualiza el monto límite
 
@@ -354,18 +351,16 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new CuentasDeBeneficiariosSPEIApi();
             var body = new AmountRequest(); // AmountRequest | Información de la cuenta y el monto límite a actualizar
+            var authorization = authorization_example;  // string | Header para token
             var account = account_example;  // string | Cuenta a actualizar
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Actualiza el monto límite
-                apiInstance.UpdateAmountLimitAccountUsingPUT(body, account, subscription);
+                apiInstance.UpdateAmountLimitAccountUsingPUT(body, authorization, account, subscription);
             }
             catch (Exception e)
             {
@@ -381,6 +376,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**AmountRequest**](AmountRequest.md)| Información de la cuenta y el monto límite a actualizar | 
+ **authorization** | **string**| Header para token | 
  **account** | **string**| Cuenta a actualizar | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
@@ -390,7 +386,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="billingsreportbyidusingget"></a>
 # **BillingsReportByIdUsingGET**
-> Billing BillingsReportByIdUsingGET (string id)
+> Billing BillingsReportByIdUsingGET (string authorization, string id)
 
 Consulta de facturas por identificador
 
@@ -29,16 +29,14 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new FacturasApi();
+            var authorization = authorization_example;  // string | Header para token
             var id = id_example;  // string | Identificador de la factura
 
             try
             {
                 // Consulta de facturas por identificador
-                Billing result = apiInstance.BillingsReportByIdUsingGET(id);
+                Billing result = apiInstance.BillingsReportByIdUsingGET(authorization, id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -54,6 +52,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **id** | **string**| Identificador de la factura | 
 
 ### Return type
@@ -62,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 
@@ -72,7 +71,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="billingsreportusingget"></a>
 # **BillingsReportUsingGET**
-> List<Billing> BillingsReportUsingGET (string period = null)
+> List<Billing> BillingsReportUsingGET (string authorization, string period = null)
 
 Consulta de facturas
 
@@ -92,16 +91,14 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new FacturasApi();
+            var authorization = authorization_example;  // string | Header para token
             var period = period_example;  // string | Filtro de fecha yyyy-MM (optional) 
 
             try
             {
                 // Consulta de facturas
-                List&lt;Billing&gt; result = apiInstance.BillingsReportUsingGET(period);
+                List&lt;Billing&gt; result = apiInstance.BillingsReportUsingGET(authorization, period);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -117,6 +114,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **period** | **string**| Filtro de fecha yyyy-MM | [optional] 
 
 ### Return type
@@ -125,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app](../README.md#wire4_aut_app)
+No authorization required
 
 ### HTTP request headers
 

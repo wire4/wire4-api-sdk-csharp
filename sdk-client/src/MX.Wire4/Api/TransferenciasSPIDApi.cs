@@ -30,9 +30,10 @@ namespace MX.Wire4.Api
         /// Obtiene las clasificaciones para operaciones con dólares (SPID) de Monex.&lt;br/&gt;Este recurso se debe invocar previo al realizar una operación SPID.&lt;br/&gt;Se requiere que el token de autenticación se genere con scope spid_admin.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>SpidClassificationsResponseDTO</returns>
-        SpidClassificationsResponseDTO GetSpidClassificationsUsingGET (string subscription);
+        SpidClassificationsResponseDTO GetSpidClassificationsUsingGET (string authorization, string subscription);
 
         /// <summary>
         /// Consulta las clasificaciones para operaciones con SPID
@@ -41,9 +42,10 @@ namespace MX.Wire4.Api
         /// Obtiene las clasificaciones para operaciones con dólares (SPID) de Monex.&lt;br/&gt;Este recurso se debe invocar previo al realizar una operación SPID.&lt;br/&gt;Se requiere que el token de autenticación se genere con scope spid_admin.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of SpidClassificationsResponseDTO</returns>
-        ApiResponse<SpidClassificationsResponseDTO> GetSpidClassificationsUsingGETWithHttpInfo (string subscription);
+        ApiResponse<SpidClassificationsResponseDTO> GetSpidClassificationsUsingGETWithHttpInfo (string authorization, string subscription);
         /// <summary>
         /// Registro de transferencias SPID
         /// </summary>
@@ -52,9 +54,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>TokenRequiredResponse</returns>
-        TokenRequiredResponse RegisterOutgoingSpidTransactionUsingPOST (TransactionOutgoingSpid body, string subscription);
+        TokenRequiredResponse RegisterOutgoingSpidTransactionUsingPOST (TransactionOutgoingSpid body, string authorization, string subscription);
 
         /// <summary>
         /// Registro de transferencias SPID
@@ -64,9 +67,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of TokenRequiredResponse</returns>
-        ApiResponse<TokenRequiredResponse> RegisterOutgoingSpidTransactionUsingPOSTWithHttpInfo (TransactionOutgoingSpid body, string subscription);
+        ApiResponse<TokenRequiredResponse> RegisterOutgoingSpidTransactionUsingPOSTWithHttpInfo (TransactionOutgoingSpid body, string authorization, string subscription);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -76,9 +80,10 @@ namespace MX.Wire4.Api
         /// Obtiene las clasificaciones para operaciones con dólares (SPID) de Monex.&lt;br/&gt;Este recurso se debe invocar previo al realizar una operación SPID.&lt;br/&gt;Se requiere que el token de autenticación se genere con scope spid_admin.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of SpidClassificationsResponseDTO</returns>
-        System.Threading.Tasks.Task<SpidClassificationsResponseDTO> GetSpidClassificationsUsingGETAsync (string subscription);
+        System.Threading.Tasks.Task<SpidClassificationsResponseDTO> GetSpidClassificationsUsingGETAsync (string authorization, string subscription);
 
         /// <summary>
         /// Consulta las clasificaciones para operaciones con SPID
@@ -87,9 +92,10 @@ namespace MX.Wire4.Api
         /// Obtiene las clasificaciones para operaciones con dólares (SPID) de Monex.&lt;br/&gt;Este recurso se debe invocar previo al realizar una operación SPID.&lt;br/&gt;Se requiere que el token de autenticación se genere con scope spid_admin.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (SpidClassificationsResponseDTO)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SpidClassificationsResponseDTO>> GetSpidClassificationsUsingGETAsyncWithHttpInfo (string subscription);
+        System.Threading.Tasks.Task<ApiResponse<SpidClassificationsResponseDTO>> GetSpidClassificationsUsingGETAsyncWithHttpInfo (string authorization, string subscription);
         /// <summary>
         /// Registro de transferencias SPID
         /// </summary>
@@ -98,9 +104,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of TokenRequiredResponse</returns>
-        System.Threading.Tasks.Task<TokenRequiredResponse> RegisterOutgoingSpidTransactionUsingPOSTAsync (TransactionOutgoingSpid body, string subscription);
+        System.Threading.Tasks.Task<TokenRequiredResponse> RegisterOutgoingSpidTransactionUsingPOSTAsync (TransactionOutgoingSpid body, string authorization, string subscription);
 
         /// <summary>
         /// Registro de transferencias SPID
@@ -110,9 +117,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> RegisterOutgoingSpidTransactionUsingPOSTAsyncWithHttpInfo (TransactionOutgoingSpid body, string subscription);
+        System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> RegisterOutgoingSpidTransactionUsingPOSTAsyncWithHttpInfo (TransactionOutgoingSpid body, string authorization, string subscription);
         #endregion Asynchronous Operations
     }
 
@@ -228,11 +236,12 @@ namespace MX.Wire4.Api
         /// Consulta las clasificaciones para operaciones con SPID Obtiene las clasificaciones para operaciones con dólares (SPID) de Monex.&lt;br/&gt;Este recurso se debe invocar previo al realizar una operación SPID.&lt;br/&gt;Se requiere que el token de autenticación se genere con scope spid_admin.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>SpidClassificationsResponseDTO</returns>
-        public SpidClassificationsResponseDTO GetSpidClassificationsUsingGET (string subscription)
+        public SpidClassificationsResponseDTO GetSpidClassificationsUsingGET (string authorization, string subscription)
         {
-             ApiResponse<SpidClassificationsResponseDTO> localVarResponse = GetSpidClassificationsUsingGETWithHttpInfo(subscription);
+             ApiResponse<SpidClassificationsResponseDTO> localVarResponse = GetSpidClassificationsUsingGETWithHttpInfo(authorization, subscription);
              return localVarResponse.Data;
         }
 
@@ -240,10 +249,14 @@ namespace MX.Wire4.Api
         /// Consulta las clasificaciones para operaciones con SPID Obtiene las clasificaciones para operaciones con dólares (SPID) de Monex.&lt;br/&gt;Este recurso se debe invocar previo al realizar una operación SPID.&lt;br/&gt;Se requiere que el token de autenticación se genere con scope spid_admin.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of SpidClassificationsResponseDTO</returns>
-        public ApiResponse< SpidClassificationsResponseDTO > GetSpidClassificationsUsingGETWithHttpInfo (string subscription)
+        public ApiResponse< SpidClassificationsResponseDTO > GetSpidClassificationsUsingGETWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPIDApi->GetSpidClassificationsUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPIDApi->GetSpidClassificationsUsingGET");
@@ -270,12 +283,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spid) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -299,11 +307,12 @@ namespace MX.Wire4.Api
         /// Consulta las clasificaciones para operaciones con SPID Obtiene las clasificaciones para operaciones con dólares (SPID) de Monex.&lt;br/&gt;Este recurso se debe invocar previo al realizar una operación SPID.&lt;br/&gt;Se requiere que el token de autenticación se genere con scope spid_admin.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of SpidClassificationsResponseDTO</returns>
-        public async System.Threading.Tasks.Task<SpidClassificationsResponseDTO> GetSpidClassificationsUsingGETAsync (string subscription)
+        public async System.Threading.Tasks.Task<SpidClassificationsResponseDTO> GetSpidClassificationsUsingGETAsync (string authorization, string subscription)
         {
-             ApiResponse<SpidClassificationsResponseDTO> localVarResponse = await GetSpidClassificationsUsingGETAsyncWithHttpInfo(subscription);
+             ApiResponse<SpidClassificationsResponseDTO> localVarResponse = await GetSpidClassificationsUsingGETAsyncWithHttpInfo(authorization, subscription);
              return localVarResponse.Data;
 
         }
@@ -312,10 +321,14 @@ namespace MX.Wire4.Api
         /// Consulta las clasificaciones para operaciones con SPID Obtiene las clasificaciones para operaciones con dólares (SPID) de Monex.&lt;br/&gt;Este recurso se debe invocar previo al realizar una operación SPID.&lt;br/&gt;Se requiere que el token de autenticación se genere con scope spid_admin.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (SpidClassificationsResponseDTO)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SpidClassificationsResponseDTO>> GetSpidClassificationsUsingGETAsyncWithHttpInfo (string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<SpidClassificationsResponseDTO>> GetSpidClassificationsUsingGETAsyncWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPIDApi->GetSpidClassificationsUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPIDApi->GetSpidClassificationsUsingGET");
@@ -342,12 +355,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spid) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -372,11 +380,12 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>TokenRequiredResponse</returns>
-        public TokenRequiredResponse RegisterOutgoingSpidTransactionUsingPOST (TransactionOutgoingSpid body, string subscription)
+        public TokenRequiredResponse RegisterOutgoingSpidTransactionUsingPOST (TransactionOutgoingSpid body, string authorization, string subscription)
         {
-             ApiResponse<TokenRequiredResponse> localVarResponse = RegisterOutgoingSpidTransactionUsingPOSTWithHttpInfo(body, subscription);
+             ApiResponse<TokenRequiredResponse> localVarResponse = RegisterOutgoingSpidTransactionUsingPOSTWithHttpInfo(body, authorization, subscription);
              return localVarResponse.Data;
         }
 
@@ -385,13 +394,17 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of TokenRequiredResponse</returns>
-        public ApiResponse< TokenRequiredResponse > RegisterOutgoingSpidTransactionUsingPOSTWithHttpInfo (TransactionOutgoingSpid body, string subscription)
+        public ApiResponse< TokenRequiredResponse > RegisterOutgoingSpidTransactionUsingPOSTWithHttpInfo (TransactionOutgoingSpid body, string authorization, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling TransferenciasSPIDApi->RegisterOutgoingSpidTransactionUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPIDApi->RegisterOutgoingSpidTransactionUsingPOST");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPIDApi->RegisterOutgoingSpidTransactionUsingPOST");
@@ -419,6 +432,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -426,12 +440,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app_user_spid) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -457,11 +465,12 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of TokenRequiredResponse</returns>
-        public async System.Threading.Tasks.Task<TokenRequiredResponse> RegisterOutgoingSpidTransactionUsingPOSTAsync (TransactionOutgoingSpid body, string subscription)
+        public async System.Threading.Tasks.Task<TokenRequiredResponse> RegisterOutgoingSpidTransactionUsingPOSTAsync (TransactionOutgoingSpid body, string authorization, string subscription)
         {
-             ApiResponse<TokenRequiredResponse> localVarResponse = await RegisterOutgoingSpidTransactionUsingPOSTAsyncWithHttpInfo(body, subscription);
+             ApiResponse<TokenRequiredResponse> localVarResponse = await RegisterOutgoingSpidTransactionUsingPOSTAsyncWithHttpInfo(body, authorization, subscription);
              return localVarResponse.Data;
 
         }
@@ -471,13 +480,17 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> RegisterOutgoingSpidTransactionUsingPOSTAsyncWithHttpInfo (TransactionOutgoingSpid body, string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> RegisterOutgoingSpidTransactionUsingPOSTAsyncWithHttpInfo (TransactionOutgoingSpid body, string authorization, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling TransferenciasSPIDApi->RegisterOutgoingSpidTransactionUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPIDApi->RegisterOutgoingSpidTransactionUsingPOST");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPIDApi->RegisterOutgoingSpidTransactionUsingPOST");
@@ -505,6 +518,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -512,12 +526,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app_user_spid) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request

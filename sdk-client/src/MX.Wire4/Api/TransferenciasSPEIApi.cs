@@ -30,10 +30,11 @@ namespace MX.Wire4.Api
         /// Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns></returns>
-        void DropTransactionsPendingUsingDELETE (string requestId, string subscription);
+        void DropTransactionsPendingUsingDELETE (string authorization, string requestId, string subscription);
 
         /// <summary>
         /// Eliminación de transferencias SPEI® pendientes
@@ -42,10 +43,11 @@ namespace MX.Wire4.Api
         /// Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DropTransactionsPendingUsingDELETEWithHttpInfo (string requestId, string subscription);
+        ApiResponse<Object> DropTransactionsPendingUsingDELETEWithHttpInfo (string authorization, string requestId, string subscription);
         /// <summary>
         /// Consulta de transferencias recibidas
         /// </summary>
@@ -53,9 +55,10 @@ namespace MX.Wire4.Api
         /// Realiza una consulta de las transferencias recibidas (depósitos) en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias  recibidas durante el día en el que se realiza la consulta.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>List&lt;Deposit&gt;</returns>
-        List<Deposit> IncomingSpeiTransactionsReportUsingGET (string subscription);
+        List<Deposit> IncomingSpeiTransactionsReportUsingGET (string authorization, string subscription);
 
         /// <summary>
         /// Consulta de transferencias recibidas
@@ -64,9 +67,10 @@ namespace MX.Wire4.Api
         /// Realiza una consulta de las transferencias recibidas (depósitos) en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias  recibidas durante el día en el que se realiza la consulta.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of List&lt;Deposit&gt;</returns>
-        ApiResponse<List<Deposit>> IncomingSpeiTransactionsReportUsingGETWithHttpInfo (string subscription);
+        ApiResponse<List<Deposit>> IncomingSpeiTransactionsReportUsingGETWithHttpInfo (string authorization, string subscription);
         /// <summary>
         /// Consulta de transferencias de salida por identificador de petición
         /// </summary>
@@ -74,10 +78,11 @@ namespace MX.Wire4.Api
         /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de la petición a buscar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>PaymentsRequestId</returns>
-        PaymentsRequestId OutCommingSpeiRequestIdTransactionsReportUsingGET (string requestId, string subscription);
+        PaymentsRequestId OutCommingSpeiRequestIdTransactionsReportUsingGET (string authorization, string requestId, string subscription);
 
         /// <summary>
         /// Consulta de transferencias de salida por identificador de petición
@@ -86,10 +91,11 @@ namespace MX.Wire4.Api
         /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de la petición a buscar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of PaymentsRequestId</returns>
-        ApiResponse<PaymentsRequestId> OutCommingSpeiRequestIdTransactionsReportUsingGETWithHttpInfo (string requestId, string subscription);
+        ApiResponse<PaymentsRequestId> OutCommingSpeiRequestIdTransactionsReportUsingGETWithHttpInfo (string authorization, string requestId, string subscription);
         /// <summary>
         /// Consulta de transferencias realizadas
         /// </summary>
@@ -97,10 +103,11 @@ namespace MX.Wire4.Api
         /// Consulta las transferencias realizadas en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta.&lt;br&gt;Se pueden realizar consultas por &lt;strong&gt;order_id&lt;/strong&gt; al realizar este tipo de consultas no importa el día en el que se realizó la transferencia
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="orderId">Identificador de la orden a buscar (optional)</param>
         /// <returns>List&lt;Payment&gt;</returns>
-        List<Payment> OutgoingSpeiTransactionsReportUsingGET (string subscription, string orderId = null);
+        List<Payment> OutgoingSpeiTransactionsReportUsingGET (string authorization, string subscription, string orderId = null);
 
         /// <summary>
         /// Consulta de transferencias realizadas
@@ -109,10 +116,11 @@ namespace MX.Wire4.Api
         /// Consulta las transferencias realizadas en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta.&lt;br&gt;Se pueden realizar consultas por &lt;strong&gt;order_id&lt;/strong&gt; al realizar este tipo de consultas no importa el día en el que se realizó la transferencia
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="orderId">Identificador de la orden a buscar (optional)</param>
         /// <returns>ApiResponse of List&lt;Payment&gt;</returns>
-        ApiResponse<List<Payment>> OutgoingSpeiTransactionsReportUsingGETWithHttpInfo (string subscription, string orderId = null);
+        ApiResponse<List<Payment>> OutgoingSpeiTransactionsReportUsingGETWithHttpInfo (string authorization, string subscription, string orderId = null);
         /// <summary>
         /// Registro de transferencias
         /// </summary>
@@ -121,9 +129,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPEI de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>TokenRequiredResponse</returns>
-        TokenRequiredResponse RegisterOutgoingSpeiTransactionUsingPOST (TransactionsOutgoingRegister body, string subscription);
+        TokenRequiredResponse RegisterOutgoingSpeiTransactionUsingPOST (TransactionsOutgoingRegister body, string authorization, string subscription);
 
         /// <summary>
         /// Registro de transferencias
@@ -133,9 +142,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPEI de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of TokenRequiredResponse</returns>
-        ApiResponse<TokenRequiredResponse> RegisterOutgoingSpeiTransactionUsingPOSTWithHttpInfo (TransactionsOutgoingRegister body, string subscription);
+        ApiResponse<TokenRequiredResponse> RegisterOutgoingSpeiTransactionUsingPOSTWithHttpInfo (TransactionsOutgoingRegister body, string authorization, string subscription);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -145,10 +155,11 @@ namespace MX.Wire4.Api
         /// Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DropTransactionsPendingUsingDELETEAsync (string requestId, string subscription);
+        System.Threading.Tasks.Task DropTransactionsPendingUsingDELETEAsync (string authorization, string requestId, string subscription);
 
         /// <summary>
         /// Eliminación de transferencias SPEI® pendientes
@@ -157,10 +168,11 @@ namespace MX.Wire4.Api
         /// Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DropTransactionsPendingUsingDELETEAsyncWithHttpInfo (string requestId, string subscription);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DropTransactionsPendingUsingDELETEAsyncWithHttpInfo (string authorization, string requestId, string subscription);
         /// <summary>
         /// Consulta de transferencias recibidas
         /// </summary>
@@ -168,9 +180,10 @@ namespace MX.Wire4.Api
         /// Realiza una consulta de las transferencias recibidas (depósitos) en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias  recibidas durante el día en el que se realiza la consulta.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of List&lt;Deposit&gt;</returns>
-        System.Threading.Tasks.Task<List<Deposit>> IncomingSpeiTransactionsReportUsingGETAsync (string subscription);
+        System.Threading.Tasks.Task<List<Deposit>> IncomingSpeiTransactionsReportUsingGETAsync (string authorization, string subscription);
 
         /// <summary>
         /// Consulta de transferencias recibidas
@@ -179,9 +192,10 @@ namespace MX.Wire4.Api
         /// Realiza una consulta de las transferencias recibidas (depósitos) en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias  recibidas durante el día en el que se realiza la consulta.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (List&lt;Deposit&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Deposit>>> IncomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo (string subscription);
+        System.Threading.Tasks.Task<ApiResponse<List<Deposit>>> IncomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo (string authorization, string subscription);
         /// <summary>
         /// Consulta de transferencias de salida por identificador de petición
         /// </summary>
@@ -189,10 +203,11 @@ namespace MX.Wire4.Api
         /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de la petición a buscar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of PaymentsRequestId</returns>
-        System.Threading.Tasks.Task<PaymentsRequestId> OutCommingSpeiRequestIdTransactionsReportUsingGETAsync (string requestId, string subscription);
+        System.Threading.Tasks.Task<PaymentsRequestId> OutCommingSpeiRequestIdTransactionsReportUsingGETAsync (string authorization, string requestId, string subscription);
 
         /// <summary>
         /// Consulta de transferencias de salida por identificador de petición
@@ -201,10 +216,11 @@ namespace MX.Wire4.Api
         /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de la petición a buscar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (PaymentsRequestId)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PaymentsRequestId>> OutCommingSpeiRequestIdTransactionsReportUsingGETAsyncWithHttpInfo (string requestId, string subscription);
+        System.Threading.Tasks.Task<ApiResponse<PaymentsRequestId>> OutCommingSpeiRequestIdTransactionsReportUsingGETAsyncWithHttpInfo (string authorization, string requestId, string subscription);
         /// <summary>
         /// Consulta de transferencias realizadas
         /// </summary>
@@ -212,10 +228,11 @@ namespace MX.Wire4.Api
         /// Consulta las transferencias realizadas en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta.&lt;br&gt;Se pueden realizar consultas por &lt;strong&gt;order_id&lt;/strong&gt; al realizar este tipo de consultas no importa el día en el que se realizó la transferencia
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="orderId">Identificador de la orden a buscar (optional)</param>
         /// <returns>Task of List&lt;Payment&gt;</returns>
-        System.Threading.Tasks.Task<List<Payment>> OutgoingSpeiTransactionsReportUsingGETAsync (string subscription, string orderId = null);
+        System.Threading.Tasks.Task<List<Payment>> OutgoingSpeiTransactionsReportUsingGETAsync (string authorization, string subscription, string orderId = null);
 
         /// <summary>
         /// Consulta de transferencias realizadas
@@ -224,10 +241,11 @@ namespace MX.Wire4.Api
         /// Consulta las transferencias realizadas en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta.&lt;br&gt;Se pueden realizar consultas por &lt;strong&gt;order_id&lt;/strong&gt; al realizar este tipo de consultas no importa el día en el que se realizó la transferencia
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="orderId">Identificador de la orden a buscar (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Payment&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Payment>>> OutgoingSpeiTransactionsReportUsingGETAsyncWithHttpInfo (string subscription, string orderId = null);
+        System.Threading.Tasks.Task<ApiResponse<List<Payment>>> OutgoingSpeiTransactionsReportUsingGETAsyncWithHttpInfo (string authorization, string subscription, string orderId = null);
         /// <summary>
         /// Registro de transferencias
         /// </summary>
@@ -236,9 +254,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPEI de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of TokenRequiredResponse</returns>
-        System.Threading.Tasks.Task<TokenRequiredResponse> RegisterOutgoingSpeiTransactionUsingPOSTAsync (TransactionsOutgoingRegister body, string subscription);
+        System.Threading.Tasks.Task<TokenRequiredResponse> RegisterOutgoingSpeiTransactionUsingPOSTAsync (TransactionsOutgoingRegister body, string authorization, string subscription);
 
         /// <summary>
         /// Registro de transferencias
@@ -248,9 +267,10 @@ namespace MX.Wire4.Api
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPEI de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> RegisterOutgoingSpeiTransactionUsingPOSTAsyncWithHttpInfo (TransactionsOutgoingRegister body, string subscription);
+        System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> RegisterOutgoingSpeiTransactionUsingPOSTAsyncWithHttpInfo (TransactionsOutgoingRegister body, string authorization, string subscription);
         #endregion Asynchronous Operations
     }
 
@@ -366,23 +386,28 @@ namespace MX.Wire4.Api
         /// Eliminación de transferencias SPEI® pendientes Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns></returns>
-        public void DropTransactionsPendingUsingDELETE (string requestId, string subscription)
+        public void DropTransactionsPendingUsingDELETE (string authorization, string requestId, string subscription)
         {
-             DropTransactionsPendingUsingDELETEWithHttpInfo(requestId, subscription);
+             DropTransactionsPendingUsingDELETEWithHttpInfo(authorization, requestId, subscription);
         }
 
         /// <summary>
         /// Eliminación de transferencias SPEI® pendientes Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DropTransactionsPendingUsingDELETEWithHttpInfo (string requestId, string subscription)
+        public ApiResponse<Object> DropTransactionsPendingUsingDELETEWithHttpInfo (string authorization, string requestId, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->DropTransactionsPendingUsingDELETE");
             // verify the required parameter 'requestId' is set
             if (requestId == null)
                 throw new ApiException(400, "Missing required parameter 'requestId' when calling TransferenciasSPEIApi->DropTransactionsPendingUsingDELETE");
@@ -412,12 +437,7 @@ namespace MX.Wire4.Api
 
             if (requestId != null) localVarPathParams.Add("requestId", this.Configuration.ApiClient.ParameterToString(requestId)); // path parameter
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -441,12 +461,13 @@ namespace MX.Wire4.Api
         /// Eliminación de transferencias SPEI® pendientes Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DropTransactionsPendingUsingDELETEAsync (string requestId, string subscription)
+        public async System.Threading.Tasks.Task DropTransactionsPendingUsingDELETEAsync (string authorization, string requestId, string subscription)
         {
-             await DropTransactionsPendingUsingDELETEAsyncWithHttpInfo(requestId, subscription);
+             await DropTransactionsPendingUsingDELETEAsyncWithHttpInfo(authorization, requestId, subscription);
 
         }
 
@@ -454,11 +475,15 @@ namespace MX.Wire4.Api
         /// Eliminación de transferencias SPEI® pendientes Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DropTransactionsPendingUsingDELETEAsyncWithHttpInfo (string requestId, string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DropTransactionsPendingUsingDELETEAsyncWithHttpInfo (string authorization, string requestId, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->DropTransactionsPendingUsingDELETE");
             // verify the required parameter 'requestId' is set
             if (requestId == null)
                 throw new ApiException(400, "Missing required parameter 'requestId' when calling TransferenciasSPEIApi->DropTransactionsPendingUsingDELETE");
@@ -488,12 +513,7 @@ namespace MX.Wire4.Api
 
             if (requestId != null) localVarPathParams.Add("requestId", this.Configuration.ApiClient.ParameterToString(requestId)); // path parameter
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -517,11 +537,12 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias recibidas Realiza una consulta de las transferencias recibidas (depósitos) en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias  recibidas durante el día en el que se realiza la consulta.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>List&lt;Deposit&gt;</returns>
-        public List<Deposit> IncomingSpeiTransactionsReportUsingGET (string subscription)
+        public List<Deposit> IncomingSpeiTransactionsReportUsingGET (string authorization, string subscription)
         {
-             ApiResponse<List<Deposit>> localVarResponse = IncomingSpeiTransactionsReportUsingGETWithHttpInfo(subscription);
+             ApiResponse<List<Deposit>> localVarResponse = IncomingSpeiTransactionsReportUsingGETWithHttpInfo(authorization, subscription);
              return localVarResponse.Data;
         }
 
@@ -529,10 +550,14 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias recibidas Realiza una consulta de las transferencias recibidas (depósitos) en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias  recibidas durante el día en el que se realiza la consulta.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of List&lt;Deposit&gt;</returns>
-        public ApiResponse< List<Deposit> > IncomingSpeiTransactionsReportUsingGETWithHttpInfo (string subscription)
+        public ApiResponse< List<Deposit> > IncomingSpeiTransactionsReportUsingGETWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->IncomingSpeiTransactionsReportUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->IncomingSpeiTransactionsReportUsingGET");
@@ -559,12 +584,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -588,11 +608,12 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias recibidas Realiza una consulta de las transferencias recibidas (depósitos) en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias  recibidas durante el día en el que se realiza la consulta.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of List&lt;Deposit&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Deposit>> IncomingSpeiTransactionsReportUsingGETAsync (string subscription)
+        public async System.Threading.Tasks.Task<List<Deposit>> IncomingSpeiTransactionsReportUsingGETAsync (string authorization, string subscription)
         {
-             ApiResponse<List<Deposit>> localVarResponse = await IncomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo(subscription);
+             ApiResponse<List<Deposit>> localVarResponse = await IncomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo(authorization, subscription);
              return localVarResponse.Data;
 
         }
@@ -601,10 +622,14 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias recibidas Realiza una consulta de las transferencias recibidas (depósitos) en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias  recibidas durante el día en el que se realiza la consulta.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (List&lt;Deposit&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Deposit>>> IncomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo (string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Deposit>>> IncomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo (string authorization, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->IncomingSpeiTransactionsReportUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->IncomingSpeiTransactionsReportUsingGET");
@@ -631,12 +656,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -660,12 +680,13 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de la petición a buscar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>PaymentsRequestId</returns>
-        public PaymentsRequestId OutCommingSpeiRequestIdTransactionsReportUsingGET (string requestId, string subscription)
+        public PaymentsRequestId OutCommingSpeiRequestIdTransactionsReportUsingGET (string authorization, string requestId, string subscription)
         {
-             ApiResponse<PaymentsRequestId> localVarResponse = OutCommingSpeiRequestIdTransactionsReportUsingGETWithHttpInfo(requestId, subscription);
+             ApiResponse<PaymentsRequestId> localVarResponse = OutCommingSpeiRequestIdTransactionsReportUsingGETWithHttpInfo(authorization, requestId, subscription);
              return localVarResponse.Data;
         }
 
@@ -673,11 +694,15 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de la petición a buscar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of PaymentsRequestId</returns>
-        public ApiResponse< PaymentsRequestId > OutCommingSpeiRequestIdTransactionsReportUsingGETWithHttpInfo (string requestId, string subscription)
+        public ApiResponse< PaymentsRequestId > OutCommingSpeiRequestIdTransactionsReportUsingGETWithHttpInfo (string authorization, string requestId, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->OutCommingSpeiRequestIdTransactionsReportUsingGET");
             // verify the required parameter 'requestId' is set
             if (requestId == null)
                 throw new ApiException(400, "Missing required parameter 'requestId' when calling TransferenciasSPEIApi->OutCommingSpeiRequestIdTransactionsReportUsingGET");
@@ -708,12 +733,7 @@ namespace MX.Wire4.Api
 
             if (requestId != null) localVarPathParams.Add("requestId", this.Configuration.ApiClient.ParameterToString(requestId)); // path parameter
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -737,12 +757,13 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de la petición a buscar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of PaymentsRequestId</returns>
-        public async System.Threading.Tasks.Task<PaymentsRequestId> OutCommingSpeiRequestIdTransactionsReportUsingGETAsync (string requestId, string subscription)
+        public async System.Threading.Tasks.Task<PaymentsRequestId> OutCommingSpeiRequestIdTransactionsReportUsingGETAsync (string authorization, string requestId, string subscription)
         {
-             ApiResponse<PaymentsRequestId> localVarResponse = await OutCommingSpeiRequestIdTransactionsReportUsingGETAsyncWithHttpInfo(requestId, subscription);
+             ApiResponse<PaymentsRequestId> localVarResponse = await OutCommingSpeiRequestIdTransactionsReportUsingGETAsyncWithHttpInfo(authorization, requestId, subscription);
              return localVarResponse.Data;
 
         }
@@ -751,11 +772,15 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias  de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de la petición a buscar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (PaymentsRequestId)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PaymentsRequestId>> OutCommingSpeiRequestIdTransactionsReportUsingGETAsyncWithHttpInfo (string requestId, string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<PaymentsRequestId>> OutCommingSpeiRequestIdTransactionsReportUsingGETAsyncWithHttpInfo (string authorization, string requestId, string subscription)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->OutCommingSpeiRequestIdTransactionsReportUsingGET");
             // verify the required parameter 'requestId' is set
             if (requestId == null)
                 throw new ApiException(400, "Missing required parameter 'requestId' when calling TransferenciasSPEIApi->OutCommingSpeiRequestIdTransactionsReportUsingGET");
@@ -786,12 +811,7 @@ namespace MX.Wire4.Api
 
             if (requestId != null) localVarPathParams.Add("requestId", this.Configuration.ApiClient.ParameterToString(requestId)); // path parameter
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -815,12 +835,13 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias realizadas Consulta las transferencias realizadas en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta.&lt;br&gt;Se pueden realizar consultas por &lt;strong&gt;order_id&lt;/strong&gt; al realizar este tipo de consultas no importa el día en el que se realizó la transferencia
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="orderId">Identificador de la orden a buscar (optional)</param>
         /// <returns>List&lt;Payment&gt;</returns>
-        public List<Payment> OutgoingSpeiTransactionsReportUsingGET (string subscription, string orderId = null)
+        public List<Payment> OutgoingSpeiTransactionsReportUsingGET (string authorization, string subscription, string orderId = null)
         {
-             ApiResponse<List<Payment>> localVarResponse = OutgoingSpeiTransactionsReportUsingGETWithHttpInfo(subscription, orderId);
+             ApiResponse<List<Payment>> localVarResponse = OutgoingSpeiTransactionsReportUsingGETWithHttpInfo(authorization, subscription, orderId);
              return localVarResponse.Data;
         }
 
@@ -828,11 +849,15 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias realizadas Consulta las transferencias realizadas en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta.&lt;br&gt;Se pueden realizar consultas por &lt;strong&gt;order_id&lt;/strong&gt; al realizar este tipo de consultas no importa el día en el que se realizó la transferencia
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="orderId">Identificador de la orden a buscar (optional)</param>
         /// <returns>ApiResponse of List&lt;Payment&gt;</returns>
-        public ApiResponse< List<Payment> > OutgoingSpeiTransactionsReportUsingGETWithHttpInfo (string subscription, string orderId = null)
+        public ApiResponse< List<Payment> > OutgoingSpeiTransactionsReportUsingGETWithHttpInfo (string authorization, string subscription, string orderId = null)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->OutgoingSpeiTransactionsReportUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->OutgoingSpeiTransactionsReportUsingGET");
@@ -860,12 +885,7 @@ namespace MX.Wire4.Api
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
             if (orderId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order_id", orderId)); // query parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -889,12 +909,13 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias realizadas Consulta las transferencias realizadas en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta.&lt;br&gt;Se pueden realizar consultas por &lt;strong&gt;order_id&lt;/strong&gt; al realizar este tipo de consultas no importa el día en el que se realizó la transferencia
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="orderId">Identificador de la orden a buscar (optional)</param>
         /// <returns>Task of List&lt;Payment&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Payment>> OutgoingSpeiTransactionsReportUsingGETAsync (string subscription, string orderId = null)
+        public async System.Threading.Tasks.Task<List<Payment>> OutgoingSpeiTransactionsReportUsingGETAsync (string authorization, string subscription, string orderId = null)
         {
-             ApiResponse<List<Payment>> localVarResponse = await OutgoingSpeiTransactionsReportUsingGETAsyncWithHttpInfo(subscription, orderId);
+             ApiResponse<List<Payment>> localVarResponse = await OutgoingSpeiTransactionsReportUsingGETAsyncWithHttpInfo(authorization, subscription, orderId);
              return localVarResponse.Data;
 
         }
@@ -903,11 +924,15 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias realizadas Consulta las transferencias realizadas en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta.&lt;br&gt;Se pueden realizar consultas por &lt;strong&gt;order_id&lt;/strong&gt; al realizar este tipo de consultas no importa el día en el que se realizó la transferencia
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="orderId">Identificador de la orden a buscar (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Payment&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Payment>>> OutgoingSpeiTransactionsReportUsingGETAsyncWithHttpInfo (string subscription, string orderId = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Payment>>> OutgoingSpeiTransactionsReportUsingGETAsyncWithHttpInfo (string authorization, string subscription, string orderId = null)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->OutgoingSpeiTransactionsReportUsingGET");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->OutgoingSpeiTransactionsReportUsingGET");
@@ -935,12 +960,7 @@ namespace MX.Wire4.Api
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
             if (orderId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order_id", orderId)); // query parameter
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -965,11 +985,12 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPEI de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>TokenRequiredResponse</returns>
-        public TokenRequiredResponse RegisterOutgoingSpeiTransactionUsingPOST (TransactionsOutgoingRegister body, string subscription)
+        public TokenRequiredResponse RegisterOutgoingSpeiTransactionUsingPOST (TransactionsOutgoingRegister body, string authorization, string subscription)
         {
-             ApiResponse<TokenRequiredResponse> localVarResponse = RegisterOutgoingSpeiTransactionUsingPOSTWithHttpInfo(body, subscription);
+             ApiResponse<TokenRequiredResponse> localVarResponse = RegisterOutgoingSpeiTransactionUsingPOSTWithHttpInfo(body, authorization, subscription);
              return localVarResponse.Data;
         }
 
@@ -978,13 +999,17 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPEI de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>ApiResponse of TokenRequiredResponse</returns>
-        public ApiResponse< TokenRequiredResponse > RegisterOutgoingSpeiTransactionUsingPOSTWithHttpInfo (TransactionsOutgoingRegister body, string subscription)
+        public ApiResponse< TokenRequiredResponse > RegisterOutgoingSpeiTransactionUsingPOSTWithHttpInfo (TransactionsOutgoingRegister body, string authorization, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling TransferenciasSPEIApi->RegisterOutgoingSpeiTransactionUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->RegisterOutgoingSpeiTransactionUsingPOST");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->RegisterOutgoingSpeiTransactionUsingPOST");
@@ -1012,6 +1037,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1019,12 +1045,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1050,11 +1070,12 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPEI de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of TokenRequiredResponse</returns>
-        public async System.Threading.Tasks.Task<TokenRequiredResponse> RegisterOutgoingSpeiTransactionUsingPOSTAsync (TransactionsOutgoingRegister body, string subscription)
+        public async System.Threading.Tasks.Task<TokenRequiredResponse> RegisterOutgoingSpeiTransactionUsingPOSTAsync (TransactionsOutgoingRegister body, string authorization, string subscription)
         {
-             ApiResponse<TokenRequiredResponse> localVarResponse = await RegisterOutgoingSpeiTransactionUsingPOSTAsyncWithHttpInfo(body, subscription);
+             ApiResponse<TokenRequiredResponse> localVarResponse = await RegisterOutgoingSpeiTransactionUsingPOSTAsyncWithHttpInfo(body, authorization, subscription);
              return localVarResponse.Data;
 
         }
@@ -1064,13 +1085,17 @@ namespace MX.Wire4.Api
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de las transferencias SPEI de salida</param>
+        /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> RegisterOutgoingSpeiTransactionUsingPOSTAsyncWithHttpInfo (TransactionsOutgoingRegister body, string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> RegisterOutgoingSpeiTransactionUsingPOSTAsyncWithHttpInfo (TransactionsOutgoingRegister body, string authorization, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling TransferenciasSPEIApi->RegisterOutgoingSpeiTransactionUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->RegisterOutgoingSpeiTransactionUsingPOST");
             // verify the required parameter 'subscription' is set
             if (subscription == null)
                 throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->RegisterOutgoingSpeiTransactionUsingPOST");
@@ -1098,6 +1123,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1105,12 +1131,6 @@ namespace MX.Wire4.Api
             else
             {
                 localVarPostBody = body; // byte array
-            }
-            // authentication (wire4_aut_app_user_spei) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request

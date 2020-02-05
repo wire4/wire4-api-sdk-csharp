@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 <a name="getbalanceusingget"></a>
 # **GetBalanceUsingGET**
-> BalanceListResponse GetBalanceUsingGET (string subscription)
+> BalanceListResponse GetBalanceUsingGET (string authorization, string subscription)
 
 Consulta los saldo de una cuenta
 
@@ -28,16 +28,14 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new SaldoApi();
+            var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
 
             try
             {
                 // Consulta los saldo de una cuenta
-                BalanceListResponse result = apiInstance.GetBalanceUsingGET(subscription);
+                BalanceListResponse result = apiInstance.GetBalanceUsingGET(authorization, subscription);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -53,6 +51,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
 
 ### Return type
@@ -61,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 

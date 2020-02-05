@@ -30,9 +30,10 @@ namespace MX.Wire4.Api
         /// Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Se debe especificar el identificador de la factura
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador de la factura</param>
         /// <returns>Billing</returns>
-        Billing BillingsReportByIdUsingGET (string id);
+        Billing BillingsReportByIdUsingGET (string authorization, string id);
 
         /// <summary>
         /// Consulta de facturas por identificador
@@ -41,9 +42,10 @@ namespace MX.Wire4.Api
         /// Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Se debe especificar el identificador de la factura
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador de la factura</param>
         /// <returns>ApiResponse of Billing</returns>
-        ApiResponse<Billing> BillingsReportByIdUsingGETWithHttpInfo (string id);
+        ApiResponse<Billing> BillingsReportByIdUsingGETWithHttpInfo (string authorization, string id);
         /// <summary>
         /// Consulta de facturas
         /// </summary>
@@ -51,9 +53,10 @@ namespace MX.Wire4.Api
         /// Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Es posible filtrar por periodo de fecha yyyy-MM, por ejemplo 2019-11
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="period">Filtro de fecha yyyy-MM (optional)</param>
         /// <returns>List&lt;Billing&gt;</returns>
-        List<Billing> BillingsReportUsingGET (string period = null);
+        List<Billing> BillingsReportUsingGET (string authorization, string period = null);
 
         /// <summary>
         /// Consulta de facturas
@@ -62,9 +65,10 @@ namespace MX.Wire4.Api
         /// Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Es posible filtrar por periodo de fecha yyyy-MM, por ejemplo 2019-11
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="period">Filtro de fecha yyyy-MM (optional)</param>
         /// <returns>ApiResponse of List&lt;Billing&gt;</returns>
-        ApiResponse<List<Billing>> BillingsReportUsingGETWithHttpInfo (string period = null);
+        ApiResponse<List<Billing>> BillingsReportUsingGETWithHttpInfo (string authorization, string period = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -74,9 +78,10 @@ namespace MX.Wire4.Api
         /// Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Se debe especificar el identificador de la factura
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador de la factura</param>
         /// <returns>Task of Billing</returns>
-        System.Threading.Tasks.Task<Billing> BillingsReportByIdUsingGETAsync (string id);
+        System.Threading.Tasks.Task<Billing> BillingsReportByIdUsingGETAsync (string authorization, string id);
 
         /// <summary>
         /// Consulta de facturas por identificador
@@ -85,9 +90,10 @@ namespace MX.Wire4.Api
         /// Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Se debe especificar el identificador de la factura
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador de la factura</param>
         /// <returns>Task of ApiResponse (Billing)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Billing>> BillingsReportByIdUsingGETAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Billing>> BillingsReportByIdUsingGETAsyncWithHttpInfo (string authorization, string id);
         /// <summary>
         /// Consulta de facturas
         /// </summary>
@@ -95,9 +101,10 @@ namespace MX.Wire4.Api
         /// Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Es posible filtrar por periodo de fecha yyyy-MM, por ejemplo 2019-11
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="period">Filtro de fecha yyyy-MM (optional)</param>
         /// <returns>Task of List&lt;Billing&gt;</returns>
-        System.Threading.Tasks.Task<List<Billing>> BillingsReportUsingGETAsync (string period = null);
+        System.Threading.Tasks.Task<List<Billing>> BillingsReportUsingGETAsync (string authorization, string period = null);
 
         /// <summary>
         /// Consulta de facturas
@@ -106,9 +113,10 @@ namespace MX.Wire4.Api
         /// Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Es posible filtrar por periodo de fecha yyyy-MM, por ejemplo 2019-11
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="period">Filtro de fecha yyyy-MM (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Billing&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Billing>>> BillingsReportUsingGETAsyncWithHttpInfo (string period = null);
+        System.Threading.Tasks.Task<ApiResponse<List<Billing>>> BillingsReportUsingGETAsyncWithHttpInfo (string authorization, string period = null);
         #endregion Asynchronous Operations
     }
 
@@ -224,11 +232,12 @@ namespace MX.Wire4.Api
         /// Consulta de facturas por identificador Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Se debe especificar el identificador de la factura
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador de la factura</param>
         /// <returns>Billing</returns>
-        public Billing BillingsReportByIdUsingGET (string id)
+        public Billing BillingsReportByIdUsingGET (string authorization, string id)
         {
-             ApiResponse<Billing> localVarResponse = BillingsReportByIdUsingGETWithHttpInfo(id);
+             ApiResponse<Billing> localVarResponse = BillingsReportByIdUsingGETWithHttpInfo(authorization, id);
              return localVarResponse.Data;
         }
 
@@ -236,10 +245,14 @@ namespace MX.Wire4.Api
         /// Consulta de facturas por identificador Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Se debe especificar el identificador de la factura
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador de la factura</param>
         /// <returns>ApiResponse of Billing</returns>
-        public ApiResponse< Billing > BillingsReportByIdUsingGETWithHttpInfo (string id)
+        public ApiResponse< Billing > BillingsReportByIdUsingGETWithHttpInfo (string authorization, string id)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling FacturasApi->BillingsReportByIdUsingGET");
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling FacturasApi->BillingsReportByIdUsingGET");
@@ -266,12 +279,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -295,11 +303,12 @@ namespace MX.Wire4.Api
         /// Consulta de facturas por identificador Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Se debe especificar el identificador de la factura
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador de la factura</param>
         /// <returns>Task of Billing</returns>
-        public async System.Threading.Tasks.Task<Billing> BillingsReportByIdUsingGETAsync (string id)
+        public async System.Threading.Tasks.Task<Billing> BillingsReportByIdUsingGETAsync (string authorization, string id)
         {
-             ApiResponse<Billing> localVarResponse = await BillingsReportByIdUsingGETAsyncWithHttpInfo(id);
+             ApiResponse<Billing> localVarResponse = await BillingsReportByIdUsingGETAsyncWithHttpInfo(authorization, id);
              return localVarResponse.Data;
 
         }
@@ -308,10 +317,14 @@ namespace MX.Wire4.Api
         /// Consulta de facturas por identificador Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Se debe especificar el identificador de la factura
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="id">Identificador de la factura</param>
         /// <returns>Task of ApiResponse (Billing)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Billing>> BillingsReportByIdUsingGETAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Billing>> BillingsReportByIdUsingGETAsyncWithHttpInfo (string authorization, string id)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling FacturasApi->BillingsReportByIdUsingGET");
             // verify the required parameter 'id' is set
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling FacturasApi->BillingsReportByIdUsingGET");
@@ -338,12 +351,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -367,11 +375,12 @@ namespace MX.Wire4.Api
         /// Consulta de facturas Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Es posible filtrar por periodo de fecha yyyy-MM, por ejemplo 2019-11
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="period">Filtro de fecha yyyy-MM (optional)</param>
         /// <returns>List&lt;Billing&gt;</returns>
-        public List<Billing> BillingsReportUsingGET (string period = null)
+        public List<Billing> BillingsReportUsingGET (string authorization, string period = null)
         {
-             ApiResponse<List<Billing>> localVarResponse = BillingsReportUsingGETWithHttpInfo(period);
+             ApiResponse<List<Billing>> localVarResponse = BillingsReportUsingGETWithHttpInfo(authorization, period);
              return localVarResponse.Data;
         }
 
@@ -379,10 +388,14 @@ namespace MX.Wire4.Api
         /// Consulta de facturas Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Es posible filtrar por periodo de fecha yyyy-MM, por ejemplo 2019-11
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="period">Filtro de fecha yyyy-MM (optional)</param>
         /// <returns>ApiResponse of List&lt;Billing&gt;</returns>
-        public ApiResponse< List<Billing> > BillingsReportUsingGETWithHttpInfo (string period = null)
+        public ApiResponse< List<Billing> > BillingsReportUsingGETWithHttpInfo (string authorization, string period = null)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling FacturasApi->BillingsReportUsingGET");
 
             var localVarPath = "/billings";
             var localVarPathParams = new Dictionary<String, String>();
@@ -406,12 +419,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (period != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "period", period)); // query parameter
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -435,11 +443,12 @@ namespace MX.Wire4.Api
         /// Consulta de facturas Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Es posible filtrar por periodo de fecha yyyy-MM, por ejemplo 2019-11
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="period">Filtro de fecha yyyy-MM (optional)</param>
         /// <returns>Task of List&lt;Billing&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Billing>> BillingsReportUsingGETAsync (string period = null)
+        public async System.Threading.Tasks.Task<List<Billing>> BillingsReportUsingGETAsync (string authorization, string period = null)
         {
-             ApiResponse<List<Billing>> localVarResponse = await BillingsReportUsingGETAsyncWithHttpInfo(period);
+             ApiResponse<List<Billing>> localVarResponse = await BillingsReportUsingGETAsyncWithHttpInfo(authorization, period);
              return localVarResponse.Data;
 
         }
@@ -448,10 +457,14 @@ namespace MX.Wire4.Api
         /// Consulta de facturas Consulta las facturas emitidas por conceptos de uso de la plataforma y operaciones realizadas tanto de entrada como de salida. Es posible filtrar por periodo de fecha yyyy-MM, por ejemplo 2019-11
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
         /// <param name="period">Filtro de fecha yyyy-MM (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Billing&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Billing>>> BillingsReportUsingGETAsyncWithHttpInfo (string period = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Billing>>> BillingsReportUsingGETAsyncWithHttpInfo (string authorization, string period = null)
         {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling FacturasApi->BillingsReportUsingGET");
 
             var localVarPath = "/billings";
             var localVarPathParams = new Dictionary<String, String>();
@@ -475,12 +488,7 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (period != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "period", period)); // query parameter
-            // authentication (wire4_aut_app) required
-            // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,

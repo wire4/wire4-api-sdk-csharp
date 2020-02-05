@@ -69,16 +69,14 @@ namespace Example
     {
         public void main()
         {
-            // Configure OAuth2 access token for authorization: wire4_aut_app
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new ComprobanteElectrnicoDePagoCEPApi();
             var body = new CepSearchBanxico(); // CepSearchBanxico | Información para buscar un CEP
+            var authorization = authorization_example;  // string | Header para token
 
             try
             {
                 // Consulta de CEP
-                CepResponse result = apiInstance.ObtainTransactionCepUsingPOST(body);
+                CepResponse result = apiInstance.ObtainTransactionCepUsingPOST(body, authorization);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -105,6 +103,7 @@ Class | Method | HTTP request | Description
 *CuentasDeBeneficiariosSPEIApi* | [**PreRegisterAccountsUsingPOST**](docs/CuentasDeBeneficiariosSPEIApi.md#preregisteraccountsusingpost) | **POST** /subscriptions/{subscription}/beneficiaries/spei | Pre-registro de cuentas de beneficiarios.
 *CuentasDeBeneficiariosSPEIApi* | [**RemoveBeneficiariesPendingUsingDELETE**](docs/CuentasDeBeneficiariosSPEIApi.md#removebeneficiariespendingusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/request/{requestId} | Eliminación de beneficiarios SPEI® sin confirmar
 *CuentasDeBeneficiariosSPEIApi* | [**UpdateAmountLimitAccountUsingPUT**](docs/CuentasDeBeneficiariosSPEIApi.md#updateamountlimitaccountusingput) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Actualiza el monto límite
+*CuentasDeBeneficiariosSPIDApi* | [**GetSpidBeneficiariesForAccount**](docs/CuentasDeBeneficiariosSPIDApi.md#getspidbeneficiariesforaccount) | **GET** /subscriptions/{subscription}/beneficiaries/spid | Consulta los beneficiarios SPID registrados
 *CuentasDeBeneficiariosSPIDApi* | [**PreRegisterAccountsUsingPOST1**](docs/CuentasDeBeneficiariosSPIDApi.md#preregisteraccountsusingpost1) | **POST** /subscriptions/{subscription}/beneficiaries/spid | Pre-registro de cuentas de beneficiarios SPID
 *DepositantesApi* | [**GetDepositantsUsingGET**](docs/DepositantesApi.md#getdepositantsusingget) | **GET** /subscriptions/{subscription}/depositants | Consulta de cuentas de depositantes
 *DepositantesApi* | [**RegisterDepositantsUsingPOST**](docs/DepositantesApi.md#registerdepositantsusingpost) | **POST** /subscriptions/{subscription}/depositants | Registra un nuevo depositante
@@ -165,6 +164,8 @@ Class | Method | HTTP request | Description
  - [Model.PreEnrollmentResponse](docs/PreEnrollmentResponse.md)
  - [Model.Relationship](docs/Relationship.md)
  - [Model.RelationshipsResponse](docs/RelationshipsResponse.md)
+ - [Model.SpidBeneficiariesResponse](docs/SpidBeneficiariesResponse.md)
+ - [Model.SpidBeneficiaryResponse](docs/SpidBeneficiaryResponse.md)
  - [Model.SpidClassificationDTO](docs/SpidClassificationDTO.md)
  - [Model.SpidClassificationsResponseDTO](docs/SpidClassificationsResponseDTO.md)
  - [Model.Timestamp](docs/Timestamp.md)
@@ -179,30 +180,4 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
-<a name="wire4_aut_app"></a>
-### wire4_aut_app
-
-- **Type**: OAuth
-- **Flow**: application
-- **Authorization URL**: 
-- **Scopes**: 
-  - : 
-
-<a name="wire4_aut_app_user_spei"></a>
-### wire4_aut_app_user_spei
-
-- **Type**: OAuth
-- **Flow**: password
-- **Authorization URL**: 
-- **Scopes**: 
-  - : 
-
-<a name="wire4_aut_app_user_spid"></a>
-### wire4_aut_app_user_spid
-
-- **Type**: OAuth
-- **Flow**: password
-- **Authorization URL**: 
-- **Scopes**: 
-  - : 
-
+All endpoints do not require authorization.
