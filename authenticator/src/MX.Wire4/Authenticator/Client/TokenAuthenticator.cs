@@ -13,9 +13,11 @@ namespace MX.Wire4.Authenticator.Client
 	{
 
 		private RestRequest restRequest;
+
 		private RestClient restClient;
 
 		private readonly string ApplicationTokenTemplate = "grant_type={0}&scope={1}";
+
 		private readonly string UserTokenTemplate = "grant_type={0}&scope={1}&username={2}&password={3}";
 
 		private EnvironmentType environment;
@@ -45,33 +47,38 @@ namespace MX.Wire4.Authenticator.Client
 		/// </summary>
 		/// <param name="request">Object thar includes all information for the token</param>
 		/// <returns>return the token data </returns>
-		public TokenResponse GetApplicationToken(TokenRequest request)
+		public string GetApplicationToken(TokenRequest request)
 		{
 
-			return GetToken(request.ClientKey, request.ClientSecret,
-				string.Format(ApplicationTokenTemplate, GrantType.ClientCredentials.GrantTypeName, ScopeType.General.ScopeName));
+			return FormatToHeader(GetToken(request.ClientKey, request.ClientSecret,
+				string.Format(ApplicationTokenTemplate, GrantType.ClientCredentials.GrantTypeName, ScopeType.General.ScopeName)).AccessToken);
 		}
 		/// <summary>
 		/// Method that request an Application User Token for Spei Operations
 		/// </summary>
 		/// <param name="request">Object thar includes all information for the token</param>
 		/// <returns>return the token data </returns>
-		public TokenResponse GetApplicationUserToken(TokenRequest request)
+		public string GetApplicationUserToken(TokenRequest request)
 		{
 
-			return GetToken(request.ClientKey, request.ClientSecret,
-				string.Format(UserTokenTemplate, GrantType.Password.GrantTypeName, ScopeType.SpeiAdmin.ScopeName, request.UserKey, request.UserSecret));
+			return FormatToHeader(GetToken(request.ClientKey, request.ClientSecret,
+				string.Format(UserTokenTemplate, GrantType.Password.GrantTypeName, ScopeType.SpeiAdmin.ScopeName, request.UserKey, request.UserSecret)).AccessToken);
 		}
 		/// <summary>
 		/// Method that request an Application User Token for Spid Operations
 		/// </summary>
 		/// <param name="request">Object thar includes all information for the token</param>
 		/// <returns>return the token data </returns>
-		public TokenResponse GetApplicationUserTokenSpid(TokenRequest request)
+		public string GetApplicationUserTokenSpid(TokenRequest request)
 		{
 
-			return GetToken(request.ClientKey, request.ClientSecret,
-				string.Format(UserTokenTemplate, GrantType.Password.GrantTypeName, ScopeType.SpidAdmin.ScopeName, request.UserKey, request.UserSecret));
+			return FormatToHeader(GetToken(request.ClientKey, request.ClientSecret,
+				string.Format(UserTokenTemplate, GrantType.Password.GrantTypeName, ScopeType.SpidAdmin.ScopeName, request.UserKey, request.UserSecret)).AccessToken);
+		}
+
+		private string FormatToHeader(string token)
+		{
+			return "Bearer " + token;
 		}
 
 		/// <summary>

@@ -19,7 +19,5 @@ namespace MX.Wire4.Authenticator.Model
 
         [JsonProperty("expires_in")]
         public int ExpiresIn { get; set; }
-
     }
-    
 }

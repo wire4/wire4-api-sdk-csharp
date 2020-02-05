@@ -7,6 +7,7 @@ namespace MX.Wire4.Authenticator.Client
     internal class ApiException : Exception
     {
         private int code;
+
         private string message;
 
         public ApiException()
