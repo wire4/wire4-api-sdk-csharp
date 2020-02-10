@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace MX.Wire4.Authenticator.Model
 {
@@ -13,7 +12,5 @@ namespace MX.Wire4.Authenticator.Model
         public string UserSecret { get; set; }
         public string Authentication  { get; set; }
         public string Scope { get; set; }
-
-
     }
 }

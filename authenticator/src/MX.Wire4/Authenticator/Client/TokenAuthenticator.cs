@@ -1,5 +1,7 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using MX.Wire4.Authenticator.Model;
+using MX.Wire4.Authenticator.Core;
 using MX.Wire4.Client;
 using Newtonsoft.Json;
 using RestSharp;
@@ -11,17 +13,17 @@ namespace MX.Wire4.Authenticator.Client
     /// </summary>
     public class TokenAuthenticator : IAuthenticator
 	{
+		private static readonly string APPLICATION_TOKEN_TEMPLATE = "grant_type={0}&scope={1}";
+
+		private static readonly string USER_TOKEN_TEMPLATE = "grant_type={0}&scope={1}&username={2}&password={3}";
 
 		private RestRequest restRequest;
 
 		private RestClient restClient;
 
-		private readonly string ApplicationTokenTemplate = "grant_type={0}&scope={1}";
-
-		private readonly string UserTokenTemplate = "grant_type={0}&scope={1}&username={2}&password={3}";
-
 		private EnvironmentType environment;
 
+		private LRUCache<string, CachedToken> tokensCached;
 
 		/// <summary>
 		/// Initialization of authenticator helper that receive the configuration and a environment
@@ -29,18 +31,20 @@ namespace MX.Wire4.Authenticator.Client
 		/// <param name="env">Environment for the authenticator </param>
 		public TokenAuthenticator(EnvironmentType env)
 		{
-            
-			//configuration = config;
-			environment = env;
-            Configuration.Default.BasePath = environment.BasePath + environment.ServiceUrl;
 
-            this.restClient = new RestClient(environment.BasePath);
-            restRequest = new RestRequest
+			//configuration = config;
+			this.environment = env;
+            Configuration.Default.BasePath = this.environment.BasePath + this.environment.ServiceUrl;
+
+            this.restClient = new RestClient(this.environment.BasePath);
+			this.restRequest = new RestRequest
 			{
 				Timeout = 30000,
 				Method = Method.POST,
 				Resource = environment.TokenUrl
 			};
+
+			this.tokensCached = new LRUCache<string, CachedToken>(100);
 		}
 		/// <summary>
 		/// Method that request an Application Token
@@ -49,9 +53,24 @@ namespace MX.Wire4.Authenticator.Client
 		/// <returns>return the token data </returns>
 		public string GetApplicationToken(TokenRequest request)
 		{
+            string keySearch = request.ClientKey + ScopeType.General.ScopeName;
+            CachedToken cachedToken = GetCachedToken(keySearch);
+            
+            string bearer;
+            if (cachedToken != null)
+            {
+                bearer = FormatToHeader(cachedToken.GetToken().AccessToken);
+            }
+            else
+            {
+				TokenResponse tokenResponse = GetToken(request.ClientKey, request.ClientSecret, string.Format(
+					APPLICATION_TOKEN_TEMPLATE, GrantType.ClientCredentials.GrantTypeName, ScopeType.General.ScopeName));
 
-			return FormatToHeader(GetToken(request.ClientKey, request.ClientSecret,
-				string.Format(ApplicationTokenTemplate, GrantType.ClientCredentials.GrantTypeName, ScopeType.General.ScopeName)).AccessToken);
+				this.tokensCached.Add(keySearch, new CachedToken(null, null, tokenResponse));
+                bearer = FormatToHeader(tokenResponse.AccessToken);
+            }
+
+            return bearer;
 		}
 		/// <summary>
 		/// Method that request an Application User Token for Spei Operations
@@ -61,8 +80,24 @@ namespace MX.Wire4.Authenticator.Client
 		public string GetApplicationUserToken(TokenRequest request)
 		{
 
-			return FormatToHeader(GetToken(request.ClientKey, request.ClientSecret,
-				string.Format(UserTokenTemplate, GrantType.Password.GrantTypeName, ScopeType.SpeiAdmin.ScopeName, request.UserKey, request.UserSecret)).AccessToken);
+			string keySearch = request.UserKey + ScopeType.SpeiAdmin.ScopeName;
+			CachedToken cachedToken = GetCachedToken(keySearch);
+
+			string bearer;
+			if (cachedToken != null)
+			{
+				bearer = FormatToHeader(cachedToken.GetToken().AccessToken);
+			}
+			else
+			{
+				TokenResponse tokenResponse = GetToken(request.ClientKey, request.ClientSecret, string.Format(
+                    USER_TOKEN_TEMPLATE, GrantType.Password.GrantTypeName, ScopeType.SpeiAdmin.ScopeName, request.UserKey, request.UserSecret));
+
+				this.tokensCached.Add(keySearch, new CachedToken(request.UserKey, request.UserSecret, tokenResponse));
+				bearer = FormatToHeader(tokenResponse.AccessToken);
+			}
+
+			return bearer;
 		}
 		/// <summary>
 		/// Method that request an Application User Token for Spid Operations
@@ -72,12 +107,45 @@ namespace MX.Wire4.Authenticator.Client
 		public string GetApplicationUserTokenSpid(TokenRequest request)
 		{
 
-			return FormatToHeader(GetToken(request.ClientKey, request.ClientSecret,
-				string.Format(UserTokenTemplate, GrantType.Password.GrantTypeName, ScopeType.SpidAdmin.ScopeName, request.UserKey, request.UserSecret)).AccessToken);
+			string keySearch = request.UserKey + ScopeType.SpidAdmin.ScopeName;
+			CachedToken cachedToken = GetCachedToken(keySearch);
+
+			string bearer;
+			if (cachedToken != null)
+			{
+				bearer = FormatToHeader(cachedToken.GetToken().AccessToken);
+			}
+			else
+			{
+
+				TokenResponse tokenResponse = GetToken(request.ClientKey, request.ClientSecret, string.Format(
+                    USER_TOKEN_TEMPLATE, GrantType.Password.GrantTypeName, ScopeType.SpidAdmin.ScopeName, request.UserKey, request.UserSecret));
+
+				this.tokensCached.Add(keySearch, new CachedToken(request.UserKey, request.UserSecret, tokenResponse));
+				bearer = FormatToHeader(tokenResponse.AccessToken);
+			}
+
+			return bearer;
+		}
+
+        private CachedToken GetCachedToken(string keySearch)
+        {
+			CachedToken cachedToken;
+			if (this.tokensCached.TryGetValue(keySearch, out cachedToken))
+			{
+				if (cachedToken == null || cachedToken.GetToken() == null ||
+                    DateTime.Compare(cachedToken.GetToken().ExpirationDate, DateTime.Now.AddSeconds(5 * 60 * -1)) < 0)
+                {
+					cachedToken = null;
+                }
+			}
+
+			return cachedToken;
 		}
 
 		private string FormatToHeader(string token)
 		{
+
 			return "Bearer " + token;
 		}
 
@@ -100,12 +168,65 @@ namespace MX.Wire4.Authenticator.Client
                 restRequest.AddParameter("application/x-www-form-urlencoded", tokenTemplate, ParameterType.RequestBody);
 
                 IRestResponse response = restClient.Execute(restRequest);
-                return JsonConvert.DeserializeObject<TokenResponse>(response.Content);
+				TokenResponse tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(response.Content);
+
+				tokenResponse.ExpirationDate = DateTime.Now.AddSeconds(tokenResponse.ExpiresIn);
+
+				return tokenResponse;
 			}
 			catch (System.Exception ex)
 			{
 				throw new ApiException((int)HttpStatusCode.ExpectationFailed, "An error happened while token was requested, :: " + ex.Message);
 			}
+		}
+
+		/// <summary>
+		/// Method that regenerate an Application Token
+		/// </summary>
+		/// <param name="request">Object thar includes all information for the token</param>
+		/// <returns>return the token data </returns>
+		public string RegenerateApplicationToken(TokenRequest request)
+		{
+			string keySearch = request.ClientKey + ScopeType.General.ScopeName;
+
+			TokenResponse tokenResponse = GetToken(request.ClientKey, request.ClientSecret, string.Format(
+					APPLICATION_TOKEN_TEMPLATE, GrantType.ClientCredentials.GrantTypeName, ScopeType.General.ScopeName));
+
+			this.tokensCached.Add(keySearch, new CachedToken(null, null, tokenResponse));
+
+			return FormatToHeader(tokenResponse.AccessToken);
+		}
+		/// <summary>
+		/// Method that regenerate an Application User Token for Spei Operations
+		/// </summary>
+		/// <param name="request">Object thar includes all information for the token</param>
+		/// <returns>return the token data </returns>
+		public string RegenerateApplicationUserToken(TokenRequest request)
+		{
+			string keySearch = request.UserKey + ScopeType.SpeiAdmin.ScopeName;
+
+			TokenResponse tokenResponse = GetToken(request.ClientKey, request.ClientSecret, string.Format(
+					USER_TOKEN_TEMPLATE, GrantType.Password.GrantTypeName, ScopeType.SpeiAdmin.ScopeName, request.UserKey, request.UserSecret));
+
+			this.tokensCached.Add(keySearch, new CachedToken(request.UserKey, request.UserSecret, tokenResponse));
+
+			return FormatToHeader(tokenResponse.AccessToken);
+		}
+		/// <summary>
+		/// Method that regenerate an Application User Token for Spid Operations
+		/// </summary>
+		/// <param name="request">Object thar includes all information for the token</param>
+		/// <returns>return the token data </returns>
+		public string RegenerateApplicationUserTokenSpid(TokenRequest request)
+		{
+			string keySearch = request.UserKey + ScopeType.SpidAdmin.ScopeName;
+
+			TokenResponse tokenResponse = GetToken(request.ClientKey, request.ClientSecret, string.Format(
+					USER_TOKEN_TEMPLATE, GrantType.Password.GrantTypeName, ScopeType.SpidAdmin.ScopeName, request.UserKey, request.UserSecret));
+
+			this.tokensCached.Add(keySearch, new CachedToken(request.UserKey, request.UserSecret, tokenResponse));
+
+			return FormatToHeader(tokenResponse.AccessToken);
 		}
 	}
 }

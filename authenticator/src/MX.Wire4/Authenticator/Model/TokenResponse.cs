@@ -18,6 +18,17 @@ namespace MX.Wire4.Authenticator.Model
         public string TokenType { get; set; }
 
         [JsonProperty("expires_in")]
-        public int ExpiresIn { get; set; }
+        public long ExpiresIn { get; set; }
+
+        [JsonIgnore]
+        public DateTime ExpirationDate { get; set; }
+
+        public override string ToString()
+        {
+            return "TokenResponse, AccessToken: " + this.AccessToken + ",  RefreshToken: "
+                + this.RefreshToken + ", this.Scope: " + this.Scope + ", TokenType: "
+                + this.TokenType + ",  ExpiresIn: " + this.ExpiresIn + ",  ExpirationDate: "
+                + this.ExpirationDate;
+        }
     }
 }
