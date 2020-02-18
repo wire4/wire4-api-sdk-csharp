@@ -75,7 +75,7 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias de salida por identificador de petición
         /// </summary>
         /// <remarks>
-        /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferenciasde salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
+        /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -88,7 +88,7 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias de salida por identificador de petición
         /// </summary>
         /// <remarks>
-        /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferenciasde salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
+        /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -200,7 +200,7 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias de salida por identificador de petición
         /// </summary>
         /// <remarks>
-        /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferenciasde salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
+        /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -213,7 +213,7 @@ namespace MX.Wire4.Api
         /// Consulta de transferencias de salida por identificador de petición
         /// </summary>
         /// <remarks>
-        /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferenciasde salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
+        /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -677,7 +677,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferenciasde salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
+        /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -691,7 +691,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferenciasde salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
+        /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -754,7 +754,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferenciasde salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
+        /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -769,7 +769,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferenciasde salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
+        /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
