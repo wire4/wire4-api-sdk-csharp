@@ -43,7 +43,8 @@ namespace MX.Wire4.Model
         /// <param name="person">person.</param>
         /// <param name="relationship">Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships (required).</param>
         /// <param name="rfc">Registro federal de contribuyentes de la persona o institución propietaria de la cuenta (required).</param>
-        public AccountResponse(decimal? amountLimit = default(decimal?), Institution bank = default(Institution), string beneficiaryAccount = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpei = default(string), string paymentConceptSpei = default(string), Person person = default(Person), string relationship = default(string), string rfc = default(string))
+        /// <param name="status">El estado (status) en el que se encuentra el registro del beneficiario.</param>
+        public AccountResponse(decimal? amountLimit = default(decimal?), Institution bank = default(Institution), string beneficiaryAccount = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpei = default(string), string paymentConceptSpei = default(string), Person person = default(Person), string relationship = default(string), string rfc = default(string), string status = default(string))
         {
             // to ensure "amountLimit" is required (not null)
             if (amountLimit == null)
@@ -96,6 +97,7 @@ namespace MX.Wire4.Model
             this.NumericReferenceSpei = numericReferenceSpei;
             this.PaymentConceptSpei = paymentConceptSpei;
             this.Person = person;
+            this.Status = status;
         }
         
         /// <summary>
@@ -173,6 +175,13 @@ namespace MX.Wire4.Model
         public string Rfc { get; set; }
 
         /// <summary>
+        /// El estado (status) en el que se encuentra el registro del beneficiario
+        /// </summary>
+        /// <value>El estado (status) en el que se encuentra el registro del beneficiario</value>
+        [DataMember(Name="status", EmitDefaultValue=false)]
+        public string Status { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -191,6 +200,7 @@ namespace MX.Wire4.Model
             sb.Append("  Person: ").Append(Person).Append("\n");
             sb.Append("  Relationship: ").Append(Relationship).Append("\n");
             sb.Append("  Rfc: ").Append(Rfc).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -280,6 +290,11 @@ namespace MX.Wire4.Model
                     this.Rfc == input.Rfc ||
                     (this.Rfc != null &&
                     this.Rfc.Equals(input.Rfc))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 );
         }
 
@@ -314,6 +329,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.Relationship.GetHashCode();
                 if (this.Rfc != null)
                     hashCode = hashCode * 59 + this.Rfc.GetHashCode();
+                if (this.Status != null)
+                    hashCode = hashCode * 59 + this.Status.GetHashCode();
                 return hashCode;
             }
         }

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Person** | [**Person**](Person.md) |  | [optional] 
 **Relationship** | **string** | Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships | 
 **Rfc** | **string** | Registro federal de contribuyentes de la persona o institución propietaria de la cuenta | 
+**Status** | **string** | El estado (status) en el que se encuentra el registro del beneficiario | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

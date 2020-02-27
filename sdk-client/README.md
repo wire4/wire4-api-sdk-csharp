@@ -99,6 +99,7 @@ Class | Method | HTTP request | Description
 *ContactoApi* | [**SendContactUsingPOST**](docs/ContactoApi.md#sendcontactusingpost) | **POST** /contact | Solicitud de contacto
 *CuentasDeBeneficiariosSPEIApi* | [**DeleteAccountUsingDELETE**](docs/CuentasDeBeneficiariosSPEIApi.md#deleteaccountusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/{account} | Elimina la cuenta del beneficiario
 *CuentasDeBeneficiariosSPEIApi* | [**GetAvailableRelationshipsMonexUsingGET**](docs/CuentasDeBeneficiariosSPEIApi.md#getavailablerelationshipsmonexusingget) | **GET** /subscriptions/{subscription}/beneficiaries/relationships | Consulta de relaciones
+*CuentasDeBeneficiariosSPEIApi* | [**GetBeneficiariesByRequestId**](docs/CuentasDeBeneficiariosSPEIApi.md#getbeneficiariesbyrequestid) | **GET** /subscriptions/{subscription}/beneficiaries/spei/{requestId} | Consulta los beneficiarios por el identificador de la petición de registro
 *CuentasDeBeneficiariosSPEIApi* | [**GetBeneficiariesForAccountUsingGET**](docs/CuentasDeBeneficiariosSPEIApi.md#getbeneficiariesforaccountusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spei | Consulta los beneficiarios registrados
 *CuentasDeBeneficiariosSPEIApi* | [**PreRegisterAccountsUsingPOST**](docs/CuentasDeBeneficiariosSPEIApi.md#preregisteraccountsusingpost) | **POST** /subscriptions/{subscription}/beneficiaries/spei | Pre-registro de cuentas de beneficiarios.
 *CuentasDeBeneficiariosSPEIApi* | [**RemoveBeneficiariesPendingUsingDELETE**](docs/CuentasDeBeneficiariosSPEIApi.md#removebeneficiariespendingusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/request/{requestId} | Eliminación de beneficiarios SPEI® sin confirmar
@@ -135,6 +136,7 @@ Class | Method | HTTP request | Description
  - [Model.AmountRequest](docs/AmountRequest.md)
  - [Model.Balance](docs/Balance.md)
  - [Model.BalanceListResponse](docs/BalanceListResponse.md)
+ - [Model.BeneficiariesQueryRegisterStatus](docs/BeneficiariesQueryRegisterStatus.md)
  - [Model.BeneficiariesResponse](docs/BeneficiariesResponse.md)
  - [Model.BeneficiaryInstitution](docs/BeneficiaryInstitution.md)
  - [Model.Billing](docs/Billing.md)
