@@ -27,7 +27,7 @@ namespace MX.Wire4.Model
     /// El mensaje que se envía mediante (webHook) con la información acerca de algún cambio en el procesamiento de la petición a esta a esta API
     /// </summary>
     [DataContract]
-        public partial class RequestChangedMessage :  IEquatable<RequestChangedMessage>, IValidatableObject
+        public partial class MessageRequestChanged :  IEquatable<MessageRequestChanged>, IValidatableObject
     {
         /// <summary>
         /// El cambio a informar en la procesamiento de la petición
@@ -48,11 +48,11 @@ namespace MX.Wire4.Model
         [DataMember(Name="status", EmitDefaultValue=false)]
         public StatusEnum? Status { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RequestChangedMessage" /> class.
+        /// Initializes a new instance of the <see cref="MessageRequestChanged" /> class.
         /// </summary>
         /// <param name="requestId">Identificador de la petición realizada a está API.</param>
         /// <param name="status">El cambio a informar en la procesamiento de la petición.</param>
-        public RequestChangedMessage(string requestId = default(string), StatusEnum? status = default(StatusEnum?))
+        public MessageRequestChanged(string requestId = default(string), StatusEnum? status = default(StatusEnum?))
         {
             this.RequestId = requestId;
             this.Status = status;
@@ -73,7 +73,7 @@ namespace MX.Wire4.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class RequestChangedMessage {\n");
+            sb.Append("class MessageRequestChanged {\n");
             sb.Append("  RequestId: ").Append(RequestId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
@@ -96,15 +96,15 @@ namespace MX.Wire4.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as RequestChangedMessage);
+            return this.Equals(input as MessageRequestChanged);
         }
 
         /// <summary>
-        /// Returns true if RequestChangedMessage instances are equal
+        /// Returns true if MessageRequestChanged instances are equal
         /// </summary>
-        /// <param name="input">Instance of RequestChangedMessage to be compared</param>
+        /// <param name="input">Instance of MessageRequestChanged to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(RequestChangedMessage input)
+        public bool Equals(MessageRequestChanged input)
         {
             if (input == null)
                 return false;

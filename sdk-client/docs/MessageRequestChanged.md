@@ -1,4 +1,4 @@
-# MX.Wire4.Model.RequestChangedMessage
+# MX.Wire4.Model.MessageRequestChanged
 ## Properties
 
 Name | Type | Description | Notes
