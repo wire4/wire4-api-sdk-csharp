@@ -36,6 +36,7 @@ namespace MX.Wire4.Model
         /// <param name="beneficiaryAccount">Cuenta del beneficiario.</param>
         /// <param name="beneficiaryName">Nombre del beneficiario.</param>
         /// <param name="beneficiaryRfc">RFC del beneficiario.</param>
+        /// <param name="cep">cep.</param>
         /// <param name="claveRastreo">Clave de rastreo de la transferencia.</param>
         /// <param name="confirmDate">Fecha de confirmación de la transferencia.</param>
         /// <param name="currencyCode">Código de moneda de la transferencia, puede ser MXP, USD.</param>
@@ -52,12 +53,13 @@ namespace MX.Wire4.Model
         /// <param name="senderBank">senderBank.</param>
         /// <param name="senderName">Nombre del ordenante.</param>
         /// <param name="senderRfc">RFC del ordenante.</param>
-        public MessageDepositReceived(decimal? amount = default(decimal?), string beneficiaryAccount = default(string), string beneficiaryName = default(string), string beneficiaryRfc = default(string), string claveRastreo = default(string), DateTime? confirmDate = default(DateTime?), string currencyCode = default(string), DateTime? depositDate = default(DateTime?), string depositant = default(string), string depositantClabe = default(string), string depositantEmail = default(string), string depositantRfc = default(string), string description = default(string), string monexDescription = default(string), string monexTransactionId = default(string), string reference = default(string), string senderAccount = default(string), MessageInstitution senderBank = default(MessageInstitution), string senderName = default(string), string senderRfc = default(string))
+        public MessageDepositReceived(decimal? amount = default(decimal?), string beneficiaryAccount = default(string), string beneficiaryName = default(string), string beneficiaryRfc = default(string), MessageCEP cep = default(MessageCEP), string claveRastreo = default(string), DateTime? confirmDate = default(DateTime?), string currencyCode = default(string), DateTime? depositDate = default(DateTime?), string depositant = default(string), string depositantClabe = default(string), string depositantEmail = default(string), string depositantRfc = default(string), string description = default(string), string monexDescription = default(string), string monexTransactionId = default(string), string reference = default(string), string senderAccount = default(string), MessageInstitution senderBank = default(MessageInstitution), string senderName = default(string), string senderRfc = default(string))
         {
             this.Amount = amount;
             this.BeneficiaryAccount = beneficiaryAccount;
             this.BeneficiaryName = beneficiaryName;
             this.BeneficiaryRfc = beneficiaryRfc;
+            this.Cep = cep;
             this.ClaveRastreo = claveRastreo;
             this.ConfirmDate = confirmDate;
             this.CurrencyCode = currencyCode;
@@ -103,6 +105,12 @@ namespace MX.Wire4.Model
         /// <value>RFC del beneficiario</value>
         [DataMember(Name="beneficiary_rfc", EmitDefaultValue=false)]
         public string BeneficiaryRfc { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Cep
+        /// </summary>
+        [DataMember(Name="cep", EmitDefaultValue=false)]
+        public MessageCEP Cep { get; set; }
 
         /// <summary>
         /// Clave de rastreo de la transferencia
@@ -227,6 +235,7 @@ namespace MX.Wire4.Model
             sb.Append("  BeneficiaryAccount: ").Append(BeneficiaryAccount).Append("\n");
             sb.Append("  BeneficiaryName: ").Append(BeneficiaryName).Append("\n");
             sb.Append("  BeneficiaryRfc: ").Append(BeneficiaryRfc).Append("\n");
+            sb.Append("  Cep: ").Append(Cep).Append("\n");
             sb.Append("  ClaveRastreo: ").Append(ClaveRastreo).Append("\n");
             sb.Append("  ConfirmDate: ").Append(ConfirmDate).Append("\n");
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
@@ -296,6 +305,11 @@ namespace MX.Wire4.Model
                     this.BeneficiaryRfc == input.BeneficiaryRfc ||
                     (this.BeneficiaryRfc != null &&
                     this.BeneficiaryRfc.Equals(input.BeneficiaryRfc))
+                ) && 
+                (
+                    this.Cep == input.Cep ||
+                    (this.Cep != null &&
+                    this.Cep.Equals(input.Cep))
                 ) && 
                 (
                     this.ClaveRastreo == input.ClaveRastreo ||
@@ -396,6 +410,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.BeneficiaryName.GetHashCode();
                 if (this.BeneficiaryRfc != null)
                     hashCode = hashCode * 59 + this.BeneficiaryRfc.GetHashCode();
+                if (this.Cep != null)
+                    hashCode = hashCode * 59 + this.Cep.GetHashCode();
                 if (this.ClaveRastreo != null)
                     hashCode = hashCode * 59 + this.ClaveRastreo.GetHashCode();
                 if (this.ConfirmDate != null)

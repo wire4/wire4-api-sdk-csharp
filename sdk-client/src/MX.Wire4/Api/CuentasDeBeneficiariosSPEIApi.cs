@@ -72,6 +72,31 @@ namespace MX.Wire4.Api
         /// <returns>ApiResponse of RelationshipsResponse</returns>
         ApiResponse<RelationshipsResponse> GetAvailableRelationshipsMonexUsingGETWithHttpInfo (string authorization, string subscription);
         /// <summary>
+        /// Consulta los beneficiarios por el identificador de la petición de registro
+        /// </summary>
+        /// <remarks>
+        /// Obtiene los beneficiarios enviados para registro en una petición al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex, que pertenezcan a la petición que se solicita.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">El identificador de la petición del registro de beneficiarios a esta API</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>BeneficiariesResponse</returns>
+        BeneficiariesResponse GetBeneficiariesByRequestId (string authorization, string requestId, string subscription);
+
+        /// <summary>
+        /// Consulta los beneficiarios por el identificador de la petición de registro
+        /// </summary>
+        /// <remarks>
+        /// Obtiene los beneficiarios enviados para registro en una petición al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex, que pertenezcan a la petición que se solicita.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">El identificador de la petición del registro de beneficiarios a esta API</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>ApiResponse of BeneficiariesResponse</returns>
+        ApiResponse<BeneficiariesResponse> GetBeneficiariesByRequestIdWithHttpInfo (string authorization, string requestId, string subscription);
+        /// <summary>
         /// Consulta los beneficiarios registrados
         /// </summary>
         /// <remarks>
@@ -225,6 +250,31 @@ namespace MX.Wire4.Api
         /// <param name="subscription">Identificador de la suscripción a esta API</param>
         /// <returns>Task of ApiResponse (RelationshipsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<RelationshipsResponse>> GetAvailableRelationshipsMonexUsingGETAsyncWithHttpInfo (string authorization, string subscription);
+        /// <summary>
+        /// Consulta los beneficiarios por el identificador de la petición de registro
+        /// </summary>
+        /// <remarks>
+        /// Obtiene los beneficiarios enviados para registro en una petición al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex, que pertenezcan a la petición que se solicita.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">El identificador de la petición del registro de beneficiarios a esta API</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>Task of BeneficiariesResponse</returns>
+        System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesByRequestIdAsync (string authorization, string requestId, string subscription);
+
+        /// <summary>
+        /// Consulta los beneficiarios por el identificador de la petición de registro
+        /// </summary>
+        /// <remarks>
+        /// Obtiene los beneficiarios enviados para registro en una petición al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex, que pertenezcan a la petición que se solicita.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">El identificador de la petición del registro de beneficiarios a esta API</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>Task of ApiResponse (BeneficiariesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesByRequestIdAsyncWithHttpInfo (string authorization, string requestId, string subscription);
         /// <summary>
         /// Consulta los beneficiarios registrados
         /// </summary>
@@ -732,6 +782,161 @@ namespace MX.Wire4.Api
             return new ApiResponse<RelationshipsResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (RelationshipsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RelationshipsResponse)));
+        }
+
+        /// <summary>
+        /// Consulta los beneficiarios por el identificador de la petición de registro Obtiene los beneficiarios enviados para registro en una petición al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex, que pertenezcan a la petición que se solicita.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">El identificador de la petición del registro de beneficiarios a esta API</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>BeneficiariesResponse</returns>
+        public BeneficiariesResponse GetBeneficiariesByRequestId (string authorization, string requestId, string subscription)
+        {
+             ApiResponse<BeneficiariesResponse> localVarResponse = GetBeneficiariesByRequestIdWithHttpInfo(authorization, requestId, subscription);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Consulta los beneficiarios por el identificador de la petición de registro Obtiene los beneficiarios enviados para registro en una petición al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex, que pertenezcan a la petición que se solicita.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">El identificador de la petición del registro de beneficiarios a esta API</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>ApiResponse of BeneficiariesResponse</returns>
+        public ApiResponse< BeneficiariesResponse > GetBeneficiariesByRequestIdWithHttpInfo (string authorization, string requestId, string subscription)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->GetBeneficiariesByRequestId");
+            // verify the required parameter 'requestId' is set
+            if (requestId == null)
+                throw new ApiException(400, "Missing required parameter 'requestId' when calling CuentasDeBeneficiariosSPEIApi->GetBeneficiariesByRequestId");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPEIApi->GetBeneficiariesByRequestId");
+
+            var localVarPath = "/subscriptions/{subscription}/beneficiaries/spei/{requestId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (requestId != null) localVarPathParams.Add("requestId", this.Configuration.ApiClient.ParameterToString(requestId)); // path parameter
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetBeneficiariesByRequestId", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<BeneficiariesResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (BeneficiariesResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BeneficiariesResponse)));
+        }
+
+        /// <summary>
+        /// Consulta los beneficiarios por el identificador de la petición de registro Obtiene los beneficiarios enviados para registro en una petición al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex, que pertenezcan a la petición que se solicita.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">El identificador de la petición del registro de beneficiarios a esta API</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>Task of BeneficiariesResponse</returns>
+        public async System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesByRequestIdAsync (string authorization, string requestId, string subscription)
+        {
+             ApiResponse<BeneficiariesResponse> localVarResponse = await GetBeneficiariesByRequestIdAsyncWithHttpInfo(authorization, requestId, subscription);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Consulta los beneficiarios por el identificador de la petición de registro Obtiene los beneficiarios enviados para registro en una petición al contrato relacionado con la suscripción, Los beneficiarios son los que actualmente se encuentran registrados en banca Monex, que pertenezcan a la petición que se solicita.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">El identificador de la petición del registro de beneficiarios a esta API</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>Task of ApiResponse (BeneficiariesResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesByRequestIdAsyncWithHttpInfo (string authorization, string requestId, string subscription)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->GetBeneficiariesByRequestId");
+            // verify the required parameter 'requestId' is set
+            if (requestId == null)
+                throw new ApiException(400, "Missing required parameter 'requestId' when calling CuentasDeBeneficiariosSPEIApi->GetBeneficiariesByRequestId");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPEIApi->GetBeneficiariesByRequestId");
+
+            var localVarPath = "/subscriptions/{subscription}/beneficiaries/spei/{requestId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (requestId != null) localVarPathParams.Add("requestId", this.Configuration.ApiClient.ParameterToString(requestId)); // path parameter
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetBeneficiariesByRequestId", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<BeneficiariesResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (BeneficiariesResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BeneficiariesResponse)));
         }
 
         /// <summary>

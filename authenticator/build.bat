@@ -13,6 +13,6 @@ if not exist ".\bin" mkdir bin
 copy packages\JsonSubTypes.1.2.0\lib\net45\JsonSubTypes.dll bin\JsonSubTypes.dll
 copy packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll bin\Newtonsoft.Json.dll
 copy packages\RestSharp.105.1.0\lib\net45\RestSharp.dll bin\RestSharp.dll
-copy ../sdk-client/bin/MX.Wire4.dll bin/MX.Wire4.dll
+copy packages\MX.Wire4.0.0.3\lib\net45\MX.Wire4.dll bin/MX.Wire4.dll
 %CSCPATH%\csc  /reference:bin\Newtonsoft.Json.dll;bin\JsonSubTypes.dll;bin\RestSharp.dll;bin/MX.Wire4.dll;System.ComponentModel.DataAnnotations.dll  /target:library /out:bin\MX.Wire4.Authenticator.dll /recurse:src\MX.Wire4\*.cs /doc:bin\MX.Wire4.Authenticator.xml
 

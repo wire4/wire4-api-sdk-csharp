@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **BeneficiaryAccount** | **string** | Cuenta del beneficiario | [optional] 
 **BeneficiaryName** | **string** | Nombre del beneficiario | [optional] 
 **BeneficiaryRfc** | **string** | RFC del beneficiario | [optional] 
+**Cep** | [**MessageCEP**](MessageCEP.md) |  | [optional] 
 **ClaveRastreo** | **string** | Clave de rastreo de la transferencia | [optional] 
 **ConfirmDate** | **DateTime?** | Fecha de confirmación de la transferencia | [optional] 
 **CurrencyCode** | **string** | Código de moneda de la transferencia, puede ser MXP, USD | [optional] 
