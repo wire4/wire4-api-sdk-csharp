@@ -39,9 +39,6 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Web" />
-    <Reference Include="RestSharp">
-      <HintPath>..\..\bin\RestSharp.dll</HintPath>
-    </Reference>
     <Reference Include="JsonSubTypes">
       <HintPath>..\..\packages\JsonSubTypes.1.2.0\lib\net45\JsonSubTypes.dll</HintPath>
     </Reference>
@@ -50,6 +47,9 @@
     </Reference>
     <Reference Include="MX.Wire4">
       <HintPath>..\..\..\sdk-client\bin\MX.Wire4.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\packages\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +63,9 @@
     <Compile Include="Authenticator\Model\TokenResponse.cs" />
     <Compile Include="Authenticator\Client\IAuthenticator.cs" />
     <Compile Include="Authenticator\Client\TokenAuthenticator.cs" />
+    <Compile Include="Authenticator\Model\CachedToken.cs" />
+    <Compile Include="Authenticator\Core\LRUCache.cs" />
+    <Compile Include="Authenticator\Webhook\Verification\Signature\UtilsCompute.cs" />
   </ItemGroup>
   <!-- <ItemGroup>
     <ProjectReference Include="..\src\MX.Wire4\MX.Wire4.csproj">
@@ -76,6 +79,12 @@
   </ItemGroup> -->
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Authenticator\Core\" />
+    <Folder Include="Authenticator\Webhook\" />
+    <Folder Include="Authenticator\Webhook\Verification\" />
+    <Folder Include="Authenticator\Webhook\Verification\Signature\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
