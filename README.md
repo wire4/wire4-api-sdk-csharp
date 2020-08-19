@@ -3,7 +3,7 @@
 Autenticador para la API de Wire4
 
 - versión de API: 1.0.0
-- versión de SDK: 0.0.1
+- versión de SDK: 0.0.5
 
 <a name="frameworks-supported"></a>
 
@@ -90,7 +90,7 @@ namespace Example
                 ClientKey = "FxUWmqYGZuv8O1qjxstvIyJothMa",
                 ClientSecret = "kjwbkrPVgXsnaUGzthj55dsFhx4a",
             };
-            
+
             try
             {
                 // Obtain an access token use application flow and scope "general" and add the bearer token to request
