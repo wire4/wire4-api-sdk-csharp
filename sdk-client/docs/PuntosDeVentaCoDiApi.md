@@ -4,12 +4,12 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSalesPoint**](PuntosDeVentaCoDiApi.md#createsalespoint) | **POST** /codi/companies/{company_id}/salespoint | Registra un punto de venta asociado a una empresa
-[**ObtainSalePoints**](PuntosDeVentaCoDiApi.md#obtainsalepoints) | **GET** /codi/companies/{company_id}/salespoint | Obtiene los puntos de venta asociados a una empresa
+[**CreateSalesPoint**](PuntosDeVentaCoDiApi.md#createsalespoint) | **POST** /codi/companies/salespoint | Registra un punto de venta asociado a una empresa
+[**ObtainSalePoints**](PuntosDeVentaCoDiApi.md#obtainsalepoints) | **GET** /codi/companies/salespoint | Obtiene los puntos de venta asociados a una empresa
 
 <a name="createsalespoint"></a>
 # **CreateSalesPoint**
-> SalesPointRespose CreateSalesPoint (SalesPointRequest body, string authorization, string companyId, string name = null)
+> SalesPointRespose CreateSalesPoint (SalesPointRequest body, string authorization, string companyId)
 
 Registra un punto de venta asociado a una empresa
 
@@ -30,15 +30,14 @@ namespace Example
         public void main()
         {
             var apiInstance = new PuntosDeVentaCoDiApi();
-            var body = new SalesPointRequest(); // SalesPointRequest | salesPointRequest
+            var body = new SalesPointRequest(); // SalesPointRequest | Información del punto de venta CODI®
             var authorization = authorization_example;  // string | Header para token
-            var companyId = companyId_example;  // string | company_id
-            var name = name_example;  // string |  (optional) 
+            var companyId = companyId_example;  // string | El identificador de la empresa
 
             try
             {
                 // Registra un punto de venta asociado a una empresa
-                SalesPointRespose result = apiInstance.CreateSalesPoint(body, authorization, companyId, name);
+                SalesPointRespose result = apiInstance.CreateSalesPoint(body, authorization, companyId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -54,10 +53,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**SalesPointRequest**](SalesPointRequest.md)| salesPointRequest | 
+ **body** | [**SalesPointRequest**](SalesPointRequest.md)| Información del punto de venta CODI® | 
  **authorization** | **string**| Header para token | 
- **companyId** | **string**| company_id | 
- **name** | **string**|  | [optional] 
+ **companyId** | **string**| El identificador de la empresa | 
 
 ### Return type
 

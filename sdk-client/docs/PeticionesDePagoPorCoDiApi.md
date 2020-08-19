@@ -4,8 +4,8 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ConsultCodiRequestByOrderId**](PeticionesDePagoPorCoDiApi.md#consultcodirequestbyorderid) | **GET** /codi/sales-point/{sales_point_id}/charges/{order_id} | Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
-[**GenerateCodiCodeQR**](PeticionesDePagoPorCoDiApi.md#generatecodicodeqr) | **POST** /codi/sales-point/{salesPointId}/charges | Genera un código QR para un pago mediante CODI®
+[**ConsultCodiRequestByOrderId**](PeticionesDePagoPorCoDiApi.md#consultcodirequestbyorderid) | **GET** /codi/sales-point/charges | Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
+[**GenerateCodiCodeQR**](PeticionesDePagoPorCoDiApi.md#generatecodicodeqr) | **POST** /codi/sales-point/charges | Genera un código QR para un pago mediante CODI®
 
 <a name="consultcodirequestbyorderid"></a>
 # **ConsultCodiRequestByOrderId**
@@ -31,7 +31,7 @@ namespace Example
         {
             var apiInstance = new PeticionesDePagoPorCoDiApi();
             var authorization = authorization_example;  // string | Header para token
-            var orderId = orderId_example;  // string | OrderId
+            var orderId = orderId_example;  // string | Identificador del pago CODI®
             var salesPointId = salesPointId_example;  // string | Identificador del punto de venta
 
             try
@@ -54,7 +54,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token | 
- **orderId** | **string**| OrderId | 
+ **orderId** | **string**| Identificador del pago CODI® | 
  **salesPointId** | **string**| Identificador del punto de venta | 
 
 ### Return type

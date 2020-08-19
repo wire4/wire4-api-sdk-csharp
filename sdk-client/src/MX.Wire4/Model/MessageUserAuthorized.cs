@@ -24,28 +24,28 @@ using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
 namespace MX.Wire4.Model
 {
     /// <summary>
-    /// La información del usuario autorizado para usar el API de Monex.
+    /// El mensaje que se envía mediante (webHook) con la información del usuario que se le autorizó el uso del API de Monex.
     /// </summary>
     [DataContract]
-        public partial class AuthorizedUsers :  IEquatable<AuthorizedUsers>, IValidatableObject
+        public partial class MessageUserAuthorized :  IEquatable<MessageUserAuthorized>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthorizedUsers" /> class.
+        /// Initializes a new instance of the <see cref="MessageUserAuthorized" /> class.
         /// </summary>
         /// <param name="account">El contrato al cual se le brinda el acceso a la API.</param>
         /// <param name="maskedAccount">El contrato enmascarado al cual se le brinda el acceso a la API.</param>
         /// <param name="maskedName">El usuario enmascarado que se autorizó.</param>
         /// <param name="maskedUserName">El nombre enmascarado del usuario de acceso que se autorizó.</param>
         /// <param name="name">El usuario que se autorizó.</param>
-        /// <param name="userName">El usuario de acceso que se autorizó.</param>
-        public AuthorizedUsers(string account = default(string), string maskedAccount = default(string), string maskedName = default(string), string maskedUserName = default(string), string name = default(string), string userName = default(string))
+        /// <param name="requestId">El identificador de la petición cuando se solicitó la autorización.</param>
+        public MessageUserAuthorized(string account = default(string), string maskedAccount = default(string), string maskedName = default(string), string maskedUserName = default(string), string name = default(string), string requestId = default(string))
         {
             this.Account = account;
             this.MaskedAccount = maskedAccount;
             this.MaskedName = maskedName;
             this.MaskedUserName = maskedUserName;
             this.Name = name;
-            this.UserName = userName;
+            this.RequestId = requestId;
         }
         
         /// <summary>
@@ -84,11 +84,11 @@ namespace MX.Wire4.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// El usuario de acceso que se autorizó
+        /// El identificador de la petición cuando se solicitó la autorización
         /// </summary>
-        /// <value>El usuario de acceso que se autorizó</value>
-        [DataMember(Name="user_name", EmitDefaultValue=false)]
-        public string UserName { get; set; }
+        /// <value>El identificador de la petición cuando se solicitó la autorización</value>
+        [DataMember(Name="request_id", EmitDefaultValue=false)]
+        public string RequestId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -97,13 +97,13 @@ namespace MX.Wire4.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AuthorizedUsers {\n");
+            sb.Append("class MessageUserAuthorized {\n");
             sb.Append("  Account: ").Append(Account).Append("\n");
             sb.Append("  MaskedAccount: ").Append(MaskedAccount).Append("\n");
             sb.Append("  MaskedName: ").Append(MaskedName).Append("\n");
             sb.Append("  MaskedUserName: ").Append(MaskedUserName).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  UserName: ").Append(UserName).Append("\n");
+            sb.Append("  RequestId: ").Append(RequestId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -124,15 +124,15 @@ namespace MX.Wire4.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AuthorizedUsers);
+            return this.Equals(input as MessageUserAuthorized);
         }
 
         /// <summary>
-        /// Returns true if AuthorizedUsers instances are equal
+        /// Returns true if MessageUserAuthorized instances are equal
         /// </summary>
-        /// <param name="input">Instance of AuthorizedUsers to be compared</param>
+        /// <param name="input">Instance of MessageUserAuthorized to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AuthorizedUsers input)
+        public bool Equals(MessageUserAuthorized input)
         {
             if (input == null)
                 return false;
@@ -164,9 +164,9 @@ namespace MX.Wire4.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.UserName == input.UserName ||
-                    (this.UserName != null &&
-                    this.UserName.Equals(input.UserName))
+                    this.RequestId == input.RequestId ||
+                    (this.RequestId != null &&
+                    this.RequestId.Equals(input.RequestId))
                 );
         }
 
@@ -189,8 +189,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.MaskedUserName.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.UserName != null)
-                    hashCode = hashCode * 59 + this.UserName.GetHashCode();
+                if (this.RequestId != null)
+                    hashCode = hashCode * 59 + this.RequestId.GetHashCode();
                 return hashCode;
             }
         }
