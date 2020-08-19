@@ -3,12 +3,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiVersion** | **string** | La versión de la API | [optional] 
+**ApiVersion** | **string** | La versión de esta API | [optional] 
 **Created** | **DateTime?** | Fecha de creación del mensaje | [optional] 
 **Data** | **Object** | Objeto que contiene la información del evento | [optional] 
 **Id** | **string** | El identificador del mensaje | [optional] 
 **Livemode** | **bool?** | Indica si proviene de un entorno productivo | [optional] 
-**Object** | **string** | Tipo de objeto  que contiene el mensaje en el atributo data los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing  | [optional] 
+**Object** | **string** | Tipo de objeto  que contiene el mensaje en el atributo &#x27;data&#x27; los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing, request_outgoing  | [optional] 
 **PendingWebhooks** | **int?** | Número de  mensajes pendientes de enviar | [optional] 
 **Request** | **string** | Identificador del recurso relacionado | [optional] 
 **Type** | **string** | El tipo evento que se esta enviando en la notifiación | [optional] 
