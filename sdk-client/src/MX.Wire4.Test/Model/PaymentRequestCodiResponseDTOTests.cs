@@ -114,22 +114,6 @@ namespace MX.Wire4.Test
             // TODO unit test for the property 'DueDate'
         }
         /// <summary>
-        /// Test the property 'Id'
-        /// </summary>
-        [Test]
-        public void IdTest()
-        {
-            // TODO unit test for the property 'Id'
-        }
-        /// <summary>
-        /// Test the property 'OperationDate'
-        /// </summary>
-        [Test]
-        public void OperationDateTest()
-        {
-            // TODO unit test for the property 'OperationDate'
-        }
-        /// <summary>
         /// Test the property 'Operations'
         /// </summary>
         [Test]
@@ -146,14 +130,6 @@ namespace MX.Wire4.Test
             // TODO unit test for the property 'OrderId'
         }
         /// <summary>
-        /// Test the property 'PaymentType'
-        /// </summary>
-        [Test]
-        public void PaymentTypeTest()
-        {
-            // TODO unit test for the property 'PaymentType'
-        }
-        /// <summary>
         /// Test the property 'PhoneNumber'
         /// </summary>
         [Test]
@@ -168,14 +144,6 @@ namespace MX.Wire4.Test
         public void StatusTest()
         {
             // TODO unit test for the property 'Status'
-        }
-        /// <summary>
-        /// Test the property 'TransactionId'
-        /// </summary>
-        [Test]
-        public void TransactionIdTest()
-        {
-            // TODO unit test for the property 'TransactionId'
         }
         /// <summary>
         /// Test the property 'Type'

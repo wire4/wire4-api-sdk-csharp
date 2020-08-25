@@ -38,16 +38,12 @@ namespace MX.Wire4.Model
         /// <param name="concept">Concepto de pago..</param>
         /// <param name="creationDate">Fecha de creación..</param>
         /// <param name="dueDate">Fecha de vencimiento..</param>
-        /// <param name="id">Identificador de la operacion..</param>
-        /// <param name="operationDate">Fecha de la operacion..</param>
         /// <param name="operations">Listado de pagos realizados sobre la petición..</param>
         /// <param name="orderId">OrderId asignada a la solicitud..</param>
-        /// <param name="paymentType">Tipo de pago..</param>
         /// <param name="phoneNumber">Numero de teléfono..</param>
         /// <param name="status">Estatus de la orden de pago..</param>
-        /// <param name="transactionId">Identificador de la transacción..</param>
         /// <param name="type">Tipo de petición..</param>
-        public PaymentRequestCodiResponseDTO(decimal? amount = default(decimal?), string barcodeBase64 = default(string), string barcodeUrl = default(string), string concept = default(string), DateTime? creationDate = default(DateTime?), DateTime? dueDate = default(DateTime?), string id = default(string), DateTime? operationDate = default(DateTime?), List<PaymentRequestCodiResponseDTO> operations = default(List<PaymentRequestCodiResponseDTO>), string orderId = default(string), string paymentType = default(string), string phoneNumber = default(string), string status = default(string), string transactionId = default(string), string type = default(string))
+        public PaymentRequestCodiResponseDTO(decimal? amount = default(decimal?), string barcodeBase64 = default(string), string barcodeUrl = default(string), string concept = default(string), DateTime? creationDate = default(DateTime?), DateTime? dueDate = default(DateTime?), List<CodiOperationResponseDTO> operations = default(List<CodiOperationResponseDTO>), string orderId = default(string), string phoneNumber = default(string), string status = default(string), string type = default(string))
         {
             this.Amount = amount;
             this.BarcodeBase64 = barcodeBase64;
@@ -55,14 +51,10 @@ namespace MX.Wire4.Model
             this.Concept = concept;
             this.CreationDate = creationDate;
             this.DueDate = dueDate;
-            this.Id = id;
-            this.OperationDate = operationDate;
             this.Operations = operations;
             this.OrderId = orderId;
-            this.PaymentType = paymentType;
             this.PhoneNumber = phoneNumber;
             this.Status = status;
-            this.TransactionId = transactionId;
             this.Type = type;
         }
         
@@ -109,25 +101,11 @@ namespace MX.Wire4.Model
         public DateTime? DueDate { get; set; }
 
         /// <summary>
-        /// Identificador de la operacion.
-        /// </summary>
-        /// <value>Identificador de la operacion.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Fecha de la operacion.
-        /// </summary>
-        /// <value>Fecha de la operacion.</value>
-        [DataMember(Name="operation_date", EmitDefaultValue=false)]
-        public DateTime? OperationDate { get; set; }
-
-        /// <summary>
         /// Listado de pagos realizados sobre la petición.
         /// </summary>
         /// <value>Listado de pagos realizados sobre la petición.</value>
         [DataMember(Name="operations", EmitDefaultValue=false)]
-        public List<PaymentRequestCodiResponseDTO> Operations { get; set; }
+        public List<CodiOperationResponseDTO> Operations { get; set; }
 
         /// <summary>
         /// OrderId asignada a la solicitud.
@@ -135,13 +113,6 @@ namespace MX.Wire4.Model
         /// <value>OrderId asignada a la solicitud.</value>
         [DataMember(Name="order_id", EmitDefaultValue=false)]
         public string OrderId { get; set; }
-
-        /// <summary>
-        /// Tipo de pago.
-        /// </summary>
-        /// <value>Tipo de pago.</value>
-        [DataMember(Name="payment_type", EmitDefaultValue=false)]
-        public string PaymentType { get; set; }
 
         /// <summary>
         /// Numero de teléfono.
@@ -156,13 +127,6 @@ namespace MX.Wire4.Model
         /// <value>Estatus de la orden de pago.</value>
         [DataMember(Name="status", EmitDefaultValue=false)]
         public string Status { get; set; }
-
-        /// <summary>
-        /// Identificador de la transacción.
-        /// </summary>
-        /// <value>Identificador de la transacción.</value>
-        [DataMember(Name="transaction_id", EmitDefaultValue=false)]
-        public string TransactionId { get; set; }
 
         /// <summary>
         /// Tipo de petición.
@@ -185,14 +149,10 @@ namespace MX.Wire4.Model
             sb.Append("  Concept: ").Append(Concept).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("  DueDate: ").Append(DueDate).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  OperationDate: ").Append(OperationDate).Append("\n");
             sb.Append("  Operations: ").Append(Operations).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
-            sb.Append("  PaymentType: ").Append(PaymentType).Append("\n");
             sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  TransactionId: ").Append(TransactionId).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -259,16 +219,6 @@ namespace MX.Wire4.Model
                     this.DueDate.Equals(input.DueDate))
                 ) && 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.OperationDate == input.OperationDate ||
-                    (this.OperationDate != null &&
-                    this.OperationDate.Equals(input.OperationDate))
-                ) && 
-                (
                     this.Operations == input.Operations ||
                     this.Operations != null &&
                     input.Operations != null &&
@@ -280,11 +230,6 @@ namespace MX.Wire4.Model
                     this.OrderId.Equals(input.OrderId))
                 ) && 
                 (
-                    this.PaymentType == input.PaymentType ||
-                    (this.PaymentType != null &&
-                    this.PaymentType.Equals(input.PaymentType))
-                ) && 
-                (
                     this.PhoneNumber == input.PhoneNumber ||
                     (this.PhoneNumber != null &&
                     this.PhoneNumber.Equals(input.PhoneNumber))
@@ -293,11 +238,6 @@ namespace MX.Wire4.Model
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.TransactionId == input.TransactionId ||
-                    (this.TransactionId != null &&
-                    this.TransactionId.Equals(input.TransactionId))
                 ) && 
                 (
                     this.Type == input.Type ||
@@ -327,22 +267,14 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.CreationDate.GetHashCode();
                 if (this.DueDate != null)
                     hashCode = hashCode * 59 + this.DueDate.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.OperationDate != null)
-                    hashCode = hashCode * 59 + this.OperationDate.GetHashCode();
                 if (this.Operations != null)
                     hashCode = hashCode * 59 + this.Operations.GetHashCode();
                 if (this.OrderId != null)
                     hashCode = hashCode * 59 + this.OrderId.GetHashCode();
-                if (this.PaymentType != null)
-                    hashCode = hashCode * 59 + this.PaymentType.GetHashCode();
                 if (this.PhoneNumber != null)
                     hashCode = hashCode * 59 + this.PhoneNumber.GetHashCode();
                 if (this.Status != null)
                     hashCode = hashCode * 59 + this.Status.GetHashCode();
-                if (this.TransactionId != null)
-                    hashCode = hashCode * 59 + this.TransactionId.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 return hashCode;
