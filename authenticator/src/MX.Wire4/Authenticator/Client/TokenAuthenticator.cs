@@ -49,7 +49,7 @@ namespace MX.Wire4.Authenticator.Client
 		/// <summary>
 		/// Method that request an Application Token
 		/// </summary>
-		/// <param name="request">Object thar includes all information for the token</param>
+		/// <param name="request">Object that includes all information for the token</param>
 		/// <returns>return the token data </returns>
 		public string GetApplicationToken(TokenRequest request)
 		{
@@ -75,7 +75,7 @@ namespace MX.Wire4.Authenticator.Client
 		/// <summary>
 		/// Method that request an Application User Token for Spei Operations
 		/// </summary>
-		/// <param name="request">Object thar includes all information for the token</param>
+		/// <param name="request">Object that includes all information for the token</param>
 		/// <returns>return the token data </returns>
 		public string GetApplicationUserToken(TokenRequest request)
 		{
@@ -102,7 +102,7 @@ namespace MX.Wire4.Authenticator.Client
 		/// <summary>
 		/// Method that request an Application User Token for Spid Operations
 		/// </summary>
-		/// <param name="request">Object thar includes all information for the token</param>
+		/// <param name="request">Object that includes all information for the token</param>
 		/// <returns>return the token data </returns>
 		public string GetApplicationUserTokenSpid(TokenRequest request)
 		{
@@ -127,8 +127,67 @@ namespace MX.Wire4.Authenticator.Client
 
 			return bearer;
 		}
+        /// <summary>
+		/// Method that request an Application Token
+		/// </summary>
+		/// <param name="request">Object that includes all information for the token</param>
+		/// <param name="scope">Object that includes scope information for the token</param>
+		/// <returns>return the token data </returns>
+		public string GetApplicationToken(TokenRequest request, string scope)
+		{
+			string keySearch = request.ClientKey + scope;
+			CachedToken cachedToken = GetCachedToken(keySearch);
 
-        private CachedToken GetCachedToken(string keySearch)
+			string bearer;
+			if (cachedToken != null)
+			{
+				bearer = FormatToHeader(cachedToken.GetToken().AccessToken);
+			}
+			else
+			{
+				TokenResponse tokenResponse = GetToken(request.ClientKey, request.ClientSecret, string.Format(
+					APPLICATION_TOKEN_TEMPLATE, GrantType.ClientCredentials.GrantTypeName, scope));
+
+				this.tokensCached.Add(keySearch, new CachedToken(null, null, tokenResponse));
+				bearer = FormatToHeader(tokenResponse.AccessToken);
+			}
+
+			return bearer;
+		}
+		/// <summary>
+		/// Method that request an Application User Token for Spei Operations
+		/// </summary>
+		/// <param name="request">Object that includes all information for the token</param>
+		/// <param name="scope">Object that includes scope information for the token</param>
+		/// <returns>return the token data </returns>
+		public string GetApplicationUserToken(TokenRequest request, string scope)
+		{
+
+			string keySearch = request.UserKey + scope;
+			CachedToken cachedToken = GetCachedToken(keySearch);
+
+			string bearer;
+			if (cachedToken != null)
+			{
+				bearer = FormatToHeader(cachedToken.GetToken().AccessToken);
+			}
+			else
+			{
+				TokenResponse tokenResponse = GetToken(request.ClientKey, request.ClientSecret, string.Format(
+					USER_TOKEN_TEMPLATE, GrantType.Password.GrantTypeName, scope, request.UserKey, request.UserSecret));
+
+				this.tokensCached.Add(keySearch, new CachedToken(request.UserKey, request.UserSecret, tokenResponse));
+				bearer = FormatToHeader(tokenResponse.AccessToken);
+			}
+
+			return bearer;
+		}
+		/// <summary>
+		/// Obtain the cached token for a user and scope if exist
+		/// </summary>
+		/// <param name="keySearch">key to search the cached token</param>
+		/// <returns>return the token data if exist</returns>
+		private CachedToken GetCachedToken(string keySearch)
         {
 			CachedToken cachedToken;
 			if (this.tokensCached.TryGetValue(keySearch, out cachedToken))
@@ -142,13 +201,16 @@ namespace MX.Wire4.Authenticator.Client
 
 			return cachedToken;
 		}
-
+		/// <summary>
+		/// Formating the header for make petition with the token
+		/// </summary>
+		/// <param name="token">the token to format to header</param>
+		/// <returns>return the token formated for bearer header</returns>
 		private string FormatToHeader(string token)
 		{
 
 			return "Bearer " + token;
 		}
-
 		/// <summary>
 		/// Method that request a Token
 		/// </summary>
@@ -179,11 +241,10 @@ namespace MX.Wire4.Authenticator.Client
 				throw new ApiException((int)HttpStatusCode.ExpectationFailed, "An error happened while token was requested, :: " + ex.Message);
 			}
 		}
-
 		/// <summary>
 		/// Method that regenerate an Application Token
 		/// </summary>
-		/// <param name="request">Object thar includes all information for the token</param>
+		/// <param name="request">Object that includes all information for the token</param>
 		/// <returns>return the token data </returns>
 		public string RegenerateApplicationToken(TokenRequest request)
 		{
@@ -199,7 +260,7 @@ namespace MX.Wire4.Authenticator.Client
 		/// <summary>
 		/// Method that regenerate an Application User Token for Spei Operations
 		/// </summary>
-		/// <param name="request">Object thar includes all information for the token</param>
+		/// <param name="request">Object that includes all information for the token</param>
 		/// <returns>return the token data </returns>
 		public string RegenerateApplicationUserToken(TokenRequest request)
 		{
@@ -215,7 +276,7 @@ namespace MX.Wire4.Authenticator.Client
 		/// <summary>
 		/// Method that regenerate an Application User Token for Spid Operations
 		/// </summary>
-		/// <param name="request">Object thar includes all information for the token</param>
+		/// <param name="request">Object that includes all information for the token</param>
 		/// <returns>return the token data </returns>
 		public string RegenerateApplicationUserTokenSpid(TokenRequest request)
 		{
@@ -223,6 +284,41 @@ namespace MX.Wire4.Authenticator.Client
 
 			TokenResponse tokenResponse = GetToken(request.ClientKey, request.ClientSecret, string.Format(
 					USER_TOKEN_TEMPLATE, GrantType.Password.GrantTypeName, ScopeType.SpidAdmin.ScopeName, request.UserKey, request.UserSecret));
+
+			this.tokensCached.Add(keySearch, new CachedToken(request.UserKey, request.UserSecret, tokenResponse));
+
+			return FormatToHeader(tokenResponse.AccessToken);
+		}
+
+		/// <summary>
+		/// Method that regenerate an Application Token
+		/// </summary>
+		/// <param name="request">Object that includes all information for the token</param>
+		/// <param name="scope">Object that includes scope information for the token</param>
+		/// <returns>return the token data </returns>
+		public string RegenerateApplicationToken(TokenRequest request, string scope)
+		{
+			string keySearch = request.ClientKey + scope;
+
+			TokenResponse tokenResponse = GetToken(request.ClientKey, request.ClientSecret, string.Format(
+					APPLICATION_TOKEN_TEMPLATE, GrantType.ClientCredentials.GrantTypeName, scope));
+
+			this.tokensCached.Add(keySearch, new CachedToken(null, null, tokenResponse));
+
+			return FormatToHeader(tokenResponse.AccessToken);
+		}
+		/// <summary>
+		/// Method that regenerate an Application User Token for Spei Operations
+		/// </summary>
+		/// <param name="request">Object that includes all information for the token</param>
+		/// <param name="scope">Object that includes scope information for the token</param>
+		/// <returns>return the token data </returns>
+		public string RegenerateApplicationUserToken(TokenRequest request, string scope)
+		{
+			string keySearch = request.UserKey + scope;
+
+			TokenResponse tokenResponse = GetToken(request.ClientKey, request.ClientSecret, string.Format(
+					USER_TOKEN_TEMPLATE, GrantType.Password.GrantTypeName, scope, request.UserKey, request.UserSecret));
 
 			this.tokensCached.Add(keySearch, new CachedToken(request.UserKey, request.UserSecret, tokenResponse));
 
