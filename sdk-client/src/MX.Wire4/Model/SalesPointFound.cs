@@ -62,7 +62,7 @@ namespace MX.Wire4.Model
         /// <param name="publicId">Identificador del punto de venta.</param>
         /// <param name="status">Estatus ACTIVO/INACTIVO el punto de venta.</param>
         /// <param name="updatedAt">updatedAt.</param>
-        public SalesPointFound(string accessIp = default(string), string account = default(string), Timestamp createdAt = default(Timestamp), string name = default(string), string publicId = default(string), StatusEnum? status = default(StatusEnum?), Timestamp updatedAt = default(Timestamp))
+        public SalesPointFound(string accessIp = default(string), string account = default(string), DateTime createdAt = default(DateTime), string name = default(string), string publicId = default(string), StatusEnum? status = default(StatusEnum?), DateTime updatedAt = default(DateTime))
         {
             this.AccessIp = accessIp;
             this.Account = account;
@@ -91,7 +91,7 @@ namespace MX.Wire4.Model
         /// Gets or Sets CreatedAt
         /// </summary>
         [DataMember(Name="created_at", EmitDefaultValue=false)]
-        public Timestamp CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         /// <summary>
         /// Nombre del punto de venta
@@ -112,7 +112,7 @@ namespace MX.Wire4.Model
         /// Gets or Sets UpdatedAt
         /// </summary>
         [DataMember(Name="updated_at", EmitDefaultValue=false)]
-        public Timestamp UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
