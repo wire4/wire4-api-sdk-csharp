@@ -33,9 +33,11 @@ namespace MX.Wire4.Model
         /// Initializes a new instance of the <see cref="AmountRequest" /> class.
         /// </summary>
         /// <param name="amountLimit">Nuevo monto límite que reemplazará al actual, un monto de 0.0 implica que no hay límite (required).</param>
+        /// <param name="cancelReturnUrl">Url a la que se redirigirá en caso de que el cliente cancele el registro (required).</param>
         /// <param name="currencyCode">Código de moneda de la cuenta (required).</param>
         /// <param name="previousAmountLimit">Monto límite registrado actualmente, un monto de 0.0 implica que no hay límite (required).</param>
-        public AmountRequest(decimal? amountLimit = default(decimal?), string currencyCode = default(string), decimal? previousAmountLimit = default(decimal?))
+        /// <param name="returnUrl">Url a la que se redirigirá en caso de éxito (required).</param>
+        public AmountRequest(decimal? amountLimit = default(decimal?), string cancelReturnUrl = default(string), string currencyCode = default(string), decimal? previousAmountLimit = default(decimal?), string returnUrl = default(string))
         {
             // to ensure "amountLimit" is required (not null)
             if (amountLimit == null)
@@ -45,6 +47,15 @@ namespace MX.Wire4.Model
             else
             {
                 this.AmountLimit = amountLimit;
+            }
+            // to ensure "cancelReturnUrl" is required (not null)
+            if (cancelReturnUrl == null)
+            {
+                throw new InvalidDataException("cancelReturnUrl is a required property for AmountRequest and cannot be null");
+            }
+            else
+            {
+                this.CancelReturnUrl = cancelReturnUrl;
             }
             // to ensure "currencyCode" is required (not null)
             if (currencyCode == null)
@@ -64,6 +75,15 @@ namespace MX.Wire4.Model
             {
                 this.PreviousAmountLimit = previousAmountLimit;
             }
+            // to ensure "returnUrl" is required (not null)
+            if (returnUrl == null)
+            {
+                throw new InvalidDataException("returnUrl is a required property for AmountRequest and cannot be null");
+            }
+            else
+            {
+                this.ReturnUrl = returnUrl;
+            }
         }
         
         /// <summary>
@@ -72,6 +92,13 @@ namespace MX.Wire4.Model
         /// <value>Nuevo monto límite que reemplazará al actual, un monto de 0.0 implica que no hay límite</value>
         [DataMember(Name="amount_limit", EmitDefaultValue=false)]
         public decimal? AmountLimit { get; set; }
+
+        /// <summary>
+        /// Url a la que se redirigirá en caso de que el cliente cancele el registro
+        /// </summary>
+        /// <value>Url a la que se redirigirá en caso de que el cliente cancele el registro</value>
+        [DataMember(Name="cancel_return_url", EmitDefaultValue=false)]
+        public string CancelReturnUrl { get; set; }
 
         /// <summary>
         /// Código de moneda de la cuenta
@@ -88,6 +115,13 @@ namespace MX.Wire4.Model
         public decimal? PreviousAmountLimit { get; set; }
 
         /// <summary>
+        /// Url a la que se redirigirá en caso de éxito
+        /// </summary>
+        /// <value>Url a la que se redirigirá en caso de éxito</value>
+        [DataMember(Name="return_url", EmitDefaultValue=false)]
+        public string ReturnUrl { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -96,8 +130,10 @@ namespace MX.Wire4.Model
             var sb = new StringBuilder();
             sb.Append("class AmountRequest {\n");
             sb.Append("  AmountLimit: ").Append(AmountLimit).Append("\n");
+            sb.Append("  CancelReturnUrl: ").Append(CancelReturnUrl).Append("\n");
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  PreviousAmountLimit: ").Append(PreviousAmountLimit).Append("\n");
+            sb.Append("  ReturnUrl: ").Append(ReturnUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -138,6 +174,11 @@ namespace MX.Wire4.Model
                     this.AmountLimit.Equals(input.AmountLimit))
                 ) && 
                 (
+                    this.CancelReturnUrl == input.CancelReturnUrl ||
+                    (this.CancelReturnUrl != null &&
+                    this.CancelReturnUrl.Equals(input.CancelReturnUrl))
+                ) && 
+                (
                     this.CurrencyCode == input.CurrencyCode ||
                     (this.CurrencyCode != null &&
                     this.CurrencyCode.Equals(input.CurrencyCode))
@@ -146,6 +187,11 @@ namespace MX.Wire4.Model
                     this.PreviousAmountLimit == input.PreviousAmountLimit ||
                     (this.PreviousAmountLimit != null &&
                     this.PreviousAmountLimit.Equals(input.PreviousAmountLimit))
+                ) && 
+                (
+                    this.ReturnUrl == input.ReturnUrl ||
+                    (this.ReturnUrl != null &&
+                    this.ReturnUrl.Equals(input.ReturnUrl))
                 );
         }
 
@@ -160,10 +206,14 @@ namespace MX.Wire4.Model
                 int hashCode = 41;
                 if (this.AmountLimit != null)
                     hashCode = hashCode * 59 + this.AmountLimit.GetHashCode();
+                if (this.CancelReturnUrl != null)
+                    hashCode = hashCode * 59 + this.CancelReturnUrl.GetHashCode();
                 if (this.CurrencyCode != null)
                     hashCode = hashCode * 59 + this.CurrencyCode.GetHashCode();
                 if (this.PreviousAmountLimit != null)
                     hashCode = hashCode * 59 + this.PreviousAmountLimit.GetHashCode();
+                if (this.ReturnUrl != null)
+                    hashCode = hashCode * 59 + this.ReturnUrl.GetHashCode();
                 return hashCode;
             }
         }

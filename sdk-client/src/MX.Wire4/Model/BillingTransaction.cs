@@ -63,7 +63,7 @@ namespace MX.Wire4.Model
         /// <param name="paymentOrderId">Identificador de la orden de pago.</param>
         /// <param name="transactionId">Identificador de la transacción.</param>
         /// <param name="type">Tipo de transaccion IN | OUT.</param>
-        public BillingTransaction(decimal? amount = default(decimal?), string claveRastreo = default(string), int? monexId = default(int?), Timestamp operationDate = default(Timestamp), string orderId = default(string), string paymentOrderId = default(string), int? transactionId = default(int?), TypeEnum? type = default(TypeEnum?))
+        public BillingTransaction(decimal? amount = default(decimal?), string claveRastreo = default(string), int? monexId = default(int?), DateTime operationDate = default(DateTime), string orderId = default(string), string paymentOrderId = default(string), int? transactionId = default(int?), TypeEnum? type = default(TypeEnum?))
         {
             this.Amount = amount;
             this.ClaveRastreo = claveRastreo;
@@ -100,7 +100,7 @@ namespace MX.Wire4.Model
         /// Gets or Sets OperationDate
         /// </summary>
         [DataMember(Name="operation_date", EmitDefaultValue=false)]
-        public Timestamp OperationDate { get; set; }
+        public DateTime OperationDate { get; set; }
 
         /// <summary>
         /// Identificador de la orden

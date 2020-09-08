@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **Amount** | [**decimal?**](BigDecimal.md) | Monto del pago CODI® | [optional] 
 **Concept** | **string** | Descripción del pago CODI® | 
 **DueDate** | **DateTime?** | Fecha de operación pago CODI®, formato: yyyy-MM-dd&#x27;T&#x27;HH:mm:ss | 
+**Metadata** | **string** | Campo de metada CODI®, longitud máxima determinada por configuracion de la empresa, por defecto 100 caracteres | [optional] 
 **OrderId** | **string** | Referencia de la transferencia asignada por el cliente | 
 **PhoneNumber** | **string** | Número de teléfono móvil en caso de ser un pago CODI® usando &#x27;PUSH_NOTIFICATION&#x27; estecampo sería obligatorio | [optional] 
 **Type** | **string** | El tipo de código QR para pago con CODI® | 

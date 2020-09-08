@@ -219,8 +219,8 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns></returns>
-        void UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription);
+        /// <returns>TokenRequiredResponse</returns>
+        TokenRequiredResponse UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription);
 
         /// <summary>
         /// Actualiza el monto límite
@@ -233,8 +233,8 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateAmountLimitAccountUsingPUTWithHttpInfo (AmountRequest body, string authorization, string account, string subscription);
+        /// <returns>ApiResponse of TokenRequiredResponse</returns>
+        ApiResponse<TokenRequiredResponse> UpdateAmountLimitAccountUsingPUTWithHttpInfo (AmountRequest body, string authorization, string account, string subscription);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -433,8 +433,8 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateAmountLimitAccountUsingPUTAsync (AmountRequest body, string authorization, string account, string subscription);
+        /// <returns>Task of TokenRequiredResponse</returns>
+        System.Threading.Tasks.Task<TokenRequiredResponse> UpdateAmountLimitAccountUsingPUTAsync (AmountRequest body, string authorization, string account, string subscription);
 
         /// <summary>
         /// Actualiza el monto límite
@@ -447,8 +447,8 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo (AmountRequest body, string authorization, string account, string subscription);
+        /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo (AmountRequest body, string authorization, string account, string subscription);
         #endregion Asynchronous Operations
     }
 
@@ -1695,10 +1695,11 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns></returns>
-        public void UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription)
+        /// <returns>TokenRequiredResponse</returns>
+        public TokenRequiredResponse UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription)
         {
-             UpdateAmountLimitAccountUsingPUTWithHttpInfo(body, authorization, account, subscription);
+             ApiResponse<TokenRequiredResponse> localVarResponse = UpdateAmountLimitAccountUsingPUTWithHttpInfo(body, authorization, account, subscription);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1709,8 +1710,8 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateAmountLimitAccountUsingPUTWithHttpInfo (AmountRequest body, string authorization, string account, string subscription)
+        /// <returns>ApiResponse of TokenRequiredResponse</returns>
+        public ApiResponse< TokenRequiredResponse > UpdateAmountLimitAccountUsingPUTWithHttpInfo (AmountRequest body, string authorization, string account, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1741,6 +1742,7 @@ namespace MX.Wire4.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1771,9 +1773,9 @@ namespace MX.Wire4.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<TokenRequiredResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (TokenRequiredResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TokenRequiredResponse)));
         }
 
         /// <summary>
@@ -1784,10 +1786,11 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateAmountLimitAccountUsingPUTAsync (AmountRequest body, string authorization, string account, string subscription)
+        /// <returns>Task of TokenRequiredResponse</returns>
+        public async System.Threading.Tasks.Task<TokenRequiredResponse> UpdateAmountLimitAccountUsingPUTAsync (AmountRequest body, string authorization, string account, string subscription)
         {
-             await UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo(body, authorization, account, subscription);
+             ApiResponse<TokenRequiredResponse> localVarResponse = await UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo(body, authorization, account, subscription);
+             return localVarResponse.Data;
 
         }
 
@@ -1799,8 +1802,8 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo (AmountRequest body, string authorization, string account, string subscription)
+        /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo (AmountRequest body, string authorization, string account, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1831,6 +1834,7 @@ namespace MX.Wire4.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1861,9 +1865,9 @@ namespace MX.Wire4.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<TokenRequiredResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (TokenRequiredResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TokenRequiredResponse)));
         }
 
     }

@@ -58,10 +58,11 @@ namespace MX.Wire4.Model
         /// <param name="amount">Monto del pago CODI®.</param>
         /// <param name="concept">Descripción del pago CODI® (required).</param>
         /// <param name="dueDate">Fecha de operación pago CODI®, formato: yyyy-MM-dd&#x27;T&#x27;HH:mm:ss (required).</param>
+        /// <param name="metadata">Campo de metada CODI®, longitud máxima determinada por configuracion de la empresa, por defecto 100 caracteres.</param>
         /// <param name="orderId">Referencia de la transferencia asignada por el cliente (required).</param>
         /// <param name="phoneNumber">Número de teléfono móvil en caso de ser un pago CODI® usando &#x27;PUSH_NOTIFICATION&#x27; estecampo sería obligatorio.</param>
         /// <param name="type">El tipo de código QR para pago con CODI® (required).</param>
-        public CodiCodeRequestDTO(decimal? amount = default(decimal?), string concept = default(string), DateTime? dueDate = default(DateTime?), string orderId = default(string), string phoneNumber = default(string), TypeEnum type = default(TypeEnum))
+        public CodiCodeRequestDTO(decimal? amount = default(decimal?), string concept = default(string), DateTime? dueDate = default(DateTime?), string metadata = default(string), string orderId = default(string), string phoneNumber = default(string), TypeEnum type = default(TypeEnum))
         {
             // to ensure "concept" is required (not null)
             if (concept == null)
@@ -100,6 +101,7 @@ namespace MX.Wire4.Model
                 this.Type = type;
             }
             this.Amount = amount;
+            this.Metadata = metadata;
             this.PhoneNumber = phoneNumber;
         }
         
@@ -123,6 +125,13 @@ namespace MX.Wire4.Model
         /// <value>Fecha de operación pago CODI®, formato: yyyy-MM-dd&#x27;T&#x27;HH:mm:ss</value>
         [DataMember(Name="due_date", EmitDefaultValue=false)]
         public DateTime? DueDate { get; set; }
+
+        /// <summary>
+        /// Campo de metada CODI®, longitud máxima determinada por configuracion de la empresa, por defecto 100 caracteres
+        /// </summary>
+        /// <value>Campo de metada CODI®, longitud máxima determinada por configuracion de la empresa, por defecto 100 caracteres</value>
+        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        public string Metadata { get; set; }
 
         /// <summary>
         /// Referencia de la transferencia asignada por el cliente
@@ -150,6 +159,7 @@ namespace MX.Wire4.Model
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  Concept: ").Append(Concept).Append("\n");
             sb.Append("  DueDate: ").Append(DueDate).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
@@ -203,6 +213,11 @@ namespace MX.Wire4.Model
                     this.DueDate.Equals(input.DueDate))
                 ) && 
                 (
+                    this.Metadata == input.Metadata ||
+                    (this.Metadata != null &&
+                    this.Metadata.Equals(input.Metadata))
+                ) && 
+                (
                     this.OrderId == input.OrderId ||
                     (this.OrderId != null &&
                     this.OrderId.Equals(input.OrderId))
@@ -234,6 +249,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.Concept.GetHashCode();
                 if (this.DueDate != null)
                     hashCode = hashCode * 59 + this.DueDate.GetHashCode();
+                if (this.Metadata != null)
+                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.OrderId != null)
                     hashCode = hashCode * 59 + this.OrderId.GetHashCode();
                 if (this.PhoneNumber != null)

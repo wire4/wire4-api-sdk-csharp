@@ -471,7 +471,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="updateamountlimitaccountusingput"></a>
 # **UpdateAmountLimitAccountUsingPUT**
-> void UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription)
+> TokenRequiredResponse UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription)
 
 Actualiza el monto límite
 
@@ -500,7 +500,8 @@ namespace Example
             try
             {
                 // Actualiza el monto límite
-                apiInstance.UpdateAmountLimitAccountUsingPUT(body, authorization, account, subscription);
+                TokenRequiredResponse result = apiInstance.UpdateAmountLimitAccountUsingPUT(body, authorization, account, subscription);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -522,7 +523,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**TokenRequiredResponse**](TokenRequiredResponse.md)
 
 ### Authorization
 
@@ -531,6 +532,6 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
