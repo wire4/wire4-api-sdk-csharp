@@ -189,11 +189,14 @@ namespace MX.Wire4.Authenticator.Client
 		/// <returns>return the token data if exist</returns>
 		private CachedToken GetCachedToken(string keySearch)
         {
-			CachedToken cachedToken;
+            CachedToken cachedToken;
 			if (this.tokensCached.TryGetValue(keySearch, out cachedToken))
 			{
+				/**  < 0 − If date1 is earlier than date2
+                  *    0 − If date1 is the same as date2
+                  *  > 0 − If date1 is later than date2  */
 				if (cachedToken == null || cachedToken.GetToken() == null ||
-                    DateTime.Compare(cachedToken.GetToken().ExpirationDate, DateTime.Now.AddSeconds(5 * 60 * -1)) < 0)
+                    DateTime.Compare(DateTime.Now.AddSeconds(5 * 60), cachedToken.GetToken().ExpirationDate) < 0)
                 {
 					cachedToken = null;
                 }
