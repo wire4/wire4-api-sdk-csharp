@@ -24,7 +24,7 @@ using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
 namespace MX.Wire4.Model
 {
     /// <summary>
-    /// El mensaje que se envía mediante (webHook) con la informaciónde una transferencia de entrada recibida
+    /// El mensaje que se envía mediante (webHook) con la información de una transferencia de entrada recibida
     /// </summary>
     [DataContract]
         public partial class MessageDepositReceived :  IEquatable<MessageDepositReceived>, IValidatableObject

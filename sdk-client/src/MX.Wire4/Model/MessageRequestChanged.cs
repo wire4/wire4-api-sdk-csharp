@@ -24,15 +24,15 @@ using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
 namespace MX.Wire4.Model
 {
     /// <summary>
-    /// El mensaje que se envía mediante (webHook) con la información acerca de algún cambio en el procesamiento de la petición a esta a esta API
+    /// El mensaje que se envía mediante (WebHook) con la información acerca de algún cambio en el procesamiento o estado de la petición a esta a esta API
     /// </summary>
     [DataContract]
         public partial class MessageRequestChanged :  IEquatable<MessageRequestChanged>, IValidatableObject
     {
         /// <summary>
-        /// El cambio a informar en la procesamiento de la petición
+        /// El cambio a informar en la procesamiento/estado de la petición
         /// </summary>
-        /// <value>El cambio a informar en la procesamiento de la petición</value>
+        /// <value>El cambio a informar en la procesamiento/estado de la petición</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum StatusEnum
         {
@@ -42,16 +42,16 @@ namespace MX.Wire4.Model
             [EnumMember(Value = "AUTHORIZED")]
             AUTHORIZED = 0        }
         /// <summary>
-        /// El cambio a informar en la procesamiento de la petición
+        /// El cambio a informar en la procesamiento/estado de la petición
         /// </summary>
-        /// <value>El cambio a informar en la procesamiento de la petición</value>
+        /// <value>El cambio a informar en la procesamiento/estado de la petición</value>
         [DataMember(Name="status", EmitDefaultValue=false)]
         public StatusEnum? Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="MessageRequestChanged" /> class.
         /// </summary>
-        /// <param name="requestId">Identificador de la petición realizada a está API.</param>
-        /// <param name="status">El cambio a informar en la procesamiento de la petición.</param>
+        /// <param name="requestId">Identificador de la petición realizada a esta API.</param>
+        /// <param name="status">El cambio a informar en la procesamiento/estado de la petición.</param>
         public MessageRequestChanged(string requestId = default(string), StatusEnum? status = default(StatusEnum?))
         {
             this.RequestId = requestId;
@@ -59,9 +59,9 @@ namespace MX.Wire4.Model
         }
         
         /// <summary>
-        /// Identificador de la petición realizada a está API
+        /// Identificador de la petición realizada a esta API
         /// </summary>
-        /// <value>Identificador de la petición realizada a está API</value>
+        /// <value>Identificador de la petición realizada a esta API</value>
         [DataMember(Name="request_id", EmitDefaultValue=false)]
         public string RequestId { get; set; }
 

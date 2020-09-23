@@ -24,7 +24,7 @@ using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
 namespace MX.Wire4.Model
 {
     /// <summary>
-    /// El mensaje que se envía mediante (webHook) con la información del la suscripción a esta a esta API
+    /// El mensaje que se envía mediante (webHook) con la información de la suscripción a esta a esta API
     /// </summary>
     [DataContract]
         public partial class MessageSubscription :  IEquatable<MessageSubscription>, IValidatableObject
@@ -32,12 +32,12 @@ namespace MX.Wire4.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MessageSubscription" /> class.
         /// </summary>
-        /// <param name="contract">Contrato Monex, con el cual se suscribió el cliente Monex en Wire4.</param>
-        /// <param name="maskedContract">Contrato enmascarado de Monex, con el cual se suscribió el cliente Monex en Wire4.</param>
-        /// <param name="subscription">Identificador de la suscripción, el cual se utiliza en las operaciones que solicitan una suscripción.</param>
-        /// <param name="user">Usuario enmascardo, con el cual se suscribió el cliente Monex en Wire4.</param>
-        /// <param name="userKey">Usuario proporcionado por Wire4, el cual se debe utilizar para autenticar a esta suscripción.</param>
-        /// <param name="userSecret">Contraseña proporcionada por Wire4, la cual se debe utilizar para autenticar a esta suscripción.</param>
+        /// <param name="contract">Contrato Monex, con el cuál se suscribió el cliente Monex en Wire4.</param>
+        /// <param name="maskedContract">Contrato enmascarado de Monex, con el cuál se suscribió el cliente Monex en Wire4.</param>
+        /// <param name="subscription">Identificador de la suscripción, el cual se utilizará en las operaciones que solicitan una suscripción.</param>
+        /// <param name="user">Usuario enmascardo, con el cuál se suscribió el cliente Monex en Wire4.</param>
+        /// <param name="userKey">Usuario proporcionado por Wire4, el cuál se debe utilizar para autenticar a esta suscripción.</param>
+        /// <param name="userSecret">Contraseña proporcionada por Wire4, la cuál se debe utilizar para autenticar a esta suscripción.</param>
         public MessageSubscription(string contract = default(string), string maskedContract = default(string), string subscription = default(string), string user = default(string), string userKey = default(string), string userSecret = default(string))
         {
             this.Contract = contract;
@@ -49,44 +49,44 @@ namespace MX.Wire4.Model
         }
         
         /// <summary>
-        /// Contrato Monex, con el cual se suscribió el cliente Monex en Wire4
+        /// Contrato Monex, con el cuál se suscribió el cliente Monex en Wire4
         /// </summary>
-        /// <value>Contrato Monex, con el cual se suscribió el cliente Monex en Wire4</value>
+        /// <value>Contrato Monex, con el cuál se suscribió el cliente Monex en Wire4</value>
         [DataMember(Name="contract", EmitDefaultValue=false)]
         public string Contract { get; set; }
 
         /// <summary>
-        /// Contrato enmascarado de Monex, con el cual se suscribió el cliente Monex en Wire4
+        /// Contrato enmascarado de Monex, con el cuál se suscribió el cliente Monex en Wire4
         /// </summary>
-        /// <value>Contrato enmascarado de Monex, con el cual se suscribió el cliente Monex en Wire4</value>
+        /// <value>Contrato enmascarado de Monex, con el cuál se suscribió el cliente Monex en Wire4</value>
         [DataMember(Name="masked_contract", EmitDefaultValue=false)]
         public string MaskedContract { get; set; }
 
         /// <summary>
-        /// Identificador de la suscripción, el cual se utiliza en las operaciones que solicitan una suscripción
+        /// Identificador de la suscripción, el cual se utilizará en las operaciones que solicitan una suscripción
         /// </summary>
-        /// <value>Identificador de la suscripción, el cual se utiliza en las operaciones que solicitan una suscripción</value>
+        /// <value>Identificador de la suscripción, el cual se utilizará en las operaciones que solicitan una suscripción</value>
         [DataMember(Name="subscription", EmitDefaultValue=false)]
         public string Subscription { get; set; }
 
         /// <summary>
-        /// Usuario enmascardo, con el cual se suscribió el cliente Monex en Wire4
+        /// Usuario enmascardo, con el cuál se suscribió el cliente Monex en Wire4
         /// </summary>
-        /// <value>Usuario enmascardo, con el cual se suscribió el cliente Monex en Wire4</value>
+        /// <value>Usuario enmascardo, con el cuál se suscribió el cliente Monex en Wire4</value>
         [DataMember(Name="user", EmitDefaultValue=false)]
         public string User { get; set; }
 
         /// <summary>
-        /// Usuario proporcionado por Wire4, el cual se debe utilizar para autenticar a esta suscripción
+        /// Usuario proporcionado por Wire4, el cuál se debe utilizar para autenticar a esta suscripción
         /// </summary>
-        /// <value>Usuario proporcionado por Wire4, el cual se debe utilizar para autenticar a esta suscripción</value>
+        /// <value>Usuario proporcionado por Wire4, el cuál se debe utilizar para autenticar a esta suscripción</value>
         [DataMember(Name="user_key", EmitDefaultValue=false)]
         public string UserKey { get; set; }
 
         /// <summary>
-        /// Contraseña proporcionada por Wire4, la cual se debe utilizar para autenticar a esta suscripción
+        /// Contraseña proporcionada por Wire4, la cuál se debe utilizar para autenticar a esta suscripción
         /// </summary>
-        /// <value>Contraseña proporcionada por Wire4, la cual se debe utilizar para autenticar a esta suscripción</value>
+        /// <value>Contraseña proporcionada por Wire4, la cuál se debe utilizar para autenticar a esta suscripción</value>
         [DataMember(Name="user_secret", EmitDefaultValue=false)]
         public string UserSecret { get; set; }
 

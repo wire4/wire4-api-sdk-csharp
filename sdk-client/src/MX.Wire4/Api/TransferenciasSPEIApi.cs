@@ -24,6 +24,31 @@ namespace MX.Wire4.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+        /// </summary>
+        /// <remarks>
+        /// Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">authorizationTransactionsGroupRequestDTO</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Identificador de la suscripcion</param>
+        /// <returns>TokenRequiredResponse</returns>
+        TokenRequiredResponse CreateAuthorizationTransactionsGroup (AuthorizationTransactionGroup body, string authorization, string subscription);
+
+        /// <summary>
+        /// Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+        /// </summary>
+        /// <remarks>
+        /// Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">authorizationTransactionsGroupRequestDTO</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Identificador de la suscripcion</param>
+        /// <returns>ApiResponse of TokenRequiredResponse</returns>
+        ApiResponse<TokenRequiredResponse> CreateAuthorizationTransactionsGroupWithHttpInfo (AuthorizationTransactionGroup body, string authorization, string subscription);
+        /// <summary>
         /// Eliminación de transferencias SPEI® pendientes
         /// </summary>
         /// <remarks>
@@ -33,8 +58,9 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="orderId">Listado de identificadores dentro del request_id para eliminar (optional)</param>
         /// <returns></returns>
-        void DropTransactionsPendingUsingDELETE (string authorization, string requestId, string subscription);
+        void DropTransactionsPendingUsingDELETE (string authorization, string requestId, string subscription, string orderId = null);
 
         /// <summary>
         /// Eliminación de transferencias SPEI® pendientes
@@ -46,8 +72,9 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="orderId">Listado de identificadores dentro del request_id para eliminar (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DropTransactionsPendingUsingDELETEWithHttpInfo (string authorization, string requestId, string subscription);
+        ApiResponse<Object> DropTransactionsPendingUsingDELETEWithHttpInfo (string authorization, string requestId, string subscription, string orderId = null);
         /// <summary>
         /// Consulta de transferencias recibidas
         /// </summary>
@@ -149,6 +176,31 @@ namespace MX.Wire4.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
+        /// Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+        /// </summary>
+        /// <remarks>
+        /// Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">authorizationTransactionsGroupRequestDTO</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Identificador de la suscripcion</param>
+        /// <returns>Task of TokenRequiredResponse</returns>
+        System.Threading.Tasks.Task<TokenRequiredResponse> CreateAuthorizationTransactionsGroupAsync (AuthorizationTransactionGroup body, string authorization, string subscription);
+
+        /// <summary>
+        /// Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+        /// </summary>
+        /// <remarks>
+        /// Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">authorizationTransactionsGroupRequestDTO</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Identificador de la suscripcion</param>
+        /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> CreateAuthorizationTransactionsGroupAsyncWithHttpInfo (AuthorizationTransactionGroup body, string authorization, string subscription);
+        /// <summary>
         /// Eliminación de transferencias SPEI® pendientes
         /// </summary>
         /// <remarks>
@@ -158,8 +210,9 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="orderId">Listado de identificadores dentro del request_id para eliminar (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DropTransactionsPendingUsingDELETEAsync (string authorization, string requestId, string subscription);
+        System.Threading.Tasks.Task DropTransactionsPendingUsingDELETEAsync (string authorization, string requestId, string subscription, string orderId = null);
 
         /// <summary>
         /// Eliminación de transferencias SPEI® pendientes
@@ -171,8 +224,9 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="orderId">Listado de identificadores dentro del request_id para eliminar (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DropTransactionsPendingUsingDELETEAsyncWithHttpInfo (string authorization, string requestId, string subscription);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DropTransactionsPendingUsingDELETEAsyncWithHttpInfo (string authorization, string requestId, string subscription, string orderId = null);
         /// <summary>
         /// Consulta de transferencias recibidas
         /// </summary>
@@ -383,16 +437,174 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Eliminación de transferencias SPEI® pendientes Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.
+        /// Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">authorizationTransactionsGroupRequestDTO</param>
         /// <param name="authorization">Header para token</param>
-        /// <param name="requestId">Identificador de las transferencias a eliminar</param>
-        /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns></returns>
-        public void DropTransactionsPendingUsingDELETE (string authorization, string requestId, string subscription)
+        /// <param name="subscription">Identificador de la suscripcion</param>
+        /// <returns>TokenRequiredResponse</returns>
+        public TokenRequiredResponse CreateAuthorizationTransactionsGroup (AuthorizationTransactionGroup body, string authorization, string subscription)
         {
-             DropTransactionsPendingUsingDELETEWithHttpInfo(authorization, requestId, subscription);
+             ApiResponse<TokenRequiredResponse> localVarResponse = CreateAuthorizationTransactionsGroupWithHttpInfo(body, authorization, subscription);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">authorizationTransactionsGroupRequestDTO</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Identificador de la suscripcion</param>
+        /// <returns>ApiResponse of TokenRequiredResponse</returns>
+        public ApiResponse< TokenRequiredResponse > CreateAuthorizationTransactionsGroupWithHttpInfo (AuthorizationTransactionGroup body, string authorization, string subscription)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling TransferenciasSPEIApi->CreateAuthorizationTransactionsGroup");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->CreateAuthorizationTransactionsGroup");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->CreateAuthorizationTransactionsGroup");
+
+            var localVarPath = "/subscriptions/{subscription}/transactions/group";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "*/*"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateAuthorizationTransactionsGroup", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TokenRequiredResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (TokenRequiredResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TokenRequiredResponse)));
+        }
+
+        /// <summary>
+        /// Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">authorizationTransactionsGroupRequestDTO</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Identificador de la suscripcion</param>
+        /// <returns>Task of TokenRequiredResponse</returns>
+        public async System.Threading.Tasks.Task<TokenRequiredResponse> CreateAuthorizationTransactionsGroupAsync (AuthorizationTransactionGroup body, string authorization, string subscription)
+        {
+             ApiResponse<TokenRequiredResponse> localVarResponse = await CreateAuthorizationTransactionsGroupAsyncWithHttpInfo(body, authorization, subscription);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">authorizationTransactionsGroupRequestDTO</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Identificador de la suscripcion</param>
+        /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> CreateAuthorizationTransactionsGroupAsyncWithHttpInfo (AuthorizationTransactionGroup body, string authorization, string subscription)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling TransferenciasSPEIApi->CreateAuthorizationTransactionsGroup");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->CreateAuthorizationTransactionsGroup");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->CreateAuthorizationTransactionsGroup");
+
+            var localVarPath = "/subscriptions/{subscription}/transactions/group";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "*/*"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateAuthorizationTransactionsGroup", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TokenRequiredResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (TokenRequiredResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TokenRequiredResponse)));
         }
 
         /// <summary>
@@ -402,8 +614,23 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="orderId">Listado de identificadores dentro del request_id para eliminar (optional)</param>
+        /// <returns></returns>
+        public void DropTransactionsPendingUsingDELETE (string authorization, string requestId, string subscription, string orderId = null)
+        {
+             DropTransactionsPendingUsingDELETEWithHttpInfo(authorization, requestId, subscription, orderId);
+        }
+
+        /// <summary>
+        /// Eliminación de transferencias SPEI® pendientes Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">Identificador de las transferencias a eliminar</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="orderId">Listado de identificadores dentro del request_id para eliminar (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DropTransactionsPendingUsingDELETEWithHttpInfo (string authorization, string requestId, string subscription)
+        public ApiResponse<Object> DropTransactionsPendingUsingDELETEWithHttpInfo (string authorization, string requestId, string subscription, string orderId = null)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
@@ -437,6 +664,7 @@ namespace MX.Wire4.Api
 
             if (requestId != null) localVarPathParams.Add("requestId", this.Configuration.ApiClient.ParameterToString(requestId)); // path parameter
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (orderId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order_id", orderId)); // query parameter
             if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
@@ -464,10 +692,11 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="orderId">Listado de identificadores dentro del request_id para eliminar (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DropTransactionsPendingUsingDELETEAsync (string authorization, string requestId, string subscription)
+        public async System.Threading.Tasks.Task DropTransactionsPendingUsingDELETEAsync (string authorization, string requestId, string subscription, string orderId = null)
         {
-             await DropTransactionsPendingUsingDELETEAsyncWithHttpInfo(authorization, requestId, subscription);
+             await DropTransactionsPendingUsingDELETEAsyncWithHttpInfo(authorization, requestId, subscription, orderId);
 
         }
 
@@ -478,8 +707,9 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="requestId">Identificador de las transferencias a eliminar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <param name="orderId">Listado de identificadores dentro del request_id para eliminar (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DropTransactionsPendingUsingDELETEAsyncWithHttpInfo (string authorization, string requestId, string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DropTransactionsPendingUsingDELETEAsyncWithHttpInfo (string authorization, string requestId, string subscription, string orderId = null)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
@@ -513,6 +743,7 @@ namespace MX.Wire4.Api
 
             if (requestId != null) localVarPathParams.Add("requestId", this.Configuration.ApiClient.ParameterToString(requestId)); // path parameter
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (orderId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order_id", orderId)); // query parameter
             if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request

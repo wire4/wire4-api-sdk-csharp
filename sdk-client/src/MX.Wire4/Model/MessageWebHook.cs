@@ -32,12 +32,12 @@ namespace MX.Wire4.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MessageWebHook" /> class.
         /// </summary>
-        /// <param name="apiVersion">La versión de la API.</param>
+        /// <param name="apiVersion">La versión de esta API.</param>
         /// <param name="created">Fecha de creación del mensaje.</param>
         /// <param name="data">Objeto que contiene la información del evento.</param>
         /// <param name="id">El identificador del mensaje.</param>
         /// <param name="livemode">Indica si proviene de un entorno productivo.</param>
-        /// <param name="_object">Tipo de objeto  que contiene el mensaje en el atributo data los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing .</param>
+        /// <param name="_object">Tipo de objeto  que contiene el mensaje en el atributo &#x27;data&#x27; los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing, request_outgoing .</param>
         /// <param name="pendingWebhooks">Número de  mensajes pendientes de enviar.</param>
         /// <param name="request">Identificador del recurso relacionado.</param>
         /// <param name="type">El tipo evento que se esta enviando en la notifiación.</param>
@@ -55,9 +55,9 @@ namespace MX.Wire4.Model
         }
         
         /// <summary>
-        /// La versión de la API
+        /// La versión de esta API
         /// </summary>
-        /// <value>La versión de la API</value>
+        /// <value>La versión de esta API</value>
         [DataMember(Name="api_version", EmitDefaultValue=false)]
         public string ApiVersion { get; set; }
 
@@ -90,9 +90,9 @@ namespace MX.Wire4.Model
         public bool? Livemode { get; set; }
 
         /// <summary>
-        /// Tipo de objeto  que contiene el mensaje en el atributo data los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing 
+        /// Tipo de objeto  que contiene el mensaje en el atributo &#x27;data&#x27; los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing, request_outgoing 
         /// </summary>
-        /// <value>Tipo de objeto  que contiene el mensaje en el atributo data los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing </value>
+        /// <value>Tipo de objeto  que contiene el mensaje en el atributo &#x27;data&#x27; los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing, request_outgoing </value>
         [DataMember(Name="object", EmitDefaultValue=false)]
         public string Object { get; set; }
 

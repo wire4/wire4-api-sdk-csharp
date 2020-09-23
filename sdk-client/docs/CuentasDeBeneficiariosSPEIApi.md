@@ -4,6 +4,7 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AuthorizeAccountsPendingPUT**](CuentasDeBeneficiariosSPEIApi.md#authorizeaccountspendingput) | **PUT** /subscriptions/{subscription}/beneficiaries/pending | Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
 [**DeleteAccountUsingDELETE**](CuentasDeBeneficiariosSPEIApi.md#deleteaccountusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/{account} | Elimina la cuenta del beneficiario
 [**GetAvailableRelationshipsMonexUsingGET**](CuentasDeBeneficiariosSPEIApi.md#getavailablerelationshipsmonexusingget) | **GET** /subscriptions/{subscription}/beneficiaries/relationships | Consulta de relaciones
 [**GetBeneficiariesByRequestId**](CuentasDeBeneficiariosSPEIApi.md#getbeneficiariesbyrequestid) | **GET** /subscriptions/{subscription}/beneficiaries/spei/{requestId} | Consulta los beneficiarios por el identificador de la petición de registro
@@ -12,6 +13,70 @@ Method | HTTP request | Description
 [**RemoveBeneficiariesPendingUsingDELETE**](CuentasDeBeneficiariosSPEIApi.md#removebeneficiariespendingusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/request/{requestId} | Eliminación de beneficiarios SPEI® sin confirmar
 [**UpdateAmountLimitAccountUsingPUT**](CuentasDeBeneficiariosSPEIApi.md#updateamountlimitaccountusingput) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Actualiza el monto límite
 
+<a name="authorizeaccountspendingput"></a>
+# **AuthorizeAccountsPendingPUT**
+> AuthorizedBeneficiariesResponse AuthorizeAccountsPendingPUT (UrlsRedirect body, string authorization, string subscription)
+
+Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
+
+Solicta autorizar las cuentas de beneficiarios en estado pendiente agrupandolas en un set de cuentas que pueden incluir tanto cuentas de SPI como de SPID, debe indicar las urls de redireccion en caso de error y en caso de exito<br/>
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using MX.Wire4.Api;
+using MX.Wire4.Client;
+using MX.Wire4.Model;
+
+namespace Example
+{
+    public class AuthorizeAccountsPendingPUTExample
+    {
+        public void main()
+        {
+            var apiInstance = new CuentasDeBeneficiariosSPEIApi();
+            var body = new UrlsRedirect(); // UrlsRedirect | Información de la cuenta del beneficiario
+            var authorization = authorization_example;  // string | Header para token
+            var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
+
+            try
+            {
+                // Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
+                AuthorizedBeneficiariesResponse result = apiInstance.AuthorizeAccountsPendingPUT(body, authorization, subscription);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling CuentasDeBeneficiariosSPEIApi.AuthorizeAccountsPendingPUT: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UrlsRedirect**](UrlsRedirect.md)| Información de la cuenta del beneficiario | 
+ **authorization** | **string**| Header para token | 
+ **subscription** | **string**| El identificador de la suscripción a esta API | 
+
+### Return type
+
+[**AuthorizedBeneficiariesResponse**](AuthorizedBeneficiariesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="deleteaccountusingdelete"></a>
 # **DeleteAccountUsingDELETE**
 > void DeleteAccountUsingDELETE (string authorization, string account, string subscription)
@@ -203,7 +268,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getbeneficiariesforaccountusingget"></a>
 # **GetBeneficiariesForAccountUsingGET**
-> BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string rfc = null)
+> BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
 
 Consulta los beneficiarios registrados
 
@@ -227,12 +292,17 @@ namespace Example
             var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
             var account = account_example;  // string | Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional) 
+            var beneficiaryBank = beneficiaryBank_example;  // string | Clave del banco beneficiario (optional) 
+            var beneficiaryName = beneficiaryName_example;  // string | Nombre del beneficiario (optional) 
+            var endDate = endDate_example;  // string | Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional) 
+            var initDate = initDate_example;  // string | Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional) 
             var rfc = rfc_example;  // string | RFC del beneficiario (optional) 
+            var status = status_example;  // string | Estatus de la cuenta (optional) 
 
             try
             {
                 // Consulta los beneficiarios registrados
-                BeneficiariesResponse result = apiInstance.GetBeneficiariesForAccountUsingGET(authorization, subscription, account, rfc);
+                BeneficiariesResponse result = apiInstance.GetBeneficiariesForAccountUsingGET(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, rfc, status);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -251,7 +321,12 @@ Name | Type | Description  | Notes
  **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
  **account** | **string**| Cuenta del beneficiario, puede ser Clabe, TDD o Celular | [optional] 
+ **beneficiaryBank** | **string**| Clave del banco beneficiario | [optional] 
+ **beneficiaryName** | **string**| Nombre del beneficiario | [optional] 
+ **endDate** | **string**| Fecha de inicio del perido a filtrar en formato dd-mm-yyyy | [optional] 
+ **initDate** | **string**| Fecha de inicio del perido a filtrar en formato dd-mm-yyyy | [optional] 
  **rfc** | **string**| RFC del beneficiario | [optional] 
+ **status** | **string**| Estatus de la cuenta | [optional] 
 
 ### Return type
 
@@ -396,7 +471,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="updateamountlimitaccountusingput"></a>
 # **UpdateAmountLimitAccountUsingPUT**
-> void UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription)
+> TokenRequiredResponse UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription)
 
 Actualiza el monto límite
 
@@ -425,7 +500,8 @@ namespace Example
             try
             {
                 // Actualiza el monto límite
-                apiInstance.UpdateAmountLimitAccountUsingPUT(body, authorization, account, subscription);
+                TokenRequiredResponse result = apiInstance.UpdateAmountLimitAccountUsingPUT(body, authorization, account, subscription);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -447,7 +523,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**TokenRequiredResponse**](TokenRequiredResponse.md)
 
 ### Authorization
 
@@ -456,6 +532,6 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

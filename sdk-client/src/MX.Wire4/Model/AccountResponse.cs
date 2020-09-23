@@ -37,14 +37,15 @@ namespace MX.Wire4.Model
         /// <param name="beneficiaryAccount">Cuenta del beneficiario, podría ser teléfono celular, TDD o cuenta CLABE (required).</param>
         /// <param name="email">Lista de email&#x27;s, este dato es opcional.</param>
         /// <param name="institution">institution.</param>
-        /// <param name="kindOfRelationship">Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships (required).</param>
+        /// <param name="kindOfRelationship">Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta. (required).</param>
         /// <param name="numericReferenceSpei">Referencia numérica a utilizar cuando se realice una transferencia y no se especifique una referencia.</param>
         /// <param name="paymentConceptSpei">Concepto de pago a utilizar cuando se realice una transferencia y no se especifique un concepto.</param>
         /// <param name="person">person.</param>
-        /// <param name="relationship">Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships (required).</param>
-        /// <param name="rfc">Registro federal de contribuyentes de la persona o institución propietaria de la cuenta (required).</param>
+        /// <param name="registerDate">La fecha en la que se registro el beneficiario.</param>
+        /// <param name="relationship">Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta. (required).</param>
+        /// <param name="rfc">Registro federal de contribuyentes de la persona o institución propietaria de la cuenta. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta. (required).</param>
         /// <param name="status">El estado (status) en el que se encuentra el registro del beneficiario.</param>
-        public AccountResponse(decimal? amountLimit = default(decimal?), Institution bank = default(Institution), string beneficiaryAccount = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpei = default(string), string paymentConceptSpei = default(string), Person person = default(Person), string relationship = default(string), string rfc = default(string), string status = default(string))
+        public AccountResponse(decimal? amountLimit = default(decimal?), Institution bank = default(Institution), string beneficiaryAccount = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpei = default(string), string paymentConceptSpei = default(string), Person person = default(Person), DateTime? registerDate = default(DateTime?), string relationship = default(string), string rfc = default(string), string status = default(string))
         {
             // to ensure "amountLimit" is required (not null)
             if (amountLimit == null)
@@ -97,6 +98,7 @@ namespace MX.Wire4.Model
             this.NumericReferenceSpei = numericReferenceSpei;
             this.PaymentConceptSpei = paymentConceptSpei;
             this.Person = person;
+            this.RegisterDate = registerDate;
             this.Status = status;
         }
         
@@ -134,9 +136,9 @@ namespace MX.Wire4.Model
         public BeneficiaryInstitution Institution { get; set; }
 
         /// <summary>
-        /// Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships
+        /// Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.
         /// </summary>
-        /// <value>Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships</value>
+        /// <value>Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.</value>
         [DataMember(Name="kind_of_relationship", EmitDefaultValue=false)]
         public string KindOfRelationship { get; set; }
 
@@ -161,16 +163,23 @@ namespace MX.Wire4.Model
         public Person Person { get; set; }
 
         /// <summary>
-        /// Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships
+        /// La fecha en la que se registro el beneficiario
         /// </summary>
-        /// <value>Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships</value>
+        /// <value>La fecha en la que se registro el beneficiario</value>
+        [DataMember(Name="register_date", EmitDefaultValue=false)]
+        public DateTime? RegisterDate { get; set; }
+
+        /// <summary>
+        /// Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.
+        /// </summary>
+        /// <value>Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.</value>
         [DataMember(Name="relationship", EmitDefaultValue=false)]
         public string Relationship { get; set; }
 
         /// <summary>
-        /// Registro federal de contribuyentes de la persona o institución propietaria de la cuenta
+        /// Registro federal de contribuyentes de la persona o institución propietaria de la cuenta. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.
         /// </summary>
-        /// <value>Registro federal de contribuyentes de la persona o institución propietaria de la cuenta</value>
+        /// <value>Registro federal de contribuyentes de la persona o institución propietaria de la cuenta. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.</value>
         [DataMember(Name="rfc", EmitDefaultValue=false)]
         public string Rfc { get; set; }
 
@@ -198,6 +207,7 @@ namespace MX.Wire4.Model
             sb.Append("  NumericReferenceSpei: ").Append(NumericReferenceSpei).Append("\n");
             sb.Append("  PaymentConceptSpei: ").Append(PaymentConceptSpei).Append("\n");
             sb.Append("  Person: ").Append(Person).Append("\n");
+            sb.Append("  RegisterDate: ").Append(RegisterDate).Append("\n");
             sb.Append("  Relationship: ").Append(Relationship).Append("\n");
             sb.Append("  Rfc: ").Append(Rfc).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
@@ -282,6 +292,11 @@ namespace MX.Wire4.Model
                     this.Person.Equals(input.Person))
                 ) && 
                 (
+                    this.RegisterDate == input.RegisterDate ||
+                    (this.RegisterDate != null &&
+                    this.RegisterDate.Equals(input.RegisterDate))
+                ) && 
+                (
                     this.Relationship == input.Relationship ||
                     (this.Relationship != null &&
                     this.Relationship.Equals(input.Relationship))
@@ -325,6 +340,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.PaymentConceptSpei.GetHashCode();
                 if (this.Person != null)
                     hashCode = hashCode * 59 + this.Person.GetHashCode();
+                if (this.RegisterDate != null)
+                    hashCode = hashCode * 59 + this.RegisterDate.GetHashCode();
                 if (this.Relationship != null)
                     hashCode = hashCode * 59 + this.Relationship.GetHashCode();
                 if (this.Rfc != null)

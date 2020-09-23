@@ -33,13 +33,14 @@ namespace MX.Wire4.Model
         /// Initializes a new instance of the <see cref="TransactionOutgoing" /> class.
         /// </summary>
         /// <param name="amount">Monto de la transferencia (required).</param>
-        /// <param name="beneficiaryAccount">Cuenta del beneficiario, podría ser un numero celular, TDD o Cuenta CLABE interbancaria  (required).</param>
+        /// <param name="beneficiaryAccount">Cuenta del beneficiario, podría ser un número celular, TDD o Cuenta CLABE interbancaria  (required).</param>
+        /// <param name="beneficiaryBankKey">La clave del banco beneficiario, proprocionada por BANXICO, este campo solo es obligatario cuando la cuenta beneficiaria es un número celular (*)..</param>
         /// <param name="concept">Concepto de la transferencia (required).</param>
         /// <param name="currencyCode">Código de moneda en la que opera la cuenta (required).</param>
         /// <param name="email">Lista de email del beneficiario,es opcional.</param>
         /// <param name="orderId">Referencia de la transferencia asignada por el cliente (required).</param>
         /// <param name="reference">Referencia numérica de la transferencia (required).</param>
-        public TransactionOutgoing(decimal? amount = default(decimal?), string beneficiaryAccount = default(string), string concept = default(string), string currencyCode = default(string), List<string> email = default(List<string>), string orderId = default(string), int? reference = default(int?))
+        public TransactionOutgoing(decimal? amount = default(decimal?), string beneficiaryAccount = default(string), string beneficiaryBankKey = default(string), string concept = default(string), string currencyCode = default(string), List<string> email = default(List<string>), string orderId = default(string), int? reference = default(int?))
         {
             // to ensure "amount" is required (not null)
             if (amount == null)
@@ -95,6 +96,7 @@ namespace MX.Wire4.Model
             {
                 this.Reference = reference;
             }
+            this.BeneficiaryBankKey = beneficiaryBankKey;
             this.Email = email;
         }
         
@@ -106,11 +108,18 @@ namespace MX.Wire4.Model
         public decimal? Amount { get; set; }
 
         /// <summary>
-        /// Cuenta del beneficiario, podría ser un numero celular, TDD o Cuenta CLABE interbancaria 
+        /// Cuenta del beneficiario, podría ser un número celular, TDD o Cuenta CLABE interbancaria 
         /// </summary>
-        /// <value>Cuenta del beneficiario, podría ser un numero celular, TDD o Cuenta CLABE interbancaria </value>
+        /// <value>Cuenta del beneficiario, podría ser un número celular, TDD o Cuenta CLABE interbancaria </value>
         [DataMember(Name="beneficiary_account", EmitDefaultValue=false)]
         public string BeneficiaryAccount { get; set; }
+
+        /// <summary>
+        /// La clave del banco beneficiario, proprocionada por BANXICO, este campo solo es obligatario cuando la cuenta beneficiaria es un número celular (*).
+        /// </summary>
+        /// <value>La clave del banco beneficiario, proprocionada por BANXICO, este campo solo es obligatario cuando la cuenta beneficiaria es un número celular (*).</value>
+        [DataMember(Name="beneficiary_bank_key", EmitDefaultValue=false)]
+        public string BeneficiaryBankKey { get; set; }
 
         /// <summary>
         /// Concepto de la transferencia
@@ -157,6 +166,7 @@ namespace MX.Wire4.Model
             sb.Append("class TransactionOutgoing {\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  BeneficiaryAccount: ").Append(BeneficiaryAccount).Append("\n");
+            sb.Append("  BeneficiaryBankKey: ").Append(BeneficiaryBankKey).Append("\n");
             sb.Append("  Concept: ").Append(Concept).Append("\n");
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
@@ -207,6 +217,11 @@ namespace MX.Wire4.Model
                     this.BeneficiaryAccount.Equals(input.BeneficiaryAccount))
                 ) && 
                 (
+                    this.BeneficiaryBankKey == input.BeneficiaryBankKey ||
+                    (this.BeneficiaryBankKey != null &&
+                    this.BeneficiaryBankKey.Equals(input.BeneficiaryBankKey))
+                ) && 
+                (
                     this.Concept == input.Concept ||
                     (this.Concept != null &&
                     this.Concept.Equals(input.Concept))
@@ -247,6 +262,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.Amount.GetHashCode();
                 if (this.BeneficiaryAccount != null)
                     hashCode = hashCode * 59 + this.BeneficiaryAccount.GetHashCode();
+                if (this.BeneficiaryBankKey != null)
+                    hashCode = hashCode * 59 + this.BeneficiaryBankKey.GetHashCode();
                 if (this.Concept != null)
                     hashCode = hashCode * 59 + this.Concept.GetHashCode();
                 if (this.CurrencyCode != null)

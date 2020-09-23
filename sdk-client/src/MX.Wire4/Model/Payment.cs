@@ -43,13 +43,15 @@ namespace MX.Wire4.Model
         /// <param name="confirmDate">Fecha de aplicación de la transferencia.</param>
         /// <param name="currencyCode">Código de moneda de la transferencia.</param>
         /// <param name="detentionMessage">Mensaje proporcionado por Monex para la transferencia.</param>
+        /// <param name="errorMessage">Mensaje de error, en caso de algún error se informará aquí.</param>
         /// <param name="monexDescription">Descripción.</param>
         /// <param name="orderId">Identificador asignado por la aplciación a la transferencia.</param>
         /// <param name="paymentOrderId">Identificador de la orden de pago en Monex.</param>
+        /// <param name="pendingReason">Razón de porque esta pendiente aun cuando se autorizó la transferencia.</param>
         /// <param name="reference">Referencia numérica.</param>
         /// <param name="statusCode">Estado de la transferencia de la transferencia, los posibles valores son: PENDING, COMPLETED, FAILED, CANCELLED.</param>
         /// <param name="transactionId">Identificador de la transferencia asignado por Monex.</param>
-        public Payment(string account = default(string), decimal? amount = default(decimal?), string beneficiaryAccount = default(string), Institution beneficiaryBank = default(Institution), string beneficiaryName = default(string), MessageCEP cep = default(MessageCEP), string claveRastreo = default(string), string concept = default(string), DateTime? confirmDate = default(DateTime?), string currencyCode = default(string), string detentionMessage = default(string), string monexDescription = default(string), string orderId = default(string), int? paymentOrderId = default(int?), int? reference = default(int?), string statusCode = default(string), int? transactionId = default(int?))
+        public Payment(string account = default(string), decimal? amount = default(decimal?), string beneficiaryAccount = default(string), Institution beneficiaryBank = default(Institution), string beneficiaryName = default(string), MessageCEP cep = default(MessageCEP), string claveRastreo = default(string), string concept = default(string), DateTime? confirmDate = default(DateTime?), string currencyCode = default(string), string detentionMessage = default(string), string errorMessage = default(string), string monexDescription = default(string), string orderId = default(string), int? paymentOrderId = default(int?), string pendingReason = default(string), int? reference = default(int?), string statusCode = default(string), int? transactionId = default(int?))
         {
             this.Account = account;
             this.Amount = amount;
@@ -62,9 +64,11 @@ namespace MX.Wire4.Model
             this.ConfirmDate = confirmDate;
             this.CurrencyCode = currencyCode;
             this.DetentionMessage = detentionMessage;
+            this.ErrorMessage = errorMessage;
             this.MonexDescription = monexDescription;
             this.OrderId = orderId;
             this.PaymentOrderId = paymentOrderId;
+            this.PendingReason = pendingReason;
             this.Reference = reference;
             this.StatusCode = statusCode;
             this.TransactionId = transactionId;
@@ -146,6 +150,13 @@ namespace MX.Wire4.Model
         public string DetentionMessage { get; set; }
 
         /// <summary>
+        /// Mensaje de error, en caso de algún error se informará aquí
+        /// </summary>
+        /// <value>Mensaje de error, en caso de algún error se informará aquí</value>
+        [DataMember(Name="error_message", EmitDefaultValue=false)]
+        public string ErrorMessage { get; set; }
+
+        /// <summary>
         /// Descripción
         /// </summary>
         /// <value>Descripción</value>
@@ -165,6 +176,13 @@ namespace MX.Wire4.Model
         /// <value>Identificador de la orden de pago en Monex</value>
         [DataMember(Name="payment_order_id", EmitDefaultValue=false)]
         public int? PaymentOrderId { get; set; }
+
+        /// <summary>
+        /// Razón de porque esta pendiente aun cuando se autorizó la transferencia
+        /// </summary>
+        /// <value>Razón de porque esta pendiente aun cuando se autorizó la transferencia</value>
+        [DataMember(Name="pending_reason", EmitDefaultValue=false)]
+        public string PendingReason { get; set; }
 
         /// <summary>
         /// Referencia numérica
@@ -206,9 +224,11 @@ namespace MX.Wire4.Model
             sb.Append("  ConfirmDate: ").Append(ConfirmDate).Append("\n");
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  DetentionMessage: ").Append(DetentionMessage).Append("\n");
+            sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
             sb.Append("  MonexDescription: ").Append(MonexDescription).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  PaymentOrderId: ").Append(PaymentOrderId).Append("\n");
+            sb.Append("  PendingReason: ").Append(PendingReason).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
             sb.Append("  TransactionId: ").Append(TransactionId).Append("\n");
@@ -302,6 +322,11 @@ namespace MX.Wire4.Model
                     this.DetentionMessage.Equals(input.DetentionMessage))
                 ) && 
                 (
+                    this.ErrorMessage == input.ErrorMessage ||
+                    (this.ErrorMessage != null &&
+                    this.ErrorMessage.Equals(input.ErrorMessage))
+                ) && 
+                (
                     this.MonexDescription == input.MonexDescription ||
                     (this.MonexDescription != null &&
                     this.MonexDescription.Equals(input.MonexDescription))
@@ -315,6 +340,11 @@ namespace MX.Wire4.Model
                     this.PaymentOrderId == input.PaymentOrderId ||
                     (this.PaymentOrderId != null &&
                     this.PaymentOrderId.Equals(input.PaymentOrderId))
+                ) && 
+                (
+                    this.PendingReason == input.PendingReason ||
+                    (this.PendingReason != null &&
+                    this.PendingReason.Equals(input.PendingReason))
                 ) && 
                 (
                     this.Reference == input.Reference ||
@@ -364,12 +394,16 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.CurrencyCode.GetHashCode();
                 if (this.DetentionMessage != null)
                     hashCode = hashCode * 59 + this.DetentionMessage.GetHashCode();
+                if (this.ErrorMessage != null)
+                    hashCode = hashCode * 59 + this.ErrorMessage.GetHashCode();
                 if (this.MonexDescription != null)
                     hashCode = hashCode * 59 + this.MonexDescription.GetHashCode();
                 if (this.OrderId != null)
                     hashCode = hashCode * 59 + this.OrderId.GetHashCode();
                 if (this.PaymentOrderId != null)
                     hashCode = hashCode * 59 + this.PaymentOrderId.GetHashCode();
+                if (this.PendingReason != null)
+                    hashCode = hashCode * 59 + this.PendingReason.GetHashCode();
                 if (this.Reference != null)
                     hashCode = hashCode * 59 + this.Reference.GetHashCode();
                 if (this.StatusCode != null)

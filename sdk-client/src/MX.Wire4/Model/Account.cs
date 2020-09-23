@@ -37,12 +37,12 @@ namespace MX.Wire4.Model
         /// <param name="beneficiaryAccount">Cuenta del beneficiario, podría ser teléfono celular, TDD o cuenta CLABE (required).</param>
         /// <param name="email">Lista de email&#x27;s, este dato es opcional.</param>
         /// <param name="institution">institution.</param>
-        /// <param name="kindOfRelationship">Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships (required).</param>
+        /// <param name="kindOfRelationship">Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta. (required).</param>
         /// <param name="numericReferenceSpei">Referencia numérica a utilizar cuando se realice una transferencia y no se especifique una referencia.</param>
         /// <param name="paymentConceptSpei">Concepto de pago a utilizar cuando se realice una transferencia y no se especifique un concepto.</param>
         /// <param name="person">person.</param>
-        /// <param name="relationship">Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships (required).</param>
-        /// <param name="rfc">Registro federal de contribuyentes de la persona o institución propietaria de la cuenta (required).</param>
+        /// <param name="relationship">Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta. (required).</param>
+        /// <param name="rfc">Registro federal de contribuyentes de la persona o institución propietaria de la cuenta. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta. (required).</param>
         public Account(decimal? amountLimit = default(decimal?), string bankKey = default(string), string beneficiaryAccount = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpei = default(string), string paymentConceptSpei = default(string), Person person = default(Person), string relationship = default(string), string rfc = default(string))
         {
             // to ensure "amountLimit" is required (not null)
@@ -133,9 +133,9 @@ namespace MX.Wire4.Model
         public BeneficiaryInstitution Institution { get; set; }
 
         /// <summary>
-        /// Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships
+        /// Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.
         /// </summary>
-        /// <value>Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships</value>
+        /// <value>Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.</value>
         [DataMember(Name="kind_of_relationship", EmitDefaultValue=false)]
         public string KindOfRelationship { get; set; }
 
@@ -160,16 +160,16 @@ namespace MX.Wire4.Model
         public Person Person { get; set; }
 
         /// <summary>
-        /// Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships
+        /// Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.
         /// </summary>
-        /// <value>Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships</value>
+        /// <value>Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.</value>
         [DataMember(Name="relationship", EmitDefaultValue=false)]
         public string Relationship { get; set; }
 
         /// <summary>
-        /// Registro federal de contribuyentes de la persona o institución propietaria de la cuenta
+        /// Registro federal de contribuyentes de la persona o institución propietaria de la cuenta. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.
         /// </summary>
-        /// <value>Registro federal de contribuyentes de la persona o institución propietaria de la cuenta</value>
+        /// <value>Registro federal de contribuyentes de la persona o institución propietaria de la cuenta. &lt;br&gt; Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.</value>
         [DataMember(Name="rfc", EmitDefaultValue=false)]
         public string Rfc { get; set; }
 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getspidbeneficiariesforaccount"></a>
 # **GetSpidBeneficiariesForAccount**
-> SpidBeneficiariesResponse GetSpidBeneficiariesForAccount (string authorization, string subscription, string account = null, string rfc = null)
+> SpidBeneficiariesResponse GetSpidBeneficiariesForAccount (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
 
 Consulta los beneficiarios SPID registrados
 
@@ -33,12 +33,17 @@ namespace Example
             var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
             var account = account_example;  // string | Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional) 
+            var beneficiaryBank = beneficiaryBank_example;  // string | Clave del banco beneficiario (optional) 
+            var beneficiaryName = beneficiaryName_example;  // string | Nombre del beneficiario (optional) 
+            var endDate = endDate_example;  // string | Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional) 
+            var initDate = initDate_example;  // string | Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional) 
             var rfc = rfc_example;  // string | RFC del beneficiario (optional) 
+            var status = status_example;  // string | Estatus de la cuenta (optional) 
 
             try
             {
                 // Consulta los beneficiarios SPID registrados
-                SpidBeneficiariesResponse result = apiInstance.GetSpidBeneficiariesForAccount(authorization, subscription, account, rfc);
+                SpidBeneficiariesResponse result = apiInstance.GetSpidBeneficiariesForAccount(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, rfc, status);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -57,7 +62,12 @@ Name | Type | Description  | Notes
  **authorization** | **string**| Header para token | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
  **account** | **string**| Cuenta del beneficiario, puede ser Clabe, TDD o Celular | [optional] 
+ **beneficiaryBank** | **string**| Clave del banco beneficiario | [optional] 
+ **beneficiaryName** | **string**| Nombre del beneficiario | [optional] 
+ **endDate** | **string**| Fecha de inicio del perido a filtrar en formato dd-mm-yyyy | [optional] 
+ **initDate** | **string**| Fecha de inicio del perido a filtrar en formato dd-mm-yyyy | [optional] 
  **rfc** | **string**| RFC del beneficiario | [optional] 
+ **status** | **string**| Estatus de la cuenta | [optional] 
 
 ### Return type
 

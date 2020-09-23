@@ -24,6 +24,31 @@ namespace MX.Wire4.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
+        /// </summary>
+        /// <remarks>
+        /// Solicta autorizar las cuentas de beneficiarios en estado pendiente agrupandolas en un set de cuentas que pueden incluir tanto cuentas de SPI como de SPID, debe indicar las urls de redireccion en caso de error y en caso de exito&lt;br/&gt;
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>AuthorizedBeneficiariesResponse</returns>
+        AuthorizedBeneficiariesResponse AuthorizeAccountsPendingPUT (UrlsRedirect body, string authorization, string subscription);
+
+        /// <summary>
+        /// Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
+        /// </summary>
+        /// <remarks>
+        /// Solicta autorizar las cuentas de beneficiarios en estado pendiente agrupandolas en un set de cuentas que pueden incluir tanto cuentas de SPI como de SPID, debe indicar las urls de redireccion en caso de error y en caso de exito&lt;br/&gt;
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>ApiResponse of AuthorizedBeneficiariesResponse</returns>
+        ApiResponse<AuthorizedBeneficiariesResponse> AuthorizeAccountsPendingPUTWithHttpInfo (UrlsRedirect body, string authorization, string subscription);
+        /// <summary>
         /// Elimina la cuenta del beneficiario
         /// </summary>
         /// <remarks>
@@ -106,9 +131,14 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>BeneficiariesResponse</returns>
-        BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string rfc = null);
+        BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
 
         /// <summary>
         /// Consulta los beneficiarios registrados
@@ -120,9 +150,14 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>ApiResponse of BeneficiariesResponse</returns>
-        ApiResponse<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null);
+        ApiResponse<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios.
         /// </summary>
@@ -184,8 +219,8 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns></returns>
-        void UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription);
+        /// <returns>TokenRequiredResponse</returns>
+        TokenRequiredResponse UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription);
 
         /// <summary>
         /// Actualiza el monto límite
@@ -198,10 +233,35 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateAmountLimitAccountUsingPUTWithHttpInfo (AmountRequest body, string authorization, string account, string subscription);
+        /// <returns>ApiResponse of TokenRequiredResponse</returns>
+        ApiResponse<TokenRequiredResponse> UpdateAmountLimitAccountUsingPUTWithHttpInfo (AmountRequest body, string authorization, string account, string subscription);
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
+        /// </summary>
+        /// <remarks>
+        /// Solicta autorizar las cuentas de beneficiarios en estado pendiente agrupandolas en un set de cuentas que pueden incluir tanto cuentas de SPI como de SPID, debe indicar las urls de redireccion en caso de error y en caso de exito&lt;br/&gt;
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>Task of AuthorizedBeneficiariesResponse</returns>
+        System.Threading.Tasks.Task<AuthorizedBeneficiariesResponse> AuthorizeAccountsPendingPUTAsync (UrlsRedirect body, string authorization, string subscription);
+
+        /// <summary>
+        /// Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
+        /// </summary>
+        /// <remarks>
+        /// Solicta autorizar las cuentas de beneficiarios en estado pendiente agrupandolas en un set de cuentas que pueden incluir tanto cuentas de SPI como de SPID, debe indicar las urls de redireccion en caso de error y en caso de exito&lt;br/&gt;
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>Task of ApiResponse (AuthorizedBeneficiariesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AuthorizedBeneficiariesResponse>> AuthorizeAccountsPendingPUTAsyncWithHttpInfo (UrlsRedirect body, string authorization, string subscription);
         /// <summary>
         /// Elimina la cuenta del beneficiario
         /// </summary>
@@ -285,9 +345,14 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>Task of BeneficiariesResponse</returns>
-        System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETAsync (string authorization, string subscription, string account = null, string rfc = null);
+        System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETAsync (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
 
         /// <summary>
         /// Consulta los beneficiarios registrados
@@ -299,9 +364,14 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>Task of ApiResponse (BeneficiariesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null);
+        System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios.
         /// </summary>
@@ -363,8 +433,8 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateAmountLimitAccountUsingPUTAsync (AmountRequest body, string authorization, string account, string subscription);
+        /// <returns>Task of TokenRequiredResponse</returns>
+        System.Threading.Tasks.Task<TokenRequiredResponse> UpdateAmountLimitAccountUsingPUTAsync (AmountRequest body, string authorization, string account, string subscription);
 
         /// <summary>
         /// Actualiza el monto límite
@@ -377,8 +447,8 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo (AmountRequest body, string authorization, string account, string subscription);
+        /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo (AmountRequest body, string authorization, string account, string subscription);
         #endregion Asynchronous Operations
     }
 
@@ -488,6 +558,177 @@ namespace MX.Wire4.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas Solicta autorizar las cuentas de beneficiarios en estado pendiente agrupandolas en un set de cuentas que pueden incluir tanto cuentas de SPI como de SPID, debe indicar las urls de redireccion en caso de error y en caso de exito&lt;br/&gt;
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>AuthorizedBeneficiariesResponse</returns>
+        public AuthorizedBeneficiariesResponse AuthorizeAccountsPendingPUT (UrlsRedirect body, string authorization, string subscription)
+        {
+             ApiResponse<AuthorizedBeneficiariesResponse> localVarResponse = AuthorizeAccountsPendingPUTWithHttpInfo(body, authorization, subscription);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas Solicta autorizar las cuentas de beneficiarios en estado pendiente agrupandolas en un set de cuentas que pueden incluir tanto cuentas de SPI como de SPID, debe indicar las urls de redireccion en caso de error y en caso de exito&lt;br/&gt;
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>ApiResponse of AuthorizedBeneficiariesResponse</returns>
+        public ApiResponse< AuthorizedBeneficiariesResponse > AuthorizeAccountsPendingPUTWithHttpInfo (UrlsRedirect body, string authorization, string subscription)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling CuentasDeBeneficiariosSPEIApi->AuthorizeAccountsPendingPUT");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->AuthorizeAccountsPendingPUT");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPEIApi->AuthorizeAccountsPendingPUT");
+
+            var localVarPath = "/subscriptions/{subscription}/beneficiaries/pending";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AuthorizeAccountsPendingPUT", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AuthorizedBeneficiariesResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (AuthorizedBeneficiariesResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AuthorizedBeneficiariesResponse)));
+        }
+
+        /// <summary>
+        /// Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas Solicta autorizar las cuentas de beneficiarios en estado pendiente agrupandolas en un set de cuentas que pueden incluir tanto cuentas de SPI como de SPID, debe indicar las urls de redireccion en caso de error y en caso de exito&lt;br/&gt;
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>Task of AuthorizedBeneficiariesResponse</returns>
+        public async System.Threading.Tasks.Task<AuthorizedBeneficiariesResponse> AuthorizeAccountsPendingPUTAsync (UrlsRedirect body, string authorization, string subscription)
+        {
+             ApiResponse<AuthorizedBeneficiariesResponse> localVarResponse = await AuthorizeAccountsPendingPUTAsyncWithHttpInfo(body, authorization, subscription);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas Solicta autorizar las cuentas de beneficiarios en estado pendiente agrupandolas en un set de cuentas que pueden incluir tanto cuentas de SPI como de SPID, debe indicar las urls de redireccion en caso de error y en caso de exito&lt;br/&gt;
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de la cuenta del beneficiario</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">El identificador de la suscripción a esta API</param>
+        /// <returns>Task of ApiResponse (AuthorizedBeneficiariesResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AuthorizedBeneficiariesResponse>> AuthorizeAccountsPendingPUTAsyncWithHttpInfo (UrlsRedirect body, string authorization, string subscription)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling CuentasDeBeneficiariosSPEIApi->AuthorizeAccountsPendingPUT");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CuentasDeBeneficiariosSPEIApi->AuthorizeAccountsPendingPUT");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling CuentasDeBeneficiariosSPEIApi->AuthorizeAccountsPendingPUT");
+
+            var localVarPath = "/subscriptions/{subscription}/beneficiaries/pending";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AuthorizeAccountsPendingPUT", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AuthorizedBeneficiariesResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (AuthorizedBeneficiariesResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AuthorizedBeneficiariesResponse)));
         }
 
         /// <summary>
@@ -946,11 +1187,16 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>BeneficiariesResponse</returns>
-        public BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string rfc = null)
+        public BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
         {
-             ApiResponse<BeneficiariesResponse> localVarResponse = GetBeneficiariesForAccountUsingGETWithHttpInfo(authorization, subscription, account, rfc);
+             ApiResponse<BeneficiariesResponse> localVarResponse = GetBeneficiariesForAccountUsingGETWithHttpInfo(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, rfc, status);
              return localVarResponse.Data;
         }
 
@@ -961,9 +1207,14 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>ApiResponse of BeneficiariesResponse</returns>
-        public ApiResponse< BeneficiariesResponse > GetBeneficiariesForAccountUsingGETWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null)
+        public ApiResponse< BeneficiariesResponse > GetBeneficiariesForAccountUsingGETWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
@@ -995,7 +1246,12 @@ namespace MX.Wire4.Api
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
             if (account != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "account", account)); // query parameter
+            if (beneficiaryBank != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beneficiary_bank", beneficiaryBank)); // query parameter
+            if (beneficiaryName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beneficiary_name", beneficiaryName)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (initDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "init_date", initDate)); // query parameter
             if (rfc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "rfc", rfc)); // query parameter
+            if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
             if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
@@ -1023,11 +1279,16 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>Task of BeneficiariesResponse</returns>
-        public async System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETAsync (string authorization, string subscription, string account = null, string rfc = null)
+        public async System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETAsync (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
         {
-             ApiResponse<BeneficiariesResponse> localVarResponse = await GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo(authorization, subscription, account, rfc);
+             ApiResponse<BeneficiariesResponse> localVarResponse = await GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, rfc, status);
              return localVarResponse.Data;
 
         }
@@ -1039,9 +1300,14 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>Task of ApiResponse (BeneficiariesResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null)
+        public async System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
@@ -1073,7 +1339,12 @@ namespace MX.Wire4.Api
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
             if (account != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "account", account)); // query parameter
+            if (beneficiaryBank != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beneficiary_bank", beneficiaryBank)); // query parameter
+            if (beneficiaryName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beneficiary_name", beneficiaryName)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (initDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "init_date", initDate)); // query parameter
             if (rfc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "rfc", rfc)); // query parameter
+            if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
             if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
@@ -1424,10 +1695,11 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns></returns>
-        public void UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription)
+        /// <returns>TokenRequiredResponse</returns>
+        public TokenRequiredResponse UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription)
         {
-             UpdateAmountLimitAccountUsingPUTWithHttpInfo(body, authorization, account, subscription);
+             ApiResponse<TokenRequiredResponse> localVarResponse = UpdateAmountLimitAccountUsingPUTWithHttpInfo(body, authorization, account, subscription);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1438,8 +1710,8 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateAmountLimitAccountUsingPUTWithHttpInfo (AmountRequest body, string authorization, string account, string subscription)
+        /// <returns>ApiResponse of TokenRequiredResponse</returns>
+        public ApiResponse< TokenRequiredResponse > UpdateAmountLimitAccountUsingPUTWithHttpInfo (AmountRequest body, string authorization, string account, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1470,6 +1742,7 @@ namespace MX.Wire4.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1500,9 +1773,9 @@ namespace MX.Wire4.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<TokenRequiredResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (TokenRequiredResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TokenRequiredResponse)));
         }
 
         /// <summary>
@@ -1513,10 +1786,11 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateAmountLimitAccountUsingPUTAsync (AmountRequest body, string authorization, string account, string subscription)
+        /// <returns>Task of TokenRequiredResponse</returns>
+        public async System.Threading.Tasks.Task<TokenRequiredResponse> UpdateAmountLimitAccountUsingPUTAsync (AmountRequest body, string authorization, string account, string subscription)
         {
-             await UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo(body, authorization, account, subscription);
+             ApiResponse<TokenRequiredResponse> localVarResponse = await UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo(body, authorization, account, subscription);
+             return localVarResponse.Data;
 
         }
 
@@ -1528,8 +1802,8 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="account">Cuenta a actualizar</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo (AmountRequest body, string authorization, string account, string subscription)
+        /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> UpdateAmountLimitAccountUsingPUTAsyncWithHttpInfo (AmountRequest body, string authorization, string account, string subscription)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1560,6 +1834,7 @@ namespace MX.Wire4.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1590,9 +1865,9 @@ namespace MX.Wire4.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<TokenRequiredResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (TokenRequiredResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TokenRequiredResponse)));
         }
 
     }

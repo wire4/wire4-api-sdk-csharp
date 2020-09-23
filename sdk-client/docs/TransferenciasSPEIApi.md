@@ -4,15 +4,80 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateAuthorizationTransactionsGroup**](TransferenciasSPEIApi.md#createauthorizationtransactionsgroup) | **POST** /subscriptions/{subscription}/transactions/group | Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
 [**DropTransactionsPendingUsingDELETE**](TransferenciasSPEIApi.md#droptransactionspendingusingdelete) | **DELETE** /subscriptions/{subscription}/transactions/outcoming/spei/request/{requestId} | Eliminación de transferencias SPEI® pendientes
 [**IncomingSpeiTransactionsReportUsingGET**](TransferenciasSPEIApi.md#incomingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/incoming/spei | Consulta de transferencias recibidas
 [**OutCommingSpeiRequestIdTransactionsReportUsingGET**](TransferenciasSPEIApi.md#outcommingspeirequestidtransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei/{requestId} | Consulta de transferencias de salida por identificador de petición
 [**OutgoingSpeiTransactionsReportUsingGET**](TransferenciasSPEIApi.md#outgoingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei | Consulta de transferencias realizadas
 [**RegisterOutgoingSpeiTransactionUsingPOST**](TransferenciasSPEIApi.md#registeroutgoingspeitransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spei | Registro de transferencias
 
+<a name="createauthorizationtransactionsgroup"></a>
+# **CreateAuthorizationTransactionsGroup**
+> TokenRequiredResponse CreateAuthorizationTransactionsGroup (AuthorizationTransactionGroup body, string authorization, string subscription)
+
+Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+
+Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using MX.Wire4.Api;
+using MX.Wire4.Client;
+using MX.Wire4.Model;
+
+namespace Example
+{
+    public class CreateAuthorizationTransactionsGroupExample
+    {
+        public void main()
+        {
+            var apiInstance = new TransferenciasSPEIApi();
+            var body = new AuthorizationTransactionGroup(); // AuthorizationTransactionGroup | authorizationTransactionsGroupRequestDTO
+            var authorization = authorization_example;  // string | Header para token
+            var subscription = subscription_example;  // string | Identificador de la suscripcion
+
+            try
+            {
+                // Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+                TokenRequiredResponse result = apiInstance.CreateAuthorizationTransactionsGroup(body, authorization, subscription);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TransferenciasSPEIApi.CreateAuthorizationTransactionsGroup: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**AuthorizationTransactionGroup**](AuthorizationTransactionGroup.md)| authorizationTransactionsGroupRequestDTO | 
+ **authorization** | **string**| Header para token | 
+ **subscription** | **string**| Identificador de la suscripcion | 
+
+### Return type
+
+[**TokenRequiredResponse**](TokenRequiredResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="droptransactionspendingusingdelete"></a>
 # **DropTransactionsPendingUsingDELETE**
-> void DropTransactionsPendingUsingDELETE (string authorization, string requestId, string subscription)
+> void DropTransactionsPendingUsingDELETE (string authorization, string requestId, string subscription, string orderId = null)
 
 Eliminación de transferencias SPEI® pendientes
 
@@ -36,11 +101,12 @@ namespace Example
             var authorization = authorization_example;  // string | Header para token
             var requestId = requestId_example;  // string | Identificador de las transferencias a eliminar
             var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
+            var orderId = orderId_example;  // string | Listado de identificadores dentro del request_id para eliminar (optional) 
 
             try
             {
                 // Eliminación de transferencias SPEI® pendientes
-                apiInstance.DropTransactionsPendingUsingDELETE(authorization, requestId, subscription);
+                apiInstance.DropTransactionsPendingUsingDELETE(authorization, requestId, subscription, orderId);
             }
             catch (Exception e)
             {
@@ -58,6 +124,7 @@ Name | Type | Description  | Notes
  **authorization** | **string**| Header para token | 
  **requestId** | **string**| Identificador de las transferencias a eliminar | 
  **subscription** | **string**| El identificador de la suscripción a esta API | 
+ **orderId** | **string**| Listado de identificadores dentro del request_id para eliminar | [optional] 
 
 ### Return type
 

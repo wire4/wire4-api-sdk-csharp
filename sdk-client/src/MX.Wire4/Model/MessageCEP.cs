@@ -24,7 +24,7 @@ using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
 namespace MX.Wire4.Model
 {
     /// <summary>
-    /// El CEP emitido por Banxico de la transferencia. Solo cuando este disponible, en otro caso se podrá usar la Consulta de CEP que esta misma API ofrece
+    /// El CEP emitido por Banxico de la transferencia. Solo cuando esté disponible, en otro caso se podrá usar la Consulta de CEP que esta misma API ofrece
     /// </summary>
     [DataContract]
         public partial class MessageCEP :  IEquatable<MessageCEP>, IValidatableObject
@@ -35,24 +35,24 @@ namespace MX.Wire4.Model
         /// <param name="accountBeneficiary">Cuenta del beneficiario.</param>
         /// <param name="accountSender">Cuenta que envia la operación.</param>
         /// <param name="amount">Monto de la operación.</param>
-        /// <param name="available">Bander para saber si el cep esta disponible.</param>
+        /// <param name="available">Indica sí el CEP está disponible.</param>
         /// <param name="bankBeneficiary">Clave del banco beneficiario.</param>
-        /// <param name="bankSender">Clave del banco que envia la operación.</param>
+        /// <param name="bankSender">Clave del banco que envía la operación.</param>
         /// <param name="beneficiaryName">Nombre del beneficiario.</param>
         /// <param name="beneficiaryRfc">RFC del beneficiario.</param>
         /// <param name="cadenaOriginal">Cadena original emita por el SAT.</param>
         /// <param name="captureDate">Fecha de captura.</param>
-        /// <param name="certificateSerialNumber">Numero de serie emitido por el SAT.</param>
+        /// <param name="certificateSerialNumber">Número de serie emitido por el SAT.</param>
         /// <param name="claveRastreo">Clave de rastreo de la operación.</param>
         /// <param name="description">Descripción de la operación.</param>
-        /// <param name="iva">Iva de la operación.</param>
+        /// <param name="iva">IVA de la operación.</param>
         /// <param name="operationDate">Fecha en la que se realizó la operación.</param>
-        /// <param name="operationDateCep">Fecha en la que genera el cep.</param>
+        /// <param name="operationDateCep">Fecha en la que genera el CEP.</param>
         /// <param name="reference">Referencia de la operación.</param>
-        /// <param name="senderName">Nombre de quien envia la operación.</param>
-        /// <param name="senderRfc">RFC de quien envia la operación.</param>
-        /// <param name="signature">Firma del Cep.</param>
-        /// <param name="urlZip">Url que contiene el PDF y XML del CEP proporcionado por banxico.</param>
+        /// <param name="senderName">Nombre de quién envía la operación.</param>
+        /// <param name="senderRfc">RFC de quién envía la operación.</param>
+        /// <param name="signature">Firma del CEP.</param>
+        /// <param name="urlZip">Dirección URL de descarga del archivo ZIP que contiene el PDF y XML del CEP proporcionado por BANXICO.</param>
         public MessageCEP(string accountBeneficiary = default(string), string accountSender = default(string), decimal? amount = default(decimal?), bool? available = default(bool?), string bankBeneficiary = default(string), string bankSender = default(string), string beneficiaryName = default(string), string beneficiaryRfc = default(string), string cadenaOriginal = default(string), DateTime? captureDate = default(DateTime?), string certificateSerialNumber = default(string), string claveRastreo = default(string), string description = default(string), decimal? iva = default(decimal?), DateTime? operationDate = default(DateTime?), DateTime? operationDateCep = default(DateTime?), string reference = default(string), string senderName = default(string), string senderRfc = default(string), string signature = default(string), string urlZip = default(string))
         {
             this.AccountBeneficiary = accountBeneficiary;
@@ -100,9 +100,9 @@ namespace MX.Wire4.Model
         public decimal? Amount { get; set; }
 
         /// <summary>
-        /// Bander para saber si el cep esta disponible
+        /// Indica sí el CEP está disponible
         /// </summary>
-        /// <value>Bander para saber si el cep esta disponible</value>
+        /// <value>Indica sí el CEP está disponible</value>
         [DataMember(Name="available", EmitDefaultValue=false)]
         public bool? Available { get; set; }
 
@@ -114,9 +114,9 @@ namespace MX.Wire4.Model
         public string BankBeneficiary { get; set; }
 
         /// <summary>
-        /// Clave del banco que envia la operación
+        /// Clave del banco que envía la operación
         /// </summary>
-        /// <value>Clave del banco que envia la operación</value>
+        /// <value>Clave del banco que envía la operación</value>
         [DataMember(Name="bank_sender", EmitDefaultValue=false)]
         public string BankSender { get; set; }
 
@@ -149,9 +149,9 @@ namespace MX.Wire4.Model
         public DateTime? CaptureDate { get; set; }
 
         /// <summary>
-        /// Numero de serie emitido por el SAT
+        /// Número de serie emitido por el SAT
         /// </summary>
-        /// <value>Numero de serie emitido por el SAT</value>
+        /// <value>Número de serie emitido por el SAT</value>
         [DataMember(Name="certificate_serial_number", EmitDefaultValue=false)]
         public string CertificateSerialNumber { get; set; }
 
@@ -170,9 +170,9 @@ namespace MX.Wire4.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Iva de la operación
+        /// IVA de la operación
         /// </summary>
-        /// <value>Iva de la operación</value>
+        /// <value>IVA de la operación</value>
         [DataMember(Name="iva", EmitDefaultValue=false)]
         public decimal? Iva { get; set; }
 
@@ -184,9 +184,9 @@ namespace MX.Wire4.Model
         public DateTime? OperationDate { get; set; }
 
         /// <summary>
-        /// Fecha en la que genera el cep
+        /// Fecha en la que genera el CEP
         /// </summary>
-        /// <value>Fecha en la que genera el cep</value>
+        /// <value>Fecha en la que genera el CEP</value>
         [DataMember(Name="operation_date_cep", EmitDefaultValue=false)]
         public DateTime? OperationDateCep { get; set; }
 
@@ -198,30 +198,30 @@ namespace MX.Wire4.Model
         public string Reference { get; set; }
 
         /// <summary>
-        /// Nombre de quien envia la operación
+        /// Nombre de quién envía la operación
         /// </summary>
-        /// <value>Nombre de quien envia la operación</value>
+        /// <value>Nombre de quién envía la operación</value>
         [DataMember(Name="sender_name", EmitDefaultValue=false)]
         public string SenderName { get; set; }
 
         /// <summary>
-        /// RFC de quien envia la operación
+        /// RFC de quién envía la operación
         /// </summary>
-        /// <value>RFC de quien envia la operación</value>
+        /// <value>RFC de quién envía la operación</value>
         [DataMember(Name="sender_rfc", EmitDefaultValue=false)]
         public string SenderRfc { get; set; }
 
         /// <summary>
-        /// Firma del Cep
+        /// Firma del CEP
         /// </summary>
-        /// <value>Firma del Cep</value>
+        /// <value>Firma del CEP</value>
         [DataMember(Name="signature", EmitDefaultValue=false)]
         public string Signature { get; set; }
 
         /// <summary>
-        /// Url que contiene el PDF y XML del CEP proporcionado por banxico
+        /// Dirección URL de descarga del archivo ZIP que contiene el PDF y XML del CEP proporcionado por BANXICO
         /// </summary>
-        /// <value>Url que contiene el PDF y XML del CEP proporcionado por banxico</value>
+        /// <value>Dirección URL de descarga del archivo ZIP que contiene el PDF y XML del CEP proporcionado por BANXICO</value>
         [DataMember(Name="url_zip", EmitDefaultValue=false)]
         public string UrlZip { get; set; }
 

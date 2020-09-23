@@ -24,33 +24,33 @@ namespace MX.Wire4.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// registra una pre-suscripción
+        /// Registra una pre-suscripción
         /// </summary>
         /// <remarks>
-        /// Pre-registra una suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envia un webhook con el evento ENROLLMENT.CREATED, el cual contiene los datos de acceso.
+        /// Registra una pre-suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envía un mensaje webhook con el evento &#x27;ENROLLMENT.CREATED&#x27;, el cuál contiene los datos de acceso a esta API.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="body">Información para la pre-suscripción</param>
         /// <param name="authorization">Header para token</param>
         /// <returns>PreEnrollmentResponse</returns>
         PreEnrollmentResponse PreEnrollmentMonexUserUsingPOST (PreEnrollmentData body, string authorization);
 
         /// <summary>
-        /// registra una pre-suscripción
+        /// Registra una pre-suscripción
         /// </summary>
         /// <remarks>
-        /// Pre-registra una suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envia un webhook con el evento ENROLLMENT.CREATED, el cual contiene los datos de acceso.
+        /// Registra una pre-suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envía un mensaje webhook con el evento &#x27;ENROLLMENT.CREATED&#x27;, el cuál contiene los datos de acceso a esta API.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="body">Información para la pre-suscripción</param>
         /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of PreEnrollmentResponse</returns>
         ApiResponse<PreEnrollmentResponse> PreEnrollmentMonexUserUsingPOSTWithHttpInfo (PreEnrollmentData body, string authorization);
         /// <summary>
-        /// Elimna una suscripción por id
+        /// Elimina una suscripción por el identificador de la suscripción
         /// </summary>
         /// <remarks>
-        /// Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
+        /// Elimina una suscripción, una vez eliminada ya no se podrán realizar operacions en el API utilizando esta suscripción
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -59,10 +59,10 @@ namespace MX.Wire4.Api
         void RemoveEnrollmentUserUsingDELETE (string authorization, string subscription);
 
         /// <summary>
-        /// Elimna una suscripción por id
+        /// Elimina una suscripción por el identificador de la suscripción
         /// </summary>
         /// <remarks>
-        /// Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
+        /// Elimina una suscripción, una vez eliminada ya no se podrán realizar operacions en el API utilizando esta suscripción
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -70,10 +70,10 @@ namespace MX.Wire4.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> RemoveEnrollmentUserUsingDELETEWithHttpInfo (string authorization, string subscription);
         /// <summary>
-        /// Elimna una pre-suscripción
+        /// Elimina una pre-suscripción
         /// </summary>
         /// <remarks>
-        /// Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
+        /// Se elimina una pre-suscripción, sólo se elimina en caso de que el cliente Monex no haya concedido su autorización de acceso (token), es decir que la pre-suscripcion este pendiente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -82,10 +82,10 @@ namespace MX.Wire4.Api
         void RemoveSubscriptionPendingStatusUsingDELETE (string authorization, string subscription);
 
         /// <summary>
-        /// Elimna una pre-suscripción
+        /// Elimina una pre-suscripción
         /// </summary>
         /// <remarks>
-        /// Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
+        /// Se elimina una pre-suscripción, sólo se elimina en caso de que el cliente Monex no haya concedido su autorización de acceso (token), es decir que la pre-suscripcion este pendiente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -95,33 +95,33 @@ namespace MX.Wire4.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// registra una pre-suscripción
+        /// Registra una pre-suscripción
         /// </summary>
         /// <remarks>
-        /// Pre-registra una suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envia un webhook con el evento ENROLLMENT.CREATED, el cual contiene los datos de acceso.
+        /// Registra una pre-suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envía un mensaje webhook con el evento &#x27;ENROLLMENT.CREATED&#x27;, el cuál contiene los datos de acceso a esta API.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="body">Información para la pre-suscripción</param>
         /// <param name="authorization">Header para token</param>
         /// <returns>Task of PreEnrollmentResponse</returns>
         System.Threading.Tasks.Task<PreEnrollmentResponse> PreEnrollmentMonexUserUsingPOSTAsync (PreEnrollmentData body, string authorization);
 
         /// <summary>
-        /// registra una pre-suscripción
+        /// Registra una pre-suscripción
         /// </summary>
         /// <remarks>
-        /// Pre-registra una suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envia un webhook con el evento ENROLLMENT.CREATED, el cual contiene los datos de acceso.
+        /// Registra una pre-suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envía un mensaje webhook con el evento &#x27;ENROLLMENT.CREATED&#x27;, el cuál contiene los datos de acceso a esta API.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="body">Información para la pre-suscripción</param>
         /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse (PreEnrollmentResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<PreEnrollmentResponse>> PreEnrollmentMonexUserUsingPOSTAsyncWithHttpInfo (PreEnrollmentData body, string authorization);
         /// <summary>
-        /// Elimna una suscripción por id
+        /// Elimina una suscripción por el identificador de la suscripción
         /// </summary>
         /// <remarks>
-        /// Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
+        /// Elimina una suscripción, una vez eliminada ya no se podrán realizar operacions en el API utilizando esta suscripción
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -130,10 +130,10 @@ namespace MX.Wire4.Api
         System.Threading.Tasks.Task RemoveEnrollmentUserUsingDELETEAsync (string authorization, string subscription);
 
         /// <summary>
-        /// Elimna una suscripción por id
+        /// Elimina una suscripción por el identificador de la suscripción
         /// </summary>
         /// <remarks>
-        /// Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
+        /// Elimina una suscripción, una vez eliminada ya no se podrán realizar operacions en el API utilizando esta suscripción
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -141,10 +141,10 @@ namespace MX.Wire4.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> RemoveEnrollmentUserUsingDELETEAsyncWithHttpInfo (string authorization, string subscription);
         /// <summary>
-        /// Elimna una pre-suscripción
+        /// Elimina una pre-suscripción
         /// </summary>
         /// <remarks>
-        /// Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
+        /// Se elimina una pre-suscripción, sólo se elimina en caso de que el cliente Monex no haya concedido su autorización de acceso (token), es decir que la pre-suscripcion este pendiente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -153,10 +153,10 @@ namespace MX.Wire4.Api
         System.Threading.Tasks.Task RemoveSubscriptionPendingStatusUsingDELETEAsync (string authorization, string subscription);
 
         /// <summary>
-        /// Elimna una pre-suscripción
+        /// Elimina una pre-suscripción
         /// </summary>
         /// <remarks>
-        /// Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
+        /// Se elimina una pre-suscripción, sólo se elimina en caso de que el cliente Monex no haya concedido su autorización de acceso (token), es decir que la pre-suscripcion este pendiente.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -275,10 +275,10 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// registra una pre-suscripción Pre-registra una suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envia un webhook con el evento ENROLLMENT.CREATED, el cual contiene los datos de acceso.
+        /// Registra una pre-suscripción Registra una pre-suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envía un mensaje webhook con el evento &#x27;ENROLLMENT.CREATED&#x27;, el cuál contiene los datos de acceso a esta API.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="body">Información para la pre-suscripción</param>
         /// <param name="authorization">Header para token</param>
         /// <returns>PreEnrollmentResponse</returns>
         public PreEnrollmentResponse PreEnrollmentMonexUserUsingPOST (PreEnrollmentData body, string authorization)
@@ -288,10 +288,10 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// registra una pre-suscripción Pre-registra una suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envia un webhook con el evento ENROLLMENT.CREATED, el cual contiene los datos de acceso.
+        /// Registra una pre-suscripción Registra una pre-suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envía un mensaje webhook con el evento &#x27;ENROLLMENT.CREATED&#x27;, el cuál contiene los datos de acceso a esta API.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="body">Información para la pre-suscripción</param>
         /// <param name="authorization">Header para token</param>
         /// <returns>ApiResponse of PreEnrollmentResponse</returns>
         public ApiResponse< PreEnrollmentResponse > PreEnrollmentMonexUserUsingPOSTWithHttpInfo (PreEnrollmentData body, string authorization)
@@ -354,10 +354,10 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// registra una pre-suscripción Pre-registra una suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envia un webhook con el evento ENROLLMENT.CREATED, el cual contiene los datos de acceso.
+        /// Registra una pre-suscripción Registra una pre-suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envía un mensaje webhook con el evento &#x27;ENROLLMENT.CREATED&#x27;, el cuál contiene los datos de acceso a esta API.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="body">Información para la pre-suscripción</param>
         /// <param name="authorization">Header para token</param>
         /// <returns>Task of PreEnrollmentResponse</returns>
         public async System.Threading.Tasks.Task<PreEnrollmentResponse> PreEnrollmentMonexUserUsingPOSTAsync (PreEnrollmentData body, string authorization)
@@ -368,10 +368,10 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// registra una pre-suscripción Pre-registra una suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envia un webhook con el evento ENROLLMENT.CREATED, el cual contiene los datos de acceso.
+        /// Registra una pre-suscripción Registra una pre-suscripción para operar un contrato a través de un aplicación socio de la plataforma, proporcionando una URL donde el cliente Monex debe autorizar el acceso a los datos de su cuenta a el socio.&lt;br/&gt;Una vez que el cuentahabiente autorice el acceso, se envía un mensaje webhook con el evento &#x27;ENROLLMENT.CREATED&#x27;, el cuál contiene los datos de acceso a esta API.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Información para el enrolamiento</param>
+        /// <param name="body">Información para la pre-suscripción</param>
         /// <param name="authorization">Header para token</param>
         /// <returns>Task of ApiResponse (PreEnrollmentResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<PreEnrollmentResponse>> PreEnrollmentMonexUserUsingPOSTAsyncWithHttpInfo (PreEnrollmentData body, string authorization)
@@ -434,7 +434,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Elimna una suscripción por id Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
+        /// Elimina una suscripción por el identificador de la suscripción Elimina una suscripción, una vez eliminada ya no se podrán realizar operacions en el API utilizando esta suscripción
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -446,7 +446,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Elimna una suscripción por id Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
+        /// Elimina una suscripción por el identificador de la suscripción Elimina una suscripción, una vez eliminada ya no se podrán realizar operacions en el API utilizando esta suscripción
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -503,7 +503,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Elimna una suscripción por id Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
+        /// Elimina una suscripción por el identificador de la suscripción Elimina una suscripción, una vez eliminada ya no se podrán realizar operacions en el API utilizando esta suscripción
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -516,7 +516,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Elimna una suscripción por id Elimina una suscripción, una ves eliminada la suscripcion ya no se podran realizar operacions en el API uilizando esta suscripción
+        /// Elimina una suscripción por el identificador de la suscripción Elimina una suscripción, una vez eliminada ya no se podrán realizar operacions en el API utilizando esta suscripción
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -573,7 +573,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Elimna una pre-suscripción Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
+        /// Elimina una pre-suscripción Se elimina una pre-suscripción, sólo se elimina en caso de que el cliente Monex no haya concedido su autorización de acceso (token), es decir que la pre-suscripcion este pendiente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -585,7 +585,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Elimna una pre-suscripción Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
+        /// Elimina una pre-suscripción Se elimina una pre-suscripción, sólo se elimina en caso de que el cliente Monex no haya concedido su autorización de acceso (token), es decir que la pre-suscripcion este pendiente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -642,7 +642,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Elimna una pre-suscripción Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
+        /// Elimina una pre-suscripción Se elimina una pre-suscripción, sólo se elimina en caso de que el cliente Monex no haya concedido su autorización de acceso (token), es decir que la pre-suscripcion este pendiente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -655,7 +655,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Elimna una pre-suscripción Se elimina una pre-suscripción, sólo se elimina en caso de que cliente monex no haya concedio su autorización de acceso, es decir que la pre-suscripcion este pendiente.
+        /// Elimina una pre-suscripción Se elimina una pre-suscripción, sólo se elimina en caso de que el cliente Monex no haya concedido su autorización de acceso (token), es decir que la pre-suscripcion este pendiente.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>

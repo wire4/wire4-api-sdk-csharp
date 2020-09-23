@@ -9,6 +9,8 @@ namespace MX.Wire4.Authenticator
 
         public static readonly EnvironmentType Production = new EnvironmentType("https://api.wire4.mx", "/token", "/wire4/1.0.0");
 
+        public static readonly EnvironmentType Development = new EnvironmentType("https://development-api.wire4.mx", "/token", "/wire4/1.0.0");
+
         private EnvironmentType(string basePath,string tokenUrl,string serviceUrl)
         {
             BasePath = basePath;

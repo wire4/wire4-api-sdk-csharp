@@ -40,9 +40,11 @@ namespace MX.Wire4.Model
         /// <param name="kindOfRelationship">Tipo de relación de la cuenta, este valor debe ser igual a uno de los obtenidos del recurso de consulta de relationships (required).</param>
         /// <param name="numericReferenceSpid">Referencia numérica.</param>
         /// <param name="paymentConceptSpid">Concepto de pago.</param>
+        /// <param name="registerDate">La fecha en la que se registro el beneficiario.</param>
         /// <param name="relationship">Código de relación de la cuenta, este valor debe ser igual a uno de los obtenidos del recurso de consulta de  relationship (required).</param>
         /// <param name="rfc">Registro federal de contribuyentes.</param>
-        public SpidBeneficiaryResponse(decimal? amountLimit = default(decimal?), Institution bank = default(Institution), string beneficiaryAccount = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpid = default(string), string paymentConceptSpid = default(string), string relationship = default(string), string rfc = default(string))
+        /// <param name="status">El estado en el que se encuentra el registo del beneficiario.</param>
+        public SpidBeneficiaryResponse(decimal? amountLimit = default(decimal?), Institution bank = default(Institution), string beneficiaryAccount = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpid = default(string), string paymentConceptSpid = default(string), DateTime? registerDate = default(DateTime?), string relationship = default(string), string rfc = default(string), string status = default(string))
         {
             // to ensure "amountLimit" is required (not null)
             if (amountLimit == null)
@@ -93,7 +95,9 @@ namespace MX.Wire4.Model
             this.Email = email;
             this.NumericReferenceSpid = numericReferenceSpid;
             this.PaymentConceptSpid = paymentConceptSpid;
+            this.RegisterDate = registerDate;
             this.Rfc = rfc;
+            this.Status = status;
         }
         
         /// <summary>
@@ -151,6 +155,13 @@ namespace MX.Wire4.Model
         public string PaymentConceptSpid { get; set; }
 
         /// <summary>
+        /// La fecha en la que se registro el beneficiario
+        /// </summary>
+        /// <value>La fecha en la que se registro el beneficiario</value>
+        [DataMember(Name="register_date", EmitDefaultValue=false)]
+        public DateTime? RegisterDate { get; set; }
+
+        /// <summary>
         /// Código de relación de la cuenta, este valor debe ser igual a uno de los obtenidos del recurso de consulta de  relationship
         /// </summary>
         /// <value>Código de relación de la cuenta, este valor debe ser igual a uno de los obtenidos del recurso de consulta de  relationship</value>
@@ -163,6 +174,13 @@ namespace MX.Wire4.Model
         /// <value>Registro federal de contribuyentes</value>
         [DataMember(Name="rfc", EmitDefaultValue=false)]
         public string Rfc { get; set; }
+
+        /// <summary>
+        /// El estado en el que se encuentra el registo del beneficiario
+        /// </summary>
+        /// <value>El estado en el que se encuentra el registo del beneficiario</value>
+        [DataMember(Name="status", EmitDefaultValue=false)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -180,8 +198,10 @@ namespace MX.Wire4.Model
             sb.Append("  KindOfRelationship: ").Append(KindOfRelationship).Append("\n");
             sb.Append("  NumericReferenceSpid: ").Append(NumericReferenceSpid).Append("\n");
             sb.Append("  PaymentConceptSpid: ").Append(PaymentConceptSpid).Append("\n");
+            sb.Append("  RegisterDate: ").Append(RegisterDate).Append("\n");
             sb.Append("  Relationship: ").Append(Relationship).Append("\n");
             sb.Append("  Rfc: ").Append(Rfc).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -258,6 +278,11 @@ namespace MX.Wire4.Model
                     this.PaymentConceptSpid.Equals(input.PaymentConceptSpid))
                 ) && 
                 (
+                    this.RegisterDate == input.RegisterDate ||
+                    (this.RegisterDate != null &&
+                    this.RegisterDate.Equals(input.RegisterDate))
+                ) && 
+                (
                     this.Relationship == input.Relationship ||
                     (this.Relationship != null &&
                     this.Relationship.Equals(input.Relationship))
@@ -266,6 +291,11 @@ namespace MX.Wire4.Model
                     this.Rfc == input.Rfc ||
                     (this.Rfc != null &&
                     this.Rfc.Equals(input.Rfc))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 );
         }
 
@@ -294,10 +324,14 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.NumericReferenceSpid.GetHashCode();
                 if (this.PaymentConceptSpid != null)
                     hashCode = hashCode * 59 + this.PaymentConceptSpid.GetHashCode();
+                if (this.RegisterDate != null)
+                    hashCode = hashCode * 59 + this.RegisterDate.GetHashCode();
                 if (this.Relationship != null)
                     hashCode = hashCode * 59 + this.Relationship.GetHashCode();
                 if (this.Rfc != null)
                     hashCode = hashCode * 59 + this.Rfc.GetHashCode();
+                if (this.Status != null)
+                    hashCode = hashCode * 59 + this.Status.GetHashCode();
                 return hashCode;
             }
         }

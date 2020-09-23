@@ -33,9 +33,14 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>SpidBeneficiariesResponse</returns>
-        SpidBeneficiariesResponse GetSpidBeneficiariesForAccount (string authorization, string subscription, string account = null, string rfc = null);
+        SpidBeneficiariesResponse GetSpidBeneficiariesForAccount (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
 
         /// <summary>
         /// Consulta los beneficiarios SPID registrados
@@ -47,9 +52,14 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>ApiResponse of SpidBeneficiariesResponse</returns>
-        ApiResponse<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null);
+        ApiResponse<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios SPID
         /// </summary>
@@ -87,9 +97,14 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>Task of SpidBeneficiariesResponse</returns>
-        System.Threading.Tasks.Task<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountAsync (string authorization, string subscription, string account = null, string rfc = null);
+        System.Threading.Tasks.Task<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountAsync (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
 
         /// <summary>
         /// Consulta los beneficiarios SPID registrados
@@ -101,9 +116,14 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>Task of ApiResponse (SpidBeneficiariesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SpidBeneficiariesResponse>> GetSpidBeneficiariesForAccountAsyncWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null);
+        System.Threading.Tasks.Task<ApiResponse<SpidBeneficiariesResponse>> GetSpidBeneficiariesForAccountAsyncWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios SPID
         /// </summary>
@@ -247,11 +267,16 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>SpidBeneficiariesResponse</returns>
-        public SpidBeneficiariesResponse GetSpidBeneficiariesForAccount (string authorization, string subscription, string account = null, string rfc = null)
+        public SpidBeneficiariesResponse GetSpidBeneficiariesForAccount (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
         {
-             ApiResponse<SpidBeneficiariesResponse> localVarResponse = GetSpidBeneficiariesForAccountWithHttpInfo(authorization, subscription, account, rfc);
+             ApiResponse<SpidBeneficiariesResponse> localVarResponse = GetSpidBeneficiariesForAccountWithHttpInfo(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, rfc, status);
              return localVarResponse.Data;
         }
 
@@ -262,9 +287,14 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>ApiResponse of SpidBeneficiariesResponse</returns>
-        public ApiResponse< SpidBeneficiariesResponse > GetSpidBeneficiariesForAccountWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null)
+        public ApiResponse< SpidBeneficiariesResponse > GetSpidBeneficiariesForAccountWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
@@ -296,7 +326,12 @@ namespace MX.Wire4.Api
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
             if (account != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "account", account)); // query parameter
+            if (beneficiaryBank != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beneficiary_bank", beneficiaryBank)); // query parameter
+            if (beneficiaryName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beneficiary_name", beneficiaryName)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (initDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "init_date", initDate)); // query parameter
             if (rfc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "rfc", rfc)); // query parameter
+            if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
             if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
@@ -324,11 +359,16 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>Task of SpidBeneficiariesResponse</returns>
-        public async System.Threading.Tasks.Task<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountAsync (string authorization, string subscription, string account = null, string rfc = null)
+        public async System.Threading.Tasks.Task<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountAsync (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
         {
-             ApiResponse<SpidBeneficiariesResponse> localVarResponse = await GetSpidBeneficiariesForAccountAsyncWithHttpInfo(authorization, subscription, account, rfc);
+             ApiResponse<SpidBeneficiariesResponse> localVarResponse = await GetSpidBeneficiariesForAccountAsyncWithHttpInfo(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, rfc, status);
              return localVarResponse.Data;
 
         }
@@ -340,9 +380,14 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">El identificador de la suscripción a esta API</param>
         /// <param name="account">Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)</param>
+        /// <param name="beneficiaryBank">Clave del banco beneficiario (optional)</param>
+        /// <param name="beneficiaryName">Nombre del beneficiario (optional)</param>
+        /// <param name="endDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
+        /// <param name="initDate">Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)</param>
         /// <param name="rfc">RFC del beneficiario (optional)</param>
+        /// <param name="status">Estatus de la cuenta (optional)</param>
         /// <returns>Task of ApiResponse (SpidBeneficiariesResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SpidBeneficiariesResponse>> GetSpidBeneficiariesForAccountAsyncWithHttpInfo (string authorization, string subscription, string account = null, string rfc = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SpidBeneficiariesResponse>> GetSpidBeneficiariesForAccountAsyncWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
@@ -374,7 +419,12 @@ namespace MX.Wire4.Api
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
             if (account != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "account", account)); // query parameter
+            if (beneficiaryBank != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beneficiary_bank", beneficiaryBank)); // query parameter
+            if (beneficiaryName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beneficiary_name", beneficiaryName)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (initDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "init_date", initDate)); // query parameter
             if (rfc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "rfc", rfc)); // query parameter
+            if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
             if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request

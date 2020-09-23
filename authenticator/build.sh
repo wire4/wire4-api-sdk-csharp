@@ -47,7 +47,7 @@ mkdir -p bin;
 cp packages/JsonSubTypes.1.2.0/lib/net45/JsonSubTypes.dll bin/JsonSubTypes.dll
 cp packages/Newtonsoft.Json.10.0.3/lib/net45/Newtonsoft.Json.dll bin/Newtonsoft.Json.dll;
 cp packages/RestSharp.105.1.0/lib/net45/RestSharp.dll bin/RestSharp.dll;
-cp packages/MX.Wire4.0.0.3/lib/net45/MX.Wire4.dll bin/MX.Wire4.dll;
+cp packages/MX.Wire4.0.0.5/lib/net45/MX.Wire4.dll bin/MX.Wire4.dll;
 
 echo "[INFO] Run 'mcs' to build bin/MX.Wire4.dll"
 mcs -langversion:${langversion} -sdk:${sdk} -r:bin/Newtonsoft.Json.dll,bin/JsonSubTypes.dll,\

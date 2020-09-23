@@ -32,9 +32,9 @@ namespace MX.Wire4.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MessageAccountBeneficiary" /> class.
         /// </summary>
-        /// <param name="account">Cuenta del beneficiario.</param>
+        /// <param name="account">Cuenta del beneficiario registrado.</param>
         /// <param name="errorMessage">Mensaje de error en caso de existir, el valor de este atributo contiene el mensaje.</param>
-        /// <param name="requestId">El identificador, en esta API, de la petición de registro de la cuenta del beneficiario.</param>
+        /// <param name="requestId">El identificador en esta API, de la petición de registro de la cuenta del beneficiario.</param>
         public MessageAccountBeneficiary(string account = default(string), string errorMessage = default(string), string requestId = default(string))
         {
             this.Account = account;
@@ -43,9 +43,9 @@ namespace MX.Wire4.Model
         }
         
         /// <summary>
-        /// Cuenta del beneficiario
+        /// Cuenta del beneficiario registrado
         /// </summary>
-        /// <value>Cuenta del beneficiario</value>
+        /// <value>Cuenta del beneficiario registrado</value>
         [DataMember(Name="account", EmitDefaultValue=false)]
         public string Account { get; set; }
 
@@ -57,9 +57,9 @@ namespace MX.Wire4.Model
         public string ErrorMessage { get; set; }
 
         /// <summary>
-        /// El identificador, en esta API, de la petición de registro de la cuenta del beneficiario
+        /// El identificador en esta API, de la petición de registro de la cuenta del beneficiario
         /// </summary>
-        /// <value>El identificador, en esta API, de la petición de registro de la cuenta del beneficiario</value>
+        /// <value>El identificador en esta API, de la petición de registro de la cuenta del beneficiario</value>
         [DataMember(Name="request_id", EmitDefaultValue=false)]
         public string RequestId { get; set; }
 
