@@ -38,7 +38,8 @@ namespace MX.Wire4.Model
         /// <param name="maskedUserName">El nombre enmascarado del usuario de acceso que se autorizó.</param>
         /// <param name="name">El usuario que se autorizó.</param>
         /// <param name="requestId">El identificador de la petición cuando se solicitó la autorización.</param>
-        public MessageUserAuthorized(string account = default(string), string maskedAccount = default(string), string maskedName = default(string), string maskedUserName = default(string), string name = default(string), string requestId = default(string))
+        /// <param name="userName">El nombre del usuario de acceso que se autorizó.</param>
+        public MessageUserAuthorized(string account = default(string), string maskedAccount = default(string), string maskedName = default(string), string maskedUserName = default(string), string name = default(string), string requestId = default(string), string userName = default(string))
         {
             this.Account = account;
             this.MaskedAccount = maskedAccount;
@@ -46,6 +47,7 @@ namespace MX.Wire4.Model
             this.MaskedUserName = maskedUserName;
             this.Name = name;
             this.RequestId = requestId;
+            this.UserName = userName;
         }
         
         /// <summary>
@@ -91,6 +93,13 @@ namespace MX.Wire4.Model
         public string RequestId { get; set; }
 
         /// <summary>
+        /// El nombre del usuario de acceso que se autorizó
+        /// </summary>
+        /// <value>El nombre del usuario de acceso que se autorizó</value>
+        [DataMember(Name="user_name", EmitDefaultValue=false)]
+        public string UserName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -104,6 +113,7 @@ namespace MX.Wire4.Model
             sb.Append("  MaskedUserName: ").Append(MaskedUserName).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  RequestId: ").Append(RequestId).Append("\n");
+            sb.Append("  UserName: ").Append(UserName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -167,6 +177,11 @@ namespace MX.Wire4.Model
                     this.RequestId == input.RequestId ||
                     (this.RequestId != null &&
                     this.RequestId.Equals(input.RequestId))
+                ) && 
+                (
+                    this.UserName == input.UserName ||
+                    (this.UserName != null &&
+                    this.UserName.Equals(input.UserName))
                 );
         }
 
@@ -191,6 +206,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.RequestId != null)
                     hashCode = hashCode * 59 + this.RequestId.GetHashCode();
+                if (this.UserName != null)
+                    hashCode = hashCode * 59 + this.UserName.GetHashCode();
                 return hashCode;
             }
         }

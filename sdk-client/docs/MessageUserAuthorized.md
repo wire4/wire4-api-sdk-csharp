@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **MaskedUserName** | **string** | El nombre enmascarado del usuario de acceso que se autorizó | [optional] 
 **Name** | **string** | El usuario que se autorizó | [optional] 
 **RequestId** | **string** | El identificador de la petición cuando se solicitó la autorización | [optional] 
+**UserName** | **string** | El nombre del usuario de acceso que se autorizó | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
