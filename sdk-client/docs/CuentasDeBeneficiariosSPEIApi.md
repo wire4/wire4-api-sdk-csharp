@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**GetBeneficiariesForAccountUsingGET**](CuentasDeBeneficiariosSPEIApi.md#getbeneficiariesforaccountusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spei | Consulta los beneficiarios registrados
 [**PreRegisterAccountsUsingPOST**](CuentasDeBeneficiariosSPEIApi.md#preregisteraccountsusingpost) | **POST** /subscriptions/{subscription}/beneficiaries/spei | Pre-registro de cuentas de beneficiarios.
 [**RemoveBeneficiariesPendingUsingDELETE**](CuentasDeBeneficiariosSPEIApi.md#removebeneficiariespendingusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/request/{requestId} | Eliminación de beneficiarios SPEI® sin confirmar
-[**UpdateAmountLimitAccountUsingPUT**](CuentasDeBeneficiariosSPEIApi.md#updateamountlimitaccountusingput) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Actualiza el monto límite
+[**UpdateAmountLimitAccountUsingPUT**](CuentasDeBeneficiariosSPEIApi.md#updateamountlimitaccountusingput) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Solicitud para actualizar el monto límite
 
 <a name="authorizeaccountspendingput"></a>
 # **AuthorizeAccountsPendingPUT**
@@ -473,9 +473,9 @@ No authorization required
 # **UpdateAmountLimitAccountUsingPUT**
 > TokenRequiredResponse UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription)
 
-Actualiza el monto límite
+Solicitud para actualizar el monto límite
 
-Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
+Inicia una solicitud para actualizar el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
 
 ### Example
 ```csharp
@@ -499,7 +499,7 @@ namespace Example
 
             try
             {
-                // Actualiza el monto límite
+                // Solicitud para actualizar el monto límite
                 TokenRequiredResponse result = apiInstance.UpdateAmountLimitAccountUsingPUT(body, authorization, account, subscription);
                 Debug.WriteLine(result);
             }

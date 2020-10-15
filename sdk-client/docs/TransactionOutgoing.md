@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | [**decimal?**](BigDecimal.md) | Monto de la transferencia | 
+**Beneficiary** | [**Account**](Account.md) |  | [optional] 
 **BeneficiaryAccount** | **string** | Cuenta del beneficiario, podría ser un número celular, TDD o Cuenta CLABE interbancaria  | 
 **BeneficiaryBankKey** | **string** | La clave del banco beneficiario, proprocionada por BANXICO, este campo solo es obligatario cuando la cuenta beneficiaria es un número celular (*). | [optional] 
 **Concept** | **string** | Concepto de la transferencia | 
