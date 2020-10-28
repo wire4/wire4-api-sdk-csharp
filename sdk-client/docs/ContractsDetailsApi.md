@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateAuthorization**](ContractsDetailsApi.md#createauthorization) | **POST** /onboarding/accounts/authorize | Devuelve la URL para autorización del usuario Monex
 [**ObtainAuthorizedUsers**](ContractsDetailsApi.md#obtainauthorizedusers) | **GET** /onboarding/accounts/{requestId}/authorized-users | Obtiene los usuarios autorizados
+[**ObtainAuthorizedUsersByContract**](ContractsDetailsApi.md#obtainauthorizedusersbycontract) | **GET** /onboarding/accounts/authorized-users | Obtiene los usuarios autorizados por contrato
 [**ObtainContractDetails**](ContractsDetailsApi.md#obtaincontractdetails) | **POST** /onboarding/accounts/details | Obtiene los detalles de la empresa del contrato
 
 <a name="createauthorization"></a>
@@ -119,6 +120,70 @@ Name | Type | Description  | Notes
  **authorization** | **string**| Header para token | 
  **X_ACCESS_KEY** | **string**| La llave de acceso de la aplicación | 
  **requestId** | **string**| El identificador de la petición a esta API | 
+
+### Return type
+
+[**List<AuthorizedUsers>**](AuthorizedUsers.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="obtainauthorizedusersbycontract"></a>
+# **ObtainAuthorizedUsersByContract**
+> List<AuthorizedUsers> ObtainAuthorizedUsersByContract (string authorization, string X_ACCESS_KEY, string contract = null)
+
+Obtiene los usuarios autorizados por contrato
+
+Obtienen los detalles de los usuarios autorizados por contrato Monex.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using MX.Wire4.Api;
+using MX.Wire4.Client;
+using MX.Wire4.Model;
+
+namespace Example
+{
+    public class ObtainAuthorizedUsersByContractExample
+    {
+        public void main()
+        {
+            var apiInstance = new ContractsDetailsApi();
+            var authorization = authorization_example;  // string | Header para token
+            var X_ACCESS_KEY = X_ACCESS_KEY_example;  // string | La llave de acceso de la aplicación
+            var contract = contract_example;  // string | El contrato Monex (optional) 
+
+            try
+            {
+                // Obtiene los usuarios autorizados por contrato
+                List&lt;AuthorizedUsers&gt; result = apiInstance.ObtainAuthorizedUsersByContract(authorization, X_ACCESS_KEY, contract);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ContractsDetailsApi.ObtainAuthorizedUsersByContract: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
+ **X_ACCESS_KEY** | **string**| La llave de acceso de la aplicación | 
+ **contract** | **string**| El contrato Monex | [optional] 
 
 ### Return type
 

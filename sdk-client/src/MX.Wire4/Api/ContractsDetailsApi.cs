@@ -72,6 +72,31 @@ namespace MX.Wire4.Api
         /// <returns>ApiResponse of List&lt;AuthorizedUsers&gt;</returns>
         ApiResponse<List<AuthorizedUsers>> ObtainAuthorizedUsersWithHttpInfo (string authorization, string X_ACCESS_KEY, string requestId);
         /// <summary>
+        /// Obtiene los usuarios autorizados por contrato
+        /// </summary>
+        /// <remarks>
+        /// Obtienen los detalles de los usuarios autorizados por contrato Monex.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="X_ACCESS_KEY">La llave de acceso de la aplicación</param>
+        /// <param name="contract">El contrato Monex (optional)</param>
+        /// <returns>List&lt;AuthorizedUsers&gt;</returns>
+        List<AuthorizedUsers> ObtainAuthorizedUsersByContract (string authorization, string X_ACCESS_KEY, string contract = null);
+
+        /// <summary>
+        /// Obtiene los usuarios autorizados por contrato
+        /// </summary>
+        /// <remarks>
+        /// Obtienen los detalles de los usuarios autorizados por contrato Monex.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="X_ACCESS_KEY">La llave de acceso de la aplicación</param>
+        /// <param name="contract">El contrato Monex (optional)</param>
+        /// <returns>ApiResponse of List&lt;AuthorizedUsers&gt;</returns>
+        ApiResponse<List<AuthorizedUsers>> ObtainAuthorizedUsersByContractWithHttpInfo (string authorization, string X_ACCESS_KEY, string contract = null);
+        /// <summary>
         /// Obtiene los detalles de la empresa del contrato
         /// </summary>
         /// <remarks>
@@ -146,6 +171,31 @@ namespace MX.Wire4.Api
         /// <param name="requestId">El identificador de la petición a esta API</param>
         /// <returns>Task of ApiResponse (List&lt;AuthorizedUsers&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<AuthorizedUsers>>> ObtainAuthorizedUsersAsyncWithHttpInfo (string authorization, string X_ACCESS_KEY, string requestId);
+        /// <summary>
+        /// Obtiene los usuarios autorizados por contrato
+        /// </summary>
+        /// <remarks>
+        /// Obtienen los detalles de los usuarios autorizados por contrato Monex.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="X_ACCESS_KEY">La llave de acceso de la aplicación</param>
+        /// <param name="contract">El contrato Monex (optional)</param>
+        /// <returns>Task of List&lt;AuthorizedUsers&gt;</returns>
+        System.Threading.Tasks.Task<List<AuthorizedUsers>> ObtainAuthorizedUsersByContractAsync (string authorization, string X_ACCESS_KEY, string contract = null);
+
+        /// <summary>
+        /// Obtiene los usuarios autorizados por contrato
+        /// </summary>
+        /// <remarks>
+        /// Obtienen los detalles de los usuarios autorizados por contrato Monex.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="X_ACCESS_KEY">La llave de acceso de la aplicación</param>
+        /// <param name="contract">El contrato Monex (optional)</param>
+        /// <returns>Task of ApiResponse (List&lt;AuthorizedUsers&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<AuthorizedUsers>>> ObtainAuthorizedUsersByContractAsyncWithHttpInfo (string authorization, string X_ACCESS_KEY, string contract = null);
         /// <summary>
         /// Obtiene los detalles de la empresa del contrato
         /// </summary>
@@ -588,6 +638,155 @@ namespace MX.Wire4.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ObtainAuthorizedUsers", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<AuthorizedUsers>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<AuthorizedUsers>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<AuthorizedUsers>)));
+        }
+
+        /// <summary>
+        /// Obtiene los usuarios autorizados por contrato Obtienen los detalles de los usuarios autorizados por contrato Monex.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="X_ACCESS_KEY">La llave de acceso de la aplicación</param>
+        /// <param name="contract">El contrato Monex (optional)</param>
+        /// <returns>List&lt;AuthorizedUsers&gt;</returns>
+        public List<AuthorizedUsers> ObtainAuthorizedUsersByContract (string authorization, string X_ACCESS_KEY, string contract = null)
+        {
+             ApiResponse<List<AuthorizedUsers>> localVarResponse = ObtainAuthorizedUsersByContractWithHttpInfo(authorization, X_ACCESS_KEY, contract);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Obtiene los usuarios autorizados por contrato Obtienen los detalles de los usuarios autorizados por contrato Monex.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="X_ACCESS_KEY">La llave de acceso de la aplicación</param>
+        /// <param name="contract">El contrato Monex (optional)</param>
+        /// <returns>ApiResponse of List&lt;AuthorizedUsers&gt;</returns>
+        public ApiResponse< List<AuthorizedUsers> > ObtainAuthorizedUsersByContractWithHttpInfo (string authorization, string X_ACCESS_KEY, string contract = null)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling ContractsDetailsApi->ObtainAuthorizedUsersByContract");
+            // verify the required parameter 'X_ACCESS_KEY' is set
+            if (X_ACCESS_KEY == null)
+                throw new ApiException(400, "Missing required parameter 'X_ACCESS_KEY' when calling ContractsDetailsApi->ObtainAuthorizedUsersByContract");
+
+            var localVarPath = "/onboarding/accounts/authorized-users";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (contract != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "contract", contract)); // query parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (X_ACCESS_KEY != null) localVarHeaderParams.Add("X-ACCESS-KEY", this.Configuration.ApiClient.ParameterToString(X_ACCESS_KEY)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ObtainAuthorizedUsersByContract", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<AuthorizedUsers>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<AuthorizedUsers>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<AuthorizedUsers>)));
+        }
+
+        /// <summary>
+        /// Obtiene los usuarios autorizados por contrato Obtienen los detalles de los usuarios autorizados por contrato Monex.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="X_ACCESS_KEY">La llave de acceso de la aplicación</param>
+        /// <param name="contract">El contrato Monex (optional)</param>
+        /// <returns>Task of List&lt;AuthorizedUsers&gt;</returns>
+        public async System.Threading.Tasks.Task<List<AuthorizedUsers>> ObtainAuthorizedUsersByContractAsync (string authorization, string X_ACCESS_KEY, string contract = null)
+        {
+             ApiResponse<List<AuthorizedUsers>> localVarResponse = await ObtainAuthorizedUsersByContractAsyncWithHttpInfo(authorization, X_ACCESS_KEY, contract);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Obtiene los usuarios autorizados por contrato Obtienen los detalles de los usuarios autorizados por contrato Monex.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="X_ACCESS_KEY">La llave de acceso de la aplicación</param>
+        /// <param name="contract">El contrato Monex (optional)</param>
+        /// <returns>Task of ApiResponse (List&lt;AuthorizedUsers&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<AuthorizedUsers>>> ObtainAuthorizedUsersByContractAsyncWithHttpInfo (string authorization, string X_ACCESS_KEY, string contract = null)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling ContractsDetailsApi->ObtainAuthorizedUsersByContract");
+            // verify the required parameter 'X_ACCESS_KEY' is set
+            if (X_ACCESS_KEY == null)
+                throw new ApiException(400, "Missing required parameter 'X_ACCESS_KEY' when calling ContractsDetailsApi->ObtainAuthorizedUsersByContract");
+
+            var localVarPath = "/onboarding/accounts/authorized-users";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (contract != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "contract", contract)); // query parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (X_ACCESS_KEY != null) localVarHeaderParams.Add("X-ACCESS-KEY", this.Configuration.ApiClient.ParameterToString(X_ACCESS_KEY)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ObtainAuthorizedUsersByContract", localVarResponse);
                 if (exception != null) throw exception;
             }
 

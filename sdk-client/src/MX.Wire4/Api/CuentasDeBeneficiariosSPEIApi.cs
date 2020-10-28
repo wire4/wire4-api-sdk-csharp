@@ -209,10 +209,10 @@ namespace MX.Wire4.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> RemoveBeneficiariesPendingUsingDELETEWithHttpInfo (string authorization, string requestId, string subscription);
         /// <summary>
-        /// Actualiza el monto límite
+        /// Solicitud para actualizar el monto límite
         /// </summary>
         /// <remarks>
-        /// Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
+        /// Inicia una solicitud para actualizar el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
@@ -223,10 +223,10 @@ namespace MX.Wire4.Api
         TokenRequiredResponse UpdateAmountLimitAccountUsingPUT (AmountRequest body, string authorization, string account, string subscription);
 
         /// <summary>
-        /// Actualiza el monto límite
+        /// Solicitud para actualizar el monto límite
         /// </summary>
         /// <remarks>
-        /// Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
+        /// Inicia una solicitud para actualizar el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
@@ -423,10 +423,10 @@ namespace MX.Wire4.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> RemoveBeneficiariesPendingUsingDELETEAsyncWithHttpInfo (string authorization, string requestId, string subscription);
         /// <summary>
-        /// Actualiza el monto límite
+        /// Solicitud para actualizar el monto límite
         /// </summary>
         /// <remarks>
-        /// Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
+        /// Inicia una solicitud para actualizar el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
@@ -437,10 +437,10 @@ namespace MX.Wire4.Api
         System.Threading.Tasks.Task<TokenRequiredResponse> UpdateAmountLimitAccountUsingPUTAsync (AmountRequest body, string authorization, string account, string subscription);
 
         /// <summary>
-        /// Actualiza el monto límite
+        /// Solicitud para actualizar el monto límite
         /// </summary>
         /// <remarks>
-        /// Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
+        /// Inicia una solicitud para actualizar el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
@@ -1688,7 +1688,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Actualiza el monto límite Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
+        /// Solicitud para actualizar el monto límite Inicia una solicitud para actualizar el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
@@ -1703,7 +1703,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Actualiza el monto límite Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
+        /// Solicitud para actualizar el monto límite Inicia una solicitud para actualizar el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
@@ -1779,7 +1779,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Actualiza el monto límite Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
+        /// Solicitud para actualizar el monto límite Inicia una solicitud para actualizar el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>
@@ -1795,7 +1795,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Actualiza el monto límite Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
+        /// Solicitud para actualizar el monto límite Inicia una solicitud para actualizar el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Información de la cuenta y el monto límite a actualizar</param>

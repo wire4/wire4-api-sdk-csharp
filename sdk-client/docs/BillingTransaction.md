@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **Amount** | [**decimal?**](BigDecimal.md) | Monto de la transacción | [optional] 
 **ClaveRastreo** | **string** | Clave de rastreo que se asignó a la transacción | [optional] 
 **MonexId** | **int?** | Identificador de transaccion en banco monex | [optional] 
-**OperationDate** | [**Timestamp**](Timestamp.md) |  | [optional] 
+**OperationDate** | **DateTime?** | Fecha y hora de la transacción | [optional] 
 **OrderId** | **string** | Identificador de la orden | [optional] 
 **PaymentOrderId** | **string** | Identificador de la orden de pago | [optional] 
 **TransactionId** | **int?** | Identificador de la transacción | [optional] 

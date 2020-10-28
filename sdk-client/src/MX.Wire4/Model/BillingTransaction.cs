@@ -58,12 +58,12 @@ namespace MX.Wire4.Model
         /// <param name="amount">Monto de la transacción.</param>
         /// <param name="claveRastreo">Clave de rastreo que se asignó a la transacción.</param>
         /// <param name="monexId">Identificador de transaccion en banco monex.</param>
-        /// <param name="operationDate">operationDate.</param>
+        /// <param name="operationDate">Fecha y hora de la transacción.</param>
         /// <param name="orderId">Identificador de la orden.</param>
         /// <param name="paymentOrderId">Identificador de la orden de pago.</param>
         /// <param name="transactionId">Identificador de la transacción.</param>
         /// <param name="type">Tipo de transaccion IN | OUT.</param>
-        public BillingTransaction(decimal? amount = default(decimal?), string claveRastreo = default(string), int? monexId = default(int?), DateTime operationDate = default(DateTime), string orderId = default(string), string paymentOrderId = default(string), int? transactionId = default(int?), TypeEnum? type = default(TypeEnum?))
+        public BillingTransaction(decimal? amount = default(decimal?), string claveRastreo = default(string), int? monexId = default(int?), DateTime? operationDate = default(DateTime?), string orderId = default(string), string paymentOrderId = default(string), int? transactionId = default(int?), TypeEnum? type = default(TypeEnum?))
         {
             this.Amount = amount;
             this.ClaveRastreo = claveRastreo;
@@ -97,10 +97,11 @@ namespace MX.Wire4.Model
         public int? MonexId { get; set; }
 
         /// <summary>
-        /// Gets or Sets OperationDate
+        /// Fecha y hora de la transacción
         /// </summary>
+        /// <value>Fecha y hora de la transacción</value>
         [DataMember(Name="operation_date", EmitDefaultValue=false)]
-        public DateTime OperationDate { get; set; }
+        public DateTime? OperationDate { get; set; }
 
         /// <summary>
         /// Identificador de la orden

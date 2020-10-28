@@ -93,7 +93,7 @@ namespace MX.Wire4.Model
         /// <param name="salesPoint">salesPoint.</param>
         /// <param name="status">Estatus de la petición.</param>
         /// <param name="type">Tipo de petición de cobro.</param>
-        public Operations(decimal? amount = default(decimal?), Compay company = default(Compay), string description = default(string), DateTime? dueDate = default(DateTime?), string orderId = default(string), Payment payment = default(Payment), string phoneNumber = default(string), SalesPoint salesPoint = default(SalesPoint), StatusEnum? status = default(StatusEnum?), TypeEnum? type = default(TypeEnum?))
+        public Operations(decimal? amount = default(decimal?), Compay company = default(Compay), string description = default(string), DateTime? dueDate = default(DateTime?), string orderId = default(string), PaymentCODI payment = default(PaymentCODI), string phoneNumber = default(string), SalesPoint salesPoint = default(SalesPoint), StatusEnum? status = default(StatusEnum?), TypeEnum? type = default(TypeEnum?))
         {
             this.Amount = amount;
             this.Company = company;
@@ -145,7 +145,7 @@ namespace MX.Wire4.Model
         /// Gets or Sets Payment
         /// </summary>
         [DataMember(Name="payment", EmitDefaultValue=false)]
-        public Payment Payment { get; set; }
+        public PaymentCODI Payment { get; set; }
 
         /// <summary>
         /// Numero de telefono

@@ -57,12 +57,12 @@ namespace MX.Wire4.Model
         /// </summary>
         /// <param name="accessIp">Ip desde la que accede el punto de venta a wire4 y a la que se devuelven las notificaciones.</param>
         /// <param name="account">Cuenta registra para el punto de venta.</param>
-        /// <param name="createdAt">createdAt.</param>
+        /// <param name="createdAt">Fecha en la que se creó el punto de venta.</param>
         /// <param name="name">Nombre del punto de venta.</param>
         /// <param name="publicId">Identificador del punto de venta.</param>
         /// <param name="status">Estatus ACTIVO/INACTIVO el punto de venta.</param>
-        /// <param name="updatedAt">updatedAt.</param>
-        public SalesPointFound(string accessIp = default(string), string account = default(string), DateTime createdAt = default(DateTime), string name = default(string), string publicId = default(string), StatusEnum? status = default(StatusEnum?), DateTime updatedAt = default(DateTime))
+        /// <param name="updatedAt">Fecha en la que se actualizó el punto de venta.</param>
+        public SalesPointFound(string accessIp = default(string), string account = default(string), DateTime? createdAt = default(DateTime?), string name = default(string), string publicId = default(string), StatusEnum? status = default(StatusEnum?), DateTime? updatedAt = default(DateTime?))
         {
             this.AccessIp = accessIp;
             this.Account = account;
@@ -88,10 +88,11 @@ namespace MX.Wire4.Model
         public string Account { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
+        /// Fecha en la que se creó el punto de venta
         /// </summary>
+        /// <value>Fecha en la que se creó el punto de venta</value>
         [DataMember(Name="created_at", EmitDefaultValue=false)]
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
         /// <summary>
         /// Nombre del punto de venta
@@ -109,10 +110,11 @@ namespace MX.Wire4.Model
 
 
         /// <summary>
-        /// Gets or Sets UpdatedAt
+        /// Fecha en la que se actualizó el punto de venta
         /// </summary>
+        /// <value>Fecha en la que se actualizó el punto de venta</value>
         [DataMember(Name="updated_at", EmitDefaultValue=false)]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
