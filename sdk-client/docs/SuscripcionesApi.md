@@ -4,10 +4,74 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**ChangeSubscriptionStatusUsingPUT**](SuscripcionesApi.md#changesubscriptionstatususingput) | **PUT** /subscriptions/{subscription}/status | Cambia el estatus de la suscripción
 [**PreEnrollmentMonexUserUsingPOST**](SuscripcionesApi.md#preenrollmentmonexuserusingpost) | **POST** /subscriptions/pre-subscription | Registra una pre-suscripción
 [**RemoveEnrollmentUserUsingDELETE**](SuscripcionesApi.md#removeenrollmentuserusingdelete) | **DELETE** /subscriptions/{subscription} | Elimina una suscripción por el identificador de la suscripción
 [**RemoveSubscriptionPendingStatusUsingDELETE**](SuscripcionesApi.md#removesubscriptionpendingstatususingdelete) | **DELETE** /subscriptions/pre-subscription/{subscription} | Elimina una pre-suscripción
 
+<a name="changesubscriptionstatususingput"></a>
+# **ChangeSubscriptionStatusUsingPUT**
+> void ChangeSubscriptionStatusUsingPUT (SubscriptionChangeStatusRequest body, string authorization, string subscription)
+
+Cambia el estatus de la suscripción
+
+Se cambia el estatus de la suscripción, los posibles valores son ACTIVE ó INACTIVE
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using MX.Wire4.Api;
+using MX.Wire4.Client;
+using MX.Wire4.Model;
+
+namespace Example
+{
+    public class ChangeSubscriptionStatusUsingPUTExample
+    {
+        public void main()
+        {
+            var apiInstance = new SuscripcionesApi();
+            var body = new SubscriptionChangeStatusRequest(); // SubscriptionChangeStatusRequest | request
+            var authorization = authorization_example;  // string | Header para token
+            var subscription = subscription_example;  // string | subscription
+
+            try
+            {
+                // Cambia el estatus de la suscripción
+                apiInstance.ChangeSubscriptionStatusUsingPUT(body, authorization, subscription);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SuscripcionesApi.ChangeSubscriptionStatusUsingPUT: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SubscriptionChangeStatusRequest**](SubscriptionChangeStatusRequest.md)| request | 
+ **authorization** | **string**| Header para token | 
+ **subscription** | **string**| subscription | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="preenrollmentmonexuserusingpost"></a>
 # **PreEnrollmentMonexUserUsingPOST**
 > PreEnrollmentResponse PreEnrollmentMonexUserUsingPOST (PreEnrollmentData body, string authorization)

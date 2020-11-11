@@ -33,10 +33,12 @@ namespace MX.Wire4.Model
         /// Initializes a new instance of the <see cref="Item" /> class.
         /// </summary>
         /// <param name="key">Debe ser BY_AMOUNT para indicar la configuración por monto o BY_OPERATION para indicar la configuración por número de operaciones.</param>
+        /// <param name="type">El tipo de dato del grupo de configuraciones..</param>
         /// <param name="value">Valor configurado.</param>
-        public Item(string key = default(string), string value = default(string))
+        public Item(string key = default(string), string type = default(string), string value = default(string))
         {
             this.Key = key;
+            this.Type = type;
             this.Value = value;
         }
         
@@ -46,6 +48,13 @@ namespace MX.Wire4.Model
         /// <value>Debe ser BY_AMOUNT para indicar la configuración por monto o BY_OPERATION para indicar la configuración por número de operaciones</value>
         [DataMember(Name="key", EmitDefaultValue=false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// El tipo de dato del grupo de configuraciones.
+        /// </summary>
+        /// <value>El tipo de dato del grupo de configuraciones.</value>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public string Type { get; set; }
 
         /// <summary>
         /// Valor configurado
@@ -63,6 +72,7 @@ namespace MX.Wire4.Model
             var sb = new StringBuilder();
             sb.Append("class Item {\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -104,6 +114,11 @@ namespace MX.Wire4.Model
                     this.Key.Equals(input.Key))
                 ) && 
                 (
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
+                ) && 
+                (
                     this.Value == input.Value ||
                     (this.Value != null &&
                     this.Value.Equals(input.Value))
@@ -121,6 +136,8 @@ namespace MX.Wire4.Model
                 int hashCode = 41;
                 if (this.Key != null)
                     hashCode = hashCode * 59 + this.Key.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Value != null)
                     hashCode = hashCode * 59 + this.Value.GetHashCode();
                 return hashCode;

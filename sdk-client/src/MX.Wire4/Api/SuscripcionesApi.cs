@@ -24,6 +24,31 @@ namespace MX.Wire4.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Cambia el estatus de la suscripción
+        /// </summary>
+        /// <remarks>
+        /// Se cambia el estatus de la suscripción, los posibles valores son ACTIVE ó INACTIVE
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">request</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">subscription</param>
+        /// <returns></returns>
+        void ChangeSubscriptionStatusUsingPUT (SubscriptionChangeStatusRequest body, string authorization, string subscription);
+
+        /// <summary>
+        /// Cambia el estatus de la suscripción
+        /// </summary>
+        /// <remarks>
+        /// Se cambia el estatus de la suscripción, los posibles valores son ACTIVE ó INACTIVE
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">request</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">subscription</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> ChangeSubscriptionStatusUsingPUTWithHttpInfo (SubscriptionChangeStatusRequest body, string authorization, string subscription);
+        /// <summary>
         /// Registra una pre-suscripción
         /// </summary>
         /// <remarks>
@@ -94,6 +119,31 @@ namespace MX.Wire4.Api
         ApiResponse<Object> RemoveSubscriptionPendingStatusUsingDELETEWithHttpInfo (string authorization, string subscription);
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Cambia el estatus de la suscripción
+        /// </summary>
+        /// <remarks>
+        /// Se cambia el estatus de la suscripción, los posibles valores son ACTIVE ó INACTIVE
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">request</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">subscription</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task ChangeSubscriptionStatusUsingPUTAsync (SubscriptionChangeStatusRequest body, string authorization, string subscription);
+
+        /// <summary>
+        /// Cambia el estatus de la suscripción
+        /// </summary>
+        /// <remarks>
+        /// Se cambia el estatus de la suscripción, los posibles valores son ACTIVE ó INACTIVE
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">request</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">subscription</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> ChangeSubscriptionStatusUsingPUTAsyncWithHttpInfo (SubscriptionChangeStatusRequest body, string authorization, string subscription);
         /// <summary>
         /// Registra una pre-suscripción
         /// </summary>
@@ -272,6 +322,173 @@ namespace MX.Wire4.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Cambia el estatus de la suscripción Se cambia el estatus de la suscripción, los posibles valores son ACTIVE ó INACTIVE
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">request</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">subscription</param>
+        /// <returns></returns>
+        public void ChangeSubscriptionStatusUsingPUT (SubscriptionChangeStatusRequest body, string authorization, string subscription)
+        {
+             ChangeSubscriptionStatusUsingPUTWithHttpInfo(body, authorization, subscription);
+        }
+
+        /// <summary>
+        /// Cambia el estatus de la suscripción Se cambia el estatus de la suscripción, los posibles valores son ACTIVE ó INACTIVE
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">request</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">subscription</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> ChangeSubscriptionStatusUsingPUTWithHttpInfo (SubscriptionChangeStatusRequest body, string authorization, string subscription)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling SuscripcionesApi->ChangeSubscriptionStatusUsingPUT");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling SuscripcionesApi->ChangeSubscriptionStatusUsingPUT");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling SuscripcionesApi->ChangeSubscriptionStatusUsingPUT");
+
+            var localVarPath = "/subscriptions/{subscription}/status";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ChangeSubscriptionStatusUsingPUT", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
+        }
+
+        /// <summary>
+        /// Cambia el estatus de la suscripción Se cambia el estatus de la suscripción, los posibles valores son ACTIVE ó INACTIVE
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">request</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">subscription</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task ChangeSubscriptionStatusUsingPUTAsync (SubscriptionChangeStatusRequest body, string authorization, string subscription)
+        {
+             await ChangeSubscriptionStatusUsingPUTAsyncWithHttpInfo(body, authorization, subscription);
+
+        }
+
+        /// <summary>
+        /// Cambia el estatus de la suscripción Se cambia el estatus de la suscripción, los posibles valores son ACTIVE ó INACTIVE
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">request</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">subscription</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ChangeSubscriptionStatusUsingPUTAsyncWithHttpInfo (SubscriptionChangeStatusRequest body, string authorization, string subscription)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling SuscripcionesApi->ChangeSubscriptionStatusUsingPUT");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling SuscripcionesApi->ChangeSubscriptionStatusUsingPUT");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling SuscripcionesApi->ChangeSubscriptionStatusUsingPUT");
+
+            var localVarPath = "/subscriptions/{subscription}/status";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ChangeSubscriptionStatusUsingPUT", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
         }
 
         /// <summary>

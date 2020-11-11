@@ -128,6 +128,7 @@ Class | Method | HTTP request | Description
 *PuntosDeVentaCoDiApi* | [**CreateSalesPoint**](docs/PuntosDeVentaCoDiApi.md#createsalespoint) | **POST** /codi/companies/salespoint | Registra un punto de venta asociado a una empresa
 *PuntosDeVentaCoDiApi* | [**ObtainSalePoints**](docs/PuntosDeVentaCoDiApi.md#obtainsalepoints) | **GET** /codi/companies/salespoint | Obtiene los puntos de venta asociados a una empresa
 *SaldoApi* | [**GetBalanceUsingGET**](docs/SaldoApi.md#getbalanceusingget) | **GET** /subscriptions/{subscription}/balance | Consulta los saldo de una cuenta
+*SuscripcionesApi* | [**ChangeSubscriptionStatusUsingPUT**](docs/SuscripcionesApi.md#changesubscriptionstatususingput) | **PUT** /subscriptions/{subscription}/status | Cambia el estatus de la suscripción
 *SuscripcionesApi* | [**PreEnrollmentMonexUserUsingPOST**](docs/SuscripcionesApi.md#preenrollmentmonexuserusingpost) | **POST** /subscriptions/pre-subscription | Registra una pre-suscripción
 *SuscripcionesApi* | [**RemoveEnrollmentUserUsingDELETE**](docs/SuscripcionesApi.md#removeenrollmentuserusingdelete) | **DELETE** /subscriptions/{subscription} | Elimina una suscripción por el identificador de la suscripción
 *SuscripcionesApi* | [**RemoveSubscriptionPendingStatusUsingDELETE**](docs/SuscripcionesApi.md#removesubscriptionpendingstatususingdelete) | **DELETE** /subscriptions/pre-subscription/{subscription} | Elimina una pre-suscripción
@@ -224,6 +225,7 @@ Class | Method | HTTP request | Description
  - [Model.SpidBeneficiaryResponse](docs/SpidBeneficiaryResponse.md)
  - [Model.SpidClassificationDTO](docs/SpidClassificationDTO.md)
  - [Model.SpidClassificationsResponseDTO](docs/SpidClassificationsResponseDTO.md)
+ - [Model.SubscriptionChangeStatusRequest](docs/SubscriptionChangeStatusRequest.md)
  - [Model.TokenRequiredResponse](docs/TokenRequiredResponse.md)
  - [Model.TransactionErrorCode](docs/TransactionErrorCode.md)
  - [Model.TransactionOutgoing](docs/TransactionOutgoing.md)
