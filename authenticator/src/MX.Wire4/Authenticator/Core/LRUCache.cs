@@ -148,6 +148,23 @@
             }
         }
 
+        /// <summary>Removes the value associated with the specified key.</summary>
+        /// <param name="key">
+        /// The key of the value to remove.
+        /// </param>
+        public void RemoveValue(TKey key)
+        {
+            lock (this.cacheMap)
+            {
+                LinkedListNode<LRUNode> node;
+                if (this.cacheMap.TryGetValue(key, out node))
+                {
+                    this.lruList.Remove(node);
+                    this.cacheMap.Remove(key);
+                }
+            }
+        }
+
         private void RemoveFirst()
         {
             // Remove from LRUPriority

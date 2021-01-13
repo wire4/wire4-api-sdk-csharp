@@ -127,8 +127,8 @@ namespace MX.Wire4.Authenticator.Client
 
 			return bearer;
 		}
-        /// <summary>
-		/// Method that request an Application Token
+		/// <summary>
+		/// Method that request an Application Token for Operations in Wire4
 		/// </summary>
 		/// <param name="request">Object that includes all information for the token</param>
 		/// <param name="scope">Object that includes scope information for the token</param>
@@ -155,7 +155,7 @@ namespace MX.Wire4.Authenticator.Client
 			return bearer;
 		}
 		/// <summary>
-		/// Method that request an Application User Token for Spei Operations
+		/// Method that request an Application User Token for Operations in Wire4
 		/// </summary>
 		/// <param name="request">Object that includes all information for the token</param>
 		/// <param name="scope">Object that includes scope information for the token</param>
@@ -195,9 +195,11 @@ namespace MX.Wire4.Authenticator.Client
 				/**  < 0 − If date1 is earlier than date2
                   *    0 − If date1 is the same as date2
                   *  > 0 − If date1 is later than date2  */
+				DateTime now = DateTime.Now.AddSeconds(5 * 60);
 				if (cachedToken == null || cachedToken.GetToken() == null ||
-                    DateTime.Compare(DateTime.Now.AddSeconds(5 * 60), cachedToken.GetToken().ExpirationDate) < 0)
+                    DateTime.Compare(DateTime.Now.AddSeconds(5 * 60), cachedToken.GetToken().ExpirationDate) > 0)
                 {
+					this.tokensCached.RemoveValue(keySearch);
 					cachedToken = null;
                 }
 			}
@@ -294,7 +296,7 @@ namespace MX.Wire4.Authenticator.Client
 		}
 
 		/// <summary>
-		/// Method that regenerate an Application Token
+		/// Method that regenerate an Application Token for Operations in Wire4
 		/// </summary>
 		/// <param name="request">Object that includes all information for the token</param>
 		/// <param name="scope">Object that includes scope information for the token</param>
@@ -311,7 +313,7 @@ namespace MX.Wire4.Authenticator.Client
 			return FormatToHeader(tokenResponse.AccessToken);
 		}
 		/// <summary>
-		/// Method that regenerate an Application User Token for Spei Operations
+		/// Method that regenerate an Application User Token for Operations in Wire4
 		/// </summary>
 		/// <param name="request">Object that includes all information for the token</param>
 		/// <param name="scope">Object that includes scope information for the token</param>
