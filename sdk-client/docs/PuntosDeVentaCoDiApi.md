@@ -4,16 +4,16 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSalesPoint**](PuntosDeVentaCoDiApi.md#createsalespoint) | **POST** /codi/companies/salespoint | Registra un punto de venta asociado a una empresa
-[**ObtainSalePoints**](PuntosDeVentaCoDiApi.md#obtainsalepoints) | **GET** /codi/companies/salespoint | Obtiene los puntos de venta asociados a una empresa
+[**CreateSalesPoint**](PuntosDeVentaCoDiApi.md#createsalespoint) | **POST** /codi/companies/salespoint | Registro de punto de venta.
+[**ObtainSalePoints**](PuntosDeVentaCoDiApi.md#obtainsalepoints) | **GET** /codi/companies/salespoint | Consulta de puntos de venta
 
 <a name="createsalespoint"></a>
 # **CreateSalesPoint**
 > SalesPointRespose CreateSalesPoint (SalesPointRequest body, string authorization, string companyId)
 
-Registra un punto de venta asociado a una empresa
+Registro de punto de venta.
 
-Registra un punto de venta desde donde se emitaran los cobros CODI®, el punto de venta se debe asociar a un cuenta cableregistrada previamente ante Banxico para realizar cobros con CODI®
+Se registra un punto de venta (TPV) desde donde se emitarán los cobros CODI®. El punto de venta se debe asociar a un cuenta CLABE registrada previamente ante Banxico para realizar cobros con CODI®.
 
 ### Example
 ```csharp
@@ -30,13 +30,13 @@ namespace Example
         public void main()
         {
             var apiInstance = new PuntosDeVentaCoDiApi();
-            var body = new SalesPointRequest(); // SalesPointRequest | Información del punto de venta CODI®
+            var body = new SalesPointRequest(); // SalesPointRequest | Es el objeto que contiene información del punto de venta CODI®.
             var authorization = authorization_example;  // string | Header para token
-            var companyId = companyId_example;  // string | El identificador de la empresa
+            var companyId = companyId_example;  // string | Es el identificador de la empresa.
 
             try
             {
-                // Registra un punto de venta asociado a una empresa
+                // Registro de punto de venta.
                 SalesPointRespose result = apiInstance.CreateSalesPoint(body, authorization, companyId);
                 Debug.WriteLine(result);
             }
@@ -53,9 +53,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**SalesPointRequest**](SalesPointRequest.md)| Información del punto de venta CODI® | 
+ **body** | [**SalesPointRequest**](SalesPointRequest.md)| Es el objeto que contiene información del punto de venta CODI®. | 
  **authorization** | **string**| Header para token | 
- **companyId** | **string**| El identificador de la empresa | 
+ **companyId** | **string**| Es el identificador de la empresa. | 
 
 ### Return type
 
@@ -75,9 +75,9 @@ No authorization required
 # **ObtainSalePoints**
 > List<SalesPointFound> ObtainSalePoints (string authorization, string companyId)
 
-Obtiene los puntos de venta asociados a una empresa
+Consulta de puntos de venta
 
-Obtiene los puntos de venta asociados a una empresa en las cuales se hacen operaciones CODI®
+Obtiene los puntos de venta asociados a una empresa en las cuales se hacen operaciones CODI®.
 
 ### Example
 ```csharp
@@ -95,11 +95,11 @@ namespace Example
         {
             var apiInstance = new PuntosDeVentaCoDiApi();
             var authorization = authorization_example;  // string | Header para token
-            var companyId = companyId_example;  // string | El identificador de la empresa
+            var companyId = companyId_example;  // string | Es el identificador de la empresa. Ejemplo: 8838d513-5916-4662-bb30-2448f0f543ed
 
             try
             {
-                // Obtiene los puntos de venta asociados a una empresa
+                // Consulta de puntos de venta
                 List&lt;SalesPointFound&gt; result = apiInstance.ObtainSalePoints(authorization, companyId);
                 Debug.WriteLine(result);
             }
@@ -117,7 +117,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token | 
- **companyId** | **string**| El identificador de la empresa | 
+ **companyId** | **string**| Es el identificador de la empresa. Ejemplo: 8838d513-5916-4662-bb30-2448f0f543ed | 
 
 ### Return type
 

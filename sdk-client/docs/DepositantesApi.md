@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Consulta de cuentas de depositantes
 
-Obtiene una lista de depositantes asociados al contrato relacionado a la subscripción.
+Obtiene una lista de depositantes asociados al contrato relacionado a la suscripción.
 
 ### Example
 ```csharp
@@ -31,7 +31,7 @@ namespace Example
         {
             var apiInstance = new DepositantesApi();
             var authorization = authorization_example;  // string | Header para token
-            var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
+            var subscription = subscription_example;  // string | Es el identificador de la suscripción a esta API.
 
             try
             {
@@ -53,7 +53,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token | 
- **subscription** | **string**| El identificador de la suscripción a esta API | 
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
 
 ### Return type
 
@@ -75,7 +75,7 @@ No authorization required
 
 Registra un nuevo depositante
 
-Registra un nuevo depositante en el contrato asociado a la subscripción.
+Registra un nuevo depositante en el contrato asociado a la suscripción.
 
 ### Example
 ```csharp
@@ -94,7 +94,7 @@ namespace Example
             var apiInstance = new DepositantesApi();
             var body = new DepositantsRegister(); // DepositantsRegister | Depositant info
             var authorization = authorization_example;  // string | Header para token
-            var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
+            var subscription = subscription_example;  // string | Es el identificador de la suscripción a esta API.
 
             try
             {
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**DepositantsRegister**](DepositantsRegister.md)| Depositant info | 
  **authorization** | **string**| Header para token | 
- **subscription** | **string**| El identificador de la suscripción a esta API | 
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
 
 ### Return type
 

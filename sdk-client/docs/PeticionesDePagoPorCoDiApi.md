@@ -4,16 +4,16 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ConsultCodiRequestByOrderId**](PeticionesDePagoPorCoDiApi.md#consultcodirequestbyorderid) | **GET** /codi/sales-point/charges | Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
-[**GenerateCodiCodeQR**](PeticionesDePagoPorCoDiApi.md#generatecodicodeqr) | **POST** /codi/sales-point/charges | Genera un código QR para un pago mediante CODI®
+[**ConsultCodiRequestByOrderId**](PeticionesDePagoPorCoDiApi.md#consultcodirequestbyorderid) | **GET** /codi/sales-point/charges | Consulta información de petición por orderId
+[**GenerateCodiCodeQR**](PeticionesDePagoPorCoDiApi.md#generatecodicodeqr) | **POST** /codi/sales-point/charges | Genera código QR
 
 <a name="consultcodirequestbyorderid"></a>
 # **ConsultCodiRequestByOrderId**
 > PaymentRequestCodiResponseDTO ConsultCodiRequestByOrderId (string authorization, string orderId, string salesPointId)
 
-Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
+Consulta información de petición por orderId
 
-Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
+Obtiene la información de una petición de pago CODI® por orderId para un punto de venta.
 
 ### Example
 ```csharp
@@ -36,7 +36,7 @@ namespace Example
 
             try
             {
-                // Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
+                // Consulta información de petición por orderId
                 PaymentRequestCodiResponseDTO result = apiInstance.ConsultCodiRequestByOrderId(authorization, orderId, salesPointId);
                 Debug.WriteLine(result);
             }
@@ -75,7 +75,7 @@ No authorization required
 # **GenerateCodiCodeQR**
 > CodiCodeQrResponseDTO GenerateCodiCodeQR (CodiCodeRequestDTO body, string authorization, string salesPointId)
 
-Genera un código QR para un pago mediante CODI®
+Genera código QR
 
 Genera un código QR solicitado por un punto de venta para un pago mediante CODI®
 
@@ -100,7 +100,7 @@ namespace Example
 
             try
             {
-                // Genera un código QR para un pago mediante CODI®
+                // Genera código QR
                 CodiCodeQrResponseDTO result = apiInstance.GenerateCodiCodeQR(body, authorization, salesPointId);
                 Debug.WriteLine(result);
             }

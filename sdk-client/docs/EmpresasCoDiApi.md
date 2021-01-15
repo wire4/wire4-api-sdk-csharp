@@ -4,16 +4,16 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ObtainCompanies**](EmpresasCoDiApi.md#obtaincompanies) | **GET** /codi/companies | Consulta de empresas CODI
-[**RegisterCompanyUsingPOST**](EmpresasCoDiApi.md#registercompanyusingpost) | **POST** /codi/companies | Registro de empresas CODI
+[**ObtainCompanies**](EmpresasCoDiApi.md#obtaincompanies) | **GET** /codi/companies | Consulta de empresas CODI®
+[**RegisterCompanyUsingPOST**](EmpresasCoDiApi.md#registercompanyusingpost) | **POST** /codi/companies | Registro de empresas CODI®
 
 <a name="obtaincompanies"></a>
 # **ObtainCompanies**
 > List<CompanyRegistered> ObtainCompanies (string authorization)
 
-Consulta de empresas CODI
+Consulta de empresas CODI®
 
-Consulta de empresas CODI registradas para la aplicación.
+Consulta de empresas CODI® registradas para la aplicación.
 
 ### Example
 ```csharp
@@ -34,7 +34,7 @@ namespace Example
 
             try
             {
-                // Consulta de empresas CODI
+                // Consulta de empresas CODI®
                 List&lt;CompanyRegistered&gt; result = apiInstance.ObtainCompanies(authorization);
                 Debug.WriteLine(result);
             }
@@ -71,9 +71,9 @@ No authorization required
 # **RegisterCompanyUsingPOST**
 > CompanyRegistered RegisterCompanyUsingPOST (CompanyRequested body, string authorization)
 
-Registro de empresas CODI
+Registro de empresas CODI®
 
-Registra una empresa para hacer uso de operaciones CODI. Es requerido tener el certificado emitido por BANXICO® asi como el Nombre de la empresa, Nombre comercial y RFC de la empresa.<br/>
+Registra una empresa para hacer uso de operaciones CODI®.<br><br> <b>Nota:<b> Es requerido tener el certificado emitido por BANXICO® asi como el Nombre de la empresa, Nombre comercial y el Registro Federal de Contribuyentes (RFC) de la empresa.<br/>
 
 ### Example
 ```csharp
@@ -95,7 +95,7 @@ namespace Example
 
             try
             {
-                // Registro de empresas CODI
+                // Registro de empresas CODI®
                 CompanyRegistered result = apiInstance.RegisterCompanyUsingPOST(body, authorization);
                 Debug.WriteLine(result);
             }

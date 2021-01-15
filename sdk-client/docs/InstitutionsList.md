@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Institutions** | [**List&lt;Institution&gt;**](Institution.md) | Lista de instituciones | [optional] 
+**Institutions** | [**List&lt;Institution&gt;**](Institution.md) | Es la lista de instituciones bancarias. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

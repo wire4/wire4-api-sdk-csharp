@@ -4,7 +4,7 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAuthorizationTransactionsGroup**](TransferenciasSPEIApi.md#createauthorizationtransactionsgroup) | **POST** /subscriptions/{subscription}/transactions/group | Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+[**CreateAuthorizationTransactionsGroup**](TransferenciasSPEIApi.md#createauthorizationtransactionsgroup) | **POST** /subscriptions/{subscription}/transactions/group | Agrupa transacciones bajo un request_id 
 [**DropTransactionsPendingUsingDELETE**](TransferenciasSPEIApi.md#droptransactionspendingusingdelete) | **DELETE** /subscriptions/{subscription}/transactions/outcoming/spei/request/{requestId} | Eliminación de transferencias SPEI® pendientes
 [**IncomingSpeiTransactionsReportUsingGET**](TransferenciasSPEIApi.md#incomingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/incoming/spei | Consulta de transferencias recibidas
 [**OutCommingSpeiRequestIdTransactionsReportUsingGET**](TransferenciasSPEIApi.md#outcommingspeirequestidtransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei/{requestId} | Consulta de transferencias de salida por identificador de petición
@@ -15,9 +15,9 @@ Method | HTTP request | Description
 # **CreateAuthorizationTransactionsGroup**
 > TokenRequiredResponse CreateAuthorizationTransactionsGroup (AuthorizationTransactionGroup body, string authorization, string subscription)
 
-Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+Agrupa transacciones bajo un request_id 
 
-Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato
+Agrupa transacciones SPEI/SPID en un mismo transaction_id, posteriormente genera la dirección URL del centro de autorización para la confirmación de las transacciones. <br><br>Las transacciones deben estar en estatus PENDING y pertenecer a un mismo contrato.
 
 ### Example
 ```csharp
@@ -34,13 +34,13 @@ namespace Example
         public void main()
         {
             var apiInstance = new TransferenciasSPEIApi();
-            var body = new AuthorizationTransactionGroup(); // AuthorizationTransactionGroup | authorizationTransactionsGroupRequestDTO
+            var body = new AuthorizationTransactionGroup(); // AuthorizationTransactionGroup | Objeto con la información para agrupar transacciones existentes y autorizarlas de forma conjunta.
             var authorization = authorization_example;  // string | Header para token
-            var subscription = subscription_example;  // string | Identificador de la suscripcion
+            var subscription = subscription_example;  // string | Es el Identificador de la suscripción.
 
             try
             {
-                // Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+                // Agrupa transacciones bajo un request_id 
                 TokenRequiredResponse result = apiInstance.CreateAuthorizationTransactionsGroup(body, authorization, subscription);
                 Debug.WriteLine(result);
             }
@@ -57,9 +57,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AuthorizationTransactionGroup**](AuthorizationTransactionGroup.md)| authorizationTransactionsGroupRequestDTO | 
+ **body** | [**AuthorizationTransactionGroup**](AuthorizationTransactionGroup.md)| Objeto con la información para agrupar transacciones existentes y autorizarlas de forma conjunta. | 
  **authorization** | **string**| Header para token | 
- **subscription** | **string**| Identificador de la suscripcion | 
+ **subscription** | **string**| Es el Identificador de la suscripción. | 
 
 ### Return type
 
@@ -81,7 +81,7 @@ No authorization required
 
 Eliminación de transferencias SPEI® pendientes
 
-Elimina un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias no deben haber sido confirmadas por el cliente.
+Elimina un conjunto de transferencias en estado pendiente de confirmar o autorizar, en la cuenta del cliente Monex relacionada a la suscripción.<br><br><b>Nota:</b> Las transferencias no deben haber sido confirmadas o autorizadas por el cliente.
 
 ### Example
 ```csharp
@@ -99,9 +99,9 @@ namespace Example
         {
             var apiInstance = new TransferenciasSPEIApi();
             var authorization = authorization_example;  // string | Header para token
-            var requestId = requestId_example;  // string | Identificador de las transferencias a eliminar
-            var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
-            var orderId = orderId_example;  // string | Listado de identificadores dentro del request_id para eliminar (optional) 
+            var requestId = requestId_example;  // string | Identificador de las transferencias a eliminar.
+            var subscription = subscription_example;  // string | Es el identificador de la suscripción a esta API.
+            var orderId = orderId_example;  // string | Listado de identificadores dentro del request_id para eliminar. (optional) 
 
             try
             {
@@ -122,9 +122,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token | 
- **requestId** | **string**| Identificador de las transferencias a eliminar | 
- **subscription** | **string**| El identificador de la suscripción a esta API | 
- **orderId** | **string**| Listado de identificadores dentro del request_id para eliminar | [optional] 
+ **requestId** | **string**| Identificador de las transferencias a eliminar. | 
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
+ **orderId** | **string**| Listado de identificadores dentro del request_id para eliminar. | [optional] 
 
 ### Return type
 
@@ -164,7 +164,7 @@ namespace Example
         {
             var apiInstance = new TransferenciasSPEIApi();
             var authorization = authorization_example;  // string | Header para token
-            var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
+            var subscription = subscription_example;  // string | Es el identificador de la suscripción a esta API.
 
             try
             {
@@ -186,7 +186,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token | 
- **subscription** | **string**| El identificador de la suscripción a esta API | 
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
 
 ### Return type
 
@@ -208,7 +208,7 @@ No authorization required
 
 Consulta de transferencias de salida por identificador de petición
 
-Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cual se debe especificar como parte del path de este endpoint.
+Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.
 
 ### Example
 ```csharp
@@ -226,8 +226,8 @@ namespace Example
         {
             var apiInstance = new TransferenciasSPEIApi();
             var authorization = authorization_example;  // string | Header para token
-            var requestId = requestId_example;  // string | Identificador de la petición a buscar
-            var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
+            var requestId = requestId_example;  // string | Identificador de la petición a buscar.
+            var subscription = subscription_example;  // string | Es el identificador de la suscripción a esta API.
 
             try
             {
@@ -249,8 +249,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token | 
- **requestId** | **string**| Identificador de la petición a buscar | 
- **subscription** | **string**| El identificador de la suscripción a esta API | 
+ **requestId** | **string**| Identificador de la petición a buscar. | 
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
 
 ### Return type
 
@@ -290,8 +290,8 @@ namespace Example
         {
             var apiInstance = new TransferenciasSPEIApi();
             var authorization = authorization_example;  // string | Header para token
-            var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
-            var orderId = orderId_example;  // string | Identificador de la orden a buscar (optional) 
+            var subscription = subscription_example;  // string | Es el identificador de la suscripción a esta API.
+            var orderId = orderId_example;  // string | Es el identificador de la orden a buscar. (optional) 
 
             try
             {
@@ -313,8 +313,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token | 
- **subscription** | **string**| El identificador de la suscripción a esta API | 
- **orderId** | **string**| Identificador de la orden a buscar | [optional] 
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
+ **orderId** | **string**| Es el identificador de la orden a buscar. | [optional] 
 
 ### Return type
 
@@ -336,7 +336,7 @@ No authorization required
 
 Registro de transferencias
 
-Registra un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias deben ser confirmadas por el cliente para que se efectuen.
+Se registra un conjunto de transferencias (una o más) a realizar en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).
 
 ### Example
 ```csharp
@@ -355,7 +355,7 @@ namespace Example
             var apiInstance = new TransferenciasSPEIApi();
             var body = new TransactionsOutgoingRegister(); // TransactionsOutgoingRegister | Información de las transferencias SPEI de salida
             var authorization = authorization_example;  // string | Header para token
-            var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
+            var subscription = subscription_example;  // string | Es el identificador de la suscripción a esta API.
 
             try
             {
@@ -378,7 +378,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TransactionsOutgoingRegister**](TransactionsOutgoingRegister.md)| Información de las transferencias SPEI de salida | 
  **authorization** | **string**| Header para token | 
- **subscription** | **string**| El identificador de la suscripción a esta API | 
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
 
 ### Return type
 
