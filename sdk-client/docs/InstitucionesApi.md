@@ -4,13 +4,15 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAllInstitutionsUsingGET**](InstitucionesApi.md#getallinstitutionsusingget) | **GET** /institutions | Información de instituciones bancarias.
+[**GetAllInstitutionsUsingGET**](InstitucionesApi.md#getallinstitutionsusingget) | **GET** /institutions | Consulta de instituciones bancarias
 
 <a name="getallinstitutionsusingget"></a>
 # **GetAllInstitutionsUsingGET**
 > InstitutionsList GetAllInstitutionsUsingGET (string authorization)
 
-Información de instituciones bancarias.
+Consulta de instituciones bancarias
+
+Se obtiene un listado de las instituciones bancarias y la información de cada una de estas.
 
 ### Example
 ```csharp
@@ -31,7 +33,7 @@ namespace Example
 
             try
             {
-                // Información de instituciones bancarias.
+                // Consulta de instituciones bancarias
                 InstitutionsList result = apiInstance.GetAllInstitutionsUsingGET(authorization);
                 Debug.WriteLine(result);
             }

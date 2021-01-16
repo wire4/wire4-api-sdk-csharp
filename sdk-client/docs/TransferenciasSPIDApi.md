@@ -4,16 +4,16 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetSpidClassificationsUsingGET**](TransferenciasSPIDApi.md#getspidclassificationsusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spid/classifications | Consulta las clasificaciones para operaciones con SPID
-[**RegisterOutgoingSpidTransactionUsingPOST**](TransferenciasSPIDApi.md#registeroutgoingspidtransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spid | Registro de transferencias SPID
+[**GetSpidClassificationsUsingGET**](TransferenciasSPIDApi.md#getspidclassificationsusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spid/classifications | Consulta de clasificaciones para operaciones SPID®
+[**RegisterOutgoingSpidTransactionUsingPOST**](TransferenciasSPIDApi.md#registeroutgoingspidtransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spid | Registro de transferencias SPID®
 
 <a name="getspidclassificationsusingget"></a>
 # **GetSpidClassificationsUsingGET**
 > SpidClassificationsResponseDTO GetSpidClassificationsUsingGET (string authorization, string subscription)
 
-Consulta las clasificaciones para operaciones con SPID
+Consulta de clasificaciones para operaciones SPID®
 
-Obtiene las clasificaciones para operaciones con dólares (SPID) de Monex.<br/>Este recurso se debe invocar previo al realizar una operación SPID.<br/>Se requiere que el token de autenticación se genere con scope spid_admin.
+Obtiene las clasificaciones para operaciones con dólares (SPID®) de Monex.<br/><br/>Este recurso se debe invocar previo al realizar una operación SPID.<br/><br/>
 
 ### Example
 ```csharp
@@ -31,11 +31,11 @@ namespace Example
         {
             var apiInstance = new TransferenciasSPIDApi();
             var authorization = authorization_example;  // string | Header para token
-            var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
+            var subscription = subscription_example;  // string | Es el identificador de la suscripción a esta API.
 
             try
             {
-                // Consulta las clasificaciones para operaciones con SPID
+                // Consulta de clasificaciones para operaciones SPID®
                 SpidClassificationsResponseDTO result = apiInstance.GetSpidClassificationsUsingGET(authorization, subscription);
                 Debug.WriteLine(result);
             }
@@ -53,7 +53,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token | 
- **subscription** | **string**| El identificador de la suscripción a esta API | 
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
 
 ### Return type
 
@@ -73,9 +73,9 @@ No authorization required
 # **RegisterOutgoingSpidTransactionUsingPOST**
 > TokenRequiredResponse RegisterOutgoingSpidTransactionUsingPOST (TransactionOutgoingSpid body, string authorization, string subscription)
 
-Registro de transferencias SPID
+Registro de transferencias SPID®
 
-Registra un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias deben ser confirmadas por el cliente para que se efectuen.
+Registra un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).
 
 ### Example
 ```csharp
@@ -94,11 +94,11 @@ namespace Example
             var apiInstance = new TransferenciasSPIDApi();
             var body = new TransactionOutgoingSpid(); // TransactionOutgoingSpid | Información de las transferencias SPID de salida
             var authorization = authorization_example;  // string | Header para token
-            var subscription = subscription_example;  // string | El identificador de la suscripción a esta API
+            var subscription = subscription_example;  // string | Es el identificador de la suscripción a esta API.
 
             try
             {
-                // Registro de transferencias SPID
+                // Registro de transferencias SPID®
                 TokenRequiredResponse result = apiInstance.RegisterOutgoingSpidTransactionUsingPOST(body, authorization, subscription);
                 Debug.WriteLine(result);
             }
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TransactionOutgoingSpid**](TransactionOutgoingSpid.md)| Información de las transferencias SPID de salida | 
  **authorization** | **string**| Header para token | 
- **subscription** | **string**| El identificador de la suscripción a esta API | 
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
 
 ### Return type
 

@@ -4,15 +4,15 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ConsultCodiOperations**](OperacionesCoDiApi.md#consultcodioperations) | **POST** /codi/charges | Obtiene las operaciones generadas a partir de peticiones de pago CoDi® de forma paginada, pudiendo aplicar filtros
+[**ConsultCodiOperations**](OperacionesCoDiApi.md#consultcodioperations) | **POST** /codi/charges | Consulta de operaciones
 
 <a name="consultcodioperations"></a>
 # **ConsultCodiOperations**
 > PagerResponseDto ConsultCodiOperations (string authorization, CodiOperationsFiltersRequestDTO body = null, string companyId = null, string page = null, string salesPointId = null, string size = null)
 
-Obtiene las operaciones generadas a partir de peticiones de pago CoDi® de forma paginada, pudiendo aplicar filtros
+Consulta de operaciones
 
-Obtiene las operaciones generadas a partir de peticiones de pago CoDi® de forma paginada, pudiendo aplicar filtros
+Obtiene las operaciones generadas a partir de peticiones de pago CODI® de forma paginada, pudiendo aplicar filtros.
 
 ### Example
 ```csharp
@@ -31,14 +31,14 @@ namespace Example
             var apiInstance = new OperacionesCoDiApi();
             var authorization = authorization_example;  // string | Header para token
             var body = new CodiOperationsFiltersRequestDTO(); // CodiOperationsFiltersRequestDTO | Filtros de busqueda (optional) 
-            var companyId = companyId_example;  // string | Identificador de empresa CoDi (optional) 
-            var page = page_example;  // string | Número de pago (optional) 
-            var salesPointId = salesPointId_example;  // string | Identificador del punto de venta (optional) 
-            var size = size_example;  // string | Tamaño de pagina (optional) 
+            var companyId = companyId_example;  // string | Es el identificador de empresa CODI®. (optional) 
+            var page = page_example;  // string | Es el número de pago. (optional) 
+            var salesPointId = salesPointId_example;  // string | Es el identificador del punto de venta. (optional) 
+            var size = size_example;  // string | Es el tamaño de página. (optional) 
 
             try
             {
-                // Obtiene las operaciones generadas a partir de peticiones de pago CoDi® de forma paginada, pudiendo aplicar filtros
+                // Consulta de operaciones
                 PagerResponseDto result = apiInstance.ConsultCodiOperations(authorization, body, companyId, page, salesPointId, size);
                 Debug.WriteLine(result);
             }
@@ -57,10 +57,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token | 
  **body** | [**CodiOperationsFiltersRequestDTO**](CodiOperationsFiltersRequestDTO.md)| Filtros de busqueda | [optional] 
- **companyId** | **string**| Identificador de empresa CoDi | [optional] 
- **page** | **string**| Número de pago | [optional] 
- **salesPointId** | **string**| Identificador del punto de venta | [optional] 
- **size** | **string**| Tamaño de pagina | [optional] 
+ **companyId** | **string**| Es el identificador de empresa CODI®. | [optional] 
+ **page** | **string**| Es el número de pago. | [optional] 
+ **salesPointId** | **string**| Es el identificador del punto de venta. | [optional] 
+ **size** | **string**| Es el tamaño de página. | [optional] 
 
 ### Return type
 

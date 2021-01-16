@@ -3,14 +3,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | [**decimal?**](BigDecimal.md) | Monto de la transferencia | 
-**BeneficiaryAccount** | **string** | Cuenta de beneficiario | 
-**BeneficiaryBankKey** | **string** | Clave del banco beneficiario, se puede obtener este valor del listado de institucines &#x27;/institutions&#x27;. Si este valor no esta presente se obtiene de la cuenta del beneficiario, si la cuenta de beneficiario es un número celular este campo es requerido | [optional] 
-**ClaveRastreo** | **string** | Clave de rastreo de la transferencia | 
-**OperationDate** | **string** | Fecha de operación de la transferencia, formato: dd-MM-yyyy | 
-**Reference** | **string** | Referencia numérica de la transferencia | [optional] 
-**SenderAccount** | **string** | Cuenta ordenante, es requerida cuando se no se envía la clave del banco ordenante  | [optional] 
-**SenderBankKey** | **string** | Clave del banco ordenante, se puede obtener este valor del listado de institucines &#x27;/institutions&#x27;. Es requerida cuando no se envía la cuenta ordenante | [optional] 
+**Amount** | [**decimal?**](BigDecimal.md) | Es el monto de la transferencia. Ejemplo 1000.00 | 
+**BeneficiaryAccount** | **string** | Es la cuenta de beneficiario. | 
+**BeneficiaryBankKey** | **string** | Clave del banco beneficiario. Éste valor no esta presente si obtiene de la cuenta del beneficiario, en caso de que sea un número celular éste campo es requerido. se puede obtener del recurso de las &lt;a href&#x3D;\&quot;#operation/getAllInstitutionsUsingGET\&quot;&gt;instituciones.&lt;/a&gt; | [optional] 
+**ClaveRastreo** | **string** | Es la clave de rastreo de la transferencia. | 
+**OperationDate** | **string** | Es la fecha de operación de la transferencia, formato: dd-MM-yyyy. | 
+**Reference** | **string** | Es la referencia numérica de la transferencia. Se valida hasta 7 dígitos. | [optional] 
+**SenderAccount** | **string** | Es la cuenta ordenante, es requerida cuando se no se envía la clave del banco ordenante. | [optional] 
+**SenderBankKey** | **string** | Es la clave del banco ordenante, es requerida cuando no se envía la cuenta ordenante.  Se puede obtener del recurso de las &lt;a href&#x3D;\&quot;#operation/getAllInstitutionsUsingGET\&quot;&gt;instituciones.&lt;/a&gt; | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

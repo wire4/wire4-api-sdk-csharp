@@ -3,10 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Alias** | **string** | Alias del certificado | [optional] 
-**CertificateNumber** | **string** | Numero de certificado | [optional] 
-**CheckDigit** | **string** | Dígito verificador | [optional] 
-**CipherData** | **string** | Información de cifrado | [optional] 
+**Alias** | **string** | Es el alias del certificado. | [optional] 
+**CertificateNumber** | **string** | Es el número de certificado. | [optional] 
+**CheckDigit** | **string** | Es el dígito verificador. Es un sólo dígito. | [optional] 
+**CipherData** | **string** | Es la información de cifrado. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

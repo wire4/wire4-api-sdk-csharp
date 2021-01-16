@@ -5,12 +5,12 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetWebhook**](WebhooksApi.md#getwebhook) | **GET** /webhooks/{id} | Consulta de Webhook
-[**GetWebhooks**](WebhooksApi.md#getwebhooks) | **GET** /webhooks | Consulta de Webhooks
+[**GetWebhooks**](WebhooksApi.md#getwebhooks) | **GET** /webhooks | Consulta la lista de Webhooks
 [**RegisterWebhook**](WebhooksApi.md#registerwebhook) | **POST** /webhooks | Alta de Webhook
 
 <a name="getwebhook"></a>
 # **GetWebhook**
-> WebhookResponse GetWebhook (string authorization, string id)
+> WebhookResponse GetWebhook (string authorization, string webhookId)
 
 Consulta de Webhook
 
@@ -32,12 +32,12 @@ namespace Example
         {
             var apiInstance = new WebhooksApi();
             var authorization = authorization_example;  // string | Header para token
-            var id = id_example;  // string | Identificador del webhook
+            var webhookId = webhookId_example;  // string | Es el identificador del webhook. Ejemplo: wh_54a932866f784b439bc625c0f4e04e12
 
             try
             {
                 // Consulta de Webhook
-                WebhookResponse result = apiInstance.GetWebhook(authorization, id);
+                WebhookResponse result = apiInstance.GetWebhook(authorization, webhookId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -54,7 +54,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token | 
- **id** | **string**| Identificador del webhook | 
+ **webhookId** | **string**| Es el identificador del webhook. Ejemplo: wh_54a932866f784b439bc625c0f4e04e12 | 
 
 ### Return type
 
@@ -74,9 +74,9 @@ No authorization required
 # **GetWebhooks**
 > WebhooksList GetWebhooks (string authorization)
 
-Consulta de Webhooks
+Consulta la lista de Webhooks
 
-Obtiene los webhooks registrados en la plataforma que tengan estatus 'ACTIVE' e 'INACTIVE'.
+Obtiene una lista de los webhooks registrados en la plataforma que tengan el estado (estatus)  Activo (ACTIVE) e Inactivo (INACTIVE).
 
 ### Example
 ```csharp
@@ -97,7 +97,7 @@ namespace Example
 
             try
             {
-                // Consulta de Webhooks
+                // Consulta la lista de Webhooks
                 WebhooksList result = apiInstance.GetWebhooks(authorization);
                 Debug.WriteLine(result);
             }
@@ -136,7 +136,7 @@ No authorization required
 
 Alta de Webhook
 
-Registra un webhook en la plataforma para su uso como notificador de eventos cuando estos ocurran.
+Registra un webhook en la plataforma para su uso como notificador de eventos, cuándo estos ocurran.
 
 ### Example
 ```csharp
