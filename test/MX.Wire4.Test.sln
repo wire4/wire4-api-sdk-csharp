@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MX.Wire4.Test", "src/MX.Wire4.Test/MX.Wire4.Test.csproj", "{70F74A4E-3089-4917-A6AD-6720CB85A1C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|anycpu = Debug|anycpu
+		Release|anycpu = Release|anycpu
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70F74A4E-3089-4917-A6AD-6720CB85A1C3}.Debug|anycpu.ActiveCfg = Debug|anycpu
+		{70F74A4E-3089-4917-A6AD-6720CB85A1C3}.Debug|anycpu.Build.0 = Debug|anycpu
+		{70F74A4E-3089-4917-A6AD-6720CB85A1C3}.Release|anycpu.ActiveCfg = Release|anycpu
+		{70F74A4E-3089-4917-A6AD-6720CB85A1C3}.Release|anycpu.Build.0 = Release|anycpu
+	EndGlobalSection
+EndGlobal

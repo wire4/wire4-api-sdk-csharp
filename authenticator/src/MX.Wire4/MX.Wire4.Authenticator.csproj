@@ -39,17 +39,14 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Web" />
-    <Reference Include="JsonSubTypes">
-      <HintPath>..\..\packages\JsonSubTypes.1.2.0\lib\net45\JsonSubTypes.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="MX.Wire4">
-      <HintPath>..\..\..\sdk-client\bin\MX.Wire4.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp">
-      <HintPath>..\..\packages\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>
+      <HintPath>..\..\packages\RestSharp.105.1.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MX.Wire4">
+      <HintPath>..\..\packages\MX.Wire4.0.0.9\lib\net45\MX.Wire4.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
