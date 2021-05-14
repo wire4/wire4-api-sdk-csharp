@@ -1,7 +1,7 @@
 /* 
  * Wire4RestAPI
  *
- * Referencia de API. La API de Wire4 está organizada en torno a REST
+ * Referencia de la API de Wire4
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -144,6 +144,14 @@ namespace MX.Wire4.Test
         public void DepositantTest()
         {
             // TODO unit test for the property 'Depositant'
+        }
+        /// <summary>
+        /// Test the property 'DepositantAlias'
+        /// </summary>
+        [Test]
+        public void DepositantAliasTest()
+        {
+            // TODO unit test for the property 'DepositantAlias'
         }
         /// <summary>
         /// Test the property 'DepositantClabe'

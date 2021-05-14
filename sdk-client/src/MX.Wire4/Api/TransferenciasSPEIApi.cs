@@ -1,7 +1,7 @@
 /* 
  * Wire4RestAPI
  *
- * Referencia de API. La API de Wire4 está organizada en torno a REST
+ * Referencia de la API de Wire4
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -84,8 +84,10 @@ namespace MX.Wire4.Api
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="beginDate">Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
+        /// <param name="endDate">Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
         /// <returns>List&lt;Deposit&gt;</returns>
-        List<Deposit> IncomingSpeiTransactionsReportUsingGET (string authorization, string subscription);
+        List<Deposit> IncomingSpeiTransactionsReportUsingGET (string authorization, string subscription, string beginDate = null, string endDate = null);
 
         /// <summary>
         /// Consulta de transferencias recibidas
@@ -96,8 +98,10 @@ namespace MX.Wire4.Api
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="beginDate">Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
+        /// <param name="endDate">Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
         /// <returns>ApiResponse of List&lt;Deposit&gt;</returns>
-        ApiResponse<List<Deposit>> IncomingSpeiTransactionsReportUsingGETWithHttpInfo (string authorization, string subscription);
+        ApiResponse<List<Deposit>> IncomingSpeiTransactionsReportUsingGETWithHttpInfo (string authorization, string subscription, string beginDate = null, string endDate = null);
         /// <summary>
         /// Consulta de transferencias de salida por identificador de petición
         /// </summary>
@@ -236,8 +240,10 @@ namespace MX.Wire4.Api
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="beginDate">Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
+        /// <param name="endDate">Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
         /// <returns>Task of List&lt;Deposit&gt;</returns>
-        System.Threading.Tasks.Task<List<Deposit>> IncomingSpeiTransactionsReportUsingGETAsync (string authorization, string subscription);
+        System.Threading.Tasks.Task<List<Deposit>> IncomingSpeiTransactionsReportUsingGETAsync (string authorization, string subscription, string beginDate = null, string endDate = null);
 
         /// <summary>
         /// Consulta de transferencias recibidas
@@ -248,8 +254,10 @@ namespace MX.Wire4.Api
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="beginDate">Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
+        /// <param name="endDate">Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Deposit&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Deposit>>> IncomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo (string authorization, string subscription);
+        System.Threading.Tasks.Task<ApiResponse<List<Deposit>>> IncomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo (string authorization, string subscription, string beginDate = null, string endDate = null);
         /// <summary>
         /// Consulta de transferencias de salida por identificador de petición
         /// </summary>
@@ -770,10 +778,12 @@ namespace MX.Wire4.Api
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="beginDate">Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
+        /// <param name="endDate">Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
         /// <returns>List&lt;Deposit&gt;</returns>
-        public List<Deposit> IncomingSpeiTransactionsReportUsingGET (string authorization, string subscription)
+        public List<Deposit> IncomingSpeiTransactionsReportUsingGET (string authorization, string subscription, string beginDate = null, string endDate = null)
         {
-             ApiResponse<List<Deposit>> localVarResponse = IncomingSpeiTransactionsReportUsingGETWithHttpInfo(authorization, subscription);
+             ApiResponse<List<Deposit>> localVarResponse = IncomingSpeiTransactionsReportUsingGETWithHttpInfo(authorization, subscription, beginDate, endDate);
              return localVarResponse.Data;
         }
 
@@ -783,8 +793,10 @@ namespace MX.Wire4.Api
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="beginDate">Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
+        /// <param name="endDate">Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
         /// <returns>ApiResponse of List&lt;Deposit&gt;</returns>
-        public ApiResponse< List<Deposit> > IncomingSpeiTransactionsReportUsingGETWithHttpInfo (string authorization, string subscription)
+        public ApiResponse< List<Deposit> > IncomingSpeiTransactionsReportUsingGETWithHttpInfo (string authorization, string subscription, string beginDate = null, string endDate = null)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
@@ -815,6 +827,8 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (beginDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beginDate", beginDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request
@@ -841,10 +855,12 @@ namespace MX.Wire4.Api
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="beginDate">Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
+        /// <param name="endDate">Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
         /// <returns>Task of List&lt;Deposit&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Deposit>> IncomingSpeiTransactionsReportUsingGETAsync (string authorization, string subscription)
+        public async System.Threading.Tasks.Task<List<Deposit>> IncomingSpeiTransactionsReportUsingGETAsync (string authorization, string subscription, string beginDate = null, string endDate = null)
         {
-             ApiResponse<List<Deposit>> localVarResponse = await IncomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo(authorization, subscription);
+             ApiResponse<List<Deposit>> localVarResponse = await IncomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo(authorization, subscription, beginDate, endDate);
              return localVarResponse.Data;
 
         }
@@ -855,8 +871,10 @@ namespace MX.Wire4.Api
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="beginDate">Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
+        /// <param name="endDate">Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Deposit&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Deposit>>> IncomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo (string authorization, string subscription)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Deposit>>> IncomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo (string authorization, string subscription, string beginDate = null, string endDate = null)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
@@ -887,6 +905,8 @@ namespace MX.Wire4.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (beginDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beginDate", beginDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
             if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
             // make the HTTP request

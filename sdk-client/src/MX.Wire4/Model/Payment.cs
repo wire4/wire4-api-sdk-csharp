@@ -1,7 +1,7 @@
 /* 
  * Wire4RestAPI
  *
- * Referencia de API. La API de Wire4 está organizada en torno a REST
+ * Referencia de la API de Wire4
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -32,7 +32,7 @@ namespace MX.Wire4.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Payment" /> class.
         /// </summary>
-        /// <param name="account">Es la uenta emisora..</param>
+        /// <param name="account">Es la cuenta emisora..</param>
         /// <param name="amount">Es el monto de la transferencia..</param>
         /// <param name="beneficiaryAccount">Es la cuenta del beneficiario..</param>
         /// <param name="beneficiaryBank">beneficiaryBank.</param>
@@ -75,9 +75,9 @@ namespace MX.Wire4.Model
         }
         
         /// <summary>
-        /// Es la uenta emisora.
+        /// Es la cuenta emisora.
         /// </summary>
-        /// <value>Es la uenta emisora.</value>
+        /// <value>Es la cuenta emisora.</value>
         [DataMember(Name="account", EmitDefaultValue=false)]
         public string Account { get; set; }
 

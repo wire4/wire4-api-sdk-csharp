@@ -1,7 +1,7 @@
 /* 
  * Wire4RestAPI
  *
- * Referencia de API. La API de Wire4 está organizada en torno a REST
+ * Referencia de la API de Wire4
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -299,7 +299,7 @@ namespace MX.Wire4.Api
             if (webhookId == null)
                 throw new ApiException(400, "Missing required parameter 'webhookId' when calling WebhooksApi->GetWebhook");
 
-            var localVarPath = "/webhooks/{webhook_id}";
+            var localVarPath = "/webhooks/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -371,7 +371,7 @@ namespace MX.Wire4.Api
             if (webhookId == null)
                 throw new ApiException(400, "Missing required parameter 'webhookId' when calling WebhooksApi->GetWebhook");
 
-            var localVarPath = "/webhooks/{webhook_id}";
+            var localVarPath = "/webhooks/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
