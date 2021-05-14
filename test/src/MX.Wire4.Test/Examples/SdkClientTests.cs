@@ -25,7 +25,7 @@ namespace MX.Wire4.Tests
             tokenTests.GetApplicationUserTokenTest();
 
             Console.WriteLine("\n--====================================\n- CONSULTA DE TOKEN DE USUARIO SPID \n-===================================\n");
-            tokenTests.GetApplicationUserTokenSpidTest();*/
+            tokenTests.GetApplicationUserTokenSpidTest();
 
             Console.WriteLine("\n--====================================\n- CONSULTA DE CEPS \n-===================================\n");
             apiTests.ObtainTransactionCepUsingPOST();
@@ -82,13 +82,12 @@ namespace MX.Wire4.Tests
             apiTests.GetDepositantsUsingGET();
 
             Console.WriteLine("\n--====================================\n- REGISTRO DE TRANSACCIONES DE SALIDA SPEI \n-===================================\n");
-            apiTests.RegisterOutgoingSpeiTransactionUsingPOST();
+            apiTests.RegisterOutgoingSpeiTransactionUsingPOST();*/
 
             Console.WriteLine("\n--====================================\n- CONSULTA DE TRANSACCIONES DE ENTRADA \n-===================================\n");
             apiTests.IncomingSpeiTransactionsReportUsingGET();
 
-            Console.WriteLine("\n--====================================\n- CONSULTA DE TRANSACCIONES DE SALIDA \n-===================================\n");
-            apiTests.OutgoingSpeiTransactionsReportUsingGET();
+            /*apiTests.OutgoingSpeiTransactionsReportUsingGET();
 
             Console.WriteLine("\n--====================================\n- REGISTRO DE TRANSACCIONES DE SALIDA SPID \n-===================================\n");
             apiTests.RegisterOutgoingSpidTransactionUsingPOST();
@@ -1043,11 +1042,20 @@ namespace MX.Wire4.Tests
 
             try
             {
+                /*
+                 * Filtering by date is optional, but both parameters must be present when use filter by date:
+                 * begin date, end date,
+                 * Formato 'yyyy-MM-dd'
+                 */
+                string beginDate = null;
+                string endDate = null;
+
                 // Obtain an access token use application flow and scope "general" and add the bearer token to request
                 string authorization = authenticator.GetApplicationUserToken(userTokenRequest);
 
                 // Obtain the response
-                System.Collections.Generic.List<Deposit> response = api.IncomingSpeiTransactionsReportUsingGET(authorization, subscription);
+                System.Collections.Generic.List<Deposit> response = api.IncomingSpeiTransactionsReportUsingGET(authorization, subscription
+                    , beginDate, endDate);
 
                 Console.WriteLine("Response :: Deposits:");
 
