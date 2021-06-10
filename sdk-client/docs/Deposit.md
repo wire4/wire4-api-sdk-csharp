@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **CurrencyCode** | **string** | Es el código de divisa de la transferencia. Es en el formato estándar de 3 dígitos, por ejemplo para el peso mexicano: &lt;b&gt;MXP&lt;/b&gt;, para el dólar estadounidense: &lt;b&gt;USD&lt;/b&gt;. | [optional] 
 **DepositDate** | **DateTime?** | Es la fecha del deposito.  Ésta fecha viene en formato ISO 8601 con zona horaria, ejemplo: &lt;strong&gt;2020-10-27T11:03:15.000-06:00&lt;/strong&gt;. | [optional] 
 **Depositant** | **string** | Es el depositante. | [optional] 
+**DepositantAlias** | **string** | Es el alias asignado a la cuenta CABLE del depositante. | [optional] 
 **DepositantClabe** | **string** | Es la Cuenta CLABE interbancaria (de 18 dígitos) del depositante. | [optional] 
 **DepositantEmail** | **string** | Es el correo electrónico (email) del depositante. | [optional] 
 **DepositantRfc** | **string** | Es el Registro Federal de Contribuyentes (RFC) del depositante. | [optional] 

@@ -142,7 +142,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="incomingspeitransactionsreportusingget"></a>
 # **IncomingSpeiTransactionsReportUsingGET**
-> List<Deposit> IncomingSpeiTransactionsReportUsingGET (string authorization, string subscription)
+> List<Deposit> IncomingSpeiTransactionsReportUsingGET (string authorization, string subscription, string beginDate = null, string endDate = null)
 
 Consulta de transferencias recibidas
 
@@ -165,11 +165,13 @@ namespace Example
             var apiInstance = new TransferenciasSPEIApi();
             var authorization = authorization_example;  // string | Header para token
             var subscription = subscription_example;  // string | Es el identificador de la suscripción a esta API.
+            var beginDate = beginDate_example;  // string | Fecha inicial para filtrar los depósitos, se espera en formato 'yyyy-MM-dd' (optional) 
+            var endDate = endDate_example;  // string | Fecha final para filtrar los depósitos, se espera en formato 'yyyy-MM-dd' (optional) 
 
             try
             {
                 // Consulta de transferencias recibidas
-                List&lt;Deposit&gt; result = apiInstance.IncomingSpeiTransactionsReportUsingGET(authorization, subscription);
+                List&lt;Deposit&gt; result = apiInstance.IncomingSpeiTransactionsReportUsingGET(authorization, subscription, beginDate, endDate);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -187,6 +189,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token | 
  **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
+ **beginDate** | **string**| Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; | [optional] 
+ **endDate** | **string**| Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; | [optional] 
 
 ### Return type
 

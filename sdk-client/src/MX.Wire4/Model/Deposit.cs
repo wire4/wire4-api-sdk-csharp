@@ -1,7 +1,7 @@
 /* 
  * Wire4RestAPI
  *
- * Referencia de API. La API de Wire4 está organizada en torno a REST
+ * Referencia de la API de Wire4
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -42,6 +42,7 @@ namespace MX.Wire4.Model
         /// <param name="currencyCode">Es el código de divisa de la transferencia. Es en el formato estándar de 3 dígitos, por ejemplo para el peso mexicano: &lt;b&gt;MXP&lt;/b&gt;, para el dólar estadounidense: &lt;b&gt;USD&lt;/b&gt;..</param>
         /// <param name="depositDate">Es la fecha del deposito.  Ésta fecha viene en formato ISO 8601 con zona horaria, ejemplo: &lt;strong&gt;2020-10-27T11:03:15.000-06:00&lt;/strong&gt;..</param>
         /// <param name="depositant">Es el depositante..</param>
+        /// <param name="depositantAlias">Es el alias asignado a la cuenta CABLE del depositante..</param>
         /// <param name="depositantClabe">Es la Cuenta CLABE interbancaria (de 18 dígitos) del depositante..</param>
         /// <param name="depositantEmail">Es el correo electrónico (email) del depositante..</param>
         /// <param name="depositantRfc">Es el Registro Federal de Contribuyentes (RFC) del depositante..</param>
@@ -53,7 +54,7 @@ namespace MX.Wire4.Model
         /// <param name="senderBank">senderBank.</param>
         /// <param name="senderName">Es el nombre del ordenante..</param>
         /// <param name="senderRfc">Es el Registro Federal de Contribuyentes (RFC) de la cuenta ordenante..</param>
-        public Deposit(decimal? amount = default(decimal?), string beneficiaryAccount = default(string), string beneficiaryName = default(string), string beneficiaryRfc = default(string), MessageCEP cep = default(MessageCEP), string claveRastreo = default(string), DateTime? confirmDate = default(DateTime?), string currencyCode = default(string), DateTime? depositDate = default(DateTime?), string depositant = default(string), string depositantClabe = default(string), string depositantEmail = default(string), string depositantRfc = default(string), string description = default(string), string monexDescription = default(string), string monexTransactionId = default(string), string reference = default(string), string senderAccount = default(string), MessageInstitution senderBank = default(MessageInstitution), string senderName = default(string), string senderRfc = default(string))
+        public Deposit(decimal? amount = default(decimal?), string beneficiaryAccount = default(string), string beneficiaryName = default(string), string beneficiaryRfc = default(string), MessageCEP cep = default(MessageCEP), string claveRastreo = default(string), DateTime? confirmDate = default(DateTime?), string currencyCode = default(string), DateTime? depositDate = default(DateTime?), string depositant = default(string), string depositantAlias = default(string), string depositantClabe = default(string), string depositantEmail = default(string), string depositantRfc = default(string), string description = default(string), string monexDescription = default(string), string monexTransactionId = default(string), string reference = default(string), string senderAccount = default(string), MessageInstitution senderBank = default(MessageInstitution), string senderName = default(string), string senderRfc = default(string))
         {
             this.Amount = amount;
             this.BeneficiaryAccount = beneficiaryAccount;
@@ -65,6 +66,7 @@ namespace MX.Wire4.Model
             this.CurrencyCode = currencyCode;
             this.DepositDate = depositDate;
             this.Depositant = depositant;
+            this.DepositantAlias = depositantAlias;
             this.DepositantClabe = depositantClabe;
             this.DepositantEmail = depositantEmail;
             this.DepositantRfc = depositantRfc;
@@ -146,6 +148,13 @@ namespace MX.Wire4.Model
         /// <value>Es el depositante.</value>
         [DataMember(Name="depositant", EmitDefaultValue=false)]
         public string Depositant { get; set; }
+
+        /// <summary>
+        /// Es el alias asignado a la cuenta CABLE del depositante.
+        /// </summary>
+        /// <value>Es el alias asignado a la cuenta CABLE del depositante.</value>
+        [DataMember(Name="depositant_alias", EmitDefaultValue=false)]
+        public string DepositantAlias { get; set; }
 
         /// <summary>
         /// Es la Cuenta CLABE interbancaria (de 18 dígitos) del depositante.
@@ -241,6 +250,7 @@ namespace MX.Wire4.Model
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  DepositDate: ").Append(DepositDate).Append("\n");
             sb.Append("  Depositant: ").Append(Depositant).Append("\n");
+            sb.Append("  DepositantAlias: ").Append(DepositantAlias).Append("\n");
             sb.Append("  DepositantClabe: ").Append(DepositantClabe).Append("\n");
             sb.Append("  DepositantEmail: ").Append(DepositantEmail).Append("\n");
             sb.Append("  DepositantRfc: ").Append(DepositantRfc).Append("\n");
@@ -337,6 +347,11 @@ namespace MX.Wire4.Model
                     this.Depositant.Equals(input.Depositant))
                 ) && 
                 (
+                    this.DepositantAlias == input.DepositantAlias ||
+                    (this.DepositantAlias != null &&
+                    this.DepositantAlias.Equals(input.DepositantAlias))
+                ) && 
+                (
                     this.DepositantClabe == input.DepositantClabe ||
                     (this.DepositantClabe != null &&
                     this.DepositantClabe.Equals(input.DepositantClabe))
@@ -422,6 +437,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.DepositDate.GetHashCode();
                 if (this.Depositant != null)
                     hashCode = hashCode * 59 + this.Depositant.GetHashCode();
+                if (this.DepositantAlias != null)
+                    hashCode = hashCode * 59 + this.DepositantAlias.GetHashCode();
                 if (this.DepositantClabe != null)
                     hashCode = hashCode * 59 + this.DepositantClabe.GetHashCode();
                 if (this.DepositantEmail != null)
