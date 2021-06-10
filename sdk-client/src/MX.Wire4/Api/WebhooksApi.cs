@@ -299,7 +299,7 @@ namespace MX.Wire4.Api
             if (webhookId == null)
                 throw new ApiException(400, "Missing required parameter 'webhookId' when calling WebhooksApi->GetWebhook");
 
-            var localVarPath = "/webhooks/{id}";
+            var localVarPath = "/webhooks/{webhook_id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -371,7 +371,7 @@ namespace MX.Wire4.Api
             if (webhookId == null)
                 throw new ApiException(400, "Missing required parameter 'webhookId' when calling WebhooksApi->GetWebhook");
 
-            var localVarPath = "/webhooks/{id}";
+            var localVarPath = "/webhooks/{webhook_id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
