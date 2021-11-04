@@ -18,7 +18,7 @@ namespace MX.Wire4.Tests
 
         public void Test()
         {
-            /*Console.WriteLine("\n--====================================\n- CONSULTA DE TOKEN DE APLICACIÓN \n-===================================\n");
+            Console.WriteLine("\n--====================================\n- CONSULTA DE TOKEN DE APLICACIÓN \n-===================================\n");
             tokenTests.GetApplicationTokenTest();
 
             Console.WriteLine("\n--====================================\n- CONSULTA DE TOKEN DE USUARIO SPEI \n-===================================\n");
@@ -30,7 +30,7 @@ namespace MX.Wire4.Tests
             Console.WriteLine("\n--====================================\n- CONSULTA DE CEPS \n-===================================\n");
             apiTests.ObtainTransactionCepUsingPOST();
 
-            /*Console.WriteLine("\n--====================================\n- PRUEBA DE TOKENS DIFERENTES SCOPES \n-===================================\n");
+            Console.WriteLine("\n--====================================\n- PRUEBA DE TOKENS DIFERENTES SCOPES \n-===================================\n");
             tokenTests.whenGenerateTokeForManyScopesShouldKeepsInCache();
 
             Console.WriteLine("\n--====================================\n- REGISTRO DE CONTACTO \n-===================================\n");
@@ -81,13 +81,16 @@ namespace MX.Wire4.Tests
             Console.WriteLine("\n--====================================\n- CONSULTA DE DEPOSITANTES \n-===================================\n");
             apiTests.GetDepositantsUsingGET();
 
+            Console.WriteLine("\n--====================================\n- CONSULTA DE TOTAL DE DEPOSITANTES \n-=============================\n");
+            apiTests.GetDepositantsTotalsUsingGET();
+
             Console.WriteLine("\n--====================================\n- REGISTRO DE TRANSACCIONES DE SALIDA SPEI \n-===================================\n");
-            apiTests.RegisterOutgoingSpeiTransactionUsingPOST();*/
+            apiTests.RegisterOutgoingSpeiTransactionUsingPOST();
 
             Console.WriteLine("\n--====================================\n- CONSULTA DE TRANSACCIONES DE ENTRADA \n-===================================\n");
             apiTests.IncomingSpeiTransactionsReportUsingGET();
 
-            /*apiTests.OutgoingSpeiTransactionsReportUsingGET();
+            apiTests.OutgoingSpeiTransactionsReportUsingGET();
 
             Console.WriteLine("\n--====================================\n- REGISTRO DE TRANSACCIONES DE SALIDA SPID \n-===================================\n");
             apiTests.RegisterOutgoingSpidTransactionUsingPOST();
@@ -120,9 +123,9 @@ namespace MX.Wire4.Tests
             apiTests.AuthorizeAccountsPendingPUT();
 
             Console.WriteLine("\n--====================================\n- BENEFICIERIES POR IDENTIFICADOR DE PETICIÓN \n-===================================\n");
-            apiTests.GetBeneficiariesByRequestId(); */
+            apiTests.GetBeneficiariesByRequestId();
 
-            /*Console.WriteLine("\n--====================================\n- AUTORIZACIÓN DE TRANSACCIONES EN GRUPO \n-===================================\n");
+            Console.WriteLine("\n--====================================\n- AUTORIZACIÓN DE TRANSACCIONES EN GRUPO \n-===================================\n");
             apiTests.CreateAuthorizationTransactionsGroup();
 
             Console.WriteLine("\n--====================================\n- REGISTRAR EMPRESAS CODI \n-===================================\n");
@@ -131,7 +134,7 @@ namespace MX.Wire4.Tests
             Console.WriteLine("\n--====================================\n- CONSULTAR EMPRESAS CODI \n-===================================\n");
             apiTests.ObtainCompanies();
 
-            /*Console.WriteLine("\n--====================================\n- CREAR PUNTO DE VENTA CODI \n-===================================\n");
+            Console.WriteLine("\n--====================================\n- CREAR PUNTO DE VENTA CODI \n-===================================\n");
             apiTests.CreateSalesPoint();
 
             Console.WriteLine("\n--====================================\n- CONSULTAR PUNTOS DE VENTA CODI \n-===================================\n");
@@ -162,7 +165,7 @@ namespace MX.Wire4.Tests
             apiTests.ChangeSubscriptionUsageUsingPATCH();
 
             Console.WriteLine("\n--====================================\n- OBTIENE LAS CONFIGURACIONES PARA UNA SUSCRIPCIÓN \n-===================================\n");
-            apiTests.ObtaingConfigurations();*/
+            apiTests.ObtaingConfigurations();
         }
     }
 
@@ -966,6 +969,38 @@ namespace MX.Wire4.Tests
 
                 // Obtain the response
                 GetDepositants response = api.GetDepositantsUsingGET(authorization, subscription);
+
+                Console.WriteLine(string.Format("Response :: {0}", response.ToJson()));
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(string.Format("{0}", ex.Message));
+            }
+        }
+
+        public void GetDepositantsTotalsUsingGET()
+        {
+            // Create the api component
+            IDepositantesApi api = new DepositantesApi();
+
+            // Create the authenticator to obtain access token
+            // (the token URL and Service URL are defined for this environment enum value))
+            //IAuthenticator authenticator = new TokenAuthenticator(DataConfig.environment);
+            TokenRequest userTokenRequest = new TokenRequest
+            {
+                ClientKey = clientKey,
+                ClientSecret = clientSecret,
+                UserKey = userKey,
+                UserSecret = userSecret,
+            };
+
+            try
+            {
+                // Obtain an access token use application flow and scope "spei_admin" and add the bearer token to request
+                string authorization = authenticator.GetApplicationUserToken(userTokenRequest);
+
+                // Obtain the response
+                DepositantCountResponse response = api.GetDepositantsTotalsUsingGET(authorization, subscription);
 
                 Console.WriteLine(string.Format("Response :: {0}", response.ToJson()));
             }

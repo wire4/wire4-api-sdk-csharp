@@ -24,6 +24,30 @@ namespace MX.Wire4.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Consulta cuantas cuentas de depositantes existen
+        /// </summary>
+        /// <remarks>
+        /// Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>DepositantCountResponse</returns>
+        DepositantCountResponse GetDepositantsTotalsUsingGET (string authorization, string subscription);
+
+        /// <summary>
+        /// Consulta cuantas cuentas de depositantes existen
+        /// </summary>
+        /// <remarks>
+        /// Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>ApiResponse of DepositantCountResponse</returns>
+        ApiResponse<DepositantCountResponse> GetDepositantsTotalsUsingGETWithHttpInfo (string authorization, string subscription);
+        
+        /// <summary>
         /// Consulta de cuentas de depositantes
         /// </summary>
         /// <remarks>
@@ -73,6 +97,30 @@ namespace MX.Wire4.Api
         ApiResponse<DepositantsResponse> RegisterDepositantsUsingPOSTWithHttpInfo (DepositantsRegister body, string authorization, string subscription);
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Consulta cuantas cuentas de depositantes existen
+        /// </summary>
+        /// <remarks>
+        /// Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>Task of DepositantCountResponse</returns>
+        System.Threading.Tasks.Task<DepositantCountResponse> GetDepositantsTotalsUsingGETAsync (string authorization, string subscription);
+
+        /// <summary>
+        /// Consulta cuantas cuentas de depositantes existen
+        /// </summary>
+        /// <remarks>
+        /// Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>Task of ApiResponse (DepositantCountResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DepositantCountResponse>> GetDepositantsTotalsUsingGETAsyncWithHttpInfo (string authorization, string subscription);
+        
         /// <summary>
         /// Consulta de cuentas de depositantes
         /// </summary>
@@ -230,6 +278,149 @@ namespace MX.Wire4.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Consulta cuantas cuentas de depositantes existen Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>DepositantCountResponse</returns>
+        public DepositantCountResponse GetDepositantsTotalsUsingGET (string authorization, string subscription)
+        {
+             ApiResponse<DepositantCountResponse> localVarResponse = GetDepositantsTotalsUsingGETWithHttpInfo(authorization, subscription);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Consulta cuantas cuentas de depositantes existen Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>ApiResponse of DepositantCountResponse</returns>
+        public ApiResponse< DepositantCountResponse > GetDepositantsTotalsUsingGETWithHttpInfo (string authorization, string subscription)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling DepositantesApi->GetDepositantsTotalsUsingGET");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling DepositantesApi->GetDepositantsTotalsUsingGET");
+
+            var localVarPath = "/subscriptions/{subscription}/depositants/count";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetDepositantsTotalsUsingGET", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<DepositantCountResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (DepositantCountResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DepositantCountResponse)));
+        }
+
+        /// <summary>
+        /// Consulta cuantas cuentas de depositantes existen Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>Task of DepositantCountResponse</returns>
+        public async System.Threading.Tasks.Task<DepositantCountResponse> GetDepositantsTotalsUsingGETAsync (string authorization, string subscription)
+        {
+             ApiResponse<DepositantCountResponse> localVarResponse = await GetDepositantsTotalsUsingGETAsyncWithHttpInfo(authorization, subscription);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Consulta cuantas cuentas de depositantes existen Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>Task of ApiResponse (DepositantCountResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<DepositantCountResponse>> GetDepositantsTotalsUsingGETAsyncWithHttpInfo (string authorization, string subscription)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling DepositantesApi->GetDepositantsTotalsUsingGET");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling DepositantesApi->GetDepositantsTotalsUsingGET");
+
+            var localVarPath = "/subscriptions/{subscription}/depositants/count";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetDepositantsTotalsUsingGET", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<DepositantCountResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (DepositantCountResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DepositantCountResponse)));
         }
 
         /// <summary>
