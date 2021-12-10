@@ -37,20 +37,45 @@ namespace MX.Wire4.Model
                 public enum StatusEnum
         {
             /// <summary>
+            /// Enum ACCEPTED for value: ACCEPTED
+            /// </summary>
+            [EnumMember(Value = "ACCEPTED")]
+            ACCEPTED = 0,
+            /// <summary>
             /// Enum RECEIVED for value: RECEIVED
             /// </summary>
             [EnumMember(Value = "RECEIVED")]
-            RECEIVED = 0,
+            RECEIVED = 1,
             /// <summary>
             /// Enum COMPLETED for value: COMPLETED
             /// </summary>
             [EnumMember(Value = "COMPLETED")]
-            COMPLETED = 1,
+            COMPLETED = 2,
             /// <summary>
             /// Enum CANCELLED for value: CANCELLED
             /// </summary>
             [EnumMember(Value = "CANCELLED")]
-            CANCELLED = 2        }
+            CANCELLED = 3,
+            /// <summary>
+            /// Enum POSTPONED for value: POSTPONED
+            /// </summary>
+            [EnumMember(Value = "POSTPONED")]
+            POSTPONED = 4,
+            /// <summary>
+            /// Enum REJECTED for value: REJECTED
+            /// </summary>
+            [EnumMember(Value = "REJECTED")]
+            REJECTED = 5,
+            /// <summary>
+            /// Enum REVERSED for value: REVERSED
+            /// </summary>
+            [EnumMember(Value = "REVERSED")]
+            REVERSED = 6,
+            /// <summary>
+            /// Enum UNKNOWN for value: UNKNOWN
+            /// </summary>
+            [EnumMember(Value = "UNKNOWN")]
+            UNKNOWN = 7        }
         /// <summary>
         /// Estatus del pago
         /// </summary>

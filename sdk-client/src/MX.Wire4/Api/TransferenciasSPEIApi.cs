@@ -128,6 +128,56 @@ namespace MX.Wire4.Api
         /// <returns>ApiResponse of PaymentsRequestId</returns>
         ApiResponse<PaymentsRequestId> OutCommingSpeiRequestIdTransactionsReportUsingGETWithHttpInfo (string authorization, string requestId, string subscription);
         /// <summary>
+        /// Consulta de transferencias realizadas por order_id
+        /// </summary>
+        /// <remarks>
+        /// Consulta las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta o las transferencias identificadas con el &lt;strong&gt;order_id&lt;/strong&gt; proporcionado, para este tipo de consultas no importa el día en el que se realizó la transferencia. &lt;br&gt; Es importante que conozca que la respuesta puede dar como resultado un objeto con una lista spei o una lista spid con el/los elementos ya que un identificador order_id solo puede pertenecer a una transacción sea spei o spid.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="orderId">Es el identificador de la orden a buscar. (optional)</param>
+        /// <returns>PaymentsSpeiAndSpidOrderId</returns>
+        PaymentsSpeiAndSpidOrderId OutCommingSpeiSpidOrderIdTransactionReportUsingGET (string authorization, string subscription, string orderId = null);
+
+        /// <summary>
+        /// Consulta de transferencias realizadas por order_id
+        /// </summary>
+        /// <remarks>
+        /// Consulta las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta o las transferencias identificadas con el &lt;strong&gt;order_id&lt;/strong&gt; proporcionado, para este tipo de consultas no importa el día en el que se realizó la transferencia. &lt;br&gt; Es importante que conozca que la respuesta puede dar como resultado un objeto con una lista spei o una lista spid con el/los elementos ya que un identificador order_id solo puede pertenecer a una transacción sea spei o spid.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="orderId">Es el identificador de la orden a buscar. (optional)</param>
+        /// <returns>ApiResponse of PaymentsSpeiAndSpidOrderId</returns>
+        ApiResponse<PaymentsSpeiAndSpidOrderId> OutCommingSpeiSpidOrderIdTransactionReportUsingGETWithHttpInfo (string authorization, string subscription, string orderId = null);
+        /// <summary>
+        /// Consulta de transferencias de salida por identificador de petición
+        /// </summary>
+        /// <remarks>
+        /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">Identificador de la petición a buscar.</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>PaymentsSpeiAndSpidRequestId</returns>
+        PaymentsSpeiAndSpidRequestId OutCommingSpeiSpidRequestIdTransactionsReportUsingGET (string authorization, string requestId, string subscription);
+
+        /// <summary>
+        /// Consulta de transferencias de salida por identificador de petición
+        /// </summary>
+        /// <remarks>
+        /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">Identificador de la petición a buscar.</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>ApiResponse of PaymentsSpeiAndSpidRequestId</returns>
+        ApiResponse<PaymentsSpeiAndSpidRequestId> OutCommingSpeiSpidRequestIdTransactionsReportUsingGETWithHttpInfo (string authorization, string requestId, string subscription);
+        /// <summary>
         /// Consulta de transferencias realizadas
         /// </summary>
         /// <remarks>
@@ -177,6 +227,31 @@ namespace MX.Wire4.Api
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
         /// <returns>ApiResponse of TokenRequiredResponse</returns>
         ApiResponse<TokenRequiredResponse> RegisterOutgoingSpeiTransactionUsingPOSTWithHttpInfo (TransactionsOutgoingRegister body, string authorization, string subscription);
+        /// <summary>
+        /// Registro de transferencias SPEI y SPID
+        /// </summary>
+        /// <remarks>
+        /// Se registra un conjunto de transferencias (una o más) tanto SPEI como SPID en una sola petición en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).&lt;br&gt;  Nota: Debe considerar que el concepto de cada una de las transacciones solo debe contener caracteres alfanuméricos por lo que en caso de que se reciban caracteres como ñ o acentos serán sustituidos por n o en su caso por la letra sin acento. Los caracteres no alfanuméricos como pueden ser caracteres especiales serán eliminados.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de las transferencias SPEI y SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>TokenRequiredResponse</returns>
+        TokenRequiredResponse RegisterSpeiSpidOutgoingTransactionsUsingPOST (TransactionsRegister body, string authorization, string subscription);
+
+        /// <summary>
+        /// Registro de transferencias SPEI y SPID
+        /// </summary>
+        /// <remarks>
+        /// Se registra un conjunto de transferencias (una o más) tanto SPEI como SPID en una sola petición en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).&lt;br&gt;  Nota: Debe considerar que el concepto de cada una de las transacciones solo debe contener caracteres alfanuméricos por lo que en caso de que se reciban caracteres como ñ o acentos serán sustituidos por n o en su caso por la letra sin acento. Los caracteres no alfanuméricos como pueden ser caracteres especiales serán eliminados.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de las transferencias SPEI y SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>ApiResponse of TokenRequiredResponse</returns>
+        ApiResponse<TokenRequiredResponse> RegisterSpeiSpidOutgoingTransactionsUsingPOSTWithHttpInfo (TransactionsRegister body, string authorization, string subscription);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -284,6 +359,56 @@ namespace MX.Wire4.Api
         /// <returns>Task of ApiResponse (PaymentsRequestId)</returns>
         System.Threading.Tasks.Task<ApiResponse<PaymentsRequestId>> OutCommingSpeiRequestIdTransactionsReportUsingGETAsyncWithHttpInfo (string authorization, string requestId, string subscription);
         /// <summary>
+        /// Consulta de transferencias realizadas por order_id
+        /// </summary>
+        /// <remarks>
+        /// Consulta las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta o las transferencias identificadas con el &lt;strong&gt;order_id&lt;/strong&gt; proporcionado, para este tipo de consultas no importa el día en el que se realizó la transferencia. &lt;br&gt; Es importante que conozca que la respuesta puede dar como resultado un objeto con una lista spei o una lista spid con el/los elementos ya que un identificador order_id solo puede pertenecer a una transacción sea spei o spid.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="orderId">Es el identificador de la orden a buscar. (optional)</param>
+        /// <returns>Task of PaymentsSpeiAndSpidOrderId</returns>
+        System.Threading.Tasks.Task<PaymentsSpeiAndSpidOrderId> OutCommingSpeiSpidOrderIdTransactionReportUsingGETAsync (string authorization, string subscription, string orderId = null);
+
+        /// <summary>
+        /// Consulta de transferencias realizadas por order_id
+        /// </summary>
+        /// <remarks>
+        /// Consulta las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta o las transferencias identificadas con el &lt;strong&gt;order_id&lt;/strong&gt; proporcionado, para este tipo de consultas no importa el día en el que se realizó la transferencia. &lt;br&gt; Es importante que conozca que la respuesta puede dar como resultado un objeto con una lista spei o una lista spid con el/los elementos ya que un identificador order_id solo puede pertenecer a una transacción sea spei o spid.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="orderId">Es el identificador de la orden a buscar. (optional)</param>
+        /// <returns>Task of ApiResponse (PaymentsSpeiAndSpidOrderId)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PaymentsSpeiAndSpidOrderId>> OutCommingSpeiSpidOrderIdTransactionReportUsingGETAsyncWithHttpInfo (string authorization, string subscription, string orderId = null);
+        /// <summary>
+        /// Consulta de transferencias de salida por identificador de petición
+        /// </summary>
+        /// <remarks>
+        /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">Identificador de la petición a buscar.</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>Task of PaymentsSpeiAndSpidRequestId</returns>
+        System.Threading.Tasks.Task<PaymentsSpeiAndSpidRequestId> OutCommingSpeiSpidRequestIdTransactionsReportUsingGETAsync (string authorization, string requestId, string subscription);
+
+        /// <summary>
+        /// Consulta de transferencias de salida por identificador de petición
+        /// </summary>
+        /// <remarks>
+        /// Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">Identificador de la petición a buscar.</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>Task of ApiResponse (PaymentsSpeiAndSpidRequestId)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PaymentsSpeiAndSpidRequestId>> OutCommingSpeiSpidRequestIdTransactionsReportUsingGETAsyncWithHttpInfo (string authorization, string requestId, string subscription);
+        /// <summary>
         /// Consulta de transferencias realizadas
         /// </summary>
         /// <remarks>
@@ -333,6 +458,31 @@ namespace MX.Wire4.Api
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
         /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> RegisterOutgoingSpeiTransactionUsingPOSTAsyncWithHttpInfo (TransactionsOutgoingRegister body, string authorization, string subscription);
+        /// <summary>
+        /// Registro de transferencias SPEI y SPID
+        /// </summary>
+        /// <remarks>
+        /// Se registra un conjunto de transferencias (una o más) tanto SPEI como SPID en una sola petición en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).&lt;br&gt;  Nota: Debe considerar que el concepto de cada una de las transacciones solo debe contener caracteres alfanuméricos por lo que en caso de que se reciban caracteres como ñ o acentos serán sustituidos por n o en su caso por la letra sin acento. Los caracteres no alfanuméricos como pueden ser caracteres especiales serán eliminados.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de las transferencias SPEI y SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>Task of TokenRequiredResponse</returns>
+        System.Threading.Tasks.Task<TokenRequiredResponse> RegisterSpeiSpidOutgoingTransactionsUsingPOSTAsync (TransactionsRegister body, string authorization, string subscription);
+
+        /// <summary>
+        /// Registro de transferencias SPEI y SPID
+        /// </summary>
+        /// <remarks>
+        /// Se registra un conjunto de transferencias (una o más) tanto SPEI como SPID en una sola petición en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).&lt;br&gt;  Nota: Debe considerar que el concepto de cada una de las transacciones solo debe contener caracteres alfanuméricos por lo que en caso de que se reciban caracteres como ñ o acentos serán sustituidos por n o en su caso por la letra sin acento. Los caracteres no alfanuméricos como pueden ser caracteres especiales serán eliminados.
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de las transferencias SPEI y SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> RegisterSpeiSpidOutgoingTransactionsUsingPOSTAsyncWithHttpInfo (TransactionsRegister body, string authorization, string subscription);
         #endregion Asynchronous Operations
     }
 
@@ -1083,6 +1233,310 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
+        /// Consulta de transferencias realizadas por order_id Consulta las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta o las transferencias identificadas con el &lt;strong&gt;order_id&lt;/strong&gt; proporcionado, para este tipo de consultas no importa el día en el que se realizó la transferencia. &lt;br&gt; Es importante que conozca que la respuesta puede dar como resultado un objeto con una lista spei o una lista spid con el/los elementos ya que un identificador order_id solo puede pertenecer a una transacción sea spei o spid.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="orderId">Es el identificador de la orden a buscar. (optional)</param>
+        /// <returns>PaymentsSpeiAndSpidOrderId</returns>
+        public PaymentsSpeiAndSpidOrderId OutCommingSpeiSpidOrderIdTransactionReportUsingGET (string authorization, string subscription, string orderId = null)
+        {
+             ApiResponse<PaymentsSpeiAndSpidOrderId> localVarResponse = OutCommingSpeiSpidOrderIdTransactionReportUsingGETWithHttpInfo(authorization, subscription, orderId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Consulta de transferencias realizadas por order_id Consulta las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta o las transferencias identificadas con el &lt;strong&gt;order_id&lt;/strong&gt; proporcionado, para este tipo de consultas no importa el día en el que se realizó la transferencia. &lt;br&gt; Es importante que conozca que la respuesta puede dar como resultado un objeto con una lista spei o una lista spid con el/los elementos ya que un identificador order_id solo puede pertenecer a una transacción sea spei o spid.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="orderId">Es el identificador de la orden a buscar. (optional)</param>
+        /// <returns>ApiResponse of PaymentsSpeiAndSpidOrderId</returns>
+        public ApiResponse< PaymentsSpeiAndSpidOrderId > OutCommingSpeiSpidOrderIdTransactionReportUsingGETWithHttpInfo (string authorization, string subscription, string orderId = null)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->OutCommingSpeiSpidOrderIdTransactionReportUsingGET");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->OutCommingSpeiSpidOrderIdTransactionReportUsingGET");
+
+            var localVarPath = "/subscriptions/{subscription}/transactions/outcoming";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (orderId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order_id", orderId)); // query parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("OutCommingSpeiSpidOrderIdTransactionReportUsingGET", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<PaymentsSpeiAndSpidOrderId>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (PaymentsSpeiAndSpidOrderId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PaymentsSpeiAndSpidOrderId)));
+        }
+
+        /// <summary>
+        /// Consulta de transferencias realizadas por order_id Consulta las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta o las transferencias identificadas con el &lt;strong&gt;order_id&lt;/strong&gt; proporcionado, para este tipo de consultas no importa el día en el que se realizó la transferencia. &lt;br&gt; Es importante que conozca que la respuesta puede dar como resultado un objeto con una lista spei o una lista spid con el/los elementos ya que un identificador order_id solo puede pertenecer a una transacción sea spei o spid.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="orderId">Es el identificador de la orden a buscar. (optional)</param>
+        /// <returns>Task of PaymentsSpeiAndSpidOrderId</returns>
+        public async System.Threading.Tasks.Task<PaymentsSpeiAndSpidOrderId> OutCommingSpeiSpidOrderIdTransactionReportUsingGETAsync (string authorization, string subscription, string orderId = null)
+        {
+             ApiResponse<PaymentsSpeiAndSpidOrderId> localVarResponse = await OutCommingSpeiSpidOrderIdTransactionReportUsingGETAsyncWithHttpInfo(authorization, subscription, orderId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Consulta de transferencias realizadas por order_id Consulta las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta o las transferencias identificadas con el &lt;strong&gt;order_id&lt;/strong&gt; proporcionado, para este tipo de consultas no importa el día en el que se realizó la transferencia. &lt;br&gt; Es importante que conozca que la respuesta puede dar como resultado un objeto con una lista spei o una lista spid con el/los elementos ya que un identificador order_id solo puede pertenecer a una transacción sea spei o spid.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <param name="orderId">Es el identificador de la orden a buscar. (optional)</param>
+        /// <returns>Task of ApiResponse (PaymentsSpeiAndSpidOrderId)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<PaymentsSpeiAndSpidOrderId>> OutCommingSpeiSpidOrderIdTransactionReportUsingGETAsyncWithHttpInfo (string authorization, string subscription, string orderId = null)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->OutCommingSpeiSpidOrderIdTransactionReportUsingGET");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->OutCommingSpeiSpidOrderIdTransactionReportUsingGET");
+
+            var localVarPath = "/subscriptions/{subscription}/transactions/outcoming";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (orderId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order_id", orderId)); // query parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("OutCommingSpeiSpidOrderIdTransactionReportUsingGET", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<PaymentsSpeiAndSpidOrderId>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (PaymentsSpeiAndSpidOrderId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PaymentsSpeiAndSpidOrderId)));
+        }
+
+        /// <summary>
+        /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">Identificador de la petición a buscar.</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>PaymentsSpeiAndSpidRequestId</returns>
+        public PaymentsSpeiAndSpidRequestId OutCommingSpeiSpidRequestIdTransactionsReportUsingGET (string authorization, string requestId, string subscription)
+        {
+             ApiResponse<PaymentsSpeiAndSpidRequestId> localVarResponse = OutCommingSpeiSpidRequestIdTransactionsReportUsingGETWithHttpInfo(authorization, requestId, subscription);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">Identificador de la petición a buscar.</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>ApiResponse of PaymentsSpeiAndSpidRequestId</returns>
+        public ApiResponse< PaymentsSpeiAndSpidRequestId > OutCommingSpeiSpidRequestIdTransactionsReportUsingGETWithHttpInfo (string authorization, string requestId, string subscription)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->OutCommingSpeiSpidRequestIdTransactionsReportUsingGET");
+            // verify the required parameter 'requestId' is set
+            if (requestId == null)
+                throw new ApiException(400, "Missing required parameter 'requestId' when calling TransferenciasSPEIApi->OutCommingSpeiSpidRequestIdTransactionsReportUsingGET");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->OutCommingSpeiSpidRequestIdTransactionsReportUsingGET");
+
+            var localVarPath = "/subscriptions/{subscription}/transactions/outcoming/{requestId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (requestId != null) localVarPathParams.Add("requestId", this.Configuration.ApiClient.ParameterToString(requestId)); // path parameter
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("OutCommingSpeiSpidRequestIdTransactionsReportUsingGET", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<PaymentsSpeiAndSpidRequestId>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (PaymentsSpeiAndSpidRequestId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PaymentsSpeiAndSpidRequestId)));
+        }
+
+        /// <summary>
+        /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">Identificador de la petición a buscar.</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>Task of PaymentsSpeiAndSpidRequestId</returns>
+        public async System.Threading.Tasks.Task<PaymentsSpeiAndSpidRequestId> OutCommingSpeiSpidRequestIdTransactionsReportUsingGETAsync (string authorization, string requestId, string subscription)
+        {
+             ApiResponse<PaymentsSpeiAndSpidRequestId> localVarResponse = await OutCommingSpeiSpidRequestIdTransactionsReportUsingGETAsyncWithHttpInfo(authorization, requestId, subscription);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Consulta de transferencias de salida por identificador de petición Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="requestId">Identificador de la petición a buscar.</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>Task of ApiResponse (PaymentsSpeiAndSpidRequestId)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<PaymentsSpeiAndSpidRequestId>> OutCommingSpeiSpidRequestIdTransactionsReportUsingGETAsyncWithHttpInfo (string authorization, string requestId, string subscription)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->OutCommingSpeiSpidRequestIdTransactionsReportUsingGET");
+            // verify the required parameter 'requestId' is set
+            if (requestId == null)
+                throw new ApiException(400, "Missing required parameter 'requestId' when calling TransferenciasSPEIApi->OutCommingSpeiSpidRequestIdTransactionsReportUsingGET");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->OutCommingSpeiSpidRequestIdTransactionsReportUsingGET");
+
+            var localVarPath = "/subscriptions/{subscription}/transactions/outcoming/{requestId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (requestId != null) localVarPathParams.Add("requestId", this.Configuration.ApiClient.ParameterToString(requestId)); // path parameter
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("OutCommingSpeiSpidRequestIdTransactionsReportUsingGET", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<PaymentsSpeiAndSpidRequestId>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (PaymentsSpeiAndSpidRequestId) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PaymentsSpeiAndSpidRequestId)));
+        }
+
+        /// <summary>
         /// Consulta de transferencias realizadas Consulta las transferencias realizadas en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta.&lt;br&gt;Se pueden realizar consultas por &lt;strong&gt;order_id&lt;/strong&gt; al realizar este tipo de consultas no importa el día en el que se realizó la transferencia
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1394,6 +1848,177 @@ namespace MX.Wire4.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("RegisterOutgoingSpeiTransactionUsingPOST", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TokenRequiredResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (TokenRequiredResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TokenRequiredResponse)));
+        }
+
+        /// <summary>
+        /// Registro de transferencias SPEI y SPID Se registra un conjunto de transferencias (una o más) tanto SPEI como SPID en una sola petición en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).&lt;br&gt;  Nota: Debe considerar que el concepto de cada una de las transacciones solo debe contener caracteres alfanuméricos por lo que en caso de que se reciban caracteres como ñ o acentos serán sustituidos por n o en su caso por la letra sin acento. Los caracteres no alfanuméricos como pueden ser caracteres especiales serán eliminados.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de las transferencias SPEI y SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>TokenRequiredResponse</returns>
+        public TokenRequiredResponse RegisterSpeiSpidOutgoingTransactionsUsingPOST (TransactionsRegister body, string authorization, string subscription)
+        {
+             ApiResponse<TokenRequiredResponse> localVarResponse = RegisterSpeiSpidOutgoingTransactionsUsingPOSTWithHttpInfo(body, authorization, subscription);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Registro de transferencias SPEI y SPID Se registra un conjunto de transferencias (una o más) tanto SPEI como SPID en una sola petición en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).&lt;br&gt;  Nota: Debe considerar que el concepto de cada una de las transacciones solo debe contener caracteres alfanuméricos por lo que en caso de que se reciban caracteres como ñ o acentos serán sustituidos por n o en su caso por la letra sin acento. Los caracteres no alfanuméricos como pueden ser caracteres especiales serán eliminados.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de las transferencias SPEI y SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>ApiResponse of TokenRequiredResponse</returns>
+        public ApiResponse< TokenRequiredResponse > RegisterSpeiSpidOutgoingTransactionsUsingPOSTWithHttpInfo (TransactionsRegister body, string authorization, string subscription)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling TransferenciasSPEIApi->RegisterSpeiSpidOutgoingTransactionsUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->RegisterSpeiSpidOutgoingTransactionsUsingPOST");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->RegisterSpeiSpidOutgoingTransactionsUsingPOST");
+
+            var localVarPath = "/subscriptions/{subscription}/transactions/outcoming";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("RegisterSpeiSpidOutgoingTransactionsUsingPOST", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TokenRequiredResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (TokenRequiredResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TokenRequiredResponse)));
+        }
+
+        /// <summary>
+        /// Registro de transferencias SPEI y SPID Se registra un conjunto de transferencias (una o más) tanto SPEI como SPID en una sola petición en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).&lt;br&gt;  Nota: Debe considerar que el concepto de cada una de las transacciones solo debe contener caracteres alfanuméricos por lo que en caso de que se reciban caracteres como ñ o acentos serán sustituidos por n o en su caso por la letra sin acento. Los caracteres no alfanuméricos como pueden ser caracteres especiales serán eliminados.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de las transferencias SPEI y SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>Task of TokenRequiredResponse</returns>
+        public async System.Threading.Tasks.Task<TokenRequiredResponse> RegisterSpeiSpidOutgoingTransactionsUsingPOSTAsync (TransactionsRegister body, string authorization, string subscription)
+        {
+             ApiResponse<TokenRequiredResponse> localVarResponse = await RegisterSpeiSpidOutgoingTransactionsUsingPOSTAsyncWithHttpInfo(body, authorization, subscription);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Registro de transferencias SPEI y SPID Se registra un conjunto de transferencias (una o más) tanto SPEI como SPID en una sola petición en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).&lt;br&gt;  Nota: Debe considerar que el concepto de cada una de las transacciones solo debe contener caracteres alfanuméricos por lo que en caso de que se reciban caracteres como ñ o acentos serán sustituidos por n o en su caso por la letra sin acento. Los caracteres no alfanuméricos como pueden ser caracteres especiales serán eliminados.
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Información de las transferencias SPEI y SPID de salida</param>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
+        /// <returns>Task of ApiResponse (TokenRequiredResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TokenRequiredResponse>> RegisterSpeiSpidOutgoingTransactionsUsingPOSTAsyncWithHttpInfo (TransactionsRegister body, string authorization, string subscription)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling TransferenciasSPEIApi->RegisterSpeiSpidOutgoingTransactionsUsingPOST");
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling TransferenciasSPEIApi->RegisterSpeiSpidOutgoingTransactionsUsingPOST");
+            // verify the required parameter 'subscription' is set
+            if (subscription == null)
+                throw new ApiException(400, "Missing required parameter 'subscription' when calling TransferenciasSPEIApi->RegisterSpeiSpidOutgoingTransactionsUsingPOST");
+
+            var localVarPath = "/subscriptions/{subscription}/transactions/outcoming";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subscription != null) localVarPathParams.Add("subscription", this.Configuration.ApiClient.ParameterToString(subscription)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("RegisterSpeiSpidOutgoingTransactionsUsingPOST", localVarResponse);
                 if (exception != null) throw exception;
             }
 

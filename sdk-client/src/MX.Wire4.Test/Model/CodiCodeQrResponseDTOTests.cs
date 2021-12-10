@@ -130,6 +130,14 @@ namespace MX.Wire4.Test
             // TODO unit test for the property 'PhoneNumber'
         }
         /// <summary>
+        /// Test the property 'Reference'
+        /// </summary>
+        [Test]
+        public void ReferenceTest()
+        {
+            // TODO unit test for the property 'Reference'
+        }
+        /// <summary>
         /// Test the property 'Status'
         /// </summary>
         [Test]

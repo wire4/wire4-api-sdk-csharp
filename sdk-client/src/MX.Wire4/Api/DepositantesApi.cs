@@ -24,7 +24,7 @@ namespace MX.Wire4.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Consulta cuantas cuentas de depositantes existen
+        /// Número de depositantes por suscripción
         /// </summary>
         /// <remarks>
         /// Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
@@ -36,7 +36,7 @@ namespace MX.Wire4.Api
         DepositantCountResponse GetDepositantsTotalsUsingGET (string authorization, string subscription);
 
         /// <summary>
-        /// Consulta cuantas cuentas de depositantes existen
+        /// Número de depositantes por suscripción
         /// </summary>
         /// <remarks>
         /// Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
@@ -46,7 +46,6 @@ namespace MX.Wire4.Api
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
         /// <returns>ApiResponse of DepositantCountResponse</returns>
         ApiResponse<DepositantCountResponse> GetDepositantsTotalsUsingGETWithHttpInfo (string authorization, string subscription);
-        
         /// <summary>
         /// Consulta de cuentas de depositantes
         /// </summary>
@@ -74,7 +73,7 @@ namespace MX.Wire4.Api
         /// Registra un nuevo depositante
         /// </summary>
         /// <remarks>
-        /// Registra un nuevo depositante en el contrato asociado a la suscripción.
+        /// Registra un nuevo depositante en el contrato asociado a la suscripción. Si intenta registrar un depositante que previamente se había registrado, se devolverá la cuenta clabe asociada al Álias que está intentando registrar. Queda bajo responsabilidad del cliente verificar que los álias sean únicos en sus sistemas.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
@@ -87,7 +86,7 @@ namespace MX.Wire4.Api
         /// Registra un nuevo depositante
         /// </summary>
         /// <remarks>
-        /// Registra un nuevo depositante en el contrato asociado a la suscripción.
+        /// Registra un nuevo depositante en el contrato asociado a la suscripción. Si intenta registrar un depositante que previamente se había registrado, se devolverá la cuenta clabe asociada al Álias que está intentando registrar. Queda bajo responsabilidad del cliente verificar que los álias sean únicos en sus sistemas.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
@@ -98,7 +97,7 @@ namespace MX.Wire4.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Consulta cuantas cuentas de depositantes existen
+        /// Número de depositantes por suscripción
         /// </summary>
         /// <remarks>
         /// Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
@@ -110,7 +109,7 @@ namespace MX.Wire4.Api
         System.Threading.Tasks.Task<DepositantCountResponse> GetDepositantsTotalsUsingGETAsync (string authorization, string subscription);
 
         /// <summary>
-        /// Consulta cuantas cuentas de depositantes existen
+        /// Número de depositantes por suscripción
         /// </summary>
         /// <remarks>
         /// Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
@@ -120,7 +119,6 @@ namespace MX.Wire4.Api
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
         /// <returns>Task of ApiResponse (DepositantCountResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<DepositantCountResponse>> GetDepositantsTotalsUsingGETAsyncWithHttpInfo (string authorization, string subscription);
-        
         /// <summary>
         /// Consulta de cuentas de depositantes
         /// </summary>
@@ -148,7 +146,7 @@ namespace MX.Wire4.Api
         /// Registra un nuevo depositante
         /// </summary>
         /// <remarks>
-        /// Registra un nuevo depositante en el contrato asociado a la suscripción.
+        /// Registra un nuevo depositante en el contrato asociado a la suscripción. Si intenta registrar un depositante que previamente se había registrado, se devolverá la cuenta clabe asociada al Álias que está intentando registrar. Queda bajo responsabilidad del cliente verificar que los álias sean únicos en sus sistemas.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
@@ -161,7 +159,7 @@ namespace MX.Wire4.Api
         /// Registra un nuevo depositante
         /// </summary>
         /// <remarks>
-        /// Registra un nuevo depositante en el contrato asociado a la suscripción.
+        /// Registra un nuevo depositante en el contrato asociado a la suscripción. Si intenta registrar un depositante que previamente se había registrado, se devolverá la cuenta clabe asociada al Álias que está intentando registrar. Queda bajo responsabilidad del cliente verificar que los álias sean únicos en sus sistemas.
         /// </remarks>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
@@ -281,7 +279,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Consulta cuantas cuentas de depositantes existen Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
+        /// Número de depositantes por suscripción Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -294,7 +292,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Consulta cuantas cuentas de depositantes existen Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
+        /// Número de depositantes por suscripción Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -352,7 +350,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Consulta cuantas cuentas de depositantes existen Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
+        /// Número de depositantes por suscripción Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -366,7 +364,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Consulta cuantas cuentas de depositantes existen Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
+        /// Número de depositantes por suscripción Obtiene la cantidad el total de depositantes asociados al contrato relacionado a la suscripción.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authorization">Header para token</param>
@@ -567,7 +565,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Registra un nuevo depositante Registra un nuevo depositante en el contrato asociado a la suscripción.
+        /// Registra un nuevo depositante Registra un nuevo depositante en el contrato asociado a la suscripción. Si intenta registrar un depositante que previamente se había registrado, se devolverá la cuenta clabe asociada al Álias que está intentando registrar. Queda bajo responsabilidad del cliente verificar que los álias sean únicos en sus sistemas.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
@@ -581,7 +579,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Registra un nuevo depositante Registra un nuevo depositante en el contrato asociado a la suscripción.
+        /// Registra un nuevo depositante Registra un nuevo depositante en el contrato asociado a la suscripción. Si intenta registrar un depositante que previamente se había registrado, se devolverá la cuenta clabe asociada al Álias que está intentando registrar. Queda bajo responsabilidad del cliente verificar que los álias sean únicos en sus sistemas.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
@@ -652,7 +650,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Registra un nuevo depositante Registra un nuevo depositante en el contrato asociado a la suscripción.
+        /// Registra un nuevo depositante Registra un nuevo depositante en el contrato asociado a la suscripción. Si intenta registrar un depositante que previamente se había registrado, se devolverá la cuenta clabe asociada al Álias que está intentando registrar. Queda bajo responsabilidad del cliente verificar que los álias sean únicos en sus sistemas.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>
@@ -667,7 +665,7 @@ namespace MX.Wire4.Api
         }
 
         /// <summary>
-        /// Registra un nuevo depositante Registra un nuevo depositante en el contrato asociado a la suscripción.
+        /// Registra un nuevo depositante Registra un nuevo depositante en el contrato asociado a la suscripción. Si intenta registrar un depositante que previamente se había registrado, se devolverá la cuenta clabe asociada al Álias que está intentando registrar. Queda bajo responsabilidad del cliente verificar que los álias sean únicos en sus sistemas.
         /// </summary>
         /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Depositant info</param>

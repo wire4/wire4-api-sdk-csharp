@@ -34,7 +34,7 @@ namespace MX.Wire4.Model
         /// </summary>
         /// <param name="alias">Es el alias del certificado..</param>
         /// <param name="certificateNumber">Es el número de certificado..</param>
-        /// <param name="checkDigit">Es el dígito verificador. Es un sólo dígito..</param>
+        /// <param name="checkDigit">Es el dígito verificador. Máximo 3 dígitos..</param>
         /// <param name="cipherData">Es la información de cifrado..</param>
         public CertificateRequest(string alias = default(string), string certificateNumber = default(string), string checkDigit = default(string), string cipherData = default(string))
         {
@@ -59,9 +59,9 @@ namespace MX.Wire4.Model
         public string CertificateNumber { get; set; }
 
         /// <summary>
-        /// Es el dígito verificador. Es un sólo dígito.
+        /// Es el dígito verificador. Máximo 3 dígitos.
         /// </summary>
-        /// <value>Es el dígito verificador. Es un sólo dígito.</value>
+        /// <value>Es el dígito verificador. Máximo 3 dígitos.</value>
         [DataMember(Name="check_digit", EmitDefaultValue=false)]
         public string CheckDigit { get; set; }
 

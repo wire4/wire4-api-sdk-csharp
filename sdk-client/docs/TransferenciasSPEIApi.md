@@ -8,8 +8,11 @@ Method | HTTP request | Description
 [**DropTransactionsPendingUsingDELETE**](TransferenciasSPEIApi.md#droptransactionspendingusingdelete) | **DELETE** /subscriptions/{subscription}/transactions/outcoming/spei/request/{requestId} | Eliminación de transferencias SPEI® pendientes
 [**IncomingSpeiTransactionsReportUsingGET**](TransferenciasSPEIApi.md#incomingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/incoming/spei | Consulta de transferencias recibidas
 [**OutCommingSpeiRequestIdTransactionsReportUsingGET**](TransferenciasSPEIApi.md#outcommingspeirequestidtransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei/{requestId} | Consulta de transferencias de salida por identificador de petición
+[**OutCommingSpeiSpidOrderIdTransactionReportUsingGET**](TransferenciasSPEIApi.md#outcommingspeispidorderidtransactionreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming | Consulta de transferencias realizadas por order_id
+[**OutCommingSpeiSpidRequestIdTransactionsReportUsingGET**](TransferenciasSPEIApi.md#outcommingspeispidrequestidtransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/{requestId} | Consulta de transferencias de salida por identificador de petición
 [**OutgoingSpeiTransactionsReportUsingGET**](TransferenciasSPEIApi.md#outgoingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei | Consulta de transferencias realizadas
 [**RegisterOutgoingSpeiTransactionUsingPOST**](TransferenciasSPEIApi.md#registeroutgoingspeitransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spei | Registro de transferencias
+[**RegisterSpeiSpidOutgoingTransactionsUsingPOST**](TransferenciasSPEIApi.md#registerspeispidoutgoingtransactionsusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming | Registro de transferencias SPEI y SPID
 
 <a name="createauthorizationtransactionsgroup"></a>
 # **CreateAuthorizationTransactionsGroup**
@@ -270,6 +273,134 @@ No authorization required
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="outcommingspeispidorderidtransactionreportusingget"></a>
+# **OutCommingSpeiSpidOrderIdTransactionReportUsingGET**
+> PaymentsSpeiAndSpidOrderId OutCommingSpeiSpidOrderIdTransactionReportUsingGET (string authorization, string subscription, string orderId = null)
+
+Consulta de transferencias realizadas por order_id
+
+Consulta las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta o las transferencias identificadas con el <strong>order_id</strong> proporcionado, para este tipo de consultas no importa el día en el que se realizó la transferencia. <br> Es importante que conozca que la respuesta puede dar como resultado un objeto con una lista spei o una lista spid con el/los elementos ya que un identificador order_id solo puede pertenecer a una transacción sea spei o spid.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using MX.Wire4.Api;
+using MX.Wire4.Client;
+using MX.Wire4.Model;
+
+namespace Example
+{
+    public class OutCommingSpeiSpidOrderIdTransactionReportUsingGETExample
+    {
+        public void main()
+        {
+            var apiInstance = new TransferenciasSPEIApi();
+            var authorization = authorization_example;  // string | Header para token
+            var subscription = subscription_example;  // string | Es el identificador de la suscripción a esta API.
+            var orderId = orderId_example;  // string | Es el identificador de la orden a buscar. (optional) 
+
+            try
+            {
+                // Consulta de transferencias realizadas por order_id
+                PaymentsSpeiAndSpidOrderId result = apiInstance.OutCommingSpeiSpidOrderIdTransactionReportUsingGET(authorization, subscription, orderId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TransferenciasSPEIApi.OutCommingSpeiSpidOrderIdTransactionReportUsingGET: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
+ **orderId** | **string**| Es el identificador de la orden a buscar. | [optional] 
+
+### Return type
+
+[**PaymentsSpeiAndSpidOrderId**](PaymentsSpeiAndSpidOrderId.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="outcommingspeispidrequestidtransactionsreportusingget"></a>
+# **OutCommingSpeiSpidRequestIdTransactionsReportUsingGET**
+> PaymentsSpeiAndSpidRequestId OutCommingSpeiSpidRequestIdTransactionsReportUsingGET (string authorization, string requestId, string subscription)
+
+Consulta de transferencias de salida por identificador de petición
+
+Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using MX.Wire4.Api;
+using MX.Wire4.Client;
+using MX.Wire4.Model;
+
+namespace Example
+{
+    public class OutCommingSpeiSpidRequestIdTransactionsReportUsingGETExample
+    {
+        public void main()
+        {
+            var apiInstance = new TransferenciasSPEIApi();
+            var authorization = authorization_example;  // string | Header para token
+            var requestId = requestId_example;  // string | Identificador de la petición a buscar.
+            var subscription = subscription_example;  // string | Es el identificador de la suscripción a esta API.
+
+            try
+            {
+                // Consulta de transferencias de salida por identificador de petición
+                PaymentsSpeiAndSpidRequestId result = apiInstance.OutCommingSpeiSpidRequestIdTransactionsReportUsingGET(authorization, requestId, subscription);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TransferenciasSPEIApi.OutCommingSpeiSpidRequestIdTransactionsReportUsingGET: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
+ **requestId** | **string**| Identificador de la petición a buscar. | 
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
+
+### Return type
+
+[**PaymentsSpeiAndSpidRequestId**](PaymentsSpeiAndSpidRequestId.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="outgoingspeitransactionsreportusingget"></a>
 # **OutgoingSpeiTransactionsReportUsingGET**
 > List<Payment> OutgoingSpeiTransactionsReportUsingGET (string authorization, string subscription, string orderId = null)
@@ -381,6 +512,70 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TransactionsOutgoingRegister**](TransactionsOutgoingRegister.md)| Información de las transferencias SPEI de salida | 
+ **authorization** | **string**| Header para token | 
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
+
+### Return type
+
+[**TokenRequiredResponse**](TokenRequiredResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="registerspeispidoutgoingtransactionsusingpost"></a>
+# **RegisterSpeiSpidOutgoingTransactionsUsingPOST**
+> TokenRequiredResponse RegisterSpeiSpidOutgoingTransactionsUsingPOST (TransactionsRegister body, string authorization, string subscription)
+
+Registro de transferencias SPEI y SPID
+
+Se registra un conjunto de transferencias (una o más) tanto SPEI como SPID en una sola petición en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).<br>  Nota: Debe considerar que el concepto de cada una de las transacciones solo debe contener caracteres alfanuméricos por lo que en caso de que se reciban caracteres como ñ o acentos serán sustituidos por n o en su caso por la letra sin acento. Los caracteres no alfanuméricos como pueden ser caracteres especiales serán eliminados.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using MX.Wire4.Api;
+using MX.Wire4.Client;
+using MX.Wire4.Model;
+
+namespace Example
+{
+    public class RegisterSpeiSpidOutgoingTransactionsUsingPOSTExample
+    {
+        public void main()
+        {
+            var apiInstance = new TransferenciasSPEIApi();
+            var body = new TransactionsRegister(); // TransactionsRegister | Información de las transferencias SPEI y SPID de salida
+            var authorization = authorization_example;  // string | Header para token
+            var subscription = subscription_example;  // string | Es el identificador de la suscripción a esta API.
+
+            try
+            {
+                // Registro de transferencias SPEI y SPID
+                TokenRequiredResponse result = apiInstance.RegisterSpeiSpidOutgoingTransactionsUsingPOST(body, authorization, subscription);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TransferenciasSPEIApi.RegisterSpeiSpidOutgoingTransactionsUsingPOST: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**TransactionsRegister**](TransactionsRegister.md)| Información de las transferencias SPEI y SPID de salida | 
  **authorization** | **string**| Header para token | 
  **subscription** | **string**| Es el identificador de la suscripción a esta API. | 
 
