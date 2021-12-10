@@ -74,6 +74,14 @@ namespace MX.Wire4.Test
             // TODO unit test for the property 'AmountLimit'
         }
         /// <summary>
+        /// Test the property 'AuthorizationDate'
+        /// </summary>
+        [Test]
+        public void AuthorizationDateTest()
+        {
+            // TODO unit test for the property 'AuthorizationDate'
+        }
+        /// <summary>
         /// Test the property 'Bank'
         /// </summary>
         [Test]

@@ -33,6 +33,7 @@ namespace MX.Wire4.Model
         /// Initializes a new instance of the <see cref="SpidBeneficiaryResponse" /> class.
         /// </summary>
         /// <param name="amountLimit">Monto límite permitido para la cuenta. Ejemplo: 1000.00 (required).</param>
+        /// <param name="authorizationDate">La fecha en la que se registro el beneficiario..</param>
         /// <param name="bank">bank.</param>
         /// <param name="beneficiaryAccount">Cuenta del beneficiario debe ser una cuenta CLABE. Ejemplo: 032180000118359719. (required).</param>
         /// <param name="email">Lista de correos electrónicos (emails), este dato es opcional..</param>
@@ -44,7 +45,7 @@ namespace MX.Wire4.Model
         /// <param name="relationship">Es la relación con el propietario de la cuenta, para registrar este valor se debe obtener del recurso &lt;a href&#x3D;\&quot;#operation/getAvailableRelationshipsMonexUsingGET\&quot;&gt;relationships.&lt;/a&gt; &lt;br/&gt; &lt;br/&gt; &lt;b&gt;Nota:&lt;/b&gt; Si en la respuesta de Monex, sta propiedad es nula, tampoco estará presente en esta respuesta. (required).</param>
         /// <param name="rfc">Es el Registro federal de contribuyentes (RFC) de la persona o institución propietaria de la cuenta. &lt;br/&gt; &lt;br/&gt;&lt;b&gt;Nota:&lt;/b&gt; Se valida el formato de RFC..</param>
         /// <param name="status">El estado en el que se encuentra el registo del beneficiario.&lt;br&gt;&lt;br&gt; Los valores pueden ser: &lt;b&gt;\&quot;RECEIVED\&quot;, \&quot;DELETED\&quot;, \&quot;REQUEST_ERROR_BY_MONEX\&quot;, \&quot;REQUESTED_TO_MONEX\&quot;, \&quot;NOTIFIED_BY_MONEX\&quot;, \&quot;NOTIFIED_BY_SPEIOK\&quot;, \&quot;NOTIFIED_WITH_ERROR_BY_SPEIOK\&quot; y \&quot;PENDING\&quot;&lt;/b&gt;.</param>
-        public SpidBeneficiaryResponse(decimal? amountLimit = default(decimal?), Institution bank = default(Institution), string beneficiaryAccount = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpid = default(string), string paymentConceptSpid = default(string), DateTime? registerDate = default(DateTime?), string relationship = default(string), string rfc = default(string), string status = default(string))
+        public SpidBeneficiaryResponse(decimal? amountLimit = default(decimal?), DateTime? authorizationDate = default(DateTime?), Institution bank = default(Institution), string beneficiaryAccount = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpid = default(string), string paymentConceptSpid = default(string), DateTime? registerDate = default(DateTime?), string relationship = default(string), string rfc = default(string), string status = default(string))
         {
             // to ensure "amountLimit" is required (not null)
             if (amountLimit == null)
@@ -91,6 +92,7 @@ namespace MX.Wire4.Model
             {
                 this.Relationship = relationship;
             }
+            this.AuthorizationDate = authorizationDate;
             this.Bank = bank;
             this.Email = email;
             this.NumericReferenceSpid = numericReferenceSpid;
@@ -106,6 +108,13 @@ namespace MX.Wire4.Model
         /// <value>Monto límite permitido para la cuenta. Ejemplo: 1000.00</value>
         [DataMember(Name="amount_limit", EmitDefaultValue=false)]
         public decimal? AmountLimit { get; set; }
+
+        /// <summary>
+        /// La fecha en la que se registro el beneficiario.
+        /// </summary>
+        /// <value>La fecha en la que se registro el beneficiario.</value>
+        [DataMember(Name="authorization_date", EmitDefaultValue=false)]
+        public DateTime? AuthorizationDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Bank
@@ -191,6 +200,7 @@ namespace MX.Wire4.Model
             var sb = new StringBuilder();
             sb.Append("class SpidBeneficiaryResponse {\n");
             sb.Append("  AmountLimit: ").Append(AmountLimit).Append("\n");
+            sb.Append("  AuthorizationDate: ").Append(AuthorizationDate).Append("\n");
             sb.Append("  Bank: ").Append(Bank).Append("\n");
             sb.Append("  BeneficiaryAccount: ").Append(BeneficiaryAccount).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
@@ -240,6 +250,11 @@ namespace MX.Wire4.Model
                     this.AmountLimit == input.AmountLimit ||
                     (this.AmountLimit != null &&
                     this.AmountLimit.Equals(input.AmountLimit))
+                ) && 
+                (
+                    this.AuthorizationDate == input.AuthorizationDate ||
+                    (this.AuthorizationDate != null &&
+                    this.AuthorizationDate.Equals(input.AuthorizationDate))
                 ) && 
                 (
                     this.Bank == input.Bank ||
@@ -310,6 +325,8 @@ namespace MX.Wire4.Model
                 int hashCode = 41;
                 if (this.AmountLimit != null)
                     hashCode = hashCode * 59 + this.AmountLimit.GetHashCode();
+                if (this.AuthorizationDate != null)
+                    hashCode = hashCode * 59 + this.AuthorizationDate.GetHashCode();
                 if (this.Bank != null)
                     hashCode = hashCode * 59 + this.Bank.GetHashCode();
                 if (this.BeneficiaryAccount != null)

@@ -30,9 +30,42 @@ namespace MX.Wire4.Model
         public partial class CodiCodeRequestDTO :  IEquatable<CodiCodeRequestDTO>, IValidatableObject
     {
         /// <summary>
-        /// El tipo de código QR para pago con CODI®
+        /// El tipo de pago ya sea en una ocasión (ONE_OCCASION) o recurrente (RECURRENT)
         /// </summary>
-        /// <value>El tipo de código QR para pago con CODI®</value>
+        /// <value>El tipo de pago ya sea en una ocasión (ONE_OCCASION) o recurrente (RECURRENT)</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+                public enum PaymentTypeEnum
+        {
+            /// <summary>
+            /// Enum ONEOCCASION for value: ONE_OCCASION
+            /// </summary>
+            [EnumMember(Value = "ONE_OCCASION")]
+            ONEOCCASION = 0,
+            /// <summary>
+            /// Enum RECURRENT for value: RECURRENT
+            /// </summary>
+            [EnumMember(Value = "RECURRENT")]
+            RECURRENT = 1,
+            /// <summary>
+            /// Enum RECURRENTNORECURRENT for value: RECURRENT_NO_RECURRENT
+            /// </summary>
+            [EnumMember(Value = "RECURRENT_NO_RECURRENT")]
+            RECURRENTNORECURRENT = 2,
+            /// <summary>
+            /// Enum UNKNOWN for value: UNKNOWN
+            /// </summary>
+            [EnumMember(Value = "UNKNOWN")]
+            UNKNOWN = 3        }
+        /// <summary>
+        /// El tipo de pago ya sea en una ocasión (ONE_OCCASION) o recurrente (RECURRENT)
+        /// </summary>
+        /// <value>El tipo de pago ya sea en una ocasión (ONE_OCCASION) o recurrente (RECURRENT)</value>
+        [DataMember(Name="payment_type", EmitDefaultValue=false)]
+        public PaymentTypeEnum PaymentType { get; set; }
+        /// <summary>
+        /// El tipo de solicitud QR o PUSH para pago con CODI®
+        /// </summary>
+        /// <value>El tipo de solicitud QR o PUSH para pago con CODI®</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum TypeEnum
         {
@@ -45,24 +78,32 @@ namespace MX.Wire4.Model
             /// Enum QRCODE for value: QR_CODE
             /// </summary>
             [EnumMember(Value = "QR_CODE")]
-            QRCODE = 1        }
+            QRCODE = 1,
+            /// <summary>
+            /// Enum UNKNOWN for value: UNKNOWN
+            /// </summary>
+            [EnumMember(Value = "UNKNOWN")]
+            UNKNOWN = 2        }
         /// <summary>
-        /// El tipo de código QR para pago con CODI®
+        /// El tipo de solicitud QR o PUSH para pago con CODI®
         /// </summary>
-        /// <value>El tipo de código QR para pago con CODI®</value>
+        /// <value>El tipo de solicitud QR o PUSH para pago con CODI®</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TypeEnum Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="CodiCodeRequestDTO" /> class.
         /// </summary>
         /// <param name="amount">Monto del pago CODI®.</param>
+        /// <param name="beneficiary2">beneficiary2.</param>
         /// <param name="concept">Descripción del pago CODI® (required).</param>
         /// <param name="dueDate">Fecha de operación pago CODI®, formato: yyyy-MM-dd&#x27;T&#x27;HH:mm:ss (required).</param>
         /// <param name="metadata">Campo de metada CODI®, longitud máxima determinada por configuracion de la empresa, por defecto 100 caracteres.</param>
         /// <param name="orderId">Referencia de la transferencia asignada por el cliente (required).</param>
+        /// <param name="paymentType">El tipo de pago ya sea en una ocasión (ONE_OCCASION) o recurrente (RECURRENT) (required).</param>
         /// <param name="phoneNumber">Número de teléfono móvil en caso de ser un pago CODI® usando &#x27;PUSH_NOTIFICATION&#x27; estecampo sería obligatorio.</param>
-        /// <param name="type">El tipo de código QR para pago con CODI® (required).</param>
-        public CodiCodeRequestDTO(decimal? amount = default(decimal?), string concept = default(string), DateTime? dueDate = default(DateTime?), string metadata = default(string), string orderId = default(string), string phoneNumber = default(string), TypeEnum type = default(TypeEnum))
+        /// <param name="reference">Referencia numérica del pago CODI®. Debe ser de 7 dígitos (required).</param>
+        /// <param name="type">El tipo de solicitud QR o PUSH para pago con CODI® (required).</param>
+        public CodiCodeRequestDTO(decimal? amount = default(decimal?), BeneficiaryDTO beneficiary2 = default(BeneficiaryDTO), string concept = default(string), DateTime? dueDate = default(DateTime?), string metadata = default(string), string orderId = default(string), PaymentTypeEnum paymentType = default(PaymentTypeEnum), string phoneNumber = default(string), int? reference = default(int?), TypeEnum type = default(TypeEnum))
         {
             // to ensure "concept" is required (not null)
             if (concept == null)
@@ -91,6 +132,24 @@ namespace MX.Wire4.Model
             {
                 this.OrderId = orderId;
             }
+            // to ensure "paymentType" is required (not null)
+            if (paymentType == null)
+            {
+                throw new InvalidDataException("paymentType is a required property for CodiCodeRequestDTO and cannot be null");
+            }
+            else
+            {
+                this.PaymentType = paymentType;
+            }
+            // to ensure "reference" is required (not null)
+            if (reference == null)
+            {
+                throw new InvalidDataException("reference is a required property for CodiCodeRequestDTO and cannot be null");
+            }
+            else
+            {
+                this.Reference = reference;
+            }
             // to ensure "type" is required (not null)
             if (type == null)
             {
@@ -101,6 +160,7 @@ namespace MX.Wire4.Model
                 this.Type = type;
             }
             this.Amount = amount;
+            this.Beneficiary2 = beneficiary2;
             this.Metadata = metadata;
             this.PhoneNumber = phoneNumber;
         }
@@ -111,6 +171,12 @@ namespace MX.Wire4.Model
         /// <value>Monto del pago CODI®</value>
         [DataMember(Name="amount", EmitDefaultValue=false)]
         public decimal? Amount { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Beneficiary2
+        /// </summary>
+        [DataMember(Name="beneficiary2", EmitDefaultValue=false)]
+        public BeneficiaryDTO Beneficiary2 { get; set; }
 
         /// <summary>
         /// Descripción del pago CODI®
@@ -140,12 +206,20 @@ namespace MX.Wire4.Model
         [DataMember(Name="order_id", EmitDefaultValue=false)]
         public string OrderId { get; set; }
 
+
         /// <summary>
         /// Número de teléfono móvil en caso de ser un pago CODI® usando &#x27;PUSH_NOTIFICATION&#x27; estecampo sería obligatorio
         /// </summary>
         /// <value>Número de teléfono móvil en caso de ser un pago CODI® usando &#x27;PUSH_NOTIFICATION&#x27; estecampo sería obligatorio</value>
         [DataMember(Name="phone_number", EmitDefaultValue=false)]
         public string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Referencia numérica del pago CODI®. Debe ser de 7 dígitos
+        /// </summary>
+        /// <value>Referencia numérica del pago CODI®. Debe ser de 7 dígitos</value>
+        [DataMember(Name="reference", EmitDefaultValue=false)]
+        public int? Reference { get; set; }
 
 
         /// <summary>
@@ -157,11 +231,14 @@ namespace MX.Wire4.Model
             var sb = new StringBuilder();
             sb.Append("class CodiCodeRequestDTO {\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
+            sb.Append("  Beneficiary2: ").Append(Beneficiary2).Append("\n");
             sb.Append("  Concept: ").Append(Concept).Append("\n");
             sb.Append("  DueDate: ").Append(DueDate).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
+            sb.Append("  PaymentType: ").Append(PaymentType).Append("\n");
             sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
+            sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -203,6 +280,11 @@ namespace MX.Wire4.Model
                     this.Amount.Equals(input.Amount))
                 ) && 
                 (
+                    this.Beneficiary2 == input.Beneficiary2 ||
+                    (this.Beneficiary2 != null &&
+                    this.Beneficiary2.Equals(input.Beneficiary2))
+                ) && 
+                (
                     this.Concept == input.Concept ||
                     (this.Concept != null &&
                     this.Concept.Equals(input.Concept))
@@ -223,9 +305,19 @@ namespace MX.Wire4.Model
                     this.OrderId.Equals(input.OrderId))
                 ) && 
                 (
+                    this.PaymentType == input.PaymentType ||
+                    (this.PaymentType != null &&
+                    this.PaymentType.Equals(input.PaymentType))
+                ) && 
+                (
                     this.PhoneNumber == input.PhoneNumber ||
                     (this.PhoneNumber != null &&
                     this.PhoneNumber.Equals(input.PhoneNumber))
+                ) && 
+                (
+                    this.Reference == input.Reference ||
+                    (this.Reference != null &&
+                    this.Reference.Equals(input.Reference))
                 ) && 
                 (
                     this.Type == input.Type ||
@@ -245,6 +337,8 @@ namespace MX.Wire4.Model
                 int hashCode = 41;
                 if (this.Amount != null)
                     hashCode = hashCode * 59 + this.Amount.GetHashCode();
+                if (this.Beneficiary2 != null)
+                    hashCode = hashCode * 59 + this.Beneficiary2.GetHashCode();
                 if (this.Concept != null)
                     hashCode = hashCode * 59 + this.Concept.GetHashCode();
                 if (this.DueDate != null)
@@ -253,8 +347,12 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.OrderId != null)
                     hashCode = hashCode * 59 + this.OrderId.GetHashCode();
+                if (this.PaymentType != null)
+                    hashCode = hashCode * 59 + this.PaymentType.GetHashCode();
                 if (this.PhoneNumber != null)
                     hashCode = hashCode * 59 + this.PhoneNumber.GetHashCode();
+                if (this.Reference != null)
+                    hashCode = hashCode * 59 + this.Reference.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 return hashCode;

@@ -33,6 +33,7 @@ namespace MX.Wire4.Model
         /// Initializes a new instance of the <see cref="AccountResponse" /> class.
         /// </summary>
         /// <param name="amountLimit">Es el monto límite permitido que se registra para la cuenta. Por ejemplo 1000.00. (required).</param>
+        /// <param name="authorizationDate">Es la fecha en la que se autorizó el registro del beneficiario. Ésta fecha viene en formato ISO 8601 con zona horaria, ejemplo: &lt;strong&gt;2020-10-27T11:03:15.000-06:00&lt;/strong&gt;..</param>
         /// <param name="bank">bank.</param>
         /// <param name="beneficiaryAccount">Es la cuenta del beneficiario, podría ser teléfono celular (se valida que sea de 10 dígitos), Tarjeta de débito (TDD, se valida que sea de 16 dígitos) o cuenta CLABE (se valida que sea de 18 dígitos). &lt;br/&gt;&lt;br/&gt;Por ejemplo Teléfono celular: 5525072600, TDD: 4323 1234 5678 9123, CLABE: 032180000118359719. (required).</param>
         /// <param name="email">Es una lista de correos electrónicos (emails). Se valida el formato de email. Este campo es opcional..</param>
@@ -45,7 +46,7 @@ namespace MX.Wire4.Model
         /// <param name="relationship">Es la relación con el propietario de la cuenta, para registrar este valor se debe obtener del recurso &lt;a href&#x3D;\&quot;#operation/getAvailableRelationshipsMonexUsingGET\&quot;&gt;relationships.&lt;/a&gt; &lt;br/&gt; &lt;br/&gt; &lt;b&gt;Nota:&lt;/b&gt; Si en la respuesta de Monex, sta propiedad es nula, tampoco estará presente en esta respuesta. (required).</param>
         /// <param name="rfc">Es el Registro Federal de Contribuyentes (RFC) de la persona o institución propietaria dela cuenta. &lt;br/&gt; &lt;br/&gt;&lt;b&gt;Nota:&lt;/b&gt; Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta. (required).</param>
         /// <param name="status">Es el estado en el que se encuentra el registo del beneficiario.&lt;br&gt;Los valores pueden ser:&lt;ul style&#x3D;\&quot;font-size: 12px; font-weight: 600;\&quot;&gt;&lt;li&gt;RECEIVED&lt;/li&gt;&lt;li&gt;DELETED&lt;/li&gt;&lt;li&gt;REQUEST_ERROR_BY_MONEX&lt;/li&gt;&lt;li&gt;REQUESTED_TO_MONEX&lt;/li&gt;&lt;li&gt;NOTIFIED_BY_MONEX&lt;/li&gt;&lt;li&gt;NOTIFIED_BY_SPEIOK&lt;li&gt;&lt;/li&gt;NOTIFIED_WITH_ERROR_BY_SPEIOK&lt;/li&gt;&lt;li&gt;PENDING&lt;/li&gt;&lt;/ul&gt;.</param>
-        public AccountResponse(decimal? amountLimit = default(decimal?), Institution bank = default(Institution), string beneficiaryAccount = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpei = default(string), string paymentConceptSpei = default(string), Person person = default(Person), DateTime? registerDate = default(DateTime?), string relationship = default(string), string rfc = default(string), string status = default(string))
+        public AccountResponse(decimal? amountLimit = default(decimal?), DateTime? authorizationDate = default(DateTime?), Institution bank = default(Institution), string beneficiaryAccount = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpei = default(string), string paymentConceptSpei = default(string), Person person = default(Person), DateTime? registerDate = default(DateTime?), string relationship = default(string), string rfc = default(string), string status = default(string))
         {
             // to ensure "amountLimit" is required (not null)
             if (amountLimit == null)
@@ -92,6 +93,7 @@ namespace MX.Wire4.Model
             {
                 this.Rfc = rfc;
             }
+            this.AuthorizationDate = authorizationDate;
             this.Bank = bank;
             this.Email = email;
             this.Institution = institution;
@@ -108,6 +110,13 @@ namespace MX.Wire4.Model
         /// <value>Es el monto límite permitido que se registra para la cuenta. Por ejemplo 1000.00.</value>
         [DataMember(Name="amount_limit", EmitDefaultValue=false)]
         public decimal? AmountLimit { get; set; }
+
+        /// <summary>
+        /// Es la fecha en la que se autorizó el registro del beneficiario. Ésta fecha viene en formato ISO 8601 con zona horaria, ejemplo: &lt;strong&gt;2020-10-27T11:03:15.000-06:00&lt;/strong&gt;.
+        /// </summary>
+        /// <value>Es la fecha en la que se autorizó el registro del beneficiario. Ésta fecha viene en formato ISO 8601 con zona horaria, ejemplo: &lt;strong&gt;2020-10-27T11:03:15.000-06:00&lt;/strong&gt;.</value>
+        [DataMember(Name="authorization_date", EmitDefaultValue=false)]
+        public DateTime? AuthorizationDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Bank
@@ -199,6 +208,7 @@ namespace MX.Wire4.Model
             var sb = new StringBuilder();
             sb.Append("class AccountResponse {\n");
             sb.Append("  AmountLimit: ").Append(AmountLimit).Append("\n");
+            sb.Append("  AuthorizationDate: ").Append(AuthorizationDate).Append("\n");
             sb.Append("  Bank: ").Append(Bank).Append("\n");
             sb.Append("  BeneficiaryAccount: ").Append(BeneficiaryAccount).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
@@ -249,6 +259,11 @@ namespace MX.Wire4.Model
                     this.AmountLimit == input.AmountLimit ||
                     (this.AmountLimit != null &&
                     this.AmountLimit.Equals(input.AmountLimit))
+                ) && 
+                (
+                    this.AuthorizationDate == input.AuthorizationDate ||
+                    (this.AuthorizationDate != null &&
+                    this.AuthorizationDate.Equals(input.AuthorizationDate))
                 ) && 
                 (
                     this.Bank == input.Bank ||
@@ -324,6 +339,8 @@ namespace MX.Wire4.Model
                 int hashCode = 41;
                 if (this.AmountLimit != null)
                     hashCode = hashCode * 59 + this.AmountLimit.GetHashCode();
+                if (this.AuthorizationDate != null)
+                    hashCode = hashCode * 59 + this.AuthorizationDate.GetHashCode();
                 if (this.Bank != null)
                     hashCode = hashCode * 59 + this.Bank.GetHashCode();
                 if (this.BeneficiaryAccount != null)

@@ -37,20 +37,45 @@ namespace MX.Wire4.Model
                 public enum StatusEnum
         {
             /// <summary>
+            /// Enum ACCEPTED for value: ACCEPTED
+            /// </summary>
+            [EnumMember(Value = "ACCEPTED")]
+            ACCEPTED = 0,
+            /// <summary>
             /// Enum RECEIVED for value: RECEIVED
             /// </summary>
             [EnumMember(Value = "RECEIVED")]
-            RECEIVED = 0,
+            RECEIVED = 1,
             /// <summary>
             /// Enum COMPLETED for value: COMPLETED
             /// </summary>
             [EnumMember(Value = "COMPLETED")]
-            COMPLETED = 1,
+            COMPLETED = 2,
             /// <summary>
             /// Enum CANCELLED for value: CANCELLED
             /// </summary>
             [EnumMember(Value = "CANCELLED")]
-            CANCELLED = 2        }
+            CANCELLED = 3,
+            /// <summary>
+            /// Enum POSTPONED for value: POSTPONED
+            /// </summary>
+            [EnumMember(Value = "POSTPONED")]
+            POSTPONED = 4,
+            /// <summary>
+            /// Enum REJECTED for value: REJECTED
+            /// </summary>
+            [EnumMember(Value = "REJECTED")]
+            REJECTED = 5,
+            /// <summary>
+            /// Enum REVERSED for value: REVERSED
+            /// </summary>
+            [EnumMember(Value = "REVERSED")]
+            REVERSED = 6,
+            /// <summary>
+            /// Enum UNKNOWN for value: UNKNOWN
+            /// </summary>
+            [EnumMember(Value = "UNKNOWN")]
+            UNKNOWN = 7        }
         /// <summary>
         /// El estado del código QR para pago CODI®.
         /// </summary>
@@ -73,7 +98,12 @@ namespace MX.Wire4.Model
             /// Enum QRCODE for value: QR_CODE
             /// </summary>
             [EnumMember(Value = "QR_CODE")]
-            QRCODE = 1        }
+            QRCODE = 1,
+            /// <summary>
+            /// Enum UNKNOWN for value: UNKNOWN
+            /// </summary>
+            [EnumMember(Value = "UNKNOWN")]
+            UNKNOWN = 2        }
         /// <summary>
         /// Es el tipo de código QR para pago con CODI®.
         /// </summary>
@@ -91,9 +121,10 @@ namespace MX.Wire4.Model
         /// <param name="dueDate">Es la fecha de operación del pago CODI®. Ésta fecha viene en formato ISO 8601 con zona horaria, ejemplo: &lt;strong&gt;2020-10-27T11:03:15.000-06:00&lt;/strong&gt;..</param>
         /// <param name="orderId">Es la referencia de la transferencia asignada por el cliente..</param>
         /// <param name="phoneNumber">Es el Número de teléfono móvil en caso de ser un pago CODI® usando \&quot;PUSH_NOTIFICATION\&quot;..</param>
+        /// <param name="reference">Referencia numérica del pago CODI®..</param>
         /// <param name="status">El estado del código QR para pago CODI®..</param>
         /// <param name="type">Es el tipo de código QR para pago con CODI®..</param>
-        public CodiCodeQrResponseDTO(decimal? amount = default(decimal?), string barcodeBase64 = default(string), string barcodeUrl = default(string), string concept = default(string), DateTime? creationDate = default(DateTime?), DateTime? dueDate = default(DateTime?), string orderId = default(string), string phoneNumber = default(string), StatusEnum? status = default(StatusEnum?), TypeEnum? type = default(TypeEnum?))
+        public CodiCodeQrResponseDTO(decimal? amount = default(decimal?), string barcodeBase64 = default(string), string barcodeUrl = default(string), string concept = default(string), DateTime? creationDate = default(DateTime?), DateTime? dueDate = default(DateTime?), string orderId = default(string), string phoneNumber = default(string), int? reference = default(int?), StatusEnum? status = default(StatusEnum?), TypeEnum? type = default(TypeEnum?))
         {
             this.Amount = amount;
             this.BarcodeBase64 = barcodeBase64;
@@ -103,6 +134,7 @@ namespace MX.Wire4.Model
             this.DueDate = dueDate;
             this.OrderId = orderId;
             this.PhoneNumber = phoneNumber;
+            this.Reference = reference;
             this.Status = status;
             this.Type = type;
         }
@@ -163,6 +195,13 @@ namespace MX.Wire4.Model
         [DataMember(Name="phone_number", EmitDefaultValue=false)]
         public string PhoneNumber { get; set; }
 
+        /// <summary>
+        /// Referencia numérica del pago CODI®.
+        /// </summary>
+        /// <value>Referencia numérica del pago CODI®.</value>
+        [DataMember(Name="reference", EmitDefaultValue=false)]
+        public int? Reference { get; set; }
+
 
 
         /// <summary>
@@ -181,6 +220,7 @@ namespace MX.Wire4.Model
             sb.Append("  DueDate: ").Append(DueDate).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
+            sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
@@ -258,6 +298,11 @@ namespace MX.Wire4.Model
                     this.PhoneNumber.Equals(input.PhoneNumber))
                 ) && 
                 (
+                    this.Reference == input.Reference ||
+                    (this.Reference != null &&
+                    this.Reference.Equals(input.Reference))
+                ) && 
+                (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
@@ -294,6 +339,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.OrderId.GetHashCode();
                 if (this.PhoneNumber != null)
                     hashCode = hashCode * 59 + this.PhoneNumber.GetHashCode();
+                if (this.Reference != null)
+                    hashCode = hashCode * 59 + this.Reference.GetHashCode();
                 if (this.Status != null)
                     hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.Type != null)
