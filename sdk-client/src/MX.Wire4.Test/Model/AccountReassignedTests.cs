@@ -98,14 +98,6 @@ namespace MX.Wire4.Test
             // TODO unit test for the property 'BeneficiaryAccount'
         }
         /// <summary>
-        /// Test the property 'CurrencyCode'
-        /// </summary>
-        [Test]
-        public void CurrencyCodeTest()
-        {
-            // TODO unit test for the property 'CurrencyCode'
-        }
-        /// <summary>
         /// Test the property 'Email'
         /// </summary>
         [Test]

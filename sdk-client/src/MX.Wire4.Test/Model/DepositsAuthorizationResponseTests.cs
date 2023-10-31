@@ -74,12 +74,12 @@ namespace MX.Wire4.Test
             // TODO unit test for the property 'Enabled'
         }
         /// <summary>
-        /// Test the property 'ReadOnly'
+        /// Test the property '_ReadOnly'
         /// </summary>
         [Test]
-        public void ReadOnlyTest()
+        public void _ReadOnlyTest()
         {
-            // TODO unit test for the property 'ReadOnly'
+            // TODO unit test for the property '_ReadOnly'
         }
         /// <summary>
         /// Test the property 'Webhook'

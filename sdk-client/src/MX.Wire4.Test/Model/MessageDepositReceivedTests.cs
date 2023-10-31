@@ -202,12 +202,36 @@ namespace MX.Wire4.Test
             // TODO unit test for the property 'MonexTransactionId'
         }
         /// <summary>
+        /// Test the property 'OrderId'
+        /// </summary>
+        [Test]
+        public void OrderIdTest()
+        {
+            // TODO unit test for the property 'OrderId'
+        }
+        /// <summary>
         /// Test the property 'Reference'
         /// </summary>
         [Test]
         public void ReferenceTest()
         {
             // TODO unit test for the property 'Reference'
+        }
+        /// <summary>
+        /// Test the property 'RequestId'
+        /// </summary>
+        [Test]
+        public void RequestIdTest()
+        {
+            // TODO unit test for the property 'RequestId'
+        }
+        /// <summary>
+        /// Test the property 'ReturnIdInstruction'
+        /// </summary>
+        [Test]
+        public void ReturnIdInstructionTest()
+        {
+            // TODO unit test for the property 'ReturnIdInstruction'
         }
         /// <summary>
         /// Test the property 'SenderAccount'

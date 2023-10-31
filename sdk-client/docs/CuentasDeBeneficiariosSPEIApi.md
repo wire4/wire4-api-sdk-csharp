@@ -268,7 +268,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getbeneficiariesforaccountusingget"></a>
 # **GetBeneficiariesForAccountUsingGET**
-> BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
+> BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null)
 
 Consulta los beneficiarios registrados
 
@@ -296,13 +296,15 @@ namespace Example
             var beneficiaryName = beneficiaryName_example;  // string | Es el nombre del beneficiario. (optional) 
             var endDate = endDate_example;  // string | Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional) 
             var initDate = initDate_example;  // string | Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional) 
+            var page = page_example;  // string | Es el número de página. (optional)  (default to 0)
             var rfc = rfc_example;  // string | Es el Registro Federal de Controbuyentes (RFC) del beneficiario. (optional) 
+            var size = size_example;  // string | Es el tamaño de página. (optional)  (default to 20)
             var status = status_example;  // string | Es el estado (estatus) de la cuenta. Los valores pueden ser <b>PENDING</b> y <b>REGISTERED</b>. (optional) 
 
             try
             {
                 // Consulta los beneficiarios registrados
-                BeneficiariesResponse result = apiInstance.GetBeneficiariesForAccountUsingGET(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, rfc, status);
+                BeneficiariesResponse result = apiInstance.GetBeneficiariesForAccountUsingGET(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, page, rfc, size, status);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -325,7 +327,9 @@ Name | Type | Description  | Notes
  **beneficiaryName** | **string**| Es el nombre del beneficiario. | [optional] 
  **endDate** | **string**| Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy. | [optional] 
  **initDate** | **string**| Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy. | [optional] 
+ **page** | **string**| Es el número de página. | [optional] [default to 0]
  **rfc** | **string**| Es el Registro Federal de Controbuyentes (RFC) del beneficiario. | [optional] 
+ **size** | **string**| Es el tamaño de página. | [optional] [default to 20]
  **status** | **string**| Es el estado (estatus) de la cuenta. Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. | [optional] 
 
 ### Return type

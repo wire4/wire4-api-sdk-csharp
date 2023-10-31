@@ -5,8 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | [**decimal?**](BigDecimal.md) | Monto del pago CODI® | [optional] 
 **Beneficiary2** | [**BeneficiaryDTO**](BeneficiaryDTO.md) |  | [optional] 
-**Concept** | **string** | Descripción del pago CODI® | 
-**DueDate** | **DateTime?** | Fecha de operación pago CODI®, formato: yyyy-MM-dd&#x27;T&#x27;HH:mm:ss | 
+**Concept** | **string** | Descripción del pago CODI®, no debe contener letras con acentos ni caracteres especiales | 
+**DueDate** | **DateTime?** | Fecha de operación pago CODI®, formato: yyyy-MM-dd&#x27;T&#x27;HH:mm:ss | [optional] 
 **Metadata** | **string** | Campo de metada CODI®, longitud máxima determinada por configuracion de la empresa, por defecto 100 caracteres | [optional] 
 **OrderId** | **string** | Referencia de la transferencia asignada por el cliente | 
 **PaymentType** | **string** | El tipo de pago ya sea en una ocasión (ONE_OCCASION) o recurrente (RECURRENT) | 

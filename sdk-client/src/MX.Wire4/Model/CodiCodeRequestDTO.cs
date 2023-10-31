@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -40,22 +39,22 @@ namespace MX.Wire4.Model
             /// Enum ONEOCCASION for value: ONE_OCCASION
             /// </summary>
             [EnumMember(Value = "ONE_OCCASION")]
-            ONEOCCASION = 0,
+            ONEOCCASION = 1,
             /// <summary>
             /// Enum RECURRENT for value: RECURRENT
             /// </summary>
             [EnumMember(Value = "RECURRENT")]
-            RECURRENT = 1,
+            RECURRENT = 2,
             /// <summary>
             /// Enum RECURRENTNORECURRENT for value: RECURRENT_NO_RECURRENT
             /// </summary>
             [EnumMember(Value = "RECURRENT_NO_RECURRENT")]
-            RECURRENTNORECURRENT = 2,
+            RECURRENTNORECURRENT = 3,
             /// <summary>
             /// Enum UNKNOWN for value: UNKNOWN
             /// </summary>
             [EnumMember(Value = "UNKNOWN")]
-            UNKNOWN = 3        }
+            UNKNOWN = 4        }
         /// <summary>
         /// El tipo de pago ya sea en una ocasión (ONE_OCCASION) o recurrente (RECURRENT)
         /// </summary>
@@ -73,17 +72,17 @@ namespace MX.Wire4.Model
             /// Enum PUSHNOTIFICATION for value: PUSH_NOTIFICATION
             /// </summary>
             [EnumMember(Value = "PUSH_NOTIFICATION")]
-            PUSHNOTIFICATION = 0,
+            PUSHNOTIFICATION = 1,
             /// <summary>
             /// Enum QRCODE for value: QR_CODE
             /// </summary>
             [EnumMember(Value = "QR_CODE")]
-            QRCODE = 1,
+            QRCODE = 2,
             /// <summary>
             /// Enum UNKNOWN for value: UNKNOWN
             /// </summary>
             [EnumMember(Value = "UNKNOWN")]
-            UNKNOWN = 2        }
+            UNKNOWN = 3        }
         /// <summary>
         /// El tipo de solicitud QR o PUSH para pago con CODI®
         /// </summary>
@@ -95,8 +94,8 @@ namespace MX.Wire4.Model
         /// </summary>
         /// <param name="amount">Monto del pago CODI®.</param>
         /// <param name="beneficiary2">beneficiary2.</param>
-        /// <param name="concept">Descripción del pago CODI® (required).</param>
-        /// <param name="dueDate">Fecha de operación pago CODI®, formato: yyyy-MM-dd&#x27;T&#x27;HH:mm:ss (required).</param>
+        /// <param name="concept">Descripción del pago CODI®, no debe contener letras con acentos ni caracteres especiales (required).</param>
+        /// <param name="dueDate">Fecha de operación pago CODI®, formato: yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.</param>
         /// <param name="metadata">Campo de metada CODI®, longitud máxima determinada por configuracion de la empresa, por defecto 100 caracteres.</param>
         /// <param name="orderId">Referencia de la transferencia asignada por el cliente (required).</param>
         /// <param name="paymentType">El tipo de pago ya sea en una ocasión (ONE_OCCASION) o recurrente (RECURRENT) (required).</param>
@@ -113,15 +112,6 @@ namespace MX.Wire4.Model
             else
             {
                 this.Concept = concept;
-            }
-            // to ensure "dueDate" is required (not null)
-            if (dueDate == null)
-            {
-                throw new InvalidDataException("dueDate is a required property for CodiCodeRequestDTO and cannot be null");
-            }
-            else
-            {
-                this.DueDate = dueDate;
             }
             // to ensure "orderId" is required (not null)
             if (orderId == null)
@@ -161,6 +151,7 @@ namespace MX.Wire4.Model
             }
             this.Amount = amount;
             this.Beneficiary2 = beneficiary2;
+            this.DueDate = dueDate;
             this.Metadata = metadata;
             this.PhoneNumber = phoneNumber;
         }
@@ -179,9 +170,9 @@ namespace MX.Wire4.Model
         public BeneficiaryDTO Beneficiary2 { get; set; }
 
         /// <summary>
-        /// Descripción del pago CODI®
+        /// Descripción del pago CODI®, no debe contener letras con acentos ni caracteres especiales
         /// </summary>
-        /// <value>Descripción del pago CODI®</value>
+        /// <value>Descripción del pago CODI®, no debe contener letras con acentos ni caracteres especiales</value>
         [DataMember(Name="concept", EmitDefaultValue=false)]
         public string Concept { get; set; }
 

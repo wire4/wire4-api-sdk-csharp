@@ -2051,5 +2051,444 @@ namespace MX.Wire4.Tests
                 Console.WriteLine(string.Format("{0}", ex.Message));
             }
         }*/
+
+
+        public void UpdateDepostantsNoSubscription()
+        {
+            // Create the api component
+            IDepositantesApi api = new DepositantesApi();
+
+            // Create the authenticator to obtain access token
+            // (the token URL and Service URL are defined for this environment enum value))
+            //IAuthenticator authenticator = new TokenAuthenticator(DataConfig.environment);
+            TokenRequest userTokenRequest = new TokenRequest
+            {
+                ClientKey = clientKey,
+                ClientSecret = clientSecret
+            };
+
+            // Build body with info (check references for more info, types, required fields)
+            // ContractDetailRequest body = new ContractDetailRequest(contract: "1234567",
+            //     userName: "amolina",
+            //     password: "whatever",
+            //     tokenCode: "258963");
+
+            try
+            {
+                // Obtain an access token use application flow and scope "general" and add the bearer token to request
+                string authorization = authenticator.GetApplicationToken(userTokenRequest, "general");
+                string account = "112180002129375639";
+                string action = "ACTIVE";
+
+                // Obtain the response
+                Depositant response = api.UpdateStatusDepositantsNoSuscrptionUsingPATCH(authorization,
+                    account, action, null);
+
+                Console.WriteLine(string.Format("Response :: {0}", response));
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(string.Format("{0}", ex.Message));
+            }
+        }
+
+        public void GetPaymentRequestByOrderId()
+        {
+            // Create the api component
+            IReporteDeSolicitudesDePagosApi api = new ReporteDeSolicitudesDePagosApi();
+
+            // Create the authenticator to obtain access token
+            // (the token URL and Service URL are defined for this environment enum value))
+            //IAuthenticator authenticator = new TokenAuthenticator(DataConfig.environment);
+            TokenRequest userTokenRequest = new TokenRequest
+            {
+                ClientKey = clientKey,
+                ClientSecret = clientSecret
+            };
+
+            // Build body with info (check references for more info, types, required fields)
+            // ContractDetailRequest body = new ContractDetailRequest(contract: "1234567",
+            //     userName: "amolina",
+            //     password: "whatever",
+            //     tokenCode: "258963");
+
+            try
+            {
+                // Obtain an access token use application flow and scope "general" and add the bearer token to request
+                string authorization = authenticator.GetApplicationToken(userTokenRequest, "general");
+                string orderId = "Order_1";
+                // string action = "ACTIVE";
+
+                // Obtain the response
+                PaymentRequestReportDTO response = api.PaymentRequestIdReportByOrderIdUsingGET(authorization,
+                    orderId);
+
+                Console.WriteLine(string.Format("Response :: {0}", response));
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(string.Format("{0}", ex.Message));
+            }
+        }
+
+        public void CreatePaymentRequest()
+        {
+            // Create the api component
+            ISolicitudDePagosApi api = new SolicitudDePagosApi();
+
+            // Create the authenticator to obtain access token
+            // (the token URL and Service URL are defined for this environment enum value))
+            //IAuthenticator authenticator = new TokenAuthenticator(DataConfig.environment);
+            TokenRequest userTokenRequest = new TokenRequest
+            {
+                ClientKey = clientKey,
+                ClientSecret = clientSecret
+            };
+
+            string orderId = "Order_1";
+
+            // Build body with info (check references for more info, types, required fields)
+            PaymentRequestReq body = new PaymentRequestReq(
+                customer: new Customer(
+                    name: "Juan Perez",
+                    email: "juanperez@correo.com",
+                    mobile: "+59555000000000"
+                ),
+                description: "otros",
+                due_date: "2023-10-21",
+                amount: 4000,
+                orderId: orderId,
+                cancel_return_url: "https://wire4.mx",
+                return_url: "https://wire4.mx",
+                method: "CARD"
+                );
+
+            try
+            {
+                // Obtain an access token use application flow and scope "general" and add the bearer token to request
+                string authorization = authenticator.GetApplicationToken(userTokenRequest, "general");
+                // string action = "ACTIVE";
+
+                // Obtain the response
+                PaymentRequestResponse response = api.RegisterPaymentRequestUsingPOST(body, authorization);
+
+                Console.WriteLine(string.Format("Response :: {0}", response));
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(string.Format("{0}", ex.Message));
+            }
+        }
+
+        public void GetPaymentRequestByRequestId()
+        {
+            // Create the api component
+            IReporteDeSolicitudesDePagosApi api = new ReporteDeSolicitudesDePagosApi();
+
+            // Create the authenticator to obtain access token
+            // (the token URL and Service URL are defined for this environment enum value))
+            //IAuthenticator authenticator = new TokenAuthenticator(DataConfig.environment);
+            TokenRequest userTokenRequest = new TokenRequest
+            {
+                ClientKey = clientKey,
+                ClientSecret = clientSecret
+            };
+
+            // Build body with info (check references for more info, types, required fields)
+            // ContractDetailRequest body = new ContractDetailRequest(contract: "1234567",
+            //     userName: "amolina",
+            //     password: "whatever",
+            //     tokenCode: "258963");
+
+            try
+            {
+                // Obtain an access token use application flow and scope "general" and add the bearer token to request
+                string authorization = authenticator.GetApplicationToken(userTokenRequest, "general");
+                string requestId = "1000-1000-1";
+                // string action = "ACTIVE";
+
+                // Obtain the response
+                PaymentRequestReportDTO response = api.PaymentRequestIdReportUsingGET(authorization,
+                    requestId);
+
+                Console.WriteLine(string.Format("Response :: {0}", response));
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(string.Format("{0}", ex.Message));
+            }
+        }
+
+        public void CreateRecurringCharge()
+        {
+            // Create the api component
+            ICargosRecurrentesApi api = new CargosRecurrentesApi();
+
+            // Create the authenticator to obtain access token
+            // (the token URL and Service URL are defined for this environment enum value))
+            //IAuthenticator authenticator = new TokenAuthenticator(DataConfig.environment);
+            TokenRequest userTokenRequest = new TokenRequest
+            {
+                ClientKey = clientKey,
+                ClientSecret = clientSecret
+            };
+
+            string orderId = "Order_1";
+
+            // Build body with info (check references for more info, types, required fields)
+            PaymentRequestReq body = new RecurringChargeRequest(
+                customer: new Customer(
+                    name: "Juan Perez",
+                    email: "juanperez@correo.com"
+                ),
+                product: new Product(
+                    name: "Prueba suscripcion",
+                    amount: 2,
+                    billing_period: "WEEKLY",
+                    frequency: 1
+                ),
+                first_charge_date: "2023-10-21",
+                charges: 4,
+                orderId: orderId,
+                cancel_return_url: "https://wire4.mx",
+                return_url: "https://wire4.mx"
+            );
+
+            try
+            {
+                // Obtain an access token use application flow and scope "general" and add the bearer token to request
+                string authorization = authenticator.GetApplicationToken(userTokenRequest, "charges_general");
+                // string action = "ACTIVE";
+
+                // Obtain the response
+                ConfirmRecurringCharge response = api.RegisterRecurringChargeUsingPOST(body, authorization);
+
+                Console.WriteLine(string.Format("Response :: {0}", response));
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(string.Format("{0}", ex.Message));
+            }
+        }
+
+        public void DeleteRecurringCharge()
+        {
+            // Create the api component
+            ICargosRecurrentesApi api = new CargosRecurrentesApi();
+
+            // Create the authenticator to obtain access token
+            // (the token URL and Service URL are defined for this environment enum value))
+            //IAuthenticator authenticator = new TokenAuthenticator(DataConfig.environment);
+            TokenRequest userTokenRequest = new TokenRequest
+            {
+                ClientKey = clientKey,
+                ClientSecret = clientSecret
+            };
+
+            string orderId = "Order_1";
+
+            // Build body with info (check references for more info, types, required fields)
+            // PaymentRequestReq body = new RecurringChargeRequest(
+            //     customer: new Customer(
+            //         name: "Juan Perez",
+            //         email: "juanperez@correo.com"
+            //     ),
+            //     product: new Product(
+            //         name: "Prueba suscripcion",
+            //         amount: 2,
+            //         billing_period: "WEEKLY",
+            //         frequency: 1
+            //     ),
+            //     first_charge_date: "2023-10-21",
+            //     charges: 4,
+            //     orderId: orderId,
+            //     cancel_return_url: "https://wire4.mx",
+            //     return_url: "https://wire4.mx"
+            // );
+
+            try
+            {
+                // Obtain an access token use application flow and scope "general" and add the bearer token to request
+                string authorization = authenticator.GetApplicationToken(userTokenRequest, "charges_general");
+                // string action = "ACTIVE";
+
+                // Obtain the response
+                ConfirmRecurringCharge response = api.DeleteRecurringChargeUsingDELETE(authorization, orderId);
+
+                Console.WriteLine(string.Format("Response :: {0}", response));
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(string.Format("{0}", ex.Message));
+            }
+        }
+
+         public void GetDepositAutorization()
+        {
+            String subscriptionToRemoveUserKey = "";
+            String subscriptionToRemoveUserSecret = "";
+
+
+            // Create the api component
+            IAutorizacinDeDepsitosApi api = new AutorizacinDeDepsitosApi();
+
+            // Create the authenticator to obtain access token
+            // (the token URL and Service URL are defined for this environment enum value))
+            //IAuthenticator authenticator = new TokenAuthenticator(DataConfig.environment);
+            TokenRequest userTokenRequest = new TokenRequest
+            {
+                ClientKey = clientKey,
+                ClientSecret = clientSecret,
+                UserKey = subscriptionToRemoveUserKey,
+                UserSecret = subscriptionToRemoveUserSecret,
+            };
+
+            // string body = "5873240b-cf69-456a-ab5a-88f5e79ab4b8";
+
+            try
+            {
+                // Obtain an access token use application flow and scope "spei_admin" and add the bearer token to request
+                string authorization = authenticator.GetApplicationUserToken(userTokenRequest, "spei_admin");
+
+                // Obtain the response
+                DepositsAuthorizationResponse response = api.GetDepositAuthConfigurations(authorization, subscription);
+
+                Console.WriteLine(string.Format("Response :: {0}", response.StatusCode));
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(string.Format("{0}", ex.Message));
+            }
+
+        }
+
+        public void EnableDisableDepositAuthConfigurations()
+        {
+            String subscriptionToRemoveUserKey = "";
+            String subscriptionToRemoveUserSecret = "";
+
+
+            // Create the api component
+            IAutorizacinDeDepsitosApi api = new AutorizacinDeDepsitosApi();
+
+            // Create the authenticator to obtain access token
+            // (the token URL and Service URL are defined for this environment enum value))
+            //IAuthenticator authenticator = new TokenAuthenticator(DataConfig.environment);
+            TokenRequest userTokenRequest = new TokenRequest
+            {
+                ClientKey = clientKey,
+                ClientSecret = clientSecret,
+                UserKey = subscriptionToRemoveUserKey,
+                UserSecret = subscriptionToRemoveUserSecret,
+            };
+
+            DepositAuthorizationRequest body = new DepositAuthorizationRequest(
+                enabled: true,
+                wh_uuid: "wh_30b",
+                webhook: new Webhook(
+                    name: "mio",
+                    url: "https://tu-url-de-webhook"
+                )
+            );
+
+            try
+            {
+                // Obtain an access token use application flow and scope "spei_admin" and add the bearer token to request
+                string authorization = authenticator.GetApplicationUserToken(userTokenRequest, "spei_admin");
+
+                // Obtain the response
+                DepositsAuthorizationResponse response = api.PutDepositAuthConfigurations(body, authorization, subscription);
+
+                Console.WriteLine(string.Format("Response :: {0}", response.StatusCode));
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(string.Format("{0}", ex.Message));
+            }
+
+        }
+
+        public void UpdateDepostants()
+        {
+            // Create the api component
+            IDepositantesApi api = new DepositantesApi();
+
+            // Create the authenticator to obtain access token
+            // (the token URL and Service URL are defined for this environment enum value))
+            //IAuthenticator authenticator = new TokenAuthenticator(DataConfig.environment);
+            TokenRequest userTokenRequest = new TokenRequest
+            {
+                ClientKey = clientKey,
+                ClientSecret = clientSecret
+            };
+
+            // Build body with info (check references for more info, types, required fields)
+            // ContractDetailRequest body = new ContractDetailRequest(contract: "1234567",
+            //     userName: "amolina",
+            //     password: "whatever",
+            //     tokenCode: "258963");
+
+            try
+            {
+                // Obtain an access token use application flow and scope "general" and add the bearer token to request
+                string authorization = authenticator.GetApplicationToken(userTokenRequest, "general");
+                string account = "112180002129375639";
+                string action = "ACTIVE";
+
+                // Obtain the response
+                Depositant response = api.UpdateStatusDepositantsUsingPATCH(authorization,
+                    account, action, null);
+
+                Console.WriteLine(string.Format("Response :: {0}", response));
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(string.Format("{0}", ex.Message));
+            }
+        }
+
+        public void GetOutcomingSPEISPIDByRequestId()
+        {
+            // Create the api component
+            ITransferenciasSPEIApi api = new TransferenciasSPEIApi();
+
+            // Create the authenticator to obtain access token
+            // (the token URL and Service URL are defined for this environment enum value))
+            //IAuthenticator authenticator = new TokenAuthenticator(DataConfig.environment);
+            TokenRequest userTokenRequest = new TokenRequest
+            {
+                ClientKey = clientKey,
+                ClientSecret = clientSecret,
+                UserKey = userKey,
+                UserSecret = userSecret,
+            };
+
+            try
+            {
+                /*
+                 * Filtering by date is optional, but both parameters must be present when use filter by date:
+                 * begin date, end date,
+                 * Formato 'yyyy-MM-dd'
+                 */
+                // string beginDate = null;
+                // string endDate = null;
+
+                // Obtain an access token use application flow and scope "general" and add the bearer token to request
+                string authorization = authenticator.GetApplicationUserToken(userTokenRequest);
+                string requestId = "1000-1000-1";
+
+                // Obtain the response
+                PaymentsSpeiAndSpidRequestId response = api.OutCommingSpeiSpidRequestIdTransactionsReportUsingGET(authorization, requestId, subscription);
+
+                Console.WriteLine(string.Format("Response :: {0}", response));
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(string.Format("{0}", ex.Message));
+            }
+        }
     }
+
+    
+    
 }

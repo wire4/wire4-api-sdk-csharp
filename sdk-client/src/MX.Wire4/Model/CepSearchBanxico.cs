@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -29,6 +28,29 @@ namespace MX.Wire4.Model
     [DataContract]
         public partial class CepSearchBanxico :  IEquatable<CepSearchBanxico>, IValidatableObject
     {
+        /// <summary>
+        /// Es el tipo de cep a consultar, puede ser SPEI o SPID.
+        /// </summary>
+        /// <value>Es el tipo de cep a consultar, puede ser SPEI o SPID.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+                public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum SPEI for value: SPEI
+            /// </summary>
+            [EnumMember(Value = "SPEI")]
+            SPEI = 1,
+            /// <summary>
+            /// Enum SPID for value: SPID
+            /// </summary>
+            [EnumMember(Value = "SPID")]
+            SPID = 2        }
+        /// <summary>
+        /// Es el tipo de cep a consultar, puede ser SPEI o SPID.
+        /// </summary>
+        /// <value>Es el tipo de cep a consultar, puede ser SPEI o SPID.</value>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public TypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="CepSearchBanxico" /> class.
         /// </summary>
@@ -40,7 +62,8 @@ namespace MX.Wire4.Model
         /// <param name="reference">Es la referencia numérica de la transferencia. Se valida hasta 7 dígitos..</param>
         /// <param name="senderAccount">Es la cuenta ordenante, es requerida cuando se no se envía la clave del banco ordenante..</param>
         /// <param name="senderBankKey">Es la clave del banco ordenante, es requerida cuando no se envía la cuenta ordenante.  Se puede obtener del recurso de las &lt;a href&#x3D;\&quot;#operation/getAllInstitutionsUsingGET\&quot;&gt;instituciones.&lt;/a&gt;.</param>
-        public CepSearchBanxico(decimal? amount = default(decimal?), string beneficiaryAccount = default(string), string beneficiaryBankKey = default(string), string claveRastreo = default(string), string operationDate = default(string), string reference = default(string), string senderAccount = default(string), string senderBankKey = default(string))
+        /// <param name="type">Es el tipo de cep a consultar, puede ser SPEI o SPID..</param>
+        public CepSearchBanxico(decimal? amount = default(decimal?), string beneficiaryAccount = default(string), string beneficiaryBankKey = default(string), string claveRastreo = default(string), string operationDate = default(string), string reference = default(string), string senderAccount = default(string), string senderBankKey = default(string), TypeEnum? type = default(TypeEnum?))
         {
             // to ensure "amount" is required (not null)
             if (amount == null)
@@ -82,6 +105,7 @@ namespace MX.Wire4.Model
             this.Reference = reference;
             this.SenderAccount = senderAccount;
             this.SenderBankKey = senderBankKey;
+            this.Type = type;
         }
         
         /// <summary>
@@ -140,6 +164,7 @@ namespace MX.Wire4.Model
         [DataMember(Name="sender_bank_key", EmitDefaultValue=false)]
         public string SenderBankKey { get; set; }
 
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -156,6 +181,7 @@ namespace MX.Wire4.Model
             sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  SenderAccount: ").Append(SenderAccount).Append("\n");
             sb.Append("  SenderBankKey: ").Append(SenderBankKey).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -229,6 +255,11 @@ namespace MX.Wire4.Model
                     this.SenderBankKey == input.SenderBankKey ||
                     (this.SenderBankKey != null &&
                     this.SenderBankKey.Equals(input.SenderBankKey))
+                ) && 
+                (
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 );
         }
 
@@ -257,6 +288,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.SenderAccount.GetHashCode();
                 if (this.SenderBankKey != null)
                     hashCode = hashCode * 59 + this.SenderBankKey.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 return hashCode;
             }
         }

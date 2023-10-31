@@ -24,6 +24,29 @@ namespace MX.Wire4.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Cancelación/desubscripción de cargos recurrentes
+        /// </summary>
+        /// <remarks>
+        ///  Se solicita la desuscripción de un cargo recurrente activo. En el request llevará el orderId que identifica el cargo recurrente a eliminar/dar de baja se deshabilitará tanto de openpay como del sistem wire4.&lt;br&gt; Nota: Debe considerar que para hacer uso de esta funcionalidad debe contar con un scope  especial
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="orderId">orderId</param>
+        /// <returns>ConfirmRecurringCharge</returns>
+        ConfirmRecurringCharge DeleteRecurringChargeUsingDELETE (string authorization, string orderId);
+
+        /// <summary>
+        /// Cancelación/desubscripción de cargos recurrentes
+        /// </summary>
+        /// <remarks>
+        ///  Se solicita la desuscripción de un cargo recurrente activo. En el request llevará el orderId que identifica el cargo recurrente a eliminar/dar de baja se deshabilitará tanto de openpay como del sistem wire4.&lt;br&gt; Nota: Debe considerar que para hacer uso de esta funcionalidad debe contar con un scope  especial
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="orderId">orderId</param>
+        /// <returns>ApiResponse of ConfirmRecurringCharge</returns>
+        ApiResponse<ConfirmRecurringCharge> DeleteRecurringChargeUsingDELETEWithHttpInfo (string authorization, string orderId);
+        /// <summary>
         /// Registro de cargos recurrentes
         /// </summary>
         /// <remarks>
@@ -48,6 +71,29 @@ namespace MX.Wire4.Api
         ApiResponse<ConfirmRecurringCharge> RegisterRecurringChargeUsingPOSTWithHttpInfo (RecurringChargeRequest body, string authorization);
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Cancelación/desubscripción de cargos recurrentes
+        /// </summary>
+        /// <remarks>
+        ///  Se solicita la desuscripción de un cargo recurrente activo. En el request llevará el orderId que identifica el cargo recurrente a eliminar/dar de baja se deshabilitará tanto de openpay como del sistem wire4.&lt;br&gt; Nota: Debe considerar que para hacer uso de esta funcionalidad debe contar con un scope  especial
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="orderId">orderId</param>
+        /// <returns>Task of ConfirmRecurringCharge</returns>
+        System.Threading.Tasks.Task<ConfirmRecurringCharge> DeleteRecurringChargeUsingDELETEAsync (string authorization, string orderId);
+
+        /// <summary>
+        /// Cancelación/desubscripción de cargos recurrentes
+        /// </summary>
+        /// <remarks>
+        ///  Se solicita la desuscripción de un cargo recurrente activo. En el request llevará el orderId que identifica el cargo recurrente a eliminar/dar de baja se deshabilitará tanto de openpay como del sistem wire4.&lt;br&gt; Nota: Debe considerar que para hacer uso de esta funcionalidad debe contar con un scope  especial
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="orderId">orderId</param>
+        /// <returns>Task of ApiResponse (ConfirmRecurringCharge)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ConfirmRecurringCharge>> DeleteRecurringChargeUsingDELETEAsyncWithHttpInfo (string authorization, string orderId);
         /// <summary>
         /// Registro de cargos recurrentes
         /// </summary>
@@ -180,6 +226,149 @@ namespace MX.Wire4.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Cancelación/desubscripción de cargos recurrentes  Se solicita la desuscripción de un cargo recurrente activo. En el request llevará el orderId que identifica el cargo recurrente a eliminar/dar de baja se deshabilitará tanto de openpay como del sistem wire4.&lt;br&gt; Nota: Debe considerar que para hacer uso de esta funcionalidad debe contar con un scope  especial
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="orderId">orderId</param>
+        /// <returns>ConfirmRecurringCharge</returns>
+        public ConfirmRecurringCharge DeleteRecurringChargeUsingDELETE (string authorization, string orderId)
+        {
+             ApiResponse<ConfirmRecurringCharge> localVarResponse = DeleteRecurringChargeUsingDELETEWithHttpInfo(authorization, orderId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Cancelación/desubscripción de cargos recurrentes  Se solicita la desuscripción de un cargo recurrente activo. En el request llevará el orderId que identifica el cargo recurrente a eliminar/dar de baja se deshabilitará tanto de openpay como del sistem wire4.&lt;br&gt; Nota: Debe considerar que para hacer uso de esta funcionalidad debe contar con un scope  especial
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="orderId">orderId</param>
+        /// <returns>ApiResponse of ConfirmRecurringCharge</returns>
+        public ApiResponse< ConfirmRecurringCharge > DeleteRecurringChargeUsingDELETEWithHttpInfo (string authorization, string orderId)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CargosRecurrentesApi->DeleteRecurringChargeUsingDELETE");
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+                throw new ApiException(400, "Missing required parameter 'orderId' when calling CargosRecurrentesApi->DeleteRecurringChargeUsingDELETE");
+
+            var localVarPath = "/recurring-charge/{orderId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (orderId != null) localVarPathParams.Add("orderId", this.Configuration.ApiClient.ParameterToString(orderId)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteRecurringChargeUsingDELETE", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ConfirmRecurringCharge>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ConfirmRecurringCharge) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ConfirmRecurringCharge)));
+        }
+
+        /// <summary>
+        /// Cancelación/desubscripción de cargos recurrentes  Se solicita la desuscripción de un cargo recurrente activo. En el request llevará el orderId que identifica el cargo recurrente a eliminar/dar de baja se deshabilitará tanto de openpay como del sistem wire4.&lt;br&gt; Nota: Debe considerar que para hacer uso de esta funcionalidad debe contar con un scope  especial
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="orderId">orderId</param>
+        /// <returns>Task of ConfirmRecurringCharge</returns>
+        public async System.Threading.Tasks.Task<ConfirmRecurringCharge> DeleteRecurringChargeUsingDELETEAsync (string authorization, string orderId)
+        {
+             ApiResponse<ConfirmRecurringCharge> localVarResponse = await DeleteRecurringChargeUsingDELETEAsyncWithHttpInfo(authorization, orderId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Cancelación/desubscripción de cargos recurrentes  Se solicita la desuscripción de un cargo recurrente activo. En el request llevará el orderId que identifica el cargo recurrente a eliminar/dar de baja se deshabilitará tanto de openpay como del sistem wire4.&lt;br&gt; Nota: Debe considerar que para hacer uso de esta funcionalidad debe contar con un scope  especial
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="orderId">orderId</param>
+        /// <returns>Task of ApiResponse (ConfirmRecurringCharge)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ConfirmRecurringCharge>> DeleteRecurringChargeUsingDELETEAsyncWithHttpInfo (string authorization, string orderId)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling CargosRecurrentesApi->DeleteRecurringChargeUsingDELETE");
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+                throw new ApiException(400, "Missing required parameter 'orderId' when calling CargosRecurrentesApi->DeleteRecurringChargeUsingDELETE");
+
+            var localVarPath = "/recurring-charge/{orderId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (orderId != null) localVarPathParams.Add("orderId", this.Configuration.ApiClient.ParameterToString(orderId)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteRecurringChargeUsingDELETE", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ConfirmRecurringCharge>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ConfirmRecurringCharge) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ConfirmRecurringCharge)));
         }
 
         /// <summary>

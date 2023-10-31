@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -29,6 +28,29 @@ namespace MX.Wire4.Model
     [DataContract]
         public partial class CepResponse :  IEquatable<CepResponse>, IValidatableObject
     {
+        /// <summary>
+        /// Es el tiop de CEP, puede ser: &lt;strong&gt;SPEI&lt;/strong&gt; o &lt;strong&gt;SPID&lt;/strong&gt;.
+        /// </summary>
+        /// <value>Es el tiop de CEP, puede ser: &lt;strong&gt;SPEI&lt;/strong&gt; o &lt;strong&gt;SPID&lt;/strong&gt;.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+                public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum SPEI for value: SPEI
+            /// </summary>
+            [EnumMember(Value = "SPEI")]
+            SPEI = 1,
+            /// <summary>
+            /// Enum SPID for value: SPID
+            /// </summary>
+            [EnumMember(Value = "SPID")]
+            SPID = 2        }
+        /// <summary>
+        /// Es el tiop de CEP, puede ser: &lt;strong&gt;SPEI&lt;/strong&gt; o &lt;strong&gt;SPID&lt;/strong&gt;.
+        /// </summary>
+        /// <value>Es el tiop de CEP, puede ser: &lt;strong&gt;SPEI&lt;/strong&gt; o &lt;strong&gt;SPID&lt;/strong&gt;.</value>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public TypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="CepResponse" /> class.
         /// </summary>
@@ -52,8 +74,9 @@ namespace MX.Wire4.Model
         /// <param name="senderName">Es el nombre del emisor..</param>
         /// <param name="senderRfc">Es el Registro Federal de Contribuyentes (RFC) del emisor..</param>
         /// <param name="signature">Firma del CEP...</param>
+        /// <param name="type">Es el tiop de CEP, puede ser: &lt;strong&gt;SPEI&lt;/strong&gt; o &lt;strong&gt;SPID&lt;/strong&gt;..</param>
         /// <param name="urlZip">La url al archivo zip del CEP, el cual contiene el xml y pdf.</param>
-        public CepResponse(string accountBeneficiary = default(string), string accountSender = default(string), decimal? amount = default(decimal?), bool? available = default(bool?), string beneficiaryBankKey = default(string), string beneficiaryName = default(string), string beneficiaryRfc = default(string), string cadenaOriginal = default(string), DateTime? captureDate = default(DateTime?), string certificateSerialNumber = default(string), string claveRastreo = default(string), string description = default(string), decimal? iva = default(decimal?), DateTime? operationDate = default(DateTime?), DateTime? operationDateCep = default(DateTime?), string reference = default(string), string senderBankKey = default(string), string senderName = default(string), string senderRfc = default(string), string signature = default(string), string urlZip = default(string))
+        public CepResponse(string accountBeneficiary = default(string), string accountSender = default(string), decimal? amount = default(decimal?), bool? available = default(bool?), string beneficiaryBankKey = default(string), string beneficiaryName = default(string), string beneficiaryRfc = default(string), string cadenaOriginal = default(string), DateTime? captureDate = default(DateTime?), string certificateSerialNumber = default(string), string claveRastreo = default(string), string description = default(string), decimal? iva = default(decimal?), DateTime? operationDate = default(DateTime?), DateTime? operationDateCep = default(DateTime?), string reference = default(string), string senderBankKey = default(string), string senderName = default(string), string senderRfc = default(string), string signature = default(string), TypeEnum? type = default(TypeEnum?), string urlZip = default(string))
         {
             this.AccountBeneficiary = accountBeneficiary;
             this.AccountSender = accountSender;
@@ -75,6 +98,7 @@ namespace MX.Wire4.Model
             this.SenderName = senderName;
             this.SenderRfc = senderRfc;
             this.Signature = signature;
+            this.Type = type;
             this.UrlZip = urlZip;
         }
         
@@ -218,6 +242,7 @@ namespace MX.Wire4.Model
         [DataMember(Name="signature", EmitDefaultValue=false)]
         public string Signature { get; set; }
 
+
         /// <summary>
         /// La url al archivo zip del CEP, el cual contiene el xml y pdf
         /// </summary>
@@ -253,6 +278,7 @@ namespace MX.Wire4.Model
             sb.Append("  SenderName: ").Append(SenderName).Append("\n");
             sb.Append("  SenderRfc: ").Append(SenderRfc).Append("\n");
             sb.Append("  Signature: ").Append(Signature).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UrlZip: ").Append(UrlZip).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -389,6 +415,11 @@ namespace MX.Wire4.Model
                     this.Signature.Equals(input.Signature))
                 ) && 
                 (
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
+                ) && 
+                (
                     this.UrlZip == input.UrlZip ||
                     (this.UrlZip != null &&
                     this.UrlZip.Equals(input.UrlZip))
@@ -444,6 +475,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.SenderRfc.GetHashCode();
                 if (this.Signature != null)
                     hashCode = hashCode * 59 + this.Signature.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.UrlZip != null)
                     hashCode = hashCode * 59 + this.UrlZip.GetHashCode();
                 return hashCode;

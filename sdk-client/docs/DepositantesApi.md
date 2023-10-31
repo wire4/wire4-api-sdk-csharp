@@ -7,6 +7,8 @@ Method | HTTP request | Description
 [**GetDepositantsTotalsUsingGET**](DepositantesApi.md#getdepositantstotalsusingget) | **GET** /subscriptions/{subscription}/depositants/count | Número de depositantes por suscripción
 [**GetDepositantsUsingGET**](DepositantesApi.md#getdepositantsusingget) | **GET** /subscriptions/{subscription}/depositants | Consulta de cuentas de depositantes
 [**RegisterDepositantsUsingPOST**](DepositantesApi.md#registerdepositantsusingpost) | **POST** /subscriptions/{subscription}/depositants | Registra un nuevo depositante
+[**UpdateStatusDepositantsNoSuscrptionUsingPATCH**](DepositantesApi.md#updatestatusdepositantsnosuscrptionusingpatch) | **PATCH** /depositants/{account}/{action} | Solicitud para actualizar el estado de un depositante sin utilizar la suscripción
+[**UpdateStatusDepositantsUsingPATCH**](DepositantesApi.md#updatestatusdepositantsusingpatch) | **PATCH** /subscriptions/{subscription}/depositants/{account}/{action} | Solicitud para actualizar el estado de un depossitante
 
 <a name="getdepositantstotalsusingget"></a>
 # **GetDepositantsTotalsUsingGET**
@@ -194,5 +196,133 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="updatestatusdepositantsnosuscrptionusingpatch"></a>
+# **UpdateStatusDepositantsNoSuscrptionUsingPATCH**
+> Depositant UpdateStatusDepositantsNoSuscrptionUsingPATCH (string authorization, string account, string action, string body = null)
+
+Solicitud para actualizar el estado de un depositante sin utilizar la suscripción
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using MX.Wire4.Api;
+using MX.Wire4.Client;
+using MX.Wire4.Model;
+
+namespace Example
+{
+    public class UpdateStatusDepositantsNoSuscrptionUsingPATCHExample
+    {
+        public void main()
+        {
+            var apiInstance = new DepositantesApi();
+            var authorization = authorization_example;  // string | Header para token
+            var account = account_example;  // string | Es la cuenta que va a ser actualizada.
+            var action = action_example;  // string | Es la cuenta que va a ser actualizada.
+            var body = new string(); // string | Empty value (optional) 
+
+            try
+            {
+                // Solicitud para actualizar el estado de un depositante sin utilizar la suscripción
+                Depositant result = apiInstance.UpdateStatusDepositantsNoSuscrptionUsingPATCH(authorization, account, action, body);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DepositantesApi.UpdateStatusDepositantsNoSuscrptionUsingPATCH: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
+ **account** | **string**| Es la cuenta que va a ser actualizada. | 
+ **action** | **string**| Es la cuenta que va a ser actualizada. | 
+ **body** | [**string**](string.md)| Empty value | [optional] 
+
+### Return type
+
+[**Depositant**](Depositant.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="updatestatusdepositantsusingpatch"></a>
+# **UpdateStatusDepositantsUsingPATCH**
+> Depositant UpdateStatusDepositantsUsingPATCH (string authorization, string account, string action, string body = null)
+
+Solicitud para actualizar el estado de un depossitante
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using MX.Wire4.Api;
+using MX.Wire4.Client;
+using MX.Wire4.Model;
+
+namespace Example
+{
+    public class UpdateStatusDepositantsUsingPATCHExample
+    {
+        public void main()
+        {
+            var apiInstance = new DepositantesApi();
+            var authorization = authorization_example;  // string | Header para token
+            var account = account_example;  // string | Es la cuenta que va a ser actualizada.
+            var action = action_example;  // string | Es la cuenta que va a ser actualizada.
+            var body = new string(); // string | Empty value (optional) 
+
+            try
+            {
+                // Solicitud para actualizar el estado de un depossitante
+                Depositant result = apiInstance.UpdateStatusDepositantsUsingPATCH(authorization, account, action, body);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DepositantesApi.UpdateStatusDepositantsUsingPATCH: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token | 
+ **account** | **string**| Es la cuenta que va a ser actualizada. | 
+ **action** | **string**| Es la cuenta que va a ser actualizada. | 
+ **body** | [**string**](string.md)| Empty value | [optional] 
+
+### Return type
+
+[**Depositant**](Depositant.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

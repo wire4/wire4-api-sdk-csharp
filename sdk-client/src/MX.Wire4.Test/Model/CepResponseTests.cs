@@ -226,6 +226,14 @@ namespace MX.Wire4.Test
             // TODO unit test for the property 'Signature'
         }
         /// <summary>
+        /// Test the property 'Type'
+        /// </summary>
+        [Test]
+        public void TypeTest()
+        {
+            // TODO unit test for the property 'Type'
+        }
+        /// <summary>
         /// Test the property 'UrlZip'
         /// </summary>
         [Test]

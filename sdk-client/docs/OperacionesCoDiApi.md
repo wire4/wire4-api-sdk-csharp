@@ -32,9 +32,9 @@ namespace Example
             var authorization = authorization_example;  // string | Header para token
             var body = new CodiOperationsFiltersRequestDTO(); // CodiOperationsFiltersRequestDTO | Filtros de busqueda (optional) 
             var companyId = companyId_example;  // string | Es el identificador de empresa CODI®. (optional) 
-            var page = page_example;  // string | Es el número de pago. (optional) 
+            var page = page_example;  // string | Es el número de pago. (optional)  (default to 0)
             var salesPointId = salesPointId_example;  // string | Es el identificador del punto de venta. (optional) 
-            var size = size_example;  // string | Es el tamaño de página. (optional) 
+            var size = size_example;  // string | Es el tamaño de página. (optional)  (default to 20)
 
             try
             {
@@ -58,9 +58,9 @@ Name | Type | Description  | Notes
  **authorization** | **string**| Header para token | 
  **body** | [**CodiOperationsFiltersRequestDTO**](CodiOperationsFiltersRequestDTO.md)| Filtros de busqueda | [optional] 
  **companyId** | **string**| Es el identificador de empresa CODI®. | [optional] 
- **page** | **string**| Es el número de pago. | [optional] 
+ **page** | **string**| Es el número de pago. | [optional] [default to 0]
  **salesPointId** | **string**| Es el identificador del punto de venta. | [optional] 
- **size** | **string**| Es el tamaño de página. | [optional] 
+ **size** | **string**| Es el tamaño de página. | [optional] [default to 20]
 
 ### Return type
 

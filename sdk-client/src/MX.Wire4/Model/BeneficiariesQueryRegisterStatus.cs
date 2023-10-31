@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -40,12 +39,12 @@ namespace MX.Wire4.Model
             /// Enum PENDING for value: PENDING
             /// </summary>
             [EnumMember(Value = "PENDING")]
-            PENDING = 0,
+            PENDING = 1,
             /// <summary>
             /// Enum AUTHORIZED for value: AUTHORIZED
             /// </summary>
             [EnumMember(Value = "AUTHORIZED")]
-            AUTHORIZED = 1        }
+            AUTHORIZED = 2        }
         /// <summary>
         /// Indica sí la petición ya fue autorizada usando el token del usuario
         /// </summary>

@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -49,12 +48,15 @@ namespace MX.Wire4.Model
         /// <param name="description">Es el concepto de la transferencia..</param>
         /// <param name="monexDescription">Es la descripción de Monex para la transferencia..</param>
         /// <param name="monexTransactionId">Es el identificador asignado por Monex a la transferencia..</param>
+        /// <param name="orderId">Número de orden asignado por el cliente de Wire4.</param>
         /// <param name="reference">Es la referecia de la transferencia..</param>
+        /// <param name="requestId">Es el identificador de la solicitud de cobro establecido por la aplicación..</param>
+        /// <param name="returnIdInstruction">Es el id de devolucion de la transaccion..</param>
         /// <param name="senderAccount">Es la cuenta del ordenante que podría ser un número celular (10 dígitos), una tarjeta de débito (TDD, de 16 dígitos) o Cuenta CLABE interbancaria (18 dígitos)..</param>
         /// <param name="senderBank">senderBank.</param>
         /// <param name="senderName">Es el nombre del ordenante..</param>
         /// <param name="senderRfc">Es el Registro Federal de Contribuyente (RFC) del ordenante..</param>
-        public MessageDepositReceived(decimal? amount = default(decimal?), string beneficiaryAccount = default(string), string beneficiaryName = default(string), string beneficiaryRfc = default(string), MessageCEP cep = default(MessageCEP), string claveRastreo = default(string), DateTime? confirmDate = default(DateTime?), string currencyCode = default(string), DateTime? depositDate = default(DateTime?), string depositant = default(string), string depositantAlias = default(string), string depositantClabe = default(string), string depositantEmail = default(string), string depositantRfc = default(string), string description = default(string), string monexDescription = default(string), string monexTransactionId = default(string), string reference = default(string), string senderAccount = default(string), MessageInstitution senderBank = default(MessageInstitution), string senderName = default(string), string senderRfc = default(string))
+        public MessageDepositReceived(decimal? amount = default(decimal?), string beneficiaryAccount = default(string), string beneficiaryName = default(string), string beneficiaryRfc = default(string), MessageCEP cep = default(MessageCEP), string claveRastreo = default(string), DateTime? confirmDate = default(DateTime?), string currencyCode = default(string), DateTime? depositDate = default(DateTime?), string depositant = default(string), string depositantAlias = default(string), string depositantClabe = default(string), string depositantEmail = default(string), string depositantRfc = default(string), string description = default(string), string monexDescription = default(string), string monexTransactionId = default(string), string orderId = default(string), string reference = default(string), string requestId = default(string), int? returnIdInstruction = default(int?), string senderAccount = default(string), MessageInstitution senderBank = default(MessageInstitution), string senderName = default(string), string senderRfc = default(string))
         {
             this.Amount = amount;
             this.BeneficiaryAccount = beneficiaryAccount;
@@ -73,7 +75,10 @@ namespace MX.Wire4.Model
             this.Description = description;
             this.MonexDescription = monexDescription;
             this.MonexTransactionId = monexTransactionId;
+            this.OrderId = orderId;
             this.Reference = reference;
+            this.RequestId = requestId;
+            this.ReturnIdInstruction = returnIdInstruction;
             this.SenderAccount = senderAccount;
             this.SenderBank = senderBank;
             this.SenderName = senderName;
@@ -199,11 +204,32 @@ namespace MX.Wire4.Model
         public string MonexTransactionId { get; set; }
 
         /// <summary>
+        /// Número de orden asignado por el cliente de Wire4
+        /// </summary>
+        /// <value>Número de orden asignado por el cliente de Wire4</value>
+        [DataMember(Name="order_id", EmitDefaultValue=false)]
+        public string OrderId { get; set; }
+
+        /// <summary>
         /// Es la referecia de la transferencia.
         /// </summary>
         /// <value>Es la referecia de la transferencia.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; set; }
+
+        /// <summary>
+        /// Es el identificador de la solicitud de cobro establecido por la aplicación.
+        /// </summary>
+        /// <value>Es el identificador de la solicitud de cobro establecido por la aplicación.</value>
+        [DataMember(Name="request_id", EmitDefaultValue=false)]
+        public string RequestId { get; set; }
+
+        /// <summary>
+        /// Es el id de devolucion de la transaccion.
+        /// </summary>
+        /// <value>Es el id de devolucion de la transaccion.</value>
+        [DataMember(Name="return_id_instruction", EmitDefaultValue=false)]
+        public int? ReturnIdInstruction { get; set; }
 
         /// <summary>
         /// Es la cuenta del ordenante que podría ser un número celular (10 dígitos), una tarjeta de débito (TDD, de 16 dígitos) o Cuenta CLABE interbancaria (18 dígitos).
@@ -257,7 +283,10 @@ namespace MX.Wire4.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  MonexDescription: ").Append(MonexDescription).Append("\n");
             sb.Append("  MonexTransactionId: ").Append(MonexTransactionId).Append("\n");
+            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
+            sb.Append("  RequestId: ").Append(RequestId).Append("\n");
+            sb.Append("  ReturnIdInstruction: ").Append(ReturnIdInstruction).Append("\n");
             sb.Append("  SenderAccount: ").Append(SenderAccount).Append("\n");
             sb.Append("  SenderBank: ").Append(SenderBank).Append("\n");
             sb.Append("  SenderName: ").Append(SenderName).Append("\n");
@@ -382,9 +411,24 @@ namespace MX.Wire4.Model
                     this.MonexTransactionId.Equals(input.MonexTransactionId))
                 ) && 
                 (
+                    this.OrderId == input.OrderId ||
+                    (this.OrderId != null &&
+                    this.OrderId.Equals(input.OrderId))
+                ) && 
+                (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
+                ) && 
+                (
+                    this.RequestId == input.RequestId ||
+                    (this.RequestId != null &&
+                    this.RequestId.Equals(input.RequestId))
+                ) && 
+                (
+                    this.ReturnIdInstruction == input.ReturnIdInstruction ||
+                    (this.ReturnIdInstruction != null &&
+                    this.ReturnIdInstruction.Equals(input.ReturnIdInstruction))
                 ) && 
                 (
                     this.SenderAccount == input.SenderAccount ||
@@ -451,8 +495,14 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.MonexDescription.GetHashCode();
                 if (this.MonexTransactionId != null)
                     hashCode = hashCode * 59 + this.MonexTransactionId.GetHashCode();
+                if (this.OrderId != null)
+                    hashCode = hashCode * 59 + this.OrderId.GetHashCode();
                 if (this.Reference != null)
                     hashCode = hashCode * 59 + this.Reference.GetHashCode();
+                if (this.RequestId != null)
+                    hashCode = hashCode * 59 + this.RequestId.GetHashCode();
+                if (this.ReturnIdInstruction != null)
+                    hashCode = hashCode * 59 + this.ReturnIdInstruction.GetHashCode();
                 if (this.SenderAccount != null)
                     hashCode = hashCode * 59 + this.SenderAccount.GetHashCode();
                 if (this.SenderBank != null)

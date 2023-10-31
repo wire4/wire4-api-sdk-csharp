@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -39,12 +38,12 @@ namespace MX.Wire4.Model
             /// Enum ACTIVE for value: ACTIVE
             /// </summary>
             [EnumMember(Value = "ACTIVE")]
-            ACTIVE = 0,
+            ACTIVE = 1,
             /// <summary>
             /// Enum INACTIVE for value: INACTIVE
             /// </summary>
             [EnumMember(Value = "INACTIVE")]
-            INACTIVE = 1        }
+            INACTIVE = 2        }
         /// <summary>
         /// Gets or Sets Status
         /// </summary>

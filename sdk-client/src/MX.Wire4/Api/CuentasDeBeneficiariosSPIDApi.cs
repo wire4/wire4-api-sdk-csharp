@@ -37,10 +37,12 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Contribuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta, Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>SpidBeneficiariesResponse</returns>
-        SpidBeneficiariesResponse GetSpidBeneficiariesForAccount (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
+        SpidBeneficiariesResponse GetSpidBeneficiariesForAccount (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null);
 
         /// <summary>
         /// Consulta los beneficiarios SPID registrados
@@ -56,10 +58,12 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Contribuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta, Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>ApiResponse of SpidBeneficiariesResponse</returns>
-        ApiResponse<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
+        ApiResponse<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null);
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios SPID®
         /// </summary>
@@ -101,10 +105,12 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Contribuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta, Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>Task of SpidBeneficiariesResponse</returns>
-        System.Threading.Tasks.Task<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountAsync (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
+        System.Threading.Tasks.Task<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountAsync (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null);
 
         /// <summary>
         /// Consulta los beneficiarios SPID registrados
@@ -120,10 +126,12 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Contribuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta, Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>Task of ApiResponse (SpidBeneficiariesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SpidBeneficiariesResponse>> GetSpidBeneficiariesForAccountAsyncWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
+        System.Threading.Tasks.Task<ApiResponse<SpidBeneficiariesResponse>> GetSpidBeneficiariesForAccountAsyncWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null);
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios SPID®
         /// </summary>
@@ -271,12 +279,14 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Contribuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta, Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>SpidBeneficiariesResponse</returns>
-        public SpidBeneficiariesResponse GetSpidBeneficiariesForAccount (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
+        public SpidBeneficiariesResponse GetSpidBeneficiariesForAccount (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null)
         {
-             ApiResponse<SpidBeneficiariesResponse> localVarResponse = GetSpidBeneficiariesForAccountWithHttpInfo(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, rfc, status);
+             ApiResponse<SpidBeneficiariesResponse> localVarResponse = GetSpidBeneficiariesForAccountWithHttpInfo(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, page, rfc, size, status);
              return localVarResponse.Data;
         }
 
@@ -291,10 +301,12 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Contribuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta, Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>ApiResponse of SpidBeneficiariesResponse</returns>
-        public ApiResponse< SpidBeneficiariesResponse > GetSpidBeneficiariesForAccountWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
+        public ApiResponse< SpidBeneficiariesResponse > GetSpidBeneficiariesForAccountWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
@@ -330,7 +342,9 @@ namespace MX.Wire4.Api
             if (beneficiaryName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beneficiary_name", beneficiaryName)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             if (initDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "init_date", initDate)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (rfc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "rfc", rfc)); // query parameter
+            if (size != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "size", size)); // query parameter
             if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
             if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
@@ -363,12 +377,14 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Contribuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta, Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>Task of SpidBeneficiariesResponse</returns>
-        public async System.Threading.Tasks.Task<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountAsync (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
+        public async System.Threading.Tasks.Task<SpidBeneficiariesResponse> GetSpidBeneficiariesForAccountAsync (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null)
         {
-             ApiResponse<SpidBeneficiariesResponse> localVarResponse = await GetSpidBeneficiariesForAccountAsyncWithHttpInfo(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, rfc, status);
+             ApiResponse<SpidBeneficiariesResponse> localVarResponse = await GetSpidBeneficiariesForAccountAsyncWithHttpInfo(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, page, rfc, size, status);
              return localVarResponse.Data;
 
         }
@@ -384,10 +400,12 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Contribuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta, Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>Task of ApiResponse (SpidBeneficiariesResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SpidBeneficiariesResponse>> GetSpidBeneficiariesForAccountAsyncWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SpidBeneficiariesResponse>> GetSpidBeneficiariesForAccountAsyncWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
@@ -423,7 +441,9 @@ namespace MX.Wire4.Api
             if (beneficiaryName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beneficiary_name", beneficiaryName)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             if (initDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "init_date", initDate)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (rfc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "rfc", rfc)); // query parameter
+            if (size != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "size", size)); // query parameter
             if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
             if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 

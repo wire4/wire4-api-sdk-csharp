@@ -66,6 +66,14 @@ namespace MX.Wire4.Test
 
 
         /// <summary>
+        /// Test the property 'CancelReturnUrl'
+        /// </summary>
+        [Test]
+        public void CancelReturnUrlTest()
+        {
+            // TODO unit test for the property 'CancelReturnUrl'
+        }
+        /// <summary>
         /// Test the property 'Charges'
         /// </summary>
         [Test]
@@ -104,6 +112,14 @@ namespace MX.Wire4.Test
         public void ProductTest()
         {
             // TODO unit test for the property 'Product'
+        }
+        /// <summary>
+        /// Test the property 'ReturnUrl'
+        /// </summary>
+        [Test]
+        public void ReturnUrlTest()
+        {
+            // TODO unit test for the property 'ReturnUrl'
         }
 
     }

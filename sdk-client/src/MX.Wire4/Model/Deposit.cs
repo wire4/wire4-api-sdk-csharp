@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -29,6 +28,49 @@ namespace MX.Wire4.Model
     [DataContract]
         public partial class Deposit :  IEquatable<Deposit>, IValidatableObject
     {
+        /// <summary>
+        /// Es el estatus del depósito (COMPLETED/RETURNED).
+        /// </summary>
+        /// <value>Es el estatus del depósito (COMPLETED/RETURNED).</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+                public enum StatusEnum
+        {
+            /// <summary>
+            /// Enum PENDING for value: PENDING
+            /// </summary>
+            [EnumMember(Value = "PENDING")]
+            PENDING = 1,
+            /// <summary>
+            /// Enum COMPLETED for value: COMPLETED
+            /// </summary>
+            [EnumMember(Value = "COMPLETED")]
+            COMPLETED = 2,
+            /// <summary>
+            /// Enum FAILED for value: FAILED
+            /// </summary>
+            [EnumMember(Value = "FAILED")]
+            FAILED = 3,
+            /// <summary>
+            /// Enum CANCELLED for value: CANCELLED
+            /// </summary>
+            [EnumMember(Value = "CANCELLED")]
+            CANCELLED = 4,
+            /// <summary>
+            /// Enum AUTHORIZING for value: AUTHORIZING
+            /// </summary>
+            [EnumMember(Value = "AUTHORIZING")]
+            AUTHORIZING = 5,
+            /// <summary>
+            /// Enum REJECTED for value: REJECTED
+            /// </summary>
+            [EnumMember(Value = "REJECTED")]
+            REJECTED = 6        }
+        /// <summary>
+        /// Es el estatus del depósito (COMPLETED/RETURNED).
+        /// </summary>
+        /// <value>Es el estatus del depósito (COMPLETED/RETURNED).</value>
+        [DataMember(Name="status", EmitDefaultValue=false)]
+        public StatusEnum? Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Deposit" /> class.
         /// </summary>
@@ -54,7 +96,8 @@ namespace MX.Wire4.Model
         /// <param name="senderBank">senderBank.</param>
         /// <param name="senderName">Es el nombre del ordenante..</param>
         /// <param name="senderRfc">Es el Registro Federal de Contribuyentes (RFC) de la cuenta ordenante..</param>
-        public Deposit(decimal? amount = default(decimal?), string beneficiaryAccount = default(string), string beneficiaryName = default(string), string beneficiaryRfc = default(string), MessageCEP cep = default(MessageCEP), string claveRastreo = default(string), DateTime? confirmDate = default(DateTime?), string currencyCode = default(string), DateTime? depositDate = default(DateTime?), string depositant = default(string), string depositantAlias = default(string), string depositantClabe = default(string), string depositantEmail = default(string), string depositantRfc = default(string), string description = default(string), string monexDescription = default(string), string monexTransactionId = default(string), string reference = default(string), string senderAccount = default(string), MessageInstitution senderBank = default(MessageInstitution), string senderName = default(string), string senderRfc = default(string))
+        /// <param name="status">Es el estatus del depósito (COMPLETED/RETURNED)..</param>
+        public Deposit(decimal? amount = default(decimal?), string beneficiaryAccount = default(string), string beneficiaryName = default(string), string beneficiaryRfc = default(string), MessageCEP cep = default(MessageCEP), string claveRastreo = default(string), DateTime? confirmDate = default(DateTime?), string currencyCode = default(string), DateTime? depositDate = default(DateTime?), string depositant = default(string), string depositantAlias = default(string), string depositantClabe = default(string), string depositantEmail = default(string), string depositantRfc = default(string), string description = default(string), string monexDescription = default(string), string monexTransactionId = default(string), string reference = default(string), string senderAccount = default(string), MessageInstitution senderBank = default(MessageInstitution), string senderName = default(string), string senderRfc = default(string), StatusEnum? status = default(StatusEnum?))
         {
             this.Amount = amount;
             this.BeneficiaryAccount = beneficiaryAccount;
@@ -78,6 +121,7 @@ namespace MX.Wire4.Model
             this.SenderBank = senderBank;
             this.SenderName = senderName;
             this.SenderRfc = senderRfc;
+            this.Status = status;
         }
         
         /// <summary>
@@ -232,6 +276,7 @@ namespace MX.Wire4.Model
         [DataMember(Name="sender_rfc", EmitDefaultValue=false)]
         public string SenderRfc { get; set; }
 
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -262,6 +307,7 @@ namespace MX.Wire4.Model
             sb.Append("  SenderBank: ").Append(SenderBank).Append("\n");
             sb.Append("  SenderName: ").Append(SenderName).Append("\n");
             sb.Append("  SenderRfc: ").Append(SenderRfc).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -405,6 +451,11 @@ namespace MX.Wire4.Model
                     this.SenderRfc == input.SenderRfc ||
                     (this.SenderRfc != null &&
                     this.SenderRfc.Equals(input.SenderRfc))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 );
         }
 
@@ -461,6 +512,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.SenderName.GetHashCode();
                 if (this.SenderRfc != null)
                     hashCode = hashCode * 59 + this.SenderRfc.GetHashCode();
+                if (this.Status != null)
+                    hashCode = hashCode * 59 + this.Status.GetHashCode();
                 return hashCode;
             }
         }
