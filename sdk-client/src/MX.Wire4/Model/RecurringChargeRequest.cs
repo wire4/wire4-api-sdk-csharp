@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -32,13 +31,24 @@ namespace MX.Wire4.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RecurringChargeRequest" /> class.
         /// </summary>
+        /// <param name="cancelReturnUrl">Es la dirección URL a la que se redirigirá en caso de que el usuario cancele. (required).</param>
         /// <param name="charges">Número de cargos que se aplicarán a la tarjeta del cliente final a partir de la fecha del primer cargo (required).</param>
         /// <param name="customer">customer (required).</param>
         /// <param name="firstChargeDate">Fecha en la que se aplicará el primer cargo a la tarjeta del cliente final  (required).</param>
         /// <param name="orderId">Número de orden asignado por el cliente de Wire4 (required).</param>
         /// <param name="product">product (required).</param>
-        public RecurringChargeRequest(int? charges = default(int?), Customer customer = default(Customer), DateTime? firstChargeDate = default(DateTime?), string orderId = default(string), Product product = default(Product))
+        /// <param name="returnUrl">Es la dirección URL a la que se redirigirá en caso de éxito. (required).</param>
+        public RecurringChargeRequest(string cancelReturnUrl = default(string), int? charges = default(int?), Customer customer = default(Customer), DateTime? firstChargeDate = default(DateTime?), string orderId = default(string), Product product = default(Product), string returnUrl = default(string))
         {
+            // to ensure "cancelReturnUrl" is required (not null)
+            if (cancelReturnUrl == null)
+            {
+                throw new InvalidDataException("cancelReturnUrl is a required property for RecurringChargeRequest and cannot be null");
+            }
+            else
+            {
+                this.CancelReturnUrl = cancelReturnUrl;
+            }
             // to ensure "charges" is required (not null)
             if (charges == null)
             {
@@ -84,8 +94,24 @@ namespace MX.Wire4.Model
             {
                 this.Product = product;
             }
+            // to ensure "returnUrl" is required (not null)
+            if (returnUrl == null)
+            {
+                throw new InvalidDataException("returnUrl is a required property for RecurringChargeRequest and cannot be null");
+            }
+            else
+            {
+                this.ReturnUrl = returnUrl;
+            }
         }
         
+        /// <summary>
+        /// Es la dirección URL a la que se redirigirá en caso de que el usuario cancele.
+        /// </summary>
+        /// <value>Es la dirección URL a la que se redirigirá en caso de que el usuario cancele.</value>
+        [DataMember(Name="cancel_return_url", EmitDefaultValue=false)]
+        public string CancelReturnUrl { get; set; }
+
         /// <summary>
         /// Número de cargos que se aplicarán a la tarjeta del cliente final a partir de la fecha del primer cargo
         /// </summary>
@@ -120,6 +146,13 @@ namespace MX.Wire4.Model
         public Product Product { get; set; }
 
         /// <summary>
+        /// Es la dirección URL a la que se redirigirá en caso de éxito.
+        /// </summary>
+        /// <value>Es la dirección URL a la que se redirigirá en caso de éxito.</value>
+        [DataMember(Name="return_url", EmitDefaultValue=false)]
+        public string ReturnUrl { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -127,11 +160,13 @@ namespace MX.Wire4.Model
         {
             var sb = new StringBuilder();
             sb.Append("class RecurringChargeRequest {\n");
+            sb.Append("  CancelReturnUrl: ").Append(CancelReturnUrl).Append("\n");
             sb.Append("  Charges: ").Append(Charges).Append("\n");
             sb.Append("  Customer: ").Append(Customer).Append("\n");
             sb.Append("  FirstChargeDate: ").Append(FirstChargeDate).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  Product: ").Append(Product).Append("\n");
+            sb.Append("  ReturnUrl: ").Append(ReturnUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -167,6 +202,11 @@ namespace MX.Wire4.Model
 
             return 
                 (
+                    this.CancelReturnUrl == input.CancelReturnUrl ||
+                    (this.CancelReturnUrl != null &&
+                    this.CancelReturnUrl.Equals(input.CancelReturnUrl))
+                ) && 
+                (
                     this.Charges == input.Charges ||
                     (this.Charges != null &&
                     this.Charges.Equals(input.Charges))
@@ -190,6 +230,11 @@ namespace MX.Wire4.Model
                     this.Product == input.Product ||
                     (this.Product != null &&
                     this.Product.Equals(input.Product))
+                ) && 
+                (
+                    this.ReturnUrl == input.ReturnUrl ||
+                    (this.ReturnUrl != null &&
+                    this.ReturnUrl.Equals(input.ReturnUrl))
                 );
         }
 
@@ -202,6 +247,8 @@ namespace MX.Wire4.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.CancelReturnUrl != null)
+                    hashCode = hashCode * 59 + this.CancelReturnUrl.GetHashCode();
                 if (this.Charges != null)
                     hashCode = hashCode * 59 + this.Charges.GetHashCode();
                 if (this.Customer != null)
@@ -212,6 +259,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.OrderId.GetHashCode();
                 if (this.Product != null)
                     hashCode = hashCode * 59 + this.Product.GetHashCode();
+                if (this.ReturnUrl != null)
+                    hashCode = hashCode * 59 + this.ReturnUrl.GetHashCode();
                 return hashCode;
             }
         }

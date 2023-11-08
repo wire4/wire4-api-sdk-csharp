@@ -33,9 +33,9 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="body">Filtros de busqueda (optional)</param>
         /// <param name="companyId">Es el identificador de empresa CODI®. (optional)</param>
-        /// <param name="page">Es el número de pago. (optional)</param>
+        /// <param name="page">Es el número de pago. (optional, default to 0)</param>
         /// <param name="salesPointId">Es el identificador del punto de venta. (optional)</param>
-        /// <param name="size">Es el tamaño de página. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <returns>PagerResponseDto</returns>
         PagerResponseDto ConsultCodiOperations (string authorization, CodiOperationsFiltersRequestDTO body = null, string companyId = null, string page = null, string salesPointId = null, string size = null);
 
@@ -49,9 +49,9 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="body">Filtros de busqueda (optional)</param>
         /// <param name="companyId">Es el identificador de empresa CODI®. (optional)</param>
-        /// <param name="page">Es el número de pago. (optional)</param>
+        /// <param name="page">Es el número de pago. (optional, default to 0)</param>
         /// <param name="salesPointId">Es el identificador del punto de venta. (optional)</param>
-        /// <param name="size">Es el tamaño de página. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <returns>ApiResponse of PagerResponseDto</returns>
         ApiResponse<PagerResponseDto> ConsultCodiOperationsWithHttpInfo (string authorization, CodiOperationsFiltersRequestDTO body = null, string companyId = null, string page = null, string salesPointId = null, string size = null);
         #endregion Synchronous Operations
@@ -66,9 +66,9 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="body">Filtros de busqueda (optional)</param>
         /// <param name="companyId">Es el identificador de empresa CODI®. (optional)</param>
-        /// <param name="page">Es el número de pago. (optional)</param>
+        /// <param name="page">Es el número de pago. (optional, default to 0)</param>
         /// <param name="salesPointId">Es el identificador del punto de venta. (optional)</param>
-        /// <param name="size">Es el tamaño de página. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <returns>Task of PagerResponseDto</returns>
         System.Threading.Tasks.Task<PagerResponseDto> ConsultCodiOperationsAsync (string authorization, CodiOperationsFiltersRequestDTO body = null, string companyId = null, string page = null, string salesPointId = null, string size = null);
 
@@ -82,9 +82,9 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="body">Filtros de busqueda (optional)</param>
         /// <param name="companyId">Es el identificador de empresa CODI®. (optional)</param>
-        /// <param name="page">Es el número de pago. (optional)</param>
+        /// <param name="page">Es el número de pago. (optional, default to 0)</param>
         /// <param name="salesPointId">Es el identificador del punto de venta. (optional)</param>
-        /// <param name="size">Es el tamaño de página. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <returns>Task of ApiResponse (PagerResponseDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<PagerResponseDto>> ConsultCodiOperationsAsyncWithHttpInfo (string authorization, CodiOperationsFiltersRequestDTO body = null, string companyId = null, string page = null, string salesPointId = null, string size = null);
         #endregion Asynchronous Operations
@@ -205,9 +205,9 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="body">Filtros de busqueda (optional)</param>
         /// <param name="companyId">Es el identificador de empresa CODI®. (optional)</param>
-        /// <param name="page">Es el número de pago. (optional)</param>
+        /// <param name="page">Es el número de pago. (optional, default to 0)</param>
         /// <param name="salesPointId">Es el identificador del punto de venta. (optional)</param>
-        /// <param name="size">Es el tamaño de página. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <returns>PagerResponseDto</returns>
         public PagerResponseDto ConsultCodiOperations (string authorization, CodiOperationsFiltersRequestDTO body = null, string companyId = null, string page = null, string salesPointId = null, string size = null)
         {
@@ -222,9 +222,9 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="body">Filtros de busqueda (optional)</param>
         /// <param name="companyId">Es el identificador de empresa CODI®. (optional)</param>
-        /// <param name="page">Es el número de pago. (optional)</param>
+        /// <param name="page">Es el número de pago. (optional, default to 0)</param>
         /// <param name="salesPointId">Es el identificador del punto de venta. (optional)</param>
-        /// <param name="size">Es el tamaño de página. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <returns>ApiResponse of PagerResponseDto</returns>
         public ApiResponse< PagerResponseDto > ConsultCodiOperationsWithHttpInfo (string authorization, CodiOperationsFiltersRequestDTO body = null, string companyId = null, string page = null, string salesPointId = null, string size = null)
         {
@@ -293,9 +293,9 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="body">Filtros de busqueda (optional)</param>
         /// <param name="companyId">Es el identificador de empresa CODI®. (optional)</param>
-        /// <param name="page">Es el número de pago. (optional)</param>
+        /// <param name="page">Es el número de pago. (optional, default to 0)</param>
         /// <param name="salesPointId">Es el identificador del punto de venta. (optional)</param>
-        /// <param name="size">Es el tamaño de página. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <returns>Task of PagerResponseDto</returns>
         public async System.Threading.Tasks.Task<PagerResponseDto> ConsultCodiOperationsAsync (string authorization, CodiOperationsFiltersRequestDTO body = null, string companyId = null, string page = null, string salesPointId = null, string size = null)
         {
@@ -311,9 +311,9 @@ namespace MX.Wire4.Api
         /// <param name="authorization">Header para token</param>
         /// <param name="body">Filtros de busqueda (optional)</param>
         /// <param name="companyId">Es el identificador de empresa CODI®. (optional)</param>
-        /// <param name="page">Es el número de pago. (optional)</param>
+        /// <param name="page">Es el número de pago. (optional, default to 0)</param>
         /// <param name="salesPointId">Es el identificador del punto de venta. (optional)</param>
-        /// <param name="size">Es el tamaño de página. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <returns>Task of ApiResponse (PagerResponseDto)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<PagerResponseDto>> ConsultCodiOperationsAsyncWithHttpInfo (string authorization, CodiOperationsFiltersRequestDTO body = null, string companyId = null, string page = null, string salesPointId = null, string size = null)
         {

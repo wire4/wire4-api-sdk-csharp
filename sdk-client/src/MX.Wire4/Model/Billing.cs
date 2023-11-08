@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -40,22 +39,22 @@ namespace MX.Wire4.Model
             /// Enum PAID for value: PAID
             /// </summary>
             [EnumMember(Value = "PAID")]
-            PAID = 0,
+            PAID = 1,
             /// <summary>
             /// Enum OMMITED for value: OMMITED
             /// </summary>
             [EnumMember(Value = "OMMITED")]
-            OMMITED = 1,
+            OMMITED = 2,
             /// <summary>
             /// Enum WAITINGPAYMENT for value: WAITING_PAYMENT
             /// </summary>
             [EnumMember(Value = "WAITING_PAYMENT")]
-            WAITINGPAYMENT = 2,
+            WAITINGPAYMENT = 3,
             /// <summary>
             /// Enum EMISSIONPENDING for value: EMISSION_PENDING
             /// </summary>
             [EnumMember(Value = "EMISSION_PENDING")]
-            EMISSIONPENDING = 3        }
+            EMISSIONPENDING = 4        }
         /// <summary>
         /// Estatus de la factura
         /// </summary>

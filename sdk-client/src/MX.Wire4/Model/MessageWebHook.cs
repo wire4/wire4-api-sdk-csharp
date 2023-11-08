@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -48,7 +47,7 @@ namespace MX.Wire4.Model
             this.Data = data;
             this.Id = id;
             this.Livemode = livemode;
-            this.Object = _object;
+            this._Object = _object;
             this.PendingWebhooks = pendingWebhooks;
             this.Request = request;
             this.Type = type;
@@ -94,7 +93,7 @@ namespace MX.Wire4.Model
         /// </summary>
         /// <value>Tipo de objeto  que contiene el mensaje en el atributo &#x27;data&#x27;. Los posibles valores son:  &lt;ul&gt;&lt;li&gt;subscription&lt;/li&gt;, &lt;li&gt;beneficiary&lt;/li&gt;, &lt;li&gt;spei_outgoing&lt;/li&gt;, &lt;li&gt;spei_incoming&lt;/li&gt;, &lt;li&gt;spid_outgoing&lt;/li&gt;, &lt;li&gt;request_outgoing&lt;/li&gt;&lt;ul&gt; </value>
         [DataMember(Name="object", EmitDefaultValue=false)]
-        public string Object { get; set; }
+        public string _Object { get; set; }
 
         /// <summary>
         /// Es el número de mensajes pendientes de enviar.
@@ -130,7 +129,7 @@ namespace MX.Wire4.Model
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Livemode: ").Append(Livemode).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  _Object: ").Append(_Object).Append("\n");
             sb.Append("  PendingWebhooks: ").Append(PendingWebhooks).Append("\n");
             sb.Append("  Request: ").Append(Request).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
@@ -194,9 +193,9 @@ namespace MX.Wire4.Model
                     this.Livemode.Equals(input.Livemode))
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    (this.Object != null &&
-                    this.Object.Equals(input.Object))
+                    this._Object == input._Object ||
+                    (this._Object != null &&
+                    this._Object.Equals(input._Object))
                 ) && 
                 (
                     this.PendingWebhooks == input.PendingWebhooks ||
@@ -234,8 +233,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Livemode != null)
                     hashCode = hashCode * 59 + this.Livemode.GetHashCode();
-                if (this.Object != null)
-                    hashCode = hashCode * 59 + this.Object.GetHashCode();
+                if (this._Object != null)
+                    hashCode = hashCode * 59 + this._Object.GetHashCode();
                 if (this.PendingWebhooks != null)
                     hashCode = hashCode * 59 + this.PendingWebhooks.GetHashCode();
                 if (this.Request != null)

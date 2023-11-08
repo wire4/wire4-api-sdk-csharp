@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -40,12 +39,12 @@ namespace MX.Wire4.Model
             /// Enum IN for value: IN
             /// </summary>
             [EnumMember(Value = "IN")]
-            IN = 0,
+            IN = 1,
             /// <summary>
             /// Enum OUT for value: OUT
             /// </summary>
             [EnumMember(Value = "OUT")]
-            OUT = 1        }
+            OUT = 2        }
         /// <summary>
         /// Tipo de transaccion IN | OUT
         /// </summary>

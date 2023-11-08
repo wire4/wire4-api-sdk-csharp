@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **SenderName** | **string** | Es el nombre del emisor. | [optional] 
 **SenderRfc** | **string** | Es el Registro Federal de Contribuyentes (RFC) del emisor. | [optional] 
 **Signature** | **string** | Firma del CEP.. | [optional] 
+**Type** | **string** | Es el tiop de CEP, puede ser: &lt;strong&gt;SPEI&lt;/strong&gt; o &lt;strong&gt;SPID&lt;/strong&gt;. | [optional] 
 **UrlZip** | **string** | La url al archivo zip del CEP, el cual contiene el xml y pdf | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -36,7 +35,6 @@ namespace MX.Wire4.Model
         /// <param name="authorizationDate">Es la fecha en la que se autorizó el registro del beneficiario. Ésta fecha viene en formato ISO 8601 con zona horaria, ejemplo: &lt;strong&gt;2020-10-27T11:03:15.000-06:00&lt;/strong&gt;..</param>
         /// <param name="bank">bank.</param>
         /// <param name="beneficiaryAccount">Es la cuenta del beneficiario, podría ser teléfono celular (se valida que sea de 10 dígitos), Tarjeta de débito (TDD, se valida que sea de 16 dígitos) o cuenta CLABE (se valida que sea de 18 dígitos). &lt;br/&gt;&lt;br/&gt;Por ejemplo Teléfono celular: 5525072600, TDD: 4323 1234 5678 9123, CLABE: 032180000118359719. (required).</param>
-        /// <param name="currencyCode">Es el código de divisa. Es en el formato estándar de 3 dígitos, por ejemplo para el peso mexicano: &lt;b&gt;MXP&lt;/b&gt;, para el dólar estadounidense: &lt;b&gt;USD&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;Este dato es opcional, al registrar una cuenta si no se cuenta con este valor se asignará &lt;b&gt;MXP&lt;/b&gt;.</param>
         /// <param name="email">Es una lista de correos electrónicos (emails). Se valida el formato de email. Este campo es opcional..</param>
         /// <param name="institution">institution.</param>
         /// <param name="kindOfRelationship">Es el tipo de relación que se tiene con el propietario de la cuenta. Para registrar una cuenta, este valor se debe obtener del recurso &lt;a href&#x3D;\&quot;#operation/getAvailableRelationshipsMonexUsingGET\&quot;&gt;relationships.&lt;/a&gt; &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Nota:&lt;/b&gt; &lt;em&gt;Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.&lt;/em&gt; (required).</param>
@@ -47,7 +45,7 @@ namespace MX.Wire4.Model
         /// <param name="relationship">Es la relación con el propietario de la cuenta, para registrar este valor se debe obtener del recurso &lt;a href&#x3D;\&quot;#operation/getAvailableRelationshipsMonexUsingGET\&quot;&gt;relationships.&lt;/a&gt; &lt;br/&gt; &lt;br/&gt; &lt;b&gt;Nota:&lt;/b&gt; Si en la respuesta de Monex, sta propiedad es nula, tampoco estará presente en esta respuesta. (required).</param>
         /// <param name="rfc">Es el Registro Federal de Contribuyentes (RFC) de la persona o institución propietaria dela cuenta. &lt;br/&gt; &lt;br/&gt;&lt;b&gt;Nota:&lt;/b&gt; Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta. (required).</param>
         /// <param name="status">Es el estado en el que se encuentra el registo del beneficiario.&lt;br&gt;Los valores pueden ser:&lt;ul style&#x3D;\&quot;font-size: 12px; font-weight: 600;\&quot;&gt;&lt;li&gt;RECEIVED&lt;/li&gt;&lt;li&gt;DELETED&lt;/li&gt;&lt;li&gt;REQUEST_ERROR_BY_MONEX&lt;/li&gt;&lt;li&gt;REQUESTED_TO_MONEX&lt;/li&gt;&lt;li&gt;NOTIFIED_BY_MONEX&lt;/li&gt;&lt;li&gt;NOTIFIED_BY_SPEIOK&lt;li&gt;&lt;/li&gt;NOTIFIED_WITH_ERROR_BY_SPEIOK&lt;/li&gt;&lt;li&gt;PENDING&lt;/li&gt;&lt;/ul&gt;.</param>
-        public AccountReassigned(decimal? amountLimit = default(decimal?), DateTime? authorizationDate = default(DateTime?), Institution bank = default(Institution), string beneficiaryAccount = default(string), string currencyCode = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpei = default(string), string paymentConceptSpei = default(string), Person person = default(Person), DateTime? registerDate = default(DateTime?), string relationship = default(string), string rfc = default(string), string status = default(string))
+        public AccountReassigned(decimal? amountLimit = default(decimal?), DateTime? authorizationDate = default(DateTime?), Institution bank = default(Institution), string beneficiaryAccount = default(string), List<string> email = default(List<string>), BeneficiaryInstitution institution = default(BeneficiaryInstitution), string kindOfRelationship = default(string), string numericReferenceSpei = default(string), string paymentConceptSpei = default(string), Person person = default(Person), DateTime? registerDate = default(DateTime?), string relationship = default(string), string rfc = default(string), string status = default(string))
         {
             // to ensure "amountLimit" is required (not null)
             if (amountLimit == null)
@@ -96,7 +94,6 @@ namespace MX.Wire4.Model
             }
             this.AuthorizationDate = authorizationDate;
             this.Bank = bank;
-            this.CurrencyCode = currencyCode;
             this.Email = email;
             this.Institution = institution;
             this.NumericReferenceSpei = numericReferenceSpei;
@@ -132,13 +129,6 @@ namespace MX.Wire4.Model
         /// <value>Es la cuenta del beneficiario, podría ser teléfono celular (se valida que sea de 10 dígitos), Tarjeta de débito (TDD, se valida que sea de 16 dígitos) o cuenta CLABE (se valida que sea de 18 dígitos). &lt;br/&gt;&lt;br/&gt;Por ejemplo Teléfono celular: 5525072600, TDD: 4323 1234 5678 9123, CLABE: 032180000118359719.</value>
         [DataMember(Name="beneficiary_account", EmitDefaultValue=false)]
         public string BeneficiaryAccount { get; set; }
-
-        /// <summary>
-        /// Es el código de divisa. Es en el formato estándar de 3 dígitos, por ejemplo para el peso mexicano: &lt;b&gt;MXP&lt;/b&gt;, para el dólar estadounidense: &lt;b&gt;USD&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;Este dato es opcional, al registrar una cuenta si no se cuenta con este valor se asignará &lt;b&gt;MXP&lt;/b&gt;
-        /// </summary>
-        /// <value>Es el código de divisa. Es en el formato estándar de 3 dígitos, por ejemplo para el peso mexicano: &lt;b&gt;MXP&lt;/b&gt;, para el dólar estadounidense: &lt;b&gt;USD&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;Este dato es opcional, al registrar una cuenta si no se cuenta con este valor se asignará &lt;b&gt;MXP&lt;/b&gt;</value>
-        [DataMember(Name="currency_code", EmitDefaultValue=false)]
-        public string CurrencyCode { get; set; }
 
         /// <summary>
         /// Es una lista de correos electrónicos (emails). Se valida el formato de email. Este campo es opcional.
@@ -220,7 +210,6 @@ namespace MX.Wire4.Model
             sb.Append("  AuthorizationDate: ").Append(AuthorizationDate).Append("\n");
             sb.Append("  Bank: ").Append(Bank).Append("\n");
             sb.Append("  BeneficiaryAccount: ").Append(BeneficiaryAccount).Append("\n");
-            sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Institution: ").Append(Institution).Append("\n");
             sb.Append("  KindOfRelationship: ").Append(KindOfRelationship).Append("\n");
@@ -284,11 +273,6 @@ namespace MX.Wire4.Model
                     this.BeneficiaryAccount == input.BeneficiaryAccount ||
                     (this.BeneficiaryAccount != null &&
                     this.BeneficiaryAccount.Equals(input.BeneficiaryAccount))
-                ) && 
-                (
-                    this.CurrencyCode == input.CurrencyCode ||
-                    (this.CurrencyCode != null &&
-                    this.CurrencyCode.Equals(input.CurrencyCode))
                 ) && 
                 (
                     this.Email == input.Email ||
@@ -360,8 +344,6 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.Bank.GetHashCode();
                 if (this.BeneficiaryAccount != null)
                     hashCode = hashCode * 59 + this.BeneficiaryAccount.GetHashCode();
-                if (this.CurrencyCode != null)
-                    hashCode = hashCode * 59 + this.CurrencyCode.GetHashCode();
                 if (this.Email != null)
                     hashCode = hashCode * 59 + this.Email.GetHashCode();
                 if (this.Institution != null)

@@ -106,12 +106,12 @@ namespace MX.Wire4.Test
             // TODO unit test for the property 'Livemode'
         }
         /// <summary>
-        /// Test the property 'Object'
+        /// Test the property '_Object'
         /// </summary>
         [Test]
-        public void ObjectTest()
+        public void _ObjectTest()
         {
-            // TODO unit test for the property 'Object'
+            // TODO unit test for the property '_Object'
         }
         /// <summary>
         /// Test the property 'PendingWebhooks'

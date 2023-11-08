@@ -94,6 +94,60 @@ namespace MX.Wire4.Api
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
         /// <returns>ApiResponse of DepositantsResponse</returns>
         ApiResponse<DepositantsResponse> RegisterDepositantsUsingPOSTWithHttpInfo (DepositantsRegister body, string authorization, string subscription);
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depositante sin utilizar la suscripción
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>Depositant</returns>
+        Depositant UpdateStatusDepositantsNoSuscrptionUsingPATCH (string authorization, string account, string action, string body = null);
+
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depositante sin utilizar la suscripción
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>ApiResponse of Depositant</returns>
+        ApiResponse<Depositant> UpdateStatusDepositantsNoSuscrptionUsingPATCHWithHttpInfo (string authorization, string account, string action, string body = null);
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depossitante
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>Depositant</returns>
+        Depositant UpdateStatusDepositantsUsingPATCH (string authorization, string account, string action, string body = null);
+
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depossitante
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>ApiResponse of Depositant</returns>
+        ApiResponse<Depositant> UpdateStatusDepositantsUsingPATCHWithHttpInfo (string authorization, string account, string action, string body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -167,6 +221,60 @@ namespace MX.Wire4.Api
         /// <param name="subscription">Es el identificador de la suscripción a esta API.</param>
         /// <returns>Task of ApiResponse (DepositantsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<DepositantsResponse>> RegisterDepositantsUsingPOSTAsyncWithHttpInfo (DepositantsRegister body, string authorization, string subscription);
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depositante sin utilizar la suscripción
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>Task of Depositant</returns>
+        System.Threading.Tasks.Task<Depositant> UpdateStatusDepositantsNoSuscrptionUsingPATCHAsync (string authorization, string account, string action, string body = null);
+
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depositante sin utilizar la suscripción
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>Task of ApiResponse (Depositant)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Depositant>> UpdateStatusDepositantsNoSuscrptionUsingPATCHAsyncWithHttpInfo (string authorization, string account, string action, string body = null);
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depossitante
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>Task of Depositant</returns>
+        System.Threading.Tasks.Task<Depositant> UpdateStatusDepositantsUsingPATCHAsync (string authorization, string account, string action, string body = null);
+
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depossitante
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>Task of ApiResponse (Depositant)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Depositant>> UpdateStatusDepositantsUsingPATCHAsyncWithHttpInfo (string authorization, string account, string action, string body = null);
         #endregion Asynchronous Operations
     }
 
@@ -733,6 +841,360 @@ namespace MX.Wire4.Api
             return new ApiResponse<DepositantsResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (DepositantsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DepositantsResponse)));
+        }
+
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depositante sin utilizar la suscripción 
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>Depositant</returns>
+        public Depositant UpdateStatusDepositantsNoSuscrptionUsingPATCH (string authorization, string account, string action, string body = null)
+        {
+             ApiResponse<Depositant> localVarResponse = UpdateStatusDepositantsNoSuscrptionUsingPATCHWithHttpInfo(authorization, account, action, body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depositante sin utilizar la suscripción 
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>ApiResponse of Depositant</returns>
+        public ApiResponse< Depositant > UpdateStatusDepositantsNoSuscrptionUsingPATCHWithHttpInfo (string authorization, string account, string action, string body = null)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling DepositantesApi->UpdateStatusDepositantsNoSuscrptionUsingPATCH");
+            // verify the required parameter 'account' is set
+            if (account == null)
+                throw new ApiException(400, "Missing required parameter 'account' when calling DepositantesApi->UpdateStatusDepositantsNoSuscrptionUsingPATCH");
+            // verify the required parameter 'action' is set
+            if (action == null)
+                throw new ApiException(400, "Missing required parameter 'action' when calling DepositantesApi->UpdateStatusDepositantsNoSuscrptionUsingPATCH");
+
+            var localVarPath = "/depositants/{account}/{action}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (account != null) localVarPathParams.Add("account", this.Configuration.ApiClient.ParameterToString(account)); // path parameter
+            if (action != null) localVarPathParams.Add("action", this.Configuration.ApiClient.ParameterToString(action)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateStatusDepositantsNoSuscrptionUsingPATCH", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Depositant>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Depositant) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Depositant)));
+        }
+
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depositante sin utilizar la suscripción 
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>Task of Depositant</returns>
+        public async System.Threading.Tasks.Task<Depositant> UpdateStatusDepositantsNoSuscrptionUsingPATCHAsync (string authorization, string account, string action, string body = null)
+        {
+             ApiResponse<Depositant> localVarResponse = await UpdateStatusDepositantsNoSuscrptionUsingPATCHAsyncWithHttpInfo(authorization, account, action, body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depositante sin utilizar la suscripción 
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>Task of ApiResponse (Depositant)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Depositant>> UpdateStatusDepositantsNoSuscrptionUsingPATCHAsyncWithHttpInfo (string authorization, string account, string action, string body = null)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling DepositantesApi->UpdateStatusDepositantsNoSuscrptionUsingPATCH");
+            // verify the required parameter 'account' is set
+            if (account == null)
+                throw new ApiException(400, "Missing required parameter 'account' when calling DepositantesApi->UpdateStatusDepositantsNoSuscrptionUsingPATCH");
+            // verify the required parameter 'action' is set
+            if (action == null)
+                throw new ApiException(400, "Missing required parameter 'action' when calling DepositantesApi->UpdateStatusDepositantsNoSuscrptionUsingPATCH");
+
+            var localVarPath = "/depositants/{account}/{action}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (account != null) localVarPathParams.Add("account", this.Configuration.ApiClient.ParameterToString(account)); // path parameter
+            if (action != null) localVarPathParams.Add("action", this.Configuration.ApiClient.ParameterToString(action)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateStatusDepositantsNoSuscrptionUsingPATCH", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Depositant>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Depositant) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Depositant)));
+        }
+
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depossitante 
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>Depositant</returns>
+        public Depositant UpdateStatusDepositantsUsingPATCH (string authorization, string account, string action, string body = null)
+        {
+             ApiResponse<Depositant> localVarResponse = UpdateStatusDepositantsUsingPATCHWithHttpInfo(authorization, account, action, body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depossitante 
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>ApiResponse of Depositant</returns>
+        public ApiResponse< Depositant > UpdateStatusDepositantsUsingPATCHWithHttpInfo (string authorization, string account, string action, string body = null)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling DepositantesApi->UpdateStatusDepositantsUsingPATCH");
+            // verify the required parameter 'account' is set
+            if (account == null)
+                throw new ApiException(400, "Missing required parameter 'account' when calling DepositantesApi->UpdateStatusDepositantsUsingPATCH");
+            // verify the required parameter 'action' is set
+            if (action == null)
+                throw new ApiException(400, "Missing required parameter 'action' when calling DepositantesApi->UpdateStatusDepositantsUsingPATCH");
+
+            var localVarPath = "/subscriptions/{subscription}/depositants/{account}/{action}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "*/*"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (account != null) localVarPathParams.Add("account", this.Configuration.ApiClient.ParameterToString(account)); // path parameter
+            if (action != null) localVarPathParams.Add("action", this.Configuration.ApiClient.ParameterToString(action)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateStatusDepositantsUsingPATCH", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Depositant>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Depositant) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Depositant)));
+        }
+
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depossitante 
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>Task of Depositant</returns>
+        public async System.Threading.Tasks.Task<Depositant> UpdateStatusDepositantsUsingPATCHAsync (string authorization, string account, string action, string body = null)
+        {
+             ApiResponse<Depositant> localVarResponse = await UpdateStatusDepositantsUsingPATCHAsyncWithHttpInfo(authorization, account, action, body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Solicitud para actualizar el estado de un depossitante 
+        /// </summary>
+        /// <exception cref="MX.Wire4.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authorization">Header para token</param>
+        /// <param name="account">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="action">Es la cuenta que va a ser actualizada.</param>
+        /// <param name="body">Empty value (optional)</param>
+        /// <returns>Task of ApiResponse (Depositant)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Depositant>> UpdateStatusDepositantsUsingPATCHAsyncWithHttpInfo (string authorization, string account, string action, string body = null)
+        {
+            // verify the required parameter 'authorization' is set
+            if (authorization == null)
+                throw new ApiException(400, "Missing required parameter 'authorization' when calling DepositantesApi->UpdateStatusDepositantsUsingPATCH");
+            // verify the required parameter 'account' is set
+            if (account == null)
+                throw new ApiException(400, "Missing required parameter 'account' when calling DepositantesApi->UpdateStatusDepositantsUsingPATCH");
+            // verify the required parameter 'action' is set
+            if (action == null)
+                throw new ApiException(400, "Missing required parameter 'action' when calling DepositantesApi->UpdateStatusDepositantsUsingPATCH");
+
+            var localVarPath = "/subscriptions/{subscription}/depositants/{account}/{action}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "*/*"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (account != null) localVarPathParams.Add("account", this.Configuration.ApiClient.ParameterToString(account)); // path parameter
+            if (action != null) localVarPathParams.Add("action", this.Configuration.ApiClient.ParameterToString(action)); // path parameter
+            if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateStatusDepositantsUsingPATCH", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Depositant>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Depositant) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Depositant)));
         }
 
     }

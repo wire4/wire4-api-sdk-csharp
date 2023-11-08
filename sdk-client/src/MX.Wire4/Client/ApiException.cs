@@ -14,7 +14,7 @@ namespace MX.Wire4.Client
     /// <summary>
     /// API Exception
     /// </summary>
-        public class ApiException : Exception
+    public class ApiException : Exception
     {
         /// <summary>
         /// Gets or sets the error code (HTTP status code)

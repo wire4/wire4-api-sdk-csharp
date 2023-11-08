@@ -129,6 +129,14 @@ namespace MX.Wire4.Test
         {
             // TODO unit test for the property 'SenderBankKey'
         }
+        /// <summary>
+        /// Test the property 'Type'
+        /// </summary>
+        [Test]
+        public void TypeTest()
+        {
+            // TODO unit test for the property 'Type'
+        }
 
     }
 

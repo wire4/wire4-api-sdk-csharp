@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -37,13 +36,15 @@ namespace MX.Wire4.Model
         /// <param name="depositantClabe">Es la cuenta CLABE (es de 18 dígitos) del depositante..</param>
         /// <param name="email">Es la lista de correos electrónicos (emails) del depositante..</param>
         /// <param name="name">Es el nombre del depositante..</param>
-        public Depositant(string alias = default(string), string currencyCode = default(string), string depositantClabe = default(string), List<string> email = default(List<string>), string name = default(string))
+        /// <param name="status">Es el estatus del depositante..</param>
+        public Depositant(string alias = default(string), string currencyCode = default(string), string depositantClabe = default(string), List<string> email = default(List<string>), string name = default(string), string status = default(string))
         {
             this.Alias = alias;
             this.CurrencyCode = currencyCode;
             this.DepositantClabe = depositantClabe;
             this.Email = email;
             this.Name = name;
+            this.Status = status;
         }
         
         /// <summary>
@@ -82,6 +83,13 @@ namespace MX.Wire4.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Es el estatus del depositante.
+        /// </summary>
+        /// <value>Es el estatus del depositante.</value>
+        [DataMember(Name="status", EmitDefaultValue=false)]
+        public string Status { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -94,6 +102,7 @@ namespace MX.Wire4.Model
             sb.Append("  DepositantClabe: ").Append(DepositantClabe).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -153,6 +162,11 @@ namespace MX.Wire4.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 );
         }
 
@@ -175,6 +189,8 @@ namespace MX.Wire4.Model
                     hashCode = hashCode * 59 + this.Email.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Status != null)
+                    hashCode = hashCode * 59 + this.Status.GetHashCode();
                 return hashCode;
             }
         }

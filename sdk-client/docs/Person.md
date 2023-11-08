@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LastName** | **string** | Apellido Materno del propietario de la cuenta | 
+**LastName** | **string** | Apellido Materno del propietario de la cuenta | [optional] 
 **MiddleName** | **string** | Apellido Paterno del propietario de la cuenta | 
 **Name** | **string** | Nombre(s) del propietario de la cuenta | 
 

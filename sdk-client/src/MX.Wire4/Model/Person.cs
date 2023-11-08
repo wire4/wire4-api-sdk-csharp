@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -32,20 +31,11 @@ namespace MX.Wire4.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Person" /> class.
         /// </summary>
-        /// <param name="lastName">Apellido Materno del propietario de la cuenta (required).</param>
+        /// <param name="lastName">Apellido Materno del propietario de la cuenta.</param>
         /// <param name="middleName">Apellido Paterno del propietario de la cuenta (required).</param>
         /// <param name="name">Nombre(s) del propietario de la cuenta (required).</param>
         public Person(string lastName = default(string), string middleName = default(string), string name = default(string))
         {
-            // to ensure "lastName" is required (not null)
-            if (lastName == null)
-            {
-                throw new InvalidDataException("lastName is a required property for Person and cannot be null");
-            }
-            else
-            {
-                this.LastName = lastName;
-            }
             // to ensure "middleName" is required (not null)
             if (middleName == null)
             {
@@ -64,6 +54,7 @@ namespace MX.Wire4.Model
             {
                 this.Name = name;
             }
+            this.LastName = lastName;
         }
         
         /// <summary>

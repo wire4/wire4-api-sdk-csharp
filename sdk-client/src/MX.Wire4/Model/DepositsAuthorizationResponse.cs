@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -33,12 +32,12 @@ namespace MX.Wire4.Model
         /// Initializes a new instance of the <see cref="DepositsAuthorizationResponse" /> class.
         /// </summary>
         /// <param name="enabled">Indica sí se aplica autorización de depósitos..</param>
-        /// <param name="readOnly">Indica sí es posible modificar o no la autorización, ésto depende si otra aplicación tiene el control sobre la autorización de depósitos..</param>
+        /// <param name="_readOnly">Indica sí es posible modificar o no la autorización, ésto depende si otra aplicación tiene el control sobre la autorización de depósitos..</param>
         /// <param name="webhook">webhook.</param>
-        public DepositsAuthorizationResponse(bool? enabled = default(bool?), bool? readOnly = default(bool?), WebHookDepositAuthorizationResponse webhook = default(WebHookDepositAuthorizationResponse))
+        public DepositsAuthorizationResponse(bool? enabled = default(bool?), bool? _readOnly = default(bool?), WebHookDepositAuthorizationResponse webhook = default(WebHookDepositAuthorizationResponse))
         {
             this.Enabled = enabled;
-            this.ReadOnly = readOnly;
+            this._ReadOnly = _readOnly;
             this.Webhook = webhook;
         }
         
@@ -54,7 +53,7 @@ namespace MX.Wire4.Model
         /// </summary>
         /// <value>Indica sí es posible modificar o no la autorización, ésto depende si otra aplicación tiene el control sobre la autorización de depósitos.</value>
         [DataMember(Name="read_only", EmitDefaultValue=false)]
-        public bool? ReadOnly { get; set; }
+        public bool? _ReadOnly { get; set; }
 
         /// <summary>
         /// Gets or Sets Webhook
@@ -71,7 +70,7 @@ namespace MX.Wire4.Model
             var sb = new StringBuilder();
             sb.Append("class DepositsAuthorizationResponse {\n");
             sb.Append("  Enabled: ").Append(Enabled).Append("\n");
-            sb.Append("  ReadOnly: ").Append(ReadOnly).Append("\n");
+            sb.Append("  _ReadOnly: ").Append(_ReadOnly).Append("\n");
             sb.Append("  Webhook: ").Append(Webhook).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -113,9 +112,9 @@ namespace MX.Wire4.Model
                     this.Enabled.Equals(input.Enabled))
                 ) && 
                 (
-                    this.ReadOnly == input.ReadOnly ||
-                    (this.ReadOnly != null &&
-                    this.ReadOnly.Equals(input.ReadOnly))
+                    this._ReadOnly == input._ReadOnly ||
+                    (this._ReadOnly != null &&
+                    this._ReadOnly.Equals(input._ReadOnly))
                 ) && 
                 (
                     this.Webhook == input.Webhook ||
@@ -135,8 +134,8 @@ namespace MX.Wire4.Model
                 int hashCode = 41;
                 if (this.Enabled != null)
                     hashCode = hashCode * 59 + this.Enabled.GetHashCode();
-                if (this.ReadOnly != null)
-                    hashCode = hashCode * 59 + this.ReadOnly.GetHashCode();
+                if (this._ReadOnly != null)
+                    hashCode = hashCode * 59 + this._ReadOnly.GetHashCode();
                 if (this.Webhook != null)
                     hashCode = hashCode * 59 + this.Webhook.GetHashCode();
                 return hashCode;

@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -40,42 +39,42 @@ namespace MX.Wire4.Model
             /// Enum ACCEPTED for value: ACCEPTED
             /// </summary>
             [EnumMember(Value = "ACCEPTED")]
-            ACCEPTED = 0,
+            ACCEPTED = 1,
             /// <summary>
             /// Enum RECEIVED for value: RECEIVED
             /// </summary>
             [EnumMember(Value = "RECEIVED")]
-            RECEIVED = 1,
+            RECEIVED = 2,
             /// <summary>
             /// Enum COMPLETED for value: COMPLETED
             /// </summary>
             [EnumMember(Value = "COMPLETED")]
-            COMPLETED = 2,
+            COMPLETED = 3,
             /// <summary>
             /// Enum CANCELLED for value: CANCELLED
             /// </summary>
             [EnumMember(Value = "CANCELLED")]
-            CANCELLED = 3,
+            CANCELLED = 4,
             /// <summary>
             /// Enum POSTPONED for value: POSTPONED
             /// </summary>
             [EnumMember(Value = "POSTPONED")]
-            POSTPONED = 4,
+            POSTPONED = 5,
             /// <summary>
             /// Enum REJECTED for value: REJECTED
             /// </summary>
             [EnumMember(Value = "REJECTED")]
-            REJECTED = 5,
+            REJECTED = 6,
             /// <summary>
             /// Enum REVERSED for value: REVERSED
             /// </summary>
             [EnumMember(Value = "REVERSED")]
-            REVERSED = 6,
+            REVERSED = 7,
             /// <summary>
-            /// Enum UNKNOWN for value: UNKNOWN
+            /// Enum PENDING for value: PENDING
             /// </summary>
-            [EnumMember(Value = "UNKNOWN")]
-            UNKNOWN = 7        }
+            [EnumMember(Value = "PENDING")]
+            PENDING = 8        }
         /// <summary>
         /// Estatus de la petición
         /// </summary>
@@ -93,17 +92,17 @@ namespace MX.Wire4.Model
             /// Enum PUSHNOTIFICATION for value: PUSH_NOTIFICATION
             /// </summary>
             [EnumMember(Value = "PUSH_NOTIFICATION")]
-            PUSHNOTIFICATION = 0,
+            PUSHNOTIFICATION = 1,
             /// <summary>
             /// Enum QRCODE for value: QR_CODE
             /// </summary>
             [EnumMember(Value = "QR_CODE")]
-            QRCODE = 1,
+            QRCODE = 2,
             /// <summary>
             /// Enum UNKNOWN for value: UNKNOWN
             /// </summary>
             [EnumMember(Value = "UNKNOWN")]
-            UNKNOWN = 2        }
+            UNKNOWN = 3        }
         /// <summary>
         /// Es el tipo de petición de cobro.
         /// </summary>

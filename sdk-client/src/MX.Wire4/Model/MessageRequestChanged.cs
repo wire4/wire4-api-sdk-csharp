@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -40,7 +39,7 @@ namespace MX.Wire4.Model
             /// Enum AUTHORIZED for value: AUTHORIZED
             /// </summary>
             [EnumMember(Value = "AUTHORIZED")]
-            AUTHORIZED = 0        }
+            AUTHORIZED = 1        }
         /// <summary>
         /// Es el cambio a informar en el procesamiento/estado de la petición.
         /// </summary>

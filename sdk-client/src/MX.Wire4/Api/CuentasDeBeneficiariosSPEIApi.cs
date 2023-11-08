@@ -135,10 +135,12 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Controbuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta. Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>BeneficiariesResponse</returns>
-        BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
+        BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null);
 
         /// <summary>
         /// Consulta los beneficiarios registrados
@@ -154,10 +156,12 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Controbuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta. Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>ApiResponse of BeneficiariesResponse</returns>
-        ApiResponse<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
+        ApiResponse<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null);
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios SPEI®.
         /// </summary>
@@ -349,10 +353,12 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Controbuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta. Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>Task of BeneficiariesResponse</returns>
-        System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETAsync (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
+        System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETAsync (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null);
 
         /// <summary>
         /// Consulta los beneficiarios registrados
@@ -368,10 +374,12 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Controbuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta. Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>Task of ApiResponse (BeneficiariesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null);
+        System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null);
         /// <summary>
         /// Pre-registro de cuentas de beneficiarios SPEI®.
         /// </summary>
@@ -1191,12 +1199,14 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Controbuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta. Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>BeneficiariesResponse</returns>
-        public BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
+        public BeneficiariesResponse GetBeneficiariesForAccountUsingGET (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null)
         {
-             ApiResponse<BeneficiariesResponse> localVarResponse = GetBeneficiariesForAccountUsingGETWithHttpInfo(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, rfc, status);
+             ApiResponse<BeneficiariesResponse> localVarResponse = GetBeneficiariesForAccountUsingGETWithHttpInfo(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, page, rfc, size, status);
              return localVarResponse.Data;
         }
 
@@ -1211,10 +1221,12 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Controbuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta. Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>ApiResponse of BeneficiariesResponse</returns>
-        public ApiResponse< BeneficiariesResponse > GetBeneficiariesForAccountUsingGETWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
+        public ApiResponse< BeneficiariesResponse > GetBeneficiariesForAccountUsingGETWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
@@ -1250,7 +1262,9 @@ namespace MX.Wire4.Api
             if (beneficiaryName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beneficiary_name", beneficiaryName)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             if (initDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "init_date", initDate)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (rfc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "rfc", rfc)); // query parameter
+            if (size != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "size", size)); // query parameter
             if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
             if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 
@@ -1283,12 +1297,14 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Controbuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta. Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>Task of BeneficiariesResponse</returns>
-        public async System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETAsync (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
+        public async System.Threading.Tasks.Task<BeneficiariesResponse> GetBeneficiariesForAccountUsingGETAsync (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null)
         {
-             ApiResponse<BeneficiariesResponse> localVarResponse = await GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, rfc, status);
+             ApiResponse<BeneficiariesResponse> localVarResponse = await GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo(authorization, subscription, account, beneficiaryBank, beneficiaryName, endDate, initDate, page, rfc, size, status);
              return localVarResponse.Data;
 
         }
@@ -1304,10 +1320,12 @@ namespace MX.Wire4.Api
         /// <param name="beneficiaryName">Es el nombre del beneficiario. (optional)</param>
         /// <param name="endDate">Es la fecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
         /// <param name="initDate">Es la fºecha de inicio del perido a filtrar en formato dd-mm-yyyy. (optional)</param>
+        /// <param name="page">Es el número de página. (optional, default to 0)</param>
         /// <param name="rfc">Es el Registro Federal de Controbuyentes (RFC) del beneficiario. (optional)</param>
+        /// <param name="size">Es el tamaño de página. (optional, default to 20)</param>
         /// <param name="status">Es el estado (estatus) de la cuenta. Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. (optional)</param>
         /// <returns>Task of ApiResponse (BeneficiariesResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string rfc = null, string status = null)
+        public async System.Threading.Tasks.Task<ApiResponse<BeneficiariesResponse>> GetBeneficiariesForAccountUsingGETAsyncWithHttpInfo (string authorization, string subscription, string account = null, string beneficiaryBank = null, string beneficiaryName = null, string endDate = null, string initDate = null, string page = null, string rfc = null, string size = null, string status = null)
         {
             // verify the required parameter 'authorization' is set
             if (authorization == null)
@@ -1343,7 +1361,9 @@ namespace MX.Wire4.Api
             if (beneficiaryName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "beneficiary_name", beneficiaryName)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             if (initDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "init_date", initDate)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (rfc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "rfc", rfc)); // query parameter
+            if (size != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "size", size)); // query parameter
             if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
             if (authorization != null) localVarHeaderParams.Add("Authorization", this.Configuration.ApiClient.ParameterToString(authorization)); // header parameter
 

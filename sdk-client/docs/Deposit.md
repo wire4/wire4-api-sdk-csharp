@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **SenderBank** | [**MessageInstitution**](MessageInstitution.md) |  | [optional] 
 **SenderName** | **string** | Es el nombre del ordenante. | [optional] 
 **SenderRfc** | **string** | Es el Registro Federal de Contribuyentes (RFC) de la cuenta ordenante. | [optional] 
+**Status** | **string** | Es el estatus del depósito (COMPLETED/RETURNED). | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

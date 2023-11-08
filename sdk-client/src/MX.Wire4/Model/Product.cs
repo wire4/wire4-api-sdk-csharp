@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = MX.Wire4.Client.SwaggerDateConverter;
-
 namespace MX.Wire4.Model
 {
     /// <summary>
@@ -40,17 +39,17 @@ namespace MX.Wire4.Model
             /// Enum WEEKLY for value: WEEKLY
             /// </summary>
             [EnumMember(Value = "WEEKLY")]
-            WEEKLY = 0,
+            WEEKLY = 1,
             /// <summary>
             /// Enum MONTHLY for value: MONTHLY
             /// </summary>
             [EnumMember(Value = "MONTHLY")]
-            MONTHLY = 1,
+            MONTHLY = 2,
             /// <summary>
             /// Enum YEARLY for value: YEARLY
             /// </summary>
             [EnumMember(Value = "YEARLY")]
-            YEARLY = 2        }
+            YEARLY = 3        }
         /// <summary>
         /// Periodo en el cual se aplicará el cargo, si no se especifica la propiedad frequency por defecto sera la unidad
         /// </summary>
