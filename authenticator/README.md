@@ -3,7 +3,7 @@
 Autenticador para la API de Wire4
 
 - versión de API: 1.0.0
-- versión de SDK: 0.0.1
+- versión de SDK: 1.1.4
 
 <a name="frameworks-supported"></a>
 
